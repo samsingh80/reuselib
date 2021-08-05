@@ -39,5 +39,8 @@
             "ui5-task-zipper",
             "mbt"
         ]
+    },
+    "dependencies": {
+        "@sapui5/sap.suite.ui.commons": "^1.84.8"
     }
 }

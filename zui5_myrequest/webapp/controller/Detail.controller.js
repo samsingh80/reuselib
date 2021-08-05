@@ -684,7 +684,7 @@ sap.ui.define([
                 // var brmURL = this.getBRMUrl();
                 oDialog.open();
                 var oPayload = {
-                    "RuleServiceId": "379208f3d3d144dfa048e1d04df3f513",
+                    "RuleServiceId": "e22c12862155497b934d2bde9d2816f8",
                     "Vocabulary": [
                         {
                             "DO_ServiceDetails_IN": {
@@ -695,29 +695,64 @@ sap.ui.define([
                     ]
                 };
 
-                $.ajax({
-                    url: this._getRulesBaseURL() + "/v2/xsrf-token",
-                    method: "GET",
-                    headers: {
-                        "X-CSRF-Token": "Fetch"
-                    },
-                    success: function (result, xhr, data) {
-                        var bpmruletoken = data.getResponseHeader("X-CSRF-Token");
+                // $.ajax({
+                //     url: this._getRulesBaseURL() + "/v2/xsrf-token",
+                //     method: "GET",
+                //     headers: {
+                //         "X-CSRF-Token": "Fetch"
+                //     },
+                //     success: function (result, xhr, data) {
+                //         var bpmruletoken = data.getResponseHeader("X-CSRF-Token");
 
-                        //Then invoke the business rules service via public API
-                        $.ajax({
-                            url: that._getRulesBaseURL() + "/v2/workingset-rule-services",
-                            method: "POST",
-                            contentType: "application/json",
-                            data: JSON.stringify(oPayload),
-                            async: false,
-                            headers: {
-                                "X-CSRF-Token": bpmruletoken
-                            },
+                //         //Then invoke the business rules service via public API
+                //         $.ajax({
+                //             url: that._getRulesBaseURL() + "/v2/workingset-rule-services",
+                //             method: "POST",
+                //             contentType: "application/json",
+                //             data: JSON.stringify(oPayload),
+                //             async: false,
+                //             headers: {
+                //                 "X-CSRF-Token": bpmruletoken
+                //             },
 
-                            success: function (result1, xhr1, data1) {
-                                var response = result1.Result[0].DO_ProcessFlowStages_OUT;
-                                if (response.stage1 != null) {
+                //             success: function (result1, xhr1, data1) {
+                //                 var response = result1.Result[0].DO_ProcessFlowStages_OUT;
+                //                 if (response.Stage1 != null) {
+                //                      var brmResult = [response.Stage1, response.Stage2, response.Stage3, response.Stage4, response.Stage5, response.Stage6, response.Stage7,
+                                    // response.Stage8, response.Stage9, response.Stage10
+                                    // ];
+                //                     var processFlow = that.getProcessFlow(step, brmResult, status);
+                //                     //29-03-2018 Incture (for changing the text of process flow)
+                //                     if (serviceCode === "0009") {
+                //                         var len = processFlow.getLanes().length;
+                //                         for (var i = 0; i < len; i++) {
+                //                             var processText = processFlow.getLanes()[i];
+                //                             if (processText.getText() === "Recipient Line Manager Approval") {
+                //                                 processText.setText("Recipient line manager Approval");
+                //                             } else if (processText.getText() === "Recipient Approval") {
+                //                                 processText.setText("Recipient Acknowledgement");
+                //                             }
+                //                         }
+                //                     }
+                //                     var contents = detailsForm.getContent();
+                //                     detailsForm.removeAllContent();
+                //                     detailsForm.addContent(processFlow);
+                //                    contents.forEach(function (content) {
+                                    //     detailsForm.addContent(content);
+                                    // });
+                //                 }
+                //                 oDialog.destroy();
+                //                 detailsForm.rerender();
+
+
+                //             }
+                //         });
+                //     }
+                // });
+
+
+                var response = { serviceCode: "0017", stage1: "IT Service Desk" };
+                 if (response.stage1 != null) {
                                     var brmResult = [response.stage1, response.stage2, response.stage3, response.stage4, response.stage5, response.stage6, response.stage7,
                                     response.stage8, response.stage9, response.stage10
                                     ];
@@ -737,21 +772,12 @@ sap.ui.define([
                                     var contents = detailsForm.getContent();
                                     detailsForm.removeAllContent();
                                     detailsForm.addContent(processFlow);
-                                    for (c in contents) {
-                                        detailsForm.addContent(contents[c]);
-                                    }
+                                    contents.forEach(function (content) {
+                                        detailsForm.addContent(content);
+                                    });
                                 }
                                 oDialog.destroy();
                                 detailsForm.rerender();
-
-
-                            }
-                        });
-                    }
-                });
-
-
-                // var response = { serviceCode: "0017", stage1: "IT Service Desk" };
                 
 
             },
