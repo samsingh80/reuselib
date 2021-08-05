@@ -650,7 +650,7 @@ sap.ui.define([
                       this.getProcessStages(status, detailsForm);
                       }*/
                     else {
-                        // this.getProcessStages(listItem, status, detailsForm); 
+                        this.getProcessStages(status, detailsForm);
                     }
                     // Rerender is moved to jsonp ajax call because it is asynchronous
 
@@ -658,10 +658,10 @@ sap.ui.define([
                 }
             },
 
-            getProcessStages: function ( status, detailsForm) {
+            getProcessStages: function (status, detailsForm) {
                 var oCustomModel = this.getOwnerComponent().getModel("oCustomModel");
                 var oCusData = oCustomModel.getData();
-                var step = oCusData.step;
+                var step = oCusData.stage;
                 var serviceCode = oCusData.serviceCode;
                 if (serviceCode == "0051" || serviceCode == "0052" || serviceCode == '0053' || serviceCode == '0055' || serviceCode === "0026" ||
                     serviceCode === "0016") { } else {
@@ -677,54 +677,343 @@ sap.ui.define([
                 if (serviceCode == "0102" && (step == "Line Manager Approval" || step == "Graduate Affairs Approval")) {
                     step = "LM/Graduate Affairs Approval";
                 }
+
+                //BRM Call
                 var that = this;
                 var oDialog = new sap.m.BusyDialog();
                 // var brmURL = this.getBRMUrl();
                 oDialog.open();
-                // $.ajax({
-                //     url: brmURL,
-                //     async: "false",
-                //     dataType: "jsonp",
-                //     contentType: "application/json",
-                //     jsonpCallback: "a" + serviceCode,
-                //     // Work with the response. JSONP is asynchronous service. That is the reason rerender is placed in the result.
-                //     success: function (response) {
-                        if (response.stage1 != null) {
-                            var brmResult = [response.stage1, response.stage2, response.stage3, response.stage4, response.stage5, response.stage6, response.stage7,
-                            response.stage8, response.stage9, response.stage10
-                            ];
-                            var processFlow = that.getProcessFlow(step, brmResult, status);
-                            //29-03-2018 Incture (for changing the text of process flow)
-                            if (serviceCode === "0009") {
-                                var len = processFlow.getLanes().length;
-                                for (var i = 0; i < len; i++) {
-                                    var processText = processFlow.getLanes()[i];
-                                    if (processText.getText() === "Recipient Line Manager Approval") {
-                                        processText.setText("Recipient line manager Approval");
-                                    } else if (processText.getText() === "Recipient Approval") {
-                                        processText.setText("Recipient Acknowledgement");
-                                    }
-                                }
-                            }
-                            var contents = detailsForm.getContent();
-                            detailsForm.removeAllContent();
-                            detailsForm.addContent(processFlow);
-                            for (c in contents) {
-                                detailsForm.addContent(contents[c]);
+                var oPayload = {
+                    "RuleServiceId": "379208f3d3d144dfa048e1d04df3f513",
+                    "Vocabulary": [
+                        {
+                            "DO_ServiceDetails_IN": {
+
+                                "ServiceCode": serviceCode
                             }
                         }
-                        oDialog.destroy();
-                        detailsForm.rerender();
+                    ]
+                };
+
+                $.ajax({
+                    url: this._getRulesBaseURL() + "/v2/xsrf-token",
+                    method: "GET",
+                    headers: {
+                        "X-CSRF-Token": "Fetch"
                     },
-                    error: function () {
-                        oDialog.destroy();
-                        detailsForm.rerender();
+                    success: function (result, xhr, data) {
+                        var bpmruletoken = data.getResponseHeader("X-CSRF-Token");
+
+                        //Then invoke the business rules service via public API
+                        $.ajax({
+                            url: that._getRulesBaseURL() + "/v2/workingset-rule-services",
+                            method: "POST",
+                            contentType: "application/json",
+                            data: JSON.stringify(oPayload),
+                            async: false,
+                            headers: {
+                                "X-CSRF-Token": bpmruletoken
+                            },
+
+                            success: function (result1, xhr1, data1) {
+                                var response = result1.Result[0].DO_ProcessFlowStages_OUT;
+                                if (response.stage1 != null) {
+                                    var brmResult = [response.stage1, response.stage2, response.stage3, response.stage4, response.stage5, response.stage6, response.stage7,
+                                    response.stage8, response.stage9, response.stage10
+                                    ];
+                                    var processFlow = that.getProcessFlow(step, brmResult, status);
+                                    //29-03-2018 Incture (for changing the text of process flow)
+                                    if (serviceCode === "0009") {
+                                        var len = processFlow.getLanes().length;
+                                        for (var i = 0; i < len; i++) {
+                                            var processText = processFlow.getLanes()[i];
+                                            if (processText.getText() === "Recipient Line Manager Approval") {
+                                                processText.setText("Recipient line manager Approval");
+                                            } else if (processText.getText() === "Recipient Approval") {
+                                                processText.setText("Recipient Acknowledgement");
+                                            }
+                                        }
+                                    }
+                                    var contents = detailsForm.getContent();
+                                    detailsForm.removeAllContent();
+                                    detailsForm.addContent(processFlow);
+                                    for (c in contents) {
+                                        detailsForm.addContent(contents[c]);
+                                    }
+                                }
+                                oDialog.destroy();
+                                detailsForm.rerender();
+
+
+                            }
+                        });
                     }
                 });
+
+
+                // var response = { serviceCode: "0017", stage1: "IT Service Desk" };
+                
+
             },
 
 
+            _getBaseURL: function () {
+                var componentName = this.getOwnerComponent().getManifestEntry("/sap.app/id").replaceAll(".", "/");
+                // @ts-ignore
+                return jQuery.sap.getModulePath(componentName);
+            },
+            _getRulesBaseURL: function () {
+                return this._getBaseURL() + "/bpmruleruntime/rules-service/rest";
+            },
 
+            getProcessFlow: function (step, stages, status) {
+                var processFlow = new sap.suite.ui.commons.ProcessFlow();
+                var processState = sap.suite.ui.commons.ProcessFlowNodeState.Positive;
+                var stepFound = false;
+                var icon = "sap-icon://employee-approvals";
+                var subService = this.getView().getModel("helpModel").getData().helpItems.serviceOpened;
+                var oSubCode = this.getView().getModel("helpModel").getData().helpItems.subServiceCode;
+                //Zakeer : Resolved status
+                if (subService == "Port Activation" || subService == "TER Access Process" || subService == "Data Center Access Process" || subService ==
+                    "VPN Access for externals Process" || subService == "Admin Rights Process" || subService == "Audio Visual Services" || oSubCode ===
+                    "0026" || oSubCode === "0016") {
+                    if (status == "Initiated") {
+                        return;
+                    }
+                    var isCompleted = $.inArray(status, ["Rejected", "Cancelled"]);
+                    // For VPN skipping Info sec stage
+                    if (subService == "VPN Access for externals Process") {
+                        var data = this.getView().getModel("oDataModel").getData().d.results[0];
+                        if (data.vpn == "X" && data.activityType == "New" && data.flow == "Non-Academic") { } else {
+                            stages.shift();
+                        }
+                        //if(data.requestType=="Non VPN"){ 
+                        if (!(data.vpn == "X" && data.activityType == "New")) {
+                            var index = stages.indexOf("CRM");
+                            stages.splice(index, 1);
+                        }
+                        var index = stages.indexOf("AD Automation");
+                        if (index && data.requestType == "VPN" && data.reqTypeDesc == "New") {
+                            stages[index] = "Account Creation";
+                        } else if (index && data.requestType == "VPN" && data.reqTypeDesc == "Renew") {
+                            stages[index] = "Account Renewal";
+                        } else if (index && data.requestType == "Non VPN") {
+                            stages[index] = "Account Provision";
+                        }
+                        if (step == "AD Automation") {
+                            step = stages[index];
+                        }
+
+                        var index = stages.indexOf("CRM");
+                        if (index) {
+                            stages[index] = "Info Sec Team";
+                            if (step == "CRM") {
+                                step = stages[index];
+                            }
+                        }
+                    }
+                    if (subService == 'Data Center Access Process') {
+                        var data = this.getView().getModel("dataCenter").getData().d.results[0];
+                        if (data.requestType == "Non-Contractor") {
+                            var index = stages.indexOf("Line Manager");
+                            stages.splice(index, 1);
+                        }
+                        if (data.flow == "YES") {
+                            var index = stages.indexOf("KAUST Security");
+                            stages.splice(index, 1);
+                        }
+                        if (step == "CRM") {
+                            step = "Data Center Access";
+                        }
+
+                        if (step == "Justification") {
+                            step = "Pre Screening";
+                        }
+
+                        if (!data.justification) {
+                            var index = stages.indexOf("Justification");
+                            stages.splice(index, 1);
+                        }
+
+                        var index = stages.indexOf("Justification");
+                        stages[index] = "Pre Screening";
+                        //          var index = stages.indexOf("CRM");
+                        //              if(index){
+                        //               stages[index]="Data Center Access";
+                        //            }
+
+                        //Pavithra -- for pre step justification ---- start
+                        if (data.RequestId && data.approverStatus == 1 || data.RequestId && data.approverStatus == 2 || data.RequestId && data.approverStatus ==
+                            3) {
+                            var index = stages.indexOf("KAUST Security");
+                            //            stages.splice(index, 1);
+                        } else {
+                            var index = stages.indexOf("Justification");
+                            stages.splice(index, 1);
+                            var index = stages.indexOf("Requester");
+                            stages.splice(index, 1);
+                        }
+                        //Pavithra -- for pre step justification ---- end
+                    }
+                    if (subService == "Admin Rights Process") {
+                        var data = this.getView().getModel("oPortModel").getData();
+                        var index = stages.indexOf("CRM");
+                        if (index) {
+                            stages[index] = "IT Service Desk"
+                        }
+                        if (data.Onbehalf != "X") {
+                            var index = stages.indexOf("Line Manager");
+                            stages.splice(index, 1);
+                        }
+                        // Roopali(03-07-2018) -comment the code to change the road map for Linux 
+                        /*  if(data.selectedOperSys){
+        
+                          var present = data.selectedOperSys.indexOf("Linux");
+                          if(present!=-1) {
+                          var index = stages.indexOf("IT Service Manager");
+                            stages.splice(index, 1);
+                          }
+                          // roopali changes end
+                          //to be removed once stage is updated in BPM / ECC
+                        }*/
+                    }
+                    if (subService == "Audio Visual Services") {
+                        var oAVData = sap.ui.getCore().byId("Detail").getModel("confRoomModel").getData();
+                        var index1, index2, index3, index4;
+                        if (oAVData.requestType === "NA") {
+                            index1 = stages.indexOf("IT Service Desk");
+                            stages.splice(index1, 1);
+                            index2 = stages.indexOf("Requester Feedback");
+                            stages.splice(index2, 1);
+                        }
+                        if (oAVData.activityType === "NA") {
+                            index1 = stages.indexOf("Room Booking Team");
+                            stages.splice(index1, 1);
+                        }
+                        if (oAVData.activityType === "NA" && oAVData.requestType === "NA") {
+                            index1 = stages.indexOf("IT Service Desk");
+                            stages.splice(index1, 1);
+                            index2 = stages.indexOf("Requester Feedback");
+                            stages.splice(index2, 1);
+                            index3 = stages.indexOf("Room Booking Team");
+                            stages.splice(index3, 1);
+                        }
+                        //29-03-2018 Incture(Andrea) checking for flow 
+                        if (oAVData.flow === "Library") {
+                            index4 = stages.indexOf("Room Booking Team");
+                            stages.splice(index4, 1);
+                        } else if (oAVData.flow === "NA") {
+                            index4 = stages.indexOf("Library Team");
+                            stages.splice(index4, 1);
+                        }
+
+                        // Incture 01-23-2018: Requester Feedback Task is removed from Process
+                        // In UI no changes are made as there is no effect of this change on the UI code
+                        // In case if any request is in Pending Requester Feedback for AV then we will show the 
+                        // Feedback task in UI. In case the request is not in Pending Requester Feedback then 
+                        // Feedback task will not come in Road Map be it AV 
+                        if (oAVData.requestType === "AV") {
+                            if (status === "Pending Requester Feedback") {
+                                stages.splice(stages.indexOf("Resolved"), 0, "Requester Feedback");
+                            }
+                        }
+                    }
+                    // end of VPN skipping Info sec stage
+
+                    // INCTURE 1 Feb, 2018: Library Excessive Download (0026) Road map issue fix
+                    if (oSubCode === "0026" || oSubCode === "0016") {
+                        if (status === "Resolved") // If status is resolved
+                        {
+                            stages.splice(1, 0, "Resolved");
+                        } // The BRM Service does not send Resolved Status hence pushing it to the array
+                        else {
+                            step = step === "CRM" ? "IT Service Desk" : step;
+                        } // If status is not resolved replace CRM with IT Service Desk in step
+                    }
+                } else {
+                    var isCompleted = $.inArray(status, ["Rejected", "Resolved", "Cancelled"]);
+                }
+                //Zakeer : Resolved status
+                // var isCompleted = $.inArray(status, [ "Rejected", "Resolved", "Cancelled" ]);
+                var i;
+                for (i = 0; i < stages.length; i++) {
+                    if (stages[i] == null) {
+                        break;
+                    }
+                    if (stepFound) {
+                        processState = sap.suite.ui.commons.ProcessFlowNodeState.Planned;
+                        icon = "sap-icon://time-entry-request";
+                        if (isCompleted !== -1) {
+                            processState = null;
+                            break;
+                        }
+                    }
+                    if (stages[i].toUpperCase() == step.toUpperCase()) {
+                        if ((subService == "VPN Access for externals Process" && step == "Resolved") || (subService == 'Data Center Access Process' && step ==
+                            "Resolved")) { } else {
+                            if (isCompleted != 0) { // to remove red color
+                                processState = sap.suite.ui.commons.ProcessFlowNodeState.Negative;
+                            }
+                            icon = "sap-icon://customer-history";
+                            stepFound = true;
+                        }
+                    }
+
+                    if (oSubCode === "0036" || oSubCode === "0207" || oSubCode === "1701" || oSubCode === "1702" || oSubCode === "1704" ||
+                        oSubCode === "1705" || oSubCode === "0204" || oSubCode === "0205" || oSubCode === "0503" || oSubCode === "0205" ||
+                        oSubCode === "0504" || oSubCode === "0501" || oSubCode === "1706" || oSubCode === "1707" || oSubCode === "0502" ||
+                        oSubCode === "0505" || oSubCode === "0104" || oSubCode === "0206" || oSubCode === "0105" || oSubCode === "0302" ||
+                        oSubCode === "1703" || oSubCode === "0402" || oSubCode === "0401" || oSubCode === "0303" || oSubCode === "0506" ||
+                        oSubCode === "1700" || oSubCode === "0304" || oSubCode === "1912" || oSubCode === "1708" || oSubCode === "1709" ||
+                        oSubCode === "0310" || oSubCode === "0306" || oSubCode === "0414" || oSubCode === "0415" || oSubCode === "0416" ||
+                        oSubCode === "0208" || oSubCode === "0103" || oSubCode === "9103" || oSubCode === "0202" || oSubCode === "9202" ||
+                        oSubCode === "0211" || oSubCode === "8211" || oSubCode === "9211" || oSubCode === "0203" || oSubCode === "0502" || oSubCode === "0101") {
+                        if (step === "Pending Requester") {
+                            if (isCompleted != 0) {
+                                processState = sap.suite.ui.commons.ProcessFlowNodeState.Negative;
+                            }
+                            icon = "sap-icon://customer-history";
+                            stepFound = true;
+                        }
+                        if (oSubCode === "0206") { //|| oSubCode === "0302"
+                            // if (sap.ui.getCore().byId("userInfoForm").getModel().getData().d.Type === "STAFF") {
+                            // 	var index = stages.indexOf("HR/Graduate Affairs Approval");
+                            // 	stages.splice(index, 1);
+                            // 	if (status === "Resolved" || status === "Rejected" || status === "Cancelled") {
+                            // 		processState = sap.suite.ui.commons.ProcessFlowNodeState.Positive;
+                            // 	} else {
+                            // 		processState = sap.suite.ui.commons.ProcessFlowNodeState.Negative;
+                            // 	}
+                            // }
+                        }
+                    }
+                    // var x = new sap.m.Text({text:stages[i],wrapping:true});
+                    processFlow.addLane(new sap.suite.ui.commons.ProcessFlowLaneHeader({
+                        text: stages[i],
+                        position: i,
+                        state: [{
+                            state: processState,
+                            value: 100
+                        }],
+                        iconSrc: icon
+                    }));
+                }
+                if (isCompleted !== -1) {
+                    var text = status;
+                    //   var y = new sap.m.Text({text:text,wrapping:true});
+                    processFlow.addLane(new sap.suite.ui.commons.ProcessFlowLaneHeader({
+                        text: text,
+                        position: i,
+                        state: [{
+                            state: sap.suite.ui.commons.ProcessFlowNodeState.Positive,
+                            value: 100
+                        }],
+                        iconSrc: "sap-icon://employee-approvals"
+                    }));
+                }
+                processFlow.addStyleClass("heigher");
+                return processFlow;
+            },
 
             /** Access Request Odata */
             getAccessRequestData: function (requestId, kaustId) {
@@ -1349,8 +1638,8 @@ sap.ui.define([
             },
 
             /**
-	 * Fetch the details for Admin Rights Process  
-	 **/
+        * Fetch the details for Admin Rights Process  
+        **/
             getAdminAccessDetails: function (requestId) {
                 var that = this;
                 var urlRequestData = "/AdminRightsReq/" + requestId;
@@ -1445,8 +1734,8 @@ sap.ui.define([
 
 
             /**
-* Generic Email Creation 
-**/
+        * Generic Email Creation 
+        **/
             getEmailDistrGrp: function (requestId) {
                 var that = this;
                 var urlRequestData = "/Gemail/" + requestId;

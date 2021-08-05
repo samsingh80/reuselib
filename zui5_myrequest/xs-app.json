@@ -10,6 +10,13 @@
             "authenticationType": "xsuaa"
         },
         {
+            "source": "^/bpmruleruntime/(.*)$",
+            "target": "/$1",
+            "service": "com.sap.bpm.rule",
+            "endpoint": "rule_runtime_url",
+            "authenticationType": "xsuaa"
+        },
+        {
             "source": "^/CAPM_Common/(.*)$",
             "destination": "CAPM_Common",
             "authenticationType": "xsuaa",
