@@ -1,0 +1,109 @@
+<!-- Start: Seven Seater Approval - Sri Lakshmi -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0" id="idSevenSeater" visible="false">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://family-care">
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar>
+									<Title id="idCar" text="Car information" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Car Brand"></Label>
+								<Text id="brand" text="{sevenseats>/BrandCode}"></Text>
+								<Label text="Car Model"></Label>
+								<Text text="{sevenseats>/ModelCode}"></Text>
+								<Label text="Car Color"></Label>
+								<Text text="{sevenseats>/ColorCode}"></Text>
+								<Label text="Car Plate Number"></Label>
+								<Text text="{sevenseats>/PlateNo}"></Text>
+								<Label text="Status"></Label>
+								<Text text="{ path: 'sevenseats>/Status', formatter: 'kaust.ui.kits.myRequest.util.Formatter.statusCodeText' }"></Text>
+								<Label text="Expeditor"></Label>
+								<Text text="{sevenseats>/Expeditor}"></Text>
+								<Toolbar>
+									<Title id="idAttachment" text="Attachments" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Driving Licence"></Label>
+								<Link id="idDL" text="{fileData5>/FILENAME}" href="{fileData5>/URL}" target="_blank"></Link>
+								<Label text="Car Registration"></Label>
+								<Link id="idCR" text="{fileData4>/FILENAME}" href="{fileData4>/URL}" target="_blank"></Link>
+								<Label text="Iqama 1" visible="false"></Label>
+								<Link id="idIqama1" visible="false" text="{fileData1>/FILENAME}" href="{fileData1>/URL}" target="_blank"></Link>
+								<Label text="Iqama 2" visible="false"></Label>
+								<Link id="idIqama2" visible="false" text="{fileData2>/FILENAME}" href="{fileData2>/URL}" target="_blank"></Link>
+								<Label text="Salary Certificate" visible="false"></Label>
+								<Link id="idIqama3" visible="false" text="{fileData3>/FILENAME}" href="{fileData3>/URL}" target="_blank"></Link>
+								<Toolbar>
+									<Title id="idDelivery" text="Delivery" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup select="onDeliverySelected" columns="2" id="idDeliveryType">
+									<buttons>
+										<RadioButton groupName="delivery" text="Self pickup" editable="false"></RadioButton>
+										<RadioButton groupName="delivery" text="UPS delivery" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="idUpsForm" editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar id="idDeliveryTool">
+									<Title id="idPref" text="Preference" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Kaust Id"></Label>
+								<Text text="{preferenceModel>/KaustID}"></Text>
+								<Label text="Name"></Label>
+								<Text text="{preferenceModel>/FirstName} {preferenceModel>/LastName}"></Text>
+								<Label text="Building No."></Label>
+								<Text text="{preferenceModel>/BuildingNo}"></Text>
+								<Label text="Building Name"></Label>
+								<Text text="{preferenceModel>/BuildingName}"></Text>
+								<Label text="Level"></Label>
+								<Text text="{preferenceModel>/levelb}"></Text>
+								<Label text="Mobile"></Label>
+								<Text text="{preferenceModel>/Mobile}"></Text>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List id="commentHistory" headerText="" noDataText="No Comments Log" growing="true" growingThreshold="4" growingScrollToLoad="false"
+							items="{commentData>/CommentsInfo}">
+							<FeedListItem sender="{commentData>t_name}" text="{commentData>Comments}" showIcon="false"
+								timestamp="{ path: 'commentData>TimeStamp', formatter: 'kaust.ui.kits.myRequest.util.Formatter.date' }"/>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{histData>/historyInfo}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Date"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Time"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{histData>Fname}"/>
+										<Text text="{path:'histData>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}"/>
+										<Text text="{path:'histData>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}"/>
+										<Text text="{path:'histData>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>
+<!-- End: Seven Seater Approval - Sri Lakshmi -->

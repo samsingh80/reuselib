@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="People Search">
+		<content>
+			<Label text="KAUST ID" required="true"></Label>
+			<SearchField placeholder="KAUST ID" enableSuggestions="true" maxLength="6" search="onUserSearchPress"></SearchField>
+			<f:SimpleForm visible="false" layout="ResponsiveGridLayout"  maxContainerCols ="2">
+				<f:content>
+				<Text
+		                                text="Search result" class="searchTitle">
+		        </Text>
+		            <Label text="KAUST ID"></Label>
+		            <Text text="{oUserSerchModel>/d/KaustID}"></Text>
+					<Label text="First Name"></Label> 
+					<Text text="{oUserSerchModel>/d/FirstName}"></Text>
+					<Label text="Last Name"></Label> 
+					<Text text="{oUserSerchModel>/d/LastName}"></Text>
+					<Label text="Email"></Label>
+					<Text text="{oUserSerchModel>/d/Email}"></Text>
+					<Label text="Mobile No"></Label> 
+					<Text text="{oUserSerchModel>/d/Mobile}"></Text>
+					<Label text="Office Tel"></Label> 
+					<Text text="{oUserSerchModel>/d/Office}"></Text>
+					<Label text="Cost Center"></Label>
+					<Text text="{oUserSerchModel>/d/Costcenter}"></Text>
+					
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button  text="Pick" type="Accept" press="onPickPress" enabled="false"></Button>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" type="Reject" press="onCancelPress"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+
+<!-- title="{i18n>SEARCH_RES}" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+				columnsL="1" columnsM="1" singleContainerFullSize="false" -->

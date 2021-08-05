@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core">
+  
+  <Dialog>
+  <customHeader>
+   <Bar>
+           <!--   <contentRight>
+                <Text  text="{oDateModel>/testdata/0/text}"  ></Text>
+            </contentRight>  -->
+            <contentMiddle>
+                <Text text="Cancel Individual Slots" design="Bold"/>
+            </contentMiddle>
+        </Bar>
+  </customHeader>
+ <!--  <l:Grid
+  binding = "{oDateModel>/testdata}"
+  	class="sapUiSmallMarginTop"
+		hSpacing="2"
+		defaultSpan="L6 M6 S10">
+		<l:content content="{oDateModel>/testdata}">
+			<CheckBox text="{oDateModel>text}" selected="false" />
+		</l:content>
+		</l:Grid> -->
+		<List headerText=""
+		id="allDatesList"
+		mode="MultiSelect"
+		items="{oDateModel>/dates}">
+		<headerToolbar>
+		<Toolbar>
+		<content>
+		<Text text="Select Dates" design="Bold"></Text>
+		</content>
+		</Toolbar>
+		</headerToolbar>
+			<StandardListItem id="allDatesListItems"
+			title="{oDateModel>date}"
+			description="{oDateModel>day}" editable="{oDateModel>enable}" selected="{oDateModel>selday}"
+			/>
+		</List>
+		<!-- <beginButton text="close"></beginButton> -->
+		<beginButton>
+		<Button  text="Close" type="Reject" press="closeIndividuaSlotFrg"></Button>
+		</beginButton>
+		<endButton>
+		<Button  text="Cancel Req" type="Accept" press="onPressCancelIndividual"></Button>
+		</endButton>
+  </Dialog>
+  </core:FragmentDefinition>

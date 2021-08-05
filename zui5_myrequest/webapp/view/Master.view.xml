@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.kaust.zui5myrequest.controller.Master"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+    <Page title="{i18n>title}">
+        <subHeader>
+            <Bar>
+                <contentLeft>
+                    <VBox>
+                        <SearchField
+						search="handleSearch"
+						showRefreshButton="true"
+						width="100%" >
+					</SearchField>
+                    </VBox>
+                </contentLeft>
+            </Bar>
+        </subHeader>
+
+       <List
+			id="list"
+			mode="{device>/listMode}"
+            items="{ path: 'listModel>/', 
+		sorter: { path: 'request_id', descending: true}}"
+			includeItemInSelection="true"
+			growing="true"
+			growingThreshold="50">
+			<ObjectListItem
+				type="Active"
+				press="handleListItemPress"
+				title="{listModel>request_id}"
+				number="{listModel>kaust_id}"				
+				app:stage="{listModel>stage}"
+				app:subServiceCode="{listModel>sub_service_code}"
+				>
+				<attributes>
+					<ObjectAttribute text="{ 
+						path: 'listModel>status',
+						formatter: 'formatter.statusCodeText'						
+					}" visible="false"/>
+					<ObjectAttribute text="{listModel>status}" visible="false"
+					/>
+					<ObjectAttribute text="Expeditor" visible="false"/>
+				</attributes>
+				<firstStatus>
+					<ObjectStatus text="{ 
+					path: 'listModel>sub_service_code',
+					formatter: '.formatter.subServiceDescription'
+				}" />
+					</firstStatus>
+					<secondStatus>
+					<ObjectStatus text="{ 
+						path: 'listModel>status',
+						formatter: '.formatter.statusCodeText'						
+					}" />
+					</secondStatus>
+			</ObjectListItem>
+		</List>
+
+    </Page>
+
+</mvc:View>

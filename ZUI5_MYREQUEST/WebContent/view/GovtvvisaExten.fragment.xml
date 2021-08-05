@@ -1,0 +1,155 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+  <l:Grid id="FEVGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+    <l:content>
+      <IconTabBar expanded="{device>/isNoPhone}">
+        <items>
+          <IconTabFilter icon="sap-icon://hint" tooltip="Iqama Issuance">
+            <VBox id="GVVEXTSReject" visible="false">
+              <Text text="Rejection Comments" class="clIqamaIssue chdtitlrStyle"/>
+              <l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+                <l:content>
+                  <VBox class="destilPartHeaderStyle">
+                    <HBox class="destilPartHeaderKeyStyle">
+                      <Text id="idFEVCancelfincomments"/>
+                    </HBox>
+                  </VBox>
+                </l:content>
+              </l:Grid>
+            </VBox>
+            <VBox id="FEVDetails">
+              <Text text="Applicant Information" width="400px" class="clIqamaIssue chdtitlrStyle"/>
+              <FlexBox wrap="Wrap" direction="Row" backgroundDesign="Transparent">
+                <items>
+                  <VBox class="cls-vbox">
+                    <Input value="Kaust ID" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idSKaustid" class="cls-Padd" editable="false" width="200px"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="First Name" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idSFname" class="cls-Padd" editable="false" width="200px"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="Middle Name" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idSMname" class="cls-Padd" editable="false" width="200px"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="Last Name" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idSLname" class="cls-Padd" editable="false" width="200px"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="Gender" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idSGender" class="cls-Padd" editable="false" width="200px"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="Nationality" id="idIqamaLbl" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="GNationality" class="cls-Padd" width="200px" editable="false"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox" id="depIdhb">
+                    <Input value="Cost Center" editable="false" width="200px" class="boldCSS"></Input>
+                    <Input id="Costcenter" editable="false" width="200px" class="cls-Padd"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="Passport Number" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idpassportNuber" width="200px" class="cls-Padd" editable="false"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox" visible="false">
+                    <Input value="Passport Issue Date" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idpassportdatee" editable="false" width="200px" class="cls-Padd"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox" visible="true">
+                    <Input value="Passport Expiry Date" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idpassportExpdate" editable="false" class="cls-Padd" width="200px"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox" id="VPassportIssuseplace">
+                    <Input value="Passport Issue Place" editable="false" width="200px" class="boldCSS"></Input>
+                    <Input id="PassportIssuseplc" editable="false" width="200px" class="cls-Padd"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="Visa Expiry Date" editable="false" width="200px" class="boldCSS"></Input>
+                    <Input id="VisaErpDate" editable="false" width="200px" class="cls-Padd"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox">
+                    <Input value="Date of Entrance" editable="false" width="200px" class="boldCSS"></Input>
+                    <Input id="DateEntr" editable="false" width="200px" class="cls-Padd"></Input>
+                  </VBox>
+                  <VBox class="cls-vbox" id="idbBoarderNum" visible="true">
+                    <Input value="Border Number" editable="false" class="boldCSS" width="200px"></Input>
+                    <Input id="idBoarderNum" class="cls-Padd" width="200px" editable="false"></Input>
+                  </VBox>
+                </items>
+              </FlexBox>
+            </VBox>
+            <VBox id="GVVEXTAttachments">
+              <Text text="Attachments" width="400px" class="clCSTTransfer chdtitlrStyle"/>
+              <HBox class="destilPartHeaderKeyStyle">
+                <VBox>
+                  <Link id="GVPassport" text="Passport" emphasized="true" target="_blank" href="#" width="100px"/>
+                </VBox>
+
+                <VBox>
+                  <Link id="GVSaudiB" text="Saudi visa along with border number " emphasized="true" target="_blank" href="#" width="275px"/>
+                </VBox>
+              </HBox>
+
+            </VBox>
+            <FlexBox alignContent="Start" justifyContent="Start" height="2.5rem">
+              <Text text="Tracking Details" width="200px" class="clIqamaIssue chdtitlrStyle"/>
+            </FlexBox>
+            <FlexBox>
+              <!--<VBox id="FEVTracking">-->
+              <!--<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">-->
+              <!--  <l:content>-->
+              <VBox class="destilPartHeaderStyle" id="FEVNEWTracking">
+                <!-- HBox height="2rem">
+                    <Label text="Tracking Number:" class="keyClass"/>
+                    <Text id="FEVTrackingNum"/>
+                  </HBox -->
+                <HBox height="0.2rem">
+                  <Label text="Expeditor:" class="keyClass"/>
+                  <Text id="GVVEXTExpeditor"/>
+                </HBox>
+              </VBox>
+              <!--  </l:content>-->
+              <!--</l:Grid>-->
+              <!--</VBox>-->
+            </FlexBox>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+            <List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+              <FeedListItem id="tabCommentsIQMISS" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info=""
+                timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate' }"/>
+            </List>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+            <Table id="TblHistoryFEV" items="{historyModel>/}">
+              <columns>
+                <Column width="12em">
+                  <Text text="User Name"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                  <Text text="Status"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                  <Text text="Date"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                  <Text text="Time"/>
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem>
+                  <cells>
+                    <Text text="{historyModel>Fname}"/>
+                    <Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}"/>
+                    <Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}"/>
+                    <Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}"/>
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+    </l:content>
+  </l:Grid>
+</core:FragmentDefinition>

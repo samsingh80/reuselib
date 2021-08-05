@@ -1,0 +1,238 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="MOEGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Iqama Issuance">
+						<VBox id="MOEReject">
+							<Text text="Rejection Comments" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Text id="MOEfincomments"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<Text id="MOETXT" text="Ministry of Education Attestation" width="400px" class="clCSTTransfer chdtitlrStyle"/>					
+					<!--	<Table id="MOEDetails" items="{MOEJson>/}" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+							<columns>
+								<Column width="6%">
+									<Text text="KAUST ID"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="First Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Middle Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Last Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Nationality"/>
+								</Column>
+									<Column hAlign="Left" width="9%">
+										<Label text="{= ${MOEJson>/Nationality} === 'Saudi Arabian' ? 'Saudi ID' : 'Iqama Number' }" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{MOEJson>KaustId}"/>
+										<Text text="{MOEJson>FirstName}"/>
+										<Text text="{MOEJson>MiddleName}"/>
+										<Text text="{MOEJson>LastName}"/>
+										<Text text="{MOEJson>Nationality}"/>
+										<Text text="{= ${MOEJson>/Nationality} === 'Saudi Arabian' ? ${MOEJson>SaudiNo} : ${MOEJson>IqamaNo} }"/>
+				
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>-->
+							<VBox id="DLRDetails">
+							<Text text="" width="400px" class="clCSTTransfer chdtitlrStyle"/>
+							<HBox>
+								<VBox class="destilPartHeaderDLRStyle1">
+									<Label text="Request for?"/>
+									<Text id="txt_MOEReq" width="275px"/>
+							</VBox>	
+							</HBox>
+						</VBox>
+						<Table growing="true" visible="true" width="100%" id="idProductsTable1" class="sapUiSmallMarginTop Cls-vbox" itemPress="OnItemPress"
+									items="{MOEItemJson>/results}">
+									<columns>
+										<Column width="3rem">
+											<Label text="Kaust Id" design="Bold"/>
+										</Column>
+										<Column width="3rem">
+											<Label text="First Name" design="Bold"/>
+										</Column>
+										<Column width="3.5rem">
+											<Label text="Middle Name" design="Bold"/>
+										</Column>
+										<Column width="3.5rem">
+											<Label text="Last Name" design="Bold"/>
+										</Column>
+										<Column width="3.5rem">
+											<Label text="Nationality" design="Bold"/>
+										</Column>
+										<Column width="3rem">
+											<Label text="Gender" design="Bold"/>
+										</Column>
+										<Column width="5rem">
+											<Label text="Degree Type" design="Bold"/>
+										</Column>
+										<Column width="3.5rem" class="cls-column">
+											<Label text="" design="Bold"/>
+										</Column>
+										<Column width="3.5rem" class="cls-column">
+											<Label text="" design="Bold"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells class="cls-chckbox">
+												<Text text="{MOEItemJson>KaustId}"/>
+												<Text text="{MOEItemJson>FirstName}"/>
+												<Text text="{MOEItemJson>MiddleName}"/>
+												<Text text="{MOEItemJson>LastName}"/>
+												<Text text="{MOEItemJson>Nationality}"/>
+												<Text text="{MOEItemJson>Type}"/>
+												<Text text="{MOEItemJson>Degree}" />
+												<Link press="handleMoeDegreePress" text="{= ${MOEItemJson>/Degree} === '' ? '' : 'Degree' }" emphasized="true"
+												/>
+												<Link press="handleMoeLinkPress" text="{= ${MOEItemJson>/Nationality} === 'Saudi Arabian' ? 'Saudi ID' : 'Iqama' }" emphasized="true"
+												/>
+												<!--<Text text="{ path: 'CreatedOn' ,type:'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy'} }"/>-->
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+						
+						
+						<VBox id="MOEPrefHead">
+							<Text text="Manage your Preference" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox id="MOE_collec" class="destilPartHeaderKeyStyle">
+											<Label text="Collection" class="keyClass"/>
+						                    <RadioButtonGroup id="MOECollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <!--<RadioButton text="Self Drop off"/>-->
+						                        <RadioButton text="UPS Pickup" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Delivery" class="keyClass"/>
+						                    <RadioButtonGroup id="MOEDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <!--<RadioButton text="Self Pick Up"/>-->
+						                        <RadioButton text="UPS Delivery" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="MOEPrefBody">
+							<Text text="Preference Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Name:" class="keyClass"/>
+											<Text id="MOEcpdname"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="MOEcpdkaustid"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="MOEcpdmobile"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Building Name / Number:" class="keyClass"/>
+											<Text id="MOEcpdbldno"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Level:" class="keyClass"/>
+											<Text id="MOEcpdlevel"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Room No / Cubicle:" class="keyClass"/>
+											<Text id="MOEcpdbldname"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="MOETracking">
+							<Text text="Tracking Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Tracking Number:" class="keyClass"/>
+											<Text id="MOETrackingNum"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Expeditor:" class="keyClass"/>
+											<Text id="MOEExpeditor"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsMOE" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info="" timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate'
+						  }" />
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistoryCMOE" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

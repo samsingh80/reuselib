@@ -1,0 +1,279 @@
+<mvc:View
+    controllerName="com.kaust.zui5approvers.controller.adminAccess"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+     xmlns:core="sap.ui.core" 
+     xmlns:f="sap.ui.layout.form"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:l="sap.ui.layout"
+>
+	<Page >
+	 <customHeader>
+		<Bar>
+				<contentMiddle>
+					<Label text = "Administrative Access Request" textAlign = "Left" design = "Bold" class="header"></Label>
+				</contentMiddle>
+				<contentRight>
+							<Label text="Request ID:" textAlign="Left" design="Bold"></Label>
+							<Label text="{helpModel>/requestId}" textAlign="Left" design="Bold" class="sapUiSmallMarginEnd"></Label>
+						</contentRight>
+		</Bar>
+	</customHeader> 
+		
+		<content>
+			<Toolbar design="Transparent" height="3rem">
+					<Text text="Comments" class="sapMH4FontSize" />
+					<!--   text ="Approver Comments" as per existing application but changed it to 'Comments' considering Submit scenario-->
+					<ToolbarSpacer />
+				</Toolbar>
+				
+				<f:SimpleForm labelSpanL="4" labelSpanM="5" labelSpanS="6"
+					columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1"
+					maxContainerCols="2" layout="ResponsiveGridLayout">
+					<f:content>
+						<TextArea id="comments" placeholder="Add note (mandatory when rejecting)" maxLength="200"
+							width="100%">
+						</TextArea>
+						<core:Title text="">
+						</core:Title>
+					</f:content>
+				</f:SimpleForm>
+				
+	
+	<f:SimpleForm id="SimpleFormChange354" editable="true"
+		layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+		labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"
+		emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
+		columnsM="1" singleContainerFullSize="false">
+		<f:content>
+			<Label text="Are you the custodian?" class="kitsLabelClass"></Label>
+			<RadioButtonGroup columns="2" select="onUserTypeSelect"
+				enabled="{oPortModel>/bEnableFields}" selectedIndex="{oPortModel>/iCustodianRB}"
+				id="idCustodianRB">
+				<buttons>
+					<RadioButton text="Yes"></RadioButton>
+					<RadioButton text="No"></RadioButton>
+				</buttons>
+			</RadioButtonGroup>
+							<Text id="custodianName" visible="false" class="sapUiMediumMarginBegin"></Text>
+			<Label text="Justification"></Label>
+			<TextArea id="idJustification" enabled="{oPortModel>/bEnableFields}" value="{oPortModel>/sJustText}"></TextArea>
+			
+			<Label text="Tag#" required="true"></Label>
+			<Input  value="{oPortModel>/tagNumber}" enabled="{oPortModel>/bEnableFields}"
+				id="idTagInput"></Input>
+				
+			<Label text="Operating System" required="true"></Label>
+			<CheckBox text="Windows" enabled="{oPortModel>/bEnableFields}"
+				select="fnWinMacCB" id="idWinCB">
+				<layoutData>
+							<l:GridData span="L1 M3 S12"></l:GridData>
+						</layoutData>
+				</CheckBox>
+			<CheckBox text="Mac OS" enabled="{oPortModel>/bEnableFields}"
+				select="fnWinMacCB" id="idMacCB">
+				<layoutData>
+					<l:GridData span="L1 M3 S12"></l:GridData>
+						</layoutData>
+				</CheckBox>
+			<CheckBox text="Linux" enabled="{oPortModel>/bEnableFields}"
+				select="fnLinuxCB" id="idLinuxCB">
+				<layoutData>
+							<l:GridData span="L1 M3 S12"></l:GridData>
+						</layoutData>
+			</CheckBox>
+			<Label text="Expiry Date" required="true" visible="{oPortModel>/expVisible}"></Label>
+			<Input value="{oPortModel>/oDateValue}"  visible="{oPortModel>/expVisible}" id="idExpiryDate" enabled="{oPortModel>/bEnableFields}"></Input>
+	     	<!--Roopali - Add user ID-->
+			<Label text="User ID" visible="{oPortModel>/userIDVisible}"></Label>
+			<Input  visible="{oPortModel>/userIDVisible}" id="kaustUserID" enabled="false"></Input>
+			<!-- Roopali(16-08-2018)- Remove IP Address Field(KS-11) -->
+			<!-- <Label text="IP Address" visible="{oPortModel>/ipVisible}"></Label>
+			<Input  visible="{oPortModel>/ipVisible}" id="ipAddress" enabled="false"></Input> -->
+			<!-- <DatePicker change="fnEpiryDateChange" id="idExpiryDate" dateValue="{oPortModel>/oDateValue}"
+				enabled="{oPortModel>/bEnableFields}"></DatePicker> -->
+		</f:content>
+	</f:SimpleForm>
+			<IconTabBar id="idIconTabBar">
+				<items>
+
+					<!-- Service Information Tab -->
+					<IconTabFilter icon="sap-icon://lightbulb" key="infoTab" tooltip="Machine Administrative Rights">
+						<l:Grid defaultSpan="L12">
+							<Label text="Machine Administrative Rights" class="kitsMachineLblClass"
+								design="Bold">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"></l:GridData>
+								</layoutData>
+							</Label>
+							<Text text="Having Administrative rights on computer is often required when making configuration changes in Windows/Mac/Linux or install software. IT can grant administrative rights access to users with approvals." 
+							class="kitsProcessInfoClass">
+								<layoutData>
+									<l:GridData span="L4"></l:GridData>
+								</layoutData>
+							</Text>
+							<VBox>
+								<Label text="Quick Facts" design="Bold"></Label>
+								<Text text="Eligibility: Faculty, Staff, Researchers" class="kitsProcessInfoClass"></Text>
+								<Text text="Rates: Free of Charge" class="kitsProcessInfoClass"></Text>
+								<HBox>
+									<Text text="Training: Click " class="kitsProcessInfoClass"></Text>
+									<Link text="here" class="kitsLinkHereClass"></Link>
+									<Text text="for training video" class="kitsProcessInfoClass"></Text>
+								</HBox>
+								<layoutData>
+									<l:GridData span="L4" moveForward="L1"></l:GridData>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="Support" design="Bold"></Label>
+								<Text text="For assistance please log ticket via the" class="kitsProcessInfoClass"></Text>
+								<Link text="self-service portal" class="kitsProcessInfoClass"
+									target="_blank" href="https://servicedesk.kaust.edu.sa/irj/portal"></Link>
+								<Text text="or contact IT Service Desk on" class="kitsProcessInfoClass"></Text>
+								<Text text="(+966)(12)808-0900 option 1 or email" class="kitsProcessInfoClass"></Text>
+								<Link text="ithelpdesk@kaust.edu.sa" class="kitsITHelpLinkClass"
+									press="fnHelpDeskPress"></Link>
+								<layoutData>
+									<l:GridData span="L4" moveForward="L1"></l:GridData>
+								</layoutData>
+							</VBox>
+						</l:Grid>
+					</IconTabFilter>
+
+					<IconTabFilter icon="sap-icon://hint" key="Tab2" tooltip="Requester Information">
+					<l:Grid defaultSpan="L12">
+							<Toolbar id="TB1">
+										<Title text="Requester Information" level="H5" titleStyle="H5"/>
+										<ToolbarSpacer />
+										<CheckBox id="idOnBehalf" text="On Behalf" select="onBehalf" enabled="false"/>
+										<Button id="selPerson" icon="sap-icon://cause" type="Emphasized" text="Select Person" press="onSelectPersonPress" visible="false"/>
+									</Toolbar>
+							</l:Grid>
+								 <f:SimpleForm id="userInfoTab"
+				                        layout="ResponsiveGridLayout"
+				                        labelSpanL="4"
+				                        labelSpanM="3"
+				                        labelSpanS="6"
+				                        columnsL="3"
+				                        columnsM="3"
+				                        emptySpanL="0"
+				                        emptySpanM="0"
+				                        maxContainerCols="2">
+                        		<!-- <f:toolbar>
+									<Toolbar id="TB1">
+										<Title text="Requester Information" level="H5" titleStyle="H5"/>
+										<ToolbarSpacer />
+										<CheckBox id="idOnBehalf" text="On Behalf" select="onBehalf" enabled="false"/>
+										<Button id="selPerson" icon="sap-icon://cause" type="Emphasized" text="Select Person" press="onSelectPersonPress" visible="false"/>
+									</Toolbar>
+								</f:toolbar> -->
+                        		<f:content>
+                        			<core:Title
+                                		text="">
+                            		</core:Title>
+                            			<Label text="Name"></Label>
+								<Text text="{/d/results/0/FirstName} {/d/results/0/MiddleName} {/d/results/0/LastName}"></Text>
+								<Label text="KAUST ID"></Label>
+								<Text text="{/d/results/0/KaustID}"></Text>
+								<!-- Roopali - add Kaust Network ID Text-->
+								<Label text="KAUST Network Id"></Label>
+								<Text text="{/d/results/0/UserId}"></Text>
+								<Label text="Email"></Label>
+								<Text text="{/d/results/0/Email}"></Text>
+								<core:Title text=""></core:Title>
+								<Label text="Job Title"></Label>
+								<Text text="{/d/results/0/Position}"></Text>
+								<Label text="Department"></Label>
+								<Text text="{/d/results/0/Deptname}"></Text>
+								<Label text="Billed Cost Center"></Label>
+								<Text text="{/d/results/0/Costcenter}"></Text>
+								<core:Title text=""></core:Title>
+								<Label text="Office Telephone"></Label>
+								<Text text="{/d/results/0/Office}"></Text>
+								<Label text="Mobile Phone"></Label>
+								<Text text="{/d/results/0/Mobile}"></Text>
+                            	 </f:content>
+                   			 </f:SimpleForm>
+							</IconTabFilter>
+							
+							<IconTabFilter key="Tab3" id="onBehalfUserTab" tooltip="On Behalf User Information" icon="sap-icon://employee" visible="false">
+							<l:Grid defaultSpan="L12">
+										<Toolbar>
+											<Title text="On Behalf User Information"  class="kitsMachineLblClass" level="H5" titleStyle="H5" />
+										</Toolbar>
+								</l:Grid>
+						
+								<f:SimpleForm
+			                        layout="ResponsiveGridLayout"
+			                        labelSpanL="4"
+			                        labelSpanM="3"
+			                        labelSpanS="6"
+			                        columnsL="2"
+			                        columnsM="3"
+			                        emptySpanL="0"
+			                        emptySpanM="0"
+			                        maxContainerCols="2">
+                       <!--  <f:toolbar>
+							<Toolbar >
+								<Title text="On Behalf User Information" level="H5" titleStyle="H5"/>
+							</Toolbar>
+						</f:toolbar>
+                         --><f:content>
+		               		<core:Title
+                                text="">
+                            </core:Title>
+                            <Label text="Firt name"/>
+                            <Text text="{oUserSerchModel>/d/FirstName}"/>
+                          <!--Roopali - changed label text from last name to kaust id-->
+                          <Label text="Kaust ID"/>
+                            <Text text="{oUserSerchModel>/d/KaustID}"/>
+                            <!-- Roopali - add Kaust Network ID Text-->
+								<Label text="KAUST Network Id"></Label>
+								<Text text="{oUserSerchModel>/d/UserId}"></Text>
+                           <!--  <Label text="Position"/>
+		                            <Text text="{oUserSerchModel>/d/Position}"/> -->
+		                           
+                            <core:Title
+                                text="">
+                            </core:Title>
+                            <Label text="Middle Name"/>
+                            <Text text="{oUserSerchModel>/d/MiddleName}"/>
+                            <Label text="Email"/>
+                            <Text text="{oUserSerchModel>/d/Email}"/>
+                            <Label text="Position"/>
+		                            <Text text="{oUserSerchModel>/d/Position}"/>
+                            <!--  <Label text="Department"/>
+		                            <Text text="{oUserSerchModel>/d/Deptname}"/> -->
+                            <core:Title
+                                text="">
+                            </core:Title>
+                            <Label text="Last Name"/>
+		                    <Text text="{oUserSerchModel>/d/LastName}"/>
+		                    <Label text="User Id"/>
+		                    <Text text="{oUserSerchModel>/d/UserId}"/>
+		                    <Label text="Department"/>
+		                            <Text text="{oUserSerchModel>/d/Deptname}"/>
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>	
+				<IconTabSeparator icon=""/>		
+			</items>
+		</IconTabBar>
+	
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button id="approveButton" type="Accept" text="Approve" press="onHandleAction"
+						icon="sap-icon://accept"></Button>
+					<Button id="rejectButton" type="Reject" text="Reject" press="onHandleAction"
+						icon="sap-icon://cancel"></Button>
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

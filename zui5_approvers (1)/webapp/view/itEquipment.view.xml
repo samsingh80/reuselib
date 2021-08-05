@@ -1,0 +1,156 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+   xmlns:form="sap.ui.layout.form" 
+   controllerName="com.kaust.zui5approvers.controller.itEquipment" 
+xmlns:html="http://www.w3.org/1999/xhtml"
+>
+	<Page title="New IT Equipment Approval">
+		<content>
+			<Toolbar design="Transparent" height="3rem">
+				<Text id="title" text="Newcomer packages" class="sapMH4FontSize" />
+				<ToolbarSpacer />
+			</Toolbar>
+			<form:SimpleForm labelSpanL="4" labelSpanM="5" labelSpanS="6" columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1" maxContainerCols="2" layout="ResponsiveGridLayout">
+				<form:content>
+					<Table id="equipmentTbl" mode="SingleSelectLeft" items="{/equipments}">
+						<columns>
+							<Column>
+								<header>
+									<Text text="Package">
+									</Text>
+								</header>
+							</Column>
+							<Column>
+								<header>
+									<Text text="Equipment">
+									</Text>
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{packageEquip}">
+									</Text>
+									<Text text="{equipment}">
+									</Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<core:Title id="custTitle" visible="false" text="">
+					</core:Title>
+					<form:SimpleForm id="customPack" layout="ResponsiveGridLayout">
+						<!-- labelSpanL="4" -->
+						<!-- labelSpanM="4" -->
+						<!-- labelSpanS="4" -->
+						<!-- columnsL="1" -->
+						<!-- columnsM="1" -->
+						<!-- emptySpanL="0" -->
+						<!-- emptySpanM="0" -->
+						<!-- maxContainerCols="1" -->
+						<form:content>
+						</form:content>
+					</form:SimpleForm>
+				</form:content>
+			</form:SimpleForm>
+			
+			<IconTabBar expandable="false">
+				<items>
+					<IconTabFilter id="eucComment" visible="false" editable="false" iconColor="Critical" icon="sap-icon://cart-approval">
+						<content>
+							<form:SimpleForm labelSpanL="3" labelSpanM="2" labelSpanS="2" columnsL="2" columnsM="2" emptySpanL="0" emptySpanM="0" maxContainerCols="2" layout="ResponsiveGridLayout">
+								<form:title>
+									<core:Title text="EUC Team notes">
+									</core:Title>
+								</form:title>
+								<form:content>
+									<TextArea id="commentMngr" width="100%" placeholed="Add note(mandatory when rejecting)">
+									</TextArea>
+									<core:Title text="">
+									</core:Title>
+								</form:content>
+							</form:SimpleForm>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter iconColor="Critical" icon="sap-icon://hint">
+						<content>
+							<form:SimpleForm id="userInfoForm" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="5" labelSpanS="6" columnsL="3" columnsM="3" emptySpanL="1" emptySpanM="3" maxContainerCols="3">
+								<form:title>
+									<core:Title text="New Hire Information">
+									</core:Title>
+								</form:title>
+								<form:content>
+									<core:Title text="">
+									</core:Title>
+									<Label text="First Name">
+									</Label>
+									<Text id="fname" text="{/d/FirstName}">
+									</Text>
+									<Label text="Last Name">
+									</Label>
+									<Text id="lname" text="{/d/LastName}">
+									</Text>
+									<Label text="KAUST ID">
+									</Label>
+									<Text id="kaustID" text="{/d/KaustID}">
+									</Text>
+
+									<core:Title text="">
+									</core:Title>
+									<Label text="E-mail">
+									</Label>
+									<Text id="email" text="{/d/Email}">
+									</Text>
+									<Label text="Job Title">
+									</Label>
+									<Text id="jobTitle" text="{/d/Position}">
+									</Text>
+									<Label text="Department">
+									</Label>
+									<Text id="department" text="{/d/Deptname}">
+									</Text>
+
+									<core:Title text="">
+									</core:Title>
+									<Label text="Billed Cost Center">
+									</Label>
+									<Text id="billedCostCenter" text="{/d/Costcenter}">
+									</Text>
+									<Label text="Office Telephone">
+									</Label>
+									<Text id="office" text="{/d/Office}">
+									</Text>
+									<Label text="Mobile Phone">
+									</Label>
+									<Text id="mobile" text="{/d/Mobile}">
+									</Text>
+									<!-- <Label -->
+									<!-- text="Requestor"> -->
+									<!-- </Label> -->
+									<!-- <Text -->
+									<!-- id="requestor" -->
+									<!-- text="{/d/UserId}"> -->
+									<!-- </Text> -->
+								</form:content>
+							</form:SimpleForm>
+						</content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="approveButton" text="Submit" icon="sap-icon://accept" type="Accept" press="handleAction">
+					</Button>
+					<Button id="rejectButton" text="Cancel" visible="false" icon="sap-icon://sys-cancel" type="Reject" press="handleAction">
+					</Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+
+</mvc:View>

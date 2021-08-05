@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core">
+	
+	     <Bar>
+	     	<contentRight>
+	       		<Button id="submitRq" text="Submit Request" type="Accept" press="submitRq" icon="sap-icon://sys-enter" />
+	       	</contentRight>
+	     </Bar>
+          
+</core:FragmentDefinition>

@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core">	
+	     <Bar>
+	       <contentRight>
+	       <!-- Roopali(11-07-2018)- Add two button to cancel recurring event-->
+	       <Button id="IndividualCancel" text="Cancel individual slots" type="Reject" press="individualSlotsFrg" icon="sap-icon://sys-cancel" visible="false"/>
+	         <Button id="AllCancel" text="Cancel all" type="Reject" press="cancelRq" icon="sap-icon://sys-cancel" visible="false"/>
+	         <Button id="cancelRq" text="Cancel Request" type="Reject" press="cancelRq" icon="sap-icon://sys-cancel" />
+	       </contentRight>
+	     </Bar>
+</core:FragmentDefinition>

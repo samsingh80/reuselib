@@ -1,0 +1,20 @@
+<mvc:View
+    controllerName="ns.capmui5.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="Books">
+						<content>
+                    <List id="list" items="{oDataModel>/BookPrice}">
+            <StandardListItem type="Navigation" press="handleListItemPress" title="{oDataModel>ID}"/>
+        </List>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

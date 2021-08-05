@@ -1,0 +1,138 @@
+<!--Chandra edit starts-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0" id="idTaxLetter" visible="false">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://family-care">
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar>
+									<Title id="idInfo" text="Tax (Zakat) Letter" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Table id="idTaxTable" >
+									<columns>
+										<Column width="2em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Kaust ID"/>
+										</Column>
+										<Column width="5em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Name"/>
+										</Column>
+										<Column width="3em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Gender"/>
+										</Column>
+										<Column width="3em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Nationality"/>
+										</Column>
+										<Column width="4em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Iqama No"/>
+										</Column>
+										<Column width="4em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Passport Pages"/>
+										</Column>
+										<Column width="3em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Start Year"/>
+										</Column>
+										<Column width="3em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="End Year"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem id="id1" visible="false">
+											<cells>
+												<Text id="idKaust" class="paddingTop"/>
+												<Text id="idName" class="paddingTop"/>
+												<Text id="idGender" class="paddingTop"/>
+												<Text id="idNationality" class="paddingTop"/>
+												<Text id="idIqamaNo" class="paddingTop"/>
+												<Button id="fileUploader" class="tblBtnFileOpen" icon="sap-icon://inspection" press="ItemOpenAttachment"/>
+												<Text id="idYear1"/>
+												<Text id="idYear2"/>
+											</cells>
+										</ColumnListItem>
+										<ColumnListItem id="id2" visible="false">
+											<cells>
+												<Text id="idKaustDep"/>
+												<Text id="idNameDep"/>
+												<Text id="idGenderDep"/>
+												<Text id="idNationalityDep"/>
+												<Text id="idIqamaNoDep"/>
+												<Button id="fileUploaderDep" class="tblBtnFileOpen" icon="sap-icon://inspection" press="ItemOpenAttachment"/>
+												<Text id="idYearDep1"/>
+												<Text id="idYearDep2"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<Toolbar>
+									<Title id="idDelivery" text="Delivery" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idDeliveryType">
+									<buttons>
+										<RadioButton groupName="delivery" text="Self pickup" editable="false"></RadioButton>
+										<RadioButton groupName="delivery" text="UPS delivery" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="idUpsForm" editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar id="idDeliveryTool">
+									<Title id="idPref" text="Preference" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Kaust Id"></Label>
+								<Text text="{preferenceModel>/KaustID}"></Text>
+								<Label text="Name"></Label>
+								<Text text="{preferenceModel>/FirstName} {preferenceModel>/LastName}"></Text>
+								<Label text="Building No."></Label>
+								<Text text="{preferenceModel>/BuildingNo}"></Text>
+								<Label text="Building Name"></Label>
+								<Text text="{preferenceModel>/BuildingName}"></Text>
+								<Label text="Level"></Label>
+								<Text text="{preferenceModel>/levelb}"></Text>
+								<Label text="Mobile"></Label>
+								<Text text="{preferenceModel>/Mobile}"></Text>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List id="commentHistory" headerText="" noDataText="No Comments Log" growing="true" growingThreshold="4" growingScrollToLoad="false"
+							items="{commentData>/CommentsInfo}">
+							<FeedListItem sender="{commentData>t_name}" text="{commentData>Comments}" showIcon="false"
+								timestamp="{ path: 'commentData>TimeStamp', formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate1' }"/>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{histData>/historyInfo}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Date"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Time"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{histData>Fname}"/>
+										<Text text="{path:'histData>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}"/>
+										<Text text="{path:'histData>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}"/>
+										<Text text="{path:'histData>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>
+<!--Chandra edit starts-->

@@ -1,0 +1,144 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc"
+xmlns:form="sap.ui.layout.form"
+ xmlns="sap.m"
+controllerName="com.kaust.zui5approvers.controller.Sponsortransfer"
+xmlns:l="sap.ui.layout"
+ xmlns:f="sap.ui.layout.form"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<Page title=" Sponsorship Transfer(Domestic Helper) Approval Screen">
+		<content>
+			<f:SimpleForm labelSpanL="4" labelSpanM="5" labelSpanS="6"
+				columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1"
+				maxContainerCols="2" layout="ResponsiveGridLayout" class="sapUiMediumMarginBeginEnd">
+				<f:content>
+					<TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)"
+						width="100%">
+					</TextArea>
+					<core:Title text="">
+					</core:Title>
+				</f:content>
+			</f:SimpleForm>
+			
+			<!-- Requester Information -->
+			<f:SimpleForm id="idRequesterForm" editable="false"
+				layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+				labelSpanM="3" labelSpanS="12" title="Requester Information"
+				adjustLabelSpan="false" emptySpanXL="4" emptySpanL="2" emptySpanM="4"
+				emptySpanS="0" columnsXL="1" columnsL="2" columnsM="1"
+				singleContainerFullSize="false" class="sapUiMediumMarginBeginEnd">
+				<f:content>
+					<core:Title text="Request ID: {oUserModel>/oUserData/Request_ID}" />
+					<Label text="Name" />
+					<Text text="{Details>/FirstName} {Details>/MiddleName} {Details/LastName}"/>
+					<Label text="Kaust Id" />
+					<Text text="{Details>/KaustID}" />
+					<Label text="Nationality" />
+					<Text text="{Details>/Nationality}" />
+					<Label text="Gender" />
+					<Text text="{Details>/Gender}" />
+					<Label text="Iqama No" />
+					<Text text="{Details>/Iqama}" />
+					<core:Title text="" />
+					<Label text="Passport" />
+					<Text text="{Details>/Passport}" />
+					<Label text="Cost Center" />
+					<Text text="{Details>/Costcenter}" />
+					<Label text="Position" />
+					<Text text="{Details>/Position}" />
+					<Label text="Department" />
+					<Text text="{Details>/Deptname}" />
+					<Label text="Mobile" />
+					<Text text="{Details>/Mobile}" />
+				</f:content>
+			</f:SimpleForm>
+			<!-- Family Dependents Table -->
+			<Table noDataText="{i18n>NODATA_TABLE}" mode="None" id="idTable"
+				selectionChange="fnDepRowSelection" items="{oUserModel>/oUserDep}"
+				class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop">
+				<headerToolbar>
+					<Toolbar class="gascToolbarClass">
+						<content>
+							<Text text="Domestic Helper/ Driver Details" class="gascTblHeadClass"></Text>
+							<!-- <Button text="Add Dependent" type="Emphasized" press="fnAddDependentPress"></Button> -->
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="First Name" />
+					</Column>
+					<Column>
+						<Text text="Middle Name" />
+					</Column>
+					<Column>
+						<Text text="Last Name" />
+					</Column>
+					<Column>
+						<Text text="Gender" />
+					</Column>
+					<Column>
+						<Text text="Relation" />
+					</Column>
+					<!-- <Column visible="{path:'oUserModel>subServiceCode', formatter:'.displayBirthInfoDetail'}">
+						<Text text="Date Of Birth" />
+					</Column> -->
+					<Column>
+						<Text text="Iqama No" />
+					</Column>
+					<Column>
+						<Text text="Passport" />
+					</Column>
+					<Column>
+						<Text text="Nationality" />
+					</Column>
+					<Column>
+						<Text text="Religion" />
+					</Column>
+					<Column visible="{path:'oUserModel>subServiceCode', formatter:'.displaySponsorDetail'}">
+						<Text text="Old Sponsor Name" />
+					</Column>
+					<Column visible="{path:'oUserModel>subServiceCode', formatter:'.displaySponsorDetail'}">
+						<Text text="Old Sponsor ID(Government ID)" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{oUserModel>Fname}" />
+							<Text text="{oUserModel>Mname}" />
+							<Text text="{oUserModel>Lname}" />
+							<Text text="{oUserModel>Gender}" />
+							<Text text="{oUserModel>Relationship}" />
+							<!-- <DatePicker editable="false"
+								value="{path:'oUserModel>birthDate', formatter:'.formatDisplayDate'}"
+								ediatable="false" /> -->
+							<Text text="{oUserModel>IqamaNo}" />
+							<Text text="{oUserModel>Passport}" />
+							<Text text="{oUserModel>Nationality}" />
+							<Text text="{oUserModel>Religion}" />
+							<Text text="{oUserModel>Old_Fname}" />
+							<Text text="{oUserModel>Old_Sponsor_Id}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<!--Dikhu edit starts -->
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="approveButton" text="Approve" icon="sap-icon://accept"
+						type="Accept" press="handleAction">
+					</Button>
+					<Button id="rejectButton" text="Reject" icon="sap-icon://sys-cancel"
+						type="Reject" press="handleAction">
+					</Button>
+				</contentRight>
+			</Bar>
+		</footer>
+		<!--Dikhu edit ends -->
+	</Page>
+</mvc:View>

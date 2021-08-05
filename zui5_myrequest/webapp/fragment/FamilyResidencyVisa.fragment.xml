@@ -1,0 +1,252 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0" id="idFamilyResVisa" visible="false">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://family-care">
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout">
+							<form:content>
+								<Toolbar>
+									<Title text="Requestor Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<HBox>
+									<VBox>
+										<Input value="Kaust ID" class="boldCSS" editable="false"></Input>
+										<Input value="{oReqJson>/KaustID}" editable="false"></Input>
+									</VBox>
+									<VBox>
+										<Input value="First Name" class="boldCSS" editable="false"></Input>
+										<Input value="{oReqJson>/FirstName}" editable="false"></Input>
+									</VBox>
+									<VBox>
+										<Input value="Middle Name" class="boldCSS" editable="false"></Input>
+										<Input value="{oReqJson>/MiddleName}" editable="false"></Input>
+									</VBox>
+									<VBox>
+										<Input value="Last Name" class="boldCSS" editable="false"></Input>
+										<Input value="{oReqJson>/LastName}" editable="false"></Input>
+									</VBox>
+									<VBox>
+										<Input value="Gender" class="boldCSS" editable="false"></Input>
+										<Input value="{oReqJson>/Gender}" editable="false"></Input>
+									</VBox>
+									<VBox>
+										<Input id="idIqamalbl" class="boldCSS" editable="false"></Input>
+										<Input id="idIqamaval" editable="false"></Input>
+									</VBox>
+									<VBox>
+										<Input value="Req Type" class="boldCSS" editable="false" width="120%"></Input>
+										<Input value="{oReqJson>/Type}" editable="false"></Input>
+									</VBox>
+									<VBox>
+										<Input value="Visa Number" class="boldCSS" editable="false"></Input>
+										<Input id="idVisaNo" editable="false"></Input>
+									</VBox>
+								</HBox>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="12" emptySpanL="0" labelSpanM="12" emptySpanM="0">
+							<form:content>
+								<Toolbar>
+									<Title text="Degree Certificate Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Degree certificate from KSA" design="Bold"></Label>
+								<Text text="{= ${oDegJson>/Ksadegree}==='1' ? 'Yes' : 'No'}" id="idDC"></Text>
+								<Label id="idAClbl" text="Degree certificate attested from Saudi embassy in your home country" design="Bold"
+									visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Label>
+								<Text text="{= ${oDegJson>/Attesteddegree}==='1' ? 'Yes' : 'No'}" id="idAC" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Text>
+								<Label id="idMClbl" text="Degree certificate attested by MOFA" design="Bold" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Label>
+								<Text text="{= ${oDegJson>/Mofadegree}==='1' ? 'Yes' : 'No'}" id="idMC" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Text>
+								<Label id="idTClbl" text="Degree certificate translated to Arabic from an authorized office" design="Bold"
+									visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Label>
+								<Text text="{= ${oDegJson>/Translateddegree}==='1' ? 'Yes' : 'No'}" id="idTC" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Text>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" 
+							labelSpanL="12" emptySpanL="0" labelSpanM="12" emptySpanM="0" visible="{= ${oVisaJson>/Relationship}==='Spouse' ? true : false}">
+							<form:content>
+								<Toolbar>
+									<Title text="Marriage Certificate Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Marriage certificate from KSA" design="Bold"></Label>
+								<Text text="{= ${oVisaJson>/Ksamarriage}==='1' ? 'Yes' : 'No'}" id="idMrgC"></Text>
+								<Label id="idMrgAClbl" text="Marriage certificate attested from Saudi embassy in your home country" design="Bold"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Attestmarriage}==='1' ? 'Yes' : 'No'}" id="idMrgAC" visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Text>
+								<Label id="idMrgMClbl" text="Marriage certificate attested by MOFA" design="Bold"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Mofamarriage}==='1' ? 'Yes' : 'No'}" id="idMrgMC" visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Text>
+								<Label id="idMrgTClbl" text="Marriage certificate translated to Arabic from an authorized office" design="Bold"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Translatmarriage}==='1' ? 'Yes' : 'No'}" id="idMrgTC"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Text>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" 
+							labelSpanL="12" emptySpanL="0" labelSpanM="12" emptySpanM="0" 
+							visible="{= (${oVisaJson1>/Relationship}==='Child' || ${oVisaJson1>/Relationship}==='Stepchild') ? true : false}">
+							<form:content>
+								<Toolbar>
+									<Title text="Birth Certificate Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Birth certificate(s) from KSA" design="Bold"></Label>
+								<Text text="{= ${oVisaJson>/Ksabirth}==='1' ? 'Yes' : 'No'}" id="idBDC"></Text>
+								<Label id="idBAClbl" text="Birth certificate(s) attested from Saudi embassy in your home country" design="Bold"
+									visible="{= ${oVisaJson>/Ksabirth}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Attestbirth}==='1' ? 'Yes' : 'No'}" id="idBAC" visible="{= ${oVisaJson>/Ksabirth}==='1' ? false : true}"></Text>
+								<Label id="idBMClbl" text="Birth certificate(s) attested by MOFA" design="Bold" visible="{= ${oVisaJson>/Ksabirth}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Mofabirth}==='1' ? 'Yes' : 'No'}" id="idBMC" visible="{= ${oVisaJson>/Ksabirth}==='1' ? false : true}"></Text>
+								<Label id="idBTClbl" text="Birth certificate(s) translated to Arabic from an authorized office" design="Bold"
+									visible="{= ${oVisaJson>/Ksabirth}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Translatebirth}==='1' ? 'Yes' : 'No'}" id="idBTC" visible="{= ${oVisaJson>/Ksabirth}==='1' ? false : true}"></Text>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar>
+									<Title id="idVisaInfo" text="Family Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Table items="{frJson>/results}">
+									<columns>
+										<Column hAlign="Left" width="auto">
+											<Text text="First Name"/>
+										</Column>
+										<Column width="7rem">
+											<Text text="Middle Name"/>
+										</Column>
+										<Column hAlign="Left" width="7rem">
+											<Text text="Last Name"/>
+										</Column>
+										<Column hAlign="Left" width="3rem">
+											<Text text="Gender"/>
+										</Column>
+										<Column hAlign="Left">
+											<Text text="Nationality"/>
+										</Column>
+										<Column hAlign="Left" width="6rem">
+											<Text text="Relationship"/>
+										</Column>
+										<Column hAlign="Left" width="5rem">
+											<Text text="Religion"/>
+										</Column>
+										<Column hAlign="Left" width="7rem">
+											<Text text="Coming From"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{frJson>first_name}"/>
+												<Text text="{frJson>middle_name}"/>
+												<Text text="{frJson>last_name}"/>
+												<Text text="{frJson>gender}"/>
+												<Text text="{frJson>nation}"/>
+												<Text text="{frJson>relationship}"/>
+												<Text text="{frJson>ReliName}"/>
+												<Text text="{frJson>country_of_origin}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<Toolbar>
+									<Title text="Attachments" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<VBox>
+									<VBox class="destilPartHeaderKeyStyle">
+										<VBox class="destilPartHeaderDSTStyle">
+											<FormattedText htmlText="&lt;strong&gt;{oReqJson>/FirstName} {oReqJson>/LastName}&lt;/strong&gt;"></FormattedText>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Attested Degree Certificate" emphasized="true" href="{filereadModel>/attestedDegree/URL}"
+												visible="{= ${filereadModel>/attestedDegree/URL} ? true : false}" target="_blank"></Link>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Translated Degree Certificate" emphasized="true" href="{filereadModel>/translatedDegree/URL}"
+												visible="{= ${filereadModel>/translatedDegree/URL} ? true : false}" target="_blank"></Link>
+										</VBox>
+									</VBox>
+									<VBox class="destilPartHeaderKeyStyle" id="idhb"></VBox>
+									<VBox class="destilPartHeaderKeyStyle" id="idhb1"></VBox>
+								</VBox>
+								<Toolbar>
+									<Title id="idCollection" text="Collection" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idCollectionType">
+									<buttons>
+										<RadioButton groupName="collection" text="Drop off myself" editable="false"></RadioButton>
+										<RadioButton groupName="collection" text="UPS pick up" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+								<Toolbar>
+									<Title id="idDelivery" text="Delivery" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idDeliveryType">
+									<buttons>
+										<RadioButton groupName="delivery" text="Self pickup" editable="false"></RadioButton>
+										<RadioButton groupName="delivery" text="UPS delivery" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="idUpsForm" editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar id="idDeliveryTool">
+									<Title id="idPref" text="Preference" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Kaust Id"></Label>
+								<Text text="{preferenceModel>/kaust_id}"></Text>
+								<Label text="Name"></Label>
+								<Text  text="{preferenceModel>/first_name} {preferenceModel>/last_name}"></Text>
+								<Label text="Building No."></Label>
+								<Text text="{preferenceModel>/building_no}"></Text>
+								<Label text="Building Name"></Label>
+								<Text text="{preferenceModel>/building_name}"></Text>
+								<Label text="Level"></Label>
+								<Text text="{preferenceModel>/levelb}"></Text>
+								<Label text="Mobile"></Label>
+								<Text text="{preferenceModel>/mobile_no}"></Text>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List id="commentHistory" headerText="" noDataText="No Comments Log" growing="true" growingThreshold="4" growingScrollToLoad="false"
+							items="{commentData>/CommentsInfo}">
+							<FeedListItem sender="{commentData>t_name}" text="{commentData>comments}" showIcon="false"
+								timestamp="{ path: 'commentData>timestamp', formatter: '.formatter.commentDate1' }"/>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+					<Table id="TblHistory" items="{historyModel>/}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Date"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Time"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{historyModel>Fname}" />
+                                        <Text text="{path:'historyModel>statusdesc'}" />
+                                        <Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertDate'}" />
+                                        <Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertTime'}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>
+<!-- End: Family Residency Visa - Sri Lakshmi -->

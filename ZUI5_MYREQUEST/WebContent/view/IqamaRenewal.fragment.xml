@@ -1,0 +1,244 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="IqamaRenGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Iqama Issuance">
+						<VBox id="IqamaRenReject">
+							<Text text="Rejection Comments" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Text id="IqamaRenfincomments"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox>
+							<Text id="IqamaRenTXT" text="Iqama Duration" width="400px" class="clCSTTransfer chdtitlrStyle"/>
+							<Text id="txt_IqamaDuration" text="Iqama Duration" width="400px" class="clCSTTransfer chdtitlrStyle"/>
+						</VBox>
+					<!--	<Table id="IqamaRenDetails" items="{IqamaRenJson>/}" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+							<columns>
+								<Column width="1.2rem">
+									<Label text="Kaust Id" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="First Name" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Middle Name" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Last Name" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Nationality" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Iqama Number" design="Bold"/>
+								</Column>
+								<Column width="2.5rem">
+									<Label text="Iqama Expiry Date" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Iqama" design="Bold"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells class="cls-chckbox">
+										<Text text="{IqamaRenJson>KaustId}"/>
+										<Text text="{IqamaRenJson>FirstName}"/>
+										<Text text="{IqamaRenJson>MiddleName}"/>
+										<Text text="{IqamaRenJson>LastName}"/>
+									
+										<Text text="{IqamaRenJson>Nationality}"/>
+										<Text text="{IqamaRenJson>IqamaNo}"/>
+										<Text text="{ path: 'IqamaRenJson>ExpiryDate' ,type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss' }, pattern: 'dd.MM.yyyy' } }"/>
+									
+										<Link press="handleIqamaLinkPress" text="{= ${IqamaRenJson>/IqamaNo} !== '' ? 'Iqama' : 'Iqama' }" emphasized="true"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>-->
+						<VBox id="DLRDetails" visible="false">
+							<Text text="" width="400px" class="clCSTTransfer chdtitlrStyle"/>
+							<HBox>
+								<VBox class="destilPartHeaderDLRStyle1">
+									<Label text="Request for?"/>
+									<Text id="txt_IqamaRenReq" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<Table growing="true" visible="true" width="100%" id="idProductsTable1" class="sapUiSmallMarginTop Cls-vbox" itemPress="OnItemPress"
+							items="{IqamaRenItemJson>/results}">
+							<columns>
+								<Column width="1.2rem">
+									<Label text="Kaust Id" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="First Name" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Middle Name" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Last Name" design="Bold"/>
+								</Column>
+								<Column width="1.5rem">
+									<Label text="Gender" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Nationality" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Iqama Number" design="Bold"/>
+								</Column>
+								<Column width="2.5rem">
+									<Label text="Iqama Expiry Date" design="Bold"/>
+								</Column>
+								<Column width="2.5rem" visible="false">
+									<Label text="Inside Kingdom" design="Bold"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells class="cls-chckbox">
+										<Text text="{IqamaRenItemJson>KaustId}"/>
+										<Text text="{IqamaRenItemJson>FirstName}"/>
+										<Text text="{IqamaRenItemJson>MiddleName}"/>
+										<Text text="{IqamaRenItemJson>LastName}"/>
+										<Text text="{IqamaRenItemJson>Gender}"/>
+										<Text text="{IqamaRenItemJson>Nationality}"/>
+										<Text text="{IqamaRenItemJson>IqamaNo}"/>
+										<!--<Text text="{IqamaRenItemJson>IqamaEdate}"/>-->
+										<Text
+											text="{ path: 'IqamaRenItemJson>IqamaEdate' ,type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss' }, pattern: 'dd.MM.yyyy' } }"/>
+										<Text text="{= ${IqamaRenItemJson>InsideKingdomFlag} === 'X' ? 'Yes' : 'No' }" visible="false"/>
+										<!--<Text text="{ path: 'CreatedOn' ,type:'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy'} }"/>-->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<!-- VBox id="IqamaRenPrefHead">
+							<Text text="Manage your Preference" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<!-<-	<HBox id="IqamaRen_collec" class="destilPartHeaderKeyStyle">
+											<Label text="Collection" class="keyClass"/>
+						                    <RadioButtonGroup id="IqamaRenCollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                       
+						                        <RadioButton text="UPS Pickup" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>->->
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Delivery" class="keyClass"/>
+											<RadioButtonGroup id="IqamaRenDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+												<buttons>
+													<!-<-<RadioButton text="Self Pick Up"/>->->
+													<RadioButton text="UPS Delivery"/>
+												</buttons>
+											</RadioButtonGroup>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="IqamaRenPrefBody">
+							<Text text="Preference Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Name:" class="keyClass"/>
+											<Text id="IqamaRencpdname"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="IqamaRencpdkaustid"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="IqamaRencpdmobile"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Building Name / Number:" class="keyClass"/>
+											<Text id="IqamaRencpdbldno"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Level:" class="keyClass"/>
+											<Text id="IqamaRencpdlevel"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Room No / Cubicle:" class="keyClass"/>
+											<Text id="IqamaRencpdbldname"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox -->
+						<VBox id="IqamaRenTracking">
+							<Text text="Tracking Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<!-- HBox class="destilPartHeaderKeyStyle">
+											<Label text="Tracking Number:" class="keyClass"/>
+											<Text id="IqamaRenTrackingNum"/>
+										</HBox -->
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Expeditor:" class="keyClass"/>
+											<Text id="IqamaRenExpeditor"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsIqamaRen" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info=""
+								timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate' }"/>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistoryCIqamaRen" items="{historyModel>/}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Date"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Time"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{historyModel>Fname}"/>
+										<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}"/>
+										<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}"/>
+										<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

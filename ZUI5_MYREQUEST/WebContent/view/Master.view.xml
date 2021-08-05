@@ -1,0 +1,62 @@
+<core:View
+	controllerName="kaust.ui.kits.myRequest.view.Master"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+	<Page
+		title="Process Request" >
+		<subHeader>
+			<Bar>
+				<contentLeft>
+					<SearchField
+						search="handleSearch"
+						showRefreshButton="true"
+						width="100%" >
+					</SearchField>
+				</contentLeft>
+			</Bar>
+		</subHeader>
+		
+		<!--Darshna Edited: Included property growing="true" and growingThreshold="50" to avoid model size limit issue -->
+		<List
+			id="list"
+			mode="{device>/listMode}"
+			select="handleListSelect"
+			items="{listModel>/}"
+			includeItemInSelection="true"
+			growing="true"
+			growingThreshold="50">
+			<ObjectListItem
+				type="{device>/listItemType}"
+				press="handleListItemPress"
+				title="{listModel>RequestId}"
+				number="{listModel>KaustId}"				
+				app:stage="{listModel>Stage}"
+				app:subServiceCode="{listModel>SubServiceCode}"
+				>
+				<attributes>
+					<ObjectAttribute text="{ 
+						path: 'listModel>Status',
+						formatter: 'kaust.ui.kits.myRequest.util.Formatter.statusCodeText'						
+					}" visible="false"/>
+					<ObjectAttribute text="{listModel>Status}" visible="false"
+					/>
+					<ObjectAttribute text="Expeditor" visible="false"/>
+				</attributes>
+				<firstStatus>
+					<ObjectStatus text="{ 
+					path: 'listModel>SubServiceCode',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.subServiceDescription'
+				}" />
+					</firstStatus>
+					<secondStatus>
+					<ObjectStatus text="{ 
+						path: 'listModel>Status',
+						formatter: 'kaust.ui.kits.myRequest.util.Formatter.statusCodeText'						
+					}" />
+					</secondStatus>
+			</ObjectListItem>
+		</List>
+		
+	</Page>
+</core:View>

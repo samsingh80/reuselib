@@ -1,0 +1,191 @@
+<mvc:View controllerName="com.kaust.zui5security.controller.SecurityFormView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:uxap="sap.uxap"
+    xmlns="sap.m"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:form="sap.ui.layout.form">
+    <Shell id="shell">
+        <uxap:ObjectPageLayout id="formData" showFooter="true" showEditHeaderButton="false" editHeaderButtonPress="handleEditBtnPress" headerContentPinnable="true" upperCaseAnchorBar="false">
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle>
+                    <uxap:expandedHeading>
+                        <Title text="{oUserModel>/oUserData/FirstName} {oUserModel>/oUserData/MiddleName} {oUserModel>/oUserData/LastName}" wrapping="true"/>
+                    </uxap:expandedHeading>
+                    <uxap:snappedHeading>
+                         <Title text="{oUserModel>/oUserData/FirstName} {oUserModel>/oUserData/MiddleName} {oUserModel>/oUserData/LastName}" wrapping="true"/>
+                    </uxap:snappedHeading>
+                    <uxap:expandedContent>
+                      <Text text="{oUserModel>/oUserData/PositionShortText}"/>
+                    </uxap:expandedContent>
+                    <uxap:snappedContent>
+                      <Text text="{oUserModel>/oUserData/PositionShortText}"/>
+                    </uxap:snappedContent>
+                    <uxap:snappedTitleOnMobile>
+                       <Title text="{oUserModel>/oUserData/FirstName} {oUserModel>/oUserData/MiddleName} {oUserModel>/oUserData/LastName}"/>
+                    </uxap:snappedTitleOnMobile>
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+            <uxap:headerContent>
+                <VBox>
+                    <Toolbar id="TB1" class="toolbarKITS">
+                     <Text text="{i18n>REQINFO}" class="sapMH4FontSize" />
+                        <ToolbarSpacer/>
+                        <CheckBox id="onBehalf" text="{i18n>ONBEHALF}" select="onBehalf"/>
+                        <Button id="pickButton" text="{i18n>PICK}" type="Emphasized" icon="sap-icon://cause" press="handlePick" />
+                    </Toolbar>
+
+                    <FlexBox justifyContent="SpaceAround" wrap="Wrap" class="sapUiTinyMarginTop flexHead">
+                        <FlexBox justifyContent="SpaceAround">
+                            <VBox >
+                                <HBox>
+                                    <Label text="{i18n>KAUSTID}" class="userLabel"/>
+                                    <Text id="kaustID" text="{oUserModel>/oUserData/KaustID}" class="sapUiTinyMarginBegin"/>
+                                </HBox>
+                                <HBox>
+                                    <Label text="{i18n>EMAIL}" class="userLabel"/>
+                                    <Text id="email"  text="{oUserModel>/oUserData/EMailAddress}" class="sapUiTinyMarginBegin"/>
+                                </HBox>
+                                <HBox>
+                                    <Label text="{i18n>DEPT}" class="userLabel"/>
+                                    <Text id="deptname" text="{oUserModel>/oUserData/DepartmentName}" class="sapUiTinyMarginBegin"/>
+                                </HBox>
+                            </VBox>
+
+                        </FlexBox>
+                        <FlexBox justifyContent="SpaceAround">
+                            <VBox >
+                                <HBox>
+                                    <Label text="{i18n>COST_CEN}" class="userLabel"/>
+                                    <Text id="costCenter" text="{oUserModel>/oUserData/CostCenter}" class="sapUiTinyMarginBegin"/>
+                                </HBox>
+                                <HBox>
+                                    <Label text="{i18n>OFFTEL}" class="userLabel"/>
+                                    <Text id="office" text="{oUserModel>/oUserData/OfficeNo}" class="sapUiTinyMarginBegin"/>
+                                </HBox>
+                                <HBox>
+                                    <Label text="{i18n>MOBNUM}" class="userLabel"/>
+                                    <Text id="mobile" text="{oUserModel>/oUserData/MobileNo}" class="sapUiTinyMarginBegin"/>
+                                </HBox>
+                            </VBox>
+
+                        </FlexBox>
+                    </FlexBox>
+                </VBox>
+            </uxap:headerContent>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>SecurityIncidentDetails}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection titleUppercase="false">
+                        <uxap:blocks>
+                            <form:SimpleForm id="encryptionSimpleForm" labelSpanL="1" labelSpanM="1" labelSpanS="1" columnsL="5" columnsM="5" emptySpanL="1" emptySpanM="2" maxContainerCols="5" editable="true" layout="ResponsiveLayout">
+                                <form:content>
+
+                                    <Label text="{i18n>TYPE_INCIDENT}" required="true" design="Standard" labelFor="idTypeOfIncidentSelect">
+                                    </Label>
+                                    <Select id="idTypeOfIncidentSelect" autoAdjustWidth="false" selectedKey="{/incident_type}">
+                                        <items>
+                                            <core:Item key="{i18n>MALICIOUS_CODE}" text="{i18n>MALICIOUS_CODE}"/>
+                                            <core:Item key="{i18n>DENIAL_SERVICE}" text="{i18n>DENIAL_SERVICE})"/>
+                                            <core:Item key="{i18n>UNAUTHORIZED_ACCESS}" text="{i18n>UNAUTHORIZED_ACCESS}"/>
+                                            <core:Item key="{i18n>NETWORK_MAPPING}" text="{i18n>NETWORK_MAPPING}"/>
+                                            <core:Item key="{i18n>OTHER}" text="{i18n>OTHER}"/>
+                                            <core:Item key="{i18n>UNKNOWN}" text="Unknown"/>
+                                        </items>
+                                    </Select>
+
+                                    <Label text="{i18n>IP_AFFECTED_SYSTEM}" required="true" design="Standard" labelFor="idIPOfAffectedSystemInput">
+                                    </Label>
+                                    <Input id="idIPOfAffectedSystemInput" placeholder="{i18n>IP_AFFECTED_SYSTEM_PLACEHOLDER}" value="{/ip_address}">
+                                    </Input>
+
+
+                                    <Label text="{i18n>ADDITIONAL_INFO}" design="Standard" labelFor="idAdditionalInformationArea">
+                                    </Label>
+
+                                    <TextArea id="idAdditionalInformationArea" rows="3" cols="30" value="{/comments}" placeholder="{i18n>ADDITIONAL_INFO_PLACEHOLDER}"></TextArea>
+
+                                    <Label text="{i18n>SUSPECTED_SOURCE}" design="Standard" labelFor="idSuspectedSourceArea">
+                                    </Label>
+
+                                    <TextArea id="idSuspectedSourceArea" rows="3" cols="30" value="{/suspected_source}" placeholder="{i18n>SUSPECTED_SOURCE_PLACEHOLDER}"></TextArea>
+                                    <Label text="{i18n>LOCATION}">
+                                    </Label>
+                                    <RadioButtonGroup id="loc" columns="3" selectedIndex="0">
+                                        <buttons>
+                                            <RadioButton text="{i18n>OFFICE}" groupName="grEn" />
+                                            <RadioButton text="{i18n>RESIDENCE}" groupName="grEn" />
+                                        </buttons>
+                                    </RadioButtonGroup>
+
+
+                                </form:content>
+                            </form:SimpleForm>
+
+                            <form:Form title="{i18n>TEST}">
+
+
+                            </form:Form>
+
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" title="{i18n>SECURITY_INCIDENT_REPORT}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection titleUppercase="false">
+                        <uxap:blocks>
+                            <l:Grid defaultSpan="L12">
+                                <Text id="txtServiceDecs1" class="kitsProcessInfoClass">
+                                    <layoutData>
+                                        <l:GridData span="L4"/>
+                                    </layoutData>
+                                </Text>
+                                <Text id="txtServiceDecs2" class="kitsProcessInfoClass">
+                                    <layoutData>
+                                        <l:GridData span="L4"/>
+                                    </layoutData>
+                                </Text>
+                                <VBox>
+                                    <Label text="{i18n>QUICK_FACTS}" design="Bold"/>
+                                    <Text text="{i18n>ELIGIBILITY}" class="kitsProcessInfoClass"/>
+                                    <Text text="{i18n>RATES}" class="kitsProcessInfoClass"/>
+                                    <HBox>
+                                        <Text text="{i18n>TRAINING}" class="kitsProcessInfoClass"/>
+                                        <Label text="" width="3px"/>
+                                        <Link text="here" target="_blank" href="https://sbf.kaust.edu.sa/IT%20Service%20Catalog%20Training/Information%20Security%20Training%20Videos/How%20to%20raise%20a%20security%20incident%20report.mp4" class="kitsLinkHereClass"/>
+                                        <Label text="" width="3px"/>
+                                        <Text text="{i18n>TRAINING_VID}" class="kitsProcessInfoClass"/>
+                                    </HBox>
+                                    <layoutData>
+                                        <l:GridData span="L4" moveForward="L1"/>
+                                    </layoutData>
+                                </VBox>
+                                <VBox>
+                                    <Label text="{i18n>SUPPORT}" design="Bold"/>
+                                    <Text text="{i18n>ASSISTANCE}" class="kitsProcessInfoClass"/>
+                                    <Link text="{i18n>SELF_SER}" class="kitsProcessInfoClass" href="http://servicedesk.kaust.edu.sa"/>
+                                    <Text text="{i18n>CONTACT_IT}" class="kitsProcessInfoClass"/>
+                                    <Text text="{i18n>CONTACT_IT_NUM}" class="kitsProcessInfoClass"/>
+                                    <Link text="{i18n>HELP_DESK}" class="kitsITHelpLinkClass" href="mailto:ithelpdesk@kaust.edu.sa" target='_top' press="openEmail"/>
+                                    <layoutData>
+                                        <l:GridData span="L4" moveForward="L1"/>
+                                    </layoutData>
+                                </VBox>
+                            </l:Grid>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:footer >
+                <OverflowToolbar id="footerbar">
+                    <ToolbarSpacer/>
+                    <Button id="submitButton" icon="sap-icon://accept" type="Accept" text="{i18n>SUBMIT}" press="handleSubmit"></Button>
+                    <Button id="cancelButton" icon="sap-icon://cancel" type="Reject" text="{i18n>CANCEL}" press="goBack"></Button>
+                </OverflowToolbar>
+            </uxap:footer>
+        </uxap:ObjectPageLayout>
+    </Shell>
+</mvc:View>

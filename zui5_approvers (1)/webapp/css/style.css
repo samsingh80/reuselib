@@ -1,0 +1,202 @@
+/* Enter your custom styles here */
+.sapMFlexItem {
+    position: relative;
+    -ms-flex-preferred-size: auto;
+    -ms-flex-negative: 1;
+}
+.titlrStyle2 {
+    padding-left: 46px;
+    font-size: large !important;
+    font-weight: 600;
+    padding-bottom: 0rem;
+}
+.renewNoteTxt {
+    color: red !important;
+}
+
+.helpIcon {
+    width: 15% ! important;
+}
+
+.header {
+    font-size: 20px ! important;
+}
+
+.subHeader {
+    margin-left: 175px ! important;
+    font-size: 17px ! important;
+}
+
+.subChkBox {
+    margin-left: 20px ! important;
+}
+
+.powerPadding {
+    margin-left: 90px! important;
+}
+
+.othersTbl {
+    margin-left: 250px ! important;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 500px) {
+    .disp {
+        display: hide;
+    }
+}
+
+.boldClass {
+    font-weight: bold !important;
+}
+
+@CHARSET "ISO-8859-1";
+.tableClass {
+    border: none !important;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.tableClass .sapMListTblHeader th {
+    height: 25px !important;
+}
+
+.tableClass .sapMListTblCell {
+    border: 1px solid #e5e5e5;
+    vertical-align: middle;
+}
+
+.tableClass tbody tr:nth-child(even) {
+    background: rgb(250, 250, 250);
+}
+
+.sapMListTblHeaderCell>span {
+    font-weight: bold !important;
+}
+
+.borderRadius {
+    border-radius: 4px 4px 0px 0px;
+    background-color: #fff;
+}
+
+.hdrDesign {
+    text-align: left;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: #333333;
+    margin-left: 1rem;
+}
+
+.lblLayout {
+    margin-top: 1rem;
+}
+
+@media print {
+    @page {
+        margin: 0;
+    }
+    body,
+    html,
+    #wrapper {
+        width: 100%;
+    }
+    body,
+    html {
+        margin-top: 0%;
+        display: block;
+        height: 100%;
+    }
+    .sapMPage section {
+        position: initial !important;
+    }
+    .myPage section {
+        overflow: visible !important
+    }
+}
+
+.attachmentSize .sapUiIcon:before {
+    font-size: 28px;
+}
+
+.AvStand {
+    color: #ff0000 !important;
+}
+
+.terRoomHBoxClass {
+    background-color: #fbfdfd;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dcddde;
+}
+
+.terRoomTextClass {
+    color: #7c7e7e;
+    margin-left: 9px;
+}
+
+.clDPSPTransfer {
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0rem !important;
+}
+
+.clSPSTransfer {
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0rem !important;
+}
+
+.clCSTTransfer {
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0rem !important;
+}
+
+.destilPartHeaderStyle {
+    padding: 2rem;
+}
+
+.destilPartHeaderKeyStyle {
+    padding: 0.5rem;
+}
+
+.destilPartHeaderDSTStyle {
+    padding-left: 1.75rem;
+    width: 300px;
+}
+
+.destilPartHeaderSSTStyle {
+    padding-left: 1.75rem;
+    width: 300px;
+}
+
+.destilPartHeaderSSTStyle1 {
+    padding-left: 1.75rem;
+}
+
+.destilPartHeaderCSTStyle {
+    padding-left: 1.75rem;
+    width: 300px;
+}
+
+.destilPartHeaderCSTStyle1 {
+    padding-left: 1.75rem;
+}
+.destilPartHeaderFEVStyle1{
+    padding-left: 1.75rem;
+}
+.destilPartHeaderFEVStyle {
+    padding-left: 1.75rem;
+    width: 300px;
+}
+
+.keyClass {
+    padding-top: 0.05rem;
+    padding-right: 0.5rem;
+}
+
+.titlrStyle {
+    padding: 2rem;
+    font-size: large;
+    font-weight: 600;
+    padding-bottom: 0rem;
+}

@@ -1,0 +1,114 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<form:SimpleForm id="externForm" minWidth="1024">
+				<form:title>
+					<core:Title text="IT Equipment"></core:Title>
+				</form:title>
+				<Label id="labLocOther" text="Selected Item" design="Bold">
+				</Label>
+				<Text id="inputItem">
+				</Text>
+				<Label id="labEquipNo" text="Equipment Tag#" design="Bold">
+				</Label>
+				<Text id="equipNo">
+				</Text>
+			</form:SimpleForm>
+			
+			<form:SimpleForm id="transferToForm" minWidth="1024" maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" labelSpanL="6" labelSpanM="6" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3">
+				<form:title>
+					<core:Title text="Transfer To"></core:Title>
+				</form:title>
+				<form:content>
+					<core:Title text=" " />
+					<Label text="First Name" />
+					<Text text="{/TFirstName}" />
+					<Label text="Last Name" />
+					<Text text="{/TLastName}" />
+					<Label text="KAUST Id" />
+					<Text text="{/TKaustId}" />
+
+					<core:Title text=" " />
+					<Label text="E-mail" />
+					<Text text="{/TEmail}" />
+					<Label text="Job Title" />
+					<Text text="{/TPosition}" />
+					<Label text="Department" />
+					<Text text="{/TDeptname}" />
+
+					<core:Title text=" " />
+					<Label text="Billed Cost Center" />
+					<Text id="transBilledCostCenter" text="{/TCostcenter}" />
+					<Label text="Office Telephone" />
+					<Text text="{/TOffice}" />
+					<Label text="Mobile Telephone" />
+					<Text text="{/TMobile}" />
+				</form:content>
+			</form:SimpleForm>
+			
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint">
+						<form:SimpleForm id="userInfoForm" minWidth="1024">
+							<core:Title text="Requester Information" />
+							<Label text="First Name" />
+							<Text text="{/d/FirstName}" />
+							<Label text="Last Name" />
+							<Text text="{/d/LastName}" />
+							<Label text="KAUST Id" />
+							<Text text="{/d/KaustID}" />
+							<Label text="E-mail" />
+							<Text text="{/d/Email}" />
+							<Label text="Job Title" />
+							<Text text="{/d/Position}" />
+							<Label text="Department" />
+							<Text text="{/d/Deptname}" />
+							<Label text="Cost Center" />
+							<Text text="{/d/Costcenter}" />
+							<Label text="Office Telephone" />
+							<Text text="{/d/Office}" />
+							<Label text="Mobile Telephone" />
+							<Text text="{/d/Mobile}" />
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List headerText="Comments" growing="true" growingThreshold="4" growingScrollToLoad="false">
+							<FeedListItem id="itComment" sender="" text="{Justification}" info="{/Comments}" timestamp="{
+								path: 'TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+						  }" />
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

@@ -1,0 +1,87 @@
+ <core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core">  
+
+	<l:Grid
+    defaultSpan="L12 M12 S12"
+    width="auto" vSpacing="0">
+    <l:content>
+        
+      <f:SimpleForm id="SFDetails"
+        minWidth="1024"
+        maxContainerCols="2"
+        editable="false"
+        layout="ResponsiveGridLayout"
+        labelSpanL="5"
+        labelSpanM="5"
+        emptySpanL="0"
+        emptySpanM="0"
+        columnsL="2"
+        columnsM="2">
+        <f:content>
+                      
+       	  <core:Title text="Service Details" />
+       	  <!--Conference Room Booking-->
+       	  <Label text="Location" visible="{ 
+					path: '/Location',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+	      <Text id="idLocation" text="{/Location}" visible="{ 
+					path: '/Location',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/> 
+       	  
+       	  <!--VPN Access For External Users-->
+          <Label text="Contractor" visible="{ 
+					path: '/EfirstName',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+	      <Text id="idEfirstName" text="{/EfirstName}" visible="{ 
+					path: '/EfirstName',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/> 
+				
+				
+		 <!--Encryption Service Request-->	
+		  <Label text="Data to Encrypt" visible="{ 
+					path: '/data2enc',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+	      <Text id="iddata2enc" text="{/data2enc}" visible="{ 
+					path: '/data2enc',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+		  <Label text="Send encrypted data to others" visible="{ 
+					path: '/data2oth',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+	      <Text id="iddata2oth" text="{/data2oth}" visible="{ 
+					path: '/data2oth',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />  
+	      <Label text="Approx. size to encrypt" visible="{ 
+					path: '/datasize',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+	      <Text id="iddatasize" text="{/datasize}" visible="{ 
+					path: '/datasize',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+		 <Label text="Operating System" visible="{ 
+					path: '/locationin',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+	      <Text id="idOperatingSystem" text="{/locationin}" visible="{ 
+					path: '/locationin',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}"/>
+
+        </f:content>
+      </f:SimpleForm>
+      
+    </l:content>
+  </l:Grid>
+    
+</core:FragmentDefinition>

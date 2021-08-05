@@ -1,0 +1,1269 @@
+### ------------------------------------------------------------------------
+# Browse tha header from 
+###
+http://localhost:4004/v2/gaservice/ForeignVisaSet
+
+
+### ------------------------------------------------------------------------
+# Create Access Request with header and log
+POST http://localhost:4004/v2/gaservice/ForeignVisaSet
+Content-Type: application/json
+
+{
+               "collection_mtd":"1",    
+               "delivery_mtd":"1",      
+               "country_slt":"AU",       
+               "attendence":"X" ,                   
+               "dependents_kaustid":"102707.102709.102710.117815",
+                "GAHeader": {
+                   "comments":"Foreign Visa", 
+                   "amount": "10.3"                 
+               } , 
+                "header": {
+                     "sub_service_code": "0017",
+                    "service_code": "1708",
+                    "status": 1
+                    }
+                    
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+            }
+
+//  
+
+//### ------------------------------------------------------------------------
+# Browse tha header from 
+###
+http://localhost:4004/v2/gaservice/PassportpickupSet
+
+### ------------------------------------------------------------------------
+# Create Access Request with header and log
+POST http://localhost:4004/v2/gaservice/PassportpickupSet
+Content-Type: application/json
+
+{
+               "collection_mtd":"1",    
+               "delivery_mtd":"1",       
+               "attendence":"X" ,                   
+               "dependents_kaustid":"102707.102709.102710.117815",
+               "country_visa":"yes",
+               "vfs_reference":"reference",
+               "aramex_number":"Ar124",
+               "consulate_name": "UK",
+                "GAHeader": {
+                   "comments":"Foreign Visa", 
+                   "amount": "10.3"                 
+               } , 
+                "header":{
+                     "sub_service_code": "1709",
+                    "service_code": "0017",
+                    "status": 1
+                    }
+                    
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+            }
+
+//    
+
+# Browse tha header from 
+###
+http://localhost:4004/v2/gaservice/CartransferSet
+
+### ------------------------------------------------------------------------
+# Create Access Request with header and log
+POST http://localhost:4004/v2/gaservice/CartransferSet
+Content-Type: application/json
+
+{
+              "brand_code":"MG", 
+              "model_code":"MG01", 
+              "plate_no": "KA123",
+              "car_year": "2018",
+              "collection_mtd": "X",
+              "delivery_mtd": "X",
+              "color_code":"Red",
+              "car_price": "1234",
+              "s_kaust_id":"100039",
+              "s_name":"Thaj",    
+              "s_email":"thajunniza.m.a@cognizant.com",   
+              "s_mobile" :"98458987", 
+              "b_kaust_id":"100039",
+              "b_name":"Thaj",    
+              "b_email":"thajunniza.m.a@cognizant.com",   
+              "b_userid":"TST_EMPLOYEE",  
+              "b_mobile" :"98458987",
+              "dnflag":"0",
+              "vehicle_sticker":"X",
+              "vehicle_sticker": "X",  
+                "GAHeader":[ {
+                   "comments":"Foreign Visa", 
+                   "amount": "10.3"                 
+               } ] , 
+                "header":[ {
+                     "sub_service_code": "0507",
+                    "service_code": "0005",
+                    "status": 1,
+                    "userid":"TST_EMPLOYEE",
+                    "kaust_id":"100039"
+                    }
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+            }
+
+### ------------------------------------------------------------------------
+# Browse the CheckRequestSet 
+###
+http://localhost:4004/v2/gaservice/CheckRequestSet  
+
+
+### ------------------------------------------------------------------------
+# Call CheckRequestSet
+http://localhost:4004/v2/gaservice/CheckRequest()?kaust_id='100069'&userid='TT_EMPLOYEE'&sub_service_code='0416'
+
+
+### ------------------------------------------------------------------------
+# Browse InformationCorrection header from 
+###
+http://localhost:4004/v2/gaservice/InformationCorrection
+
+
+### ------------------------------------------------------------------------
+# Create InformationCorrection with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+               "items":[{
+                   "kaustid":"102707",
+                  "gender" : "Female",         
+                  "saudi_id_no": "S123" ,   
+                  "iqama_no":"I123",       
+                  "passport":"R124",       
+                  "relationship":"Self" ,  
+                  "request_comment":"IC1"
+               },
+               {
+                  "kaustid":"102708",  
+                  "gender" : "Male",         
+                  "saudi_id_no": "S223" ,   
+                  "iqama_no":"I223",       
+                  "passport":"R234",       
+                  "relationship":"Son" ,  
+                  "request_comment":"IC2"
+               }],
+                "GAHeader":{
+                   "comments":"Birth Certificate Visa", 
+                   "amount": "10.3",
+                   "comments": "Comments test"                
+               } , 
+                "header":{
+                     "sub_service_code": "0402",
+                    "service_code": "0004",
+                    "status": 1
+                    }
+                    
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 1,
+                    "userid": "Abdulltm"}]
+            }
+
+
+### ------------------------------------------------------------------------
+# Browse bc header from 
+###
+http://localhost:4004/v2/gaservice/BirthCertification?&$expand=GAHeader,header
+
+
+### ------------------------------------------------------------------------
+# Create bc with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0003",
+  "sub_service_code": "0302",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "BirthCertificate": [
+    {
+      "sequence_number": 1,
+      "first_name": "Thaj",
+      "nationality": "Indian",
+      "birthdate": "2021-05-15",
+      "iqama_no": "I1",
+      "passport": "R34",
+      "relationship": "Self",
+      "requested_for": "R123",
+      "justification": "Just",
+      "file_name": "PASSPORT_FATHER_PENG YANG.PDF,PASSPORT_MOTHER_CHAOQIN CHEN.PDF,HOSPITAL_CERTIFICATE_CHONGHAO _YANG.PDF,IQAMA_FATHER_PENG YANG.PD",
+      "url": "a,b,c,d",
+      "passport_lost": "X",
+      "middle_name": "m A",
+      "age": 30,
+      "process": "BC",
+      "kaust_id": "100039",
+      "gender": "Male",
+      "saudi_id_no": "S123",
+      "nation_id": "I13",
+      "isdepnew": "X",
+      "last_name": "M A",
+      "collection_mtd": "X",
+      "delivery_mtd": "X",
+      "a_first_name": "Thaj",
+      "a_middle_name": "M A",
+      "a_last_name": "A",
+      "birth_place": "Chennai",
+      "birth_country": "IND",
+      "in_campus": "X",
+      "sponsor_name": "Aashiq"
+    },
+    {
+      "sequence_number": 2,
+      "first_name": "Thaj",
+      "nationality": "Indian",
+      "birthdate": "2021-05-15",
+      "iqama_no": "I1",
+      "passport": "R34",
+      "relationship": "Self",
+      "requested_for": "R123",
+      "justification": "Just",
+      "file_name": "HOSPITAL_CERTIFICATE_MUBASHIR_HASAN.PDF",
+      "url":"aa",
+      "passport_lost": "X",
+      "middle_name": "m A",
+      "age": 30,
+      "process": "BC",
+      "kaust_id": "100039",
+      "gender": "Male",
+      "saudi_id_no": "S123",
+      "nation_id": "I13",
+      "isdepnew": "X",
+      "last_name": "M A",
+      "collection_mtd": "X",
+      "delivery_mtd": "X",
+      "a_first_name": "Thaj",
+      "a_middle_name": "M A",
+      "a_last_name": "A",
+      "birth_place": "Chennai",
+      "birth_country": "IND",
+      "in_campus": "X",
+      "sponsor_name": "Aashiq"
+    }
+  ]
+}
+
+
+
+### ------------------------------------------------------------------------
+# Create bc with header and log
+POST http://localhost:4004/v2/gaservice/bc
+Content-Type: application/json
+
+{
+               "request_id":"R123",    
+               "sequence_number":2,
+               "first_name":"Thaj",     
+               "nationality":"Indian"
+}          
+
+
+### ------------------------------------------------------------------------
+# Create Infocorrection with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0004",
+  "sub_service_code": "0402",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "InfoCorrection": [
+    {
+      "kaustid":"102707", 
+      "gender": "Feale",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Thaj",
+      "middle_name": "m A",
+      "last_name": "M A",
+      "passport":"R123",       
+      "relationship":"Self",   
+      "request_comment":"Coments",
+      "requested_for":"Self"  
+    },
+     {
+      "kaustid":"100049", 
+      "gender": "Male",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Aashiq",
+      "middle_name": "m h",
+      "last_name": "M A",
+      "passport":"R1234",       
+      "relationship":"Spouse",   
+      "request_comment":"Coments1",
+      "requested_for":"Spouse"  
+    }
+    
+  ]
+}
+
+
+### ------------------------------------------------------------------------
+# Create ZakatLetter with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0001",
+  "sub_service_code": "0105",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "ZakatLetter": [
+    {
+      "kaust_id":"102707", 
+      "gender": "Female",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Thaj",
+      "middle_name": "m A",
+      "last_name": "M A",
+      "passport":"R123",       
+      "relationship":"Self",   
+      "passport_lost":"X" 
+    },
+     {
+      "kaust_id":"100049", 
+      "gender": "Male",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Aashiq",
+      "middle_name": "m h",
+      "last_name": "M A",
+      "passport":"R1234",       
+      "relationship":"Spouse",    
+      "passport_lost":"" 
+    }
+    
+  ]
+}
+
+### ------------------------------------------------------------------------
+# Create Iqama with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0004",
+  "sub_service_code": "0401",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "Iqama": [
+    {
+      "kaust_id":"102707", 
+      "gender": "Female",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Thaj",
+      "middle_name": "m A",
+      "last_name": "M A",
+      "passport":"R123",       
+      "relationship":"Self",   
+      "nationality":"India",
+      "new_expiry_date":"2021-05-15",
+      "new_passport": "c",
+      "pp_expiry_date":"2021-05-15",
+      "place_of_issue":"chennai",
+      "country_of_issue":"IND",
+      "date_of_issue":"2021-05-15"
+    },
+     {
+      "kaust_id":"100049", 
+      "gender": "Male",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Aashiq",
+      "middle_name": "m h",
+      "last_name": "M A",
+      "passport":"R1234",       
+      "relationship":"Spouse",    
+      "nationality":"India",
+      "new_expiry_date":"2021-05-15",
+      "new_passport": "c",
+      "pp_expiry_date":"2021-05-15",
+      "place_of_issue":"chennai",
+      "country_of_issue":"IND",
+      "date_of_issue":"2021-05-15" 
+    }
+    
+  ]
+}
+
+
+### ------------------------------------------------------------------------
+# Create SponsorTransferSpouse with header and log
+POST http://localhost:4004/v2/gaservice/SponsorshiptransferspouseSet
+Content-Type: application/json
+
+{ 
+      "mar_certificate":"X",
+      "cert_attested":"X" , 
+      "cert_translated":"X",
+      "cert_mofa":"X",      
+      "job_title":"SCP Lead",      
+      "first_name":"Thaj",     
+      "last_name":"M A",      
+      "middle_name":"A",    
+      "iqama_no":"I123",       
+      "wbs":"WBS12",            
+      "costcenter":"CC123",     
+      "kaust_id":"102707",       
+      "sponsor_type":"X",   
+      "ar_first_name":"Thaj",  
+      "ar_last_name":"M A",   
+      "ar_middle_name":"A", 
+      "sponsor_name":"Aashiq",   
+      "sponsor_number":"S1213", 
+      "gender":"Female",         
+      "nationality":"Indian",    
+      "collection_mtd":"X", 
+      "delivery_mtd":"X",   
+      "transfercount":1,  
+
+                "GAHeader":{
+                   "comments":"Transfer Spouse Visa", 
+                   "amount": "10.3"                 
+               } , 
+                "header":{
+                     "sub_service_code": "0415",
+                    "service_code": "0004",
+                    "status": 1
+                    }                   
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 1,
+                    "userid": "Abdulltm"}]
+            }
+### ------------------------------------------------------------------------
+# Create VisitVisa with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "102707",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0001",
+  "sub_service_code": "0105",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "VisitVisa": [
+    {
+      "sequence_number":1, 
+      "gender": "Female",
+      "passport":"R123",    
+      "ksamarriage":"X" ,
+      "attestmarriage":"X" ,  
+      "translatmarriage":"X" ,
+      "mofamarriage":"X" ,       
+      "relationship":"Self",
+      "nationality":"IND",
+      "first_name": "Thaj",
+      "middle_name": "m A",
+      "last_name": "M A",
+      "ksabirth":"X" ,      
+      "attestbirth":"X" ,   
+      "translatebirth":"X" ,
+      "mofabirth":"X" ,     
+      "collection_mtd":"X" ,
+      "delivery_mtd":"X"  
+
+    },
+     {
+      "sequence_number":2, 
+      "gender": "Male",
+      "passport":"R1234",       
+      "relationship":"Spouse",    
+      "ksamarriage":"X" ,
+      "attestmarriage":"X" ,  
+      "translatmarriage":"X" ,
+      "mofamarriage":"X" ,       
+      "relationship":"Self",
+      "nationality":"IND",
+      "first_name": "Aashiq",
+      "middle_name": "m h",
+      "last_name": "M A",
+      "ksabirth":"X" ,      
+      "attestbirth":"X" ,   
+      "translatebirth":"X" ,
+      "mofabirth":"X" ,     
+      "collection_mtd":"X" ,
+      "delivery_mtd":"X"  
+    }
+    
+  ]
+}       
+
+### ------------------------------------------------------------------------
+# Create JobtitleChange with header and log
+POST http://localhost:4004/v2/gaservice/JobtitlechangeSet
+Content-Type: application/json
+
+{
+  "kaust_id": "102707",
+  "gender": "Female",
+  "iqama_no": "I1",
+  "nationality": "India",
+  "deg_certificate": "X",
+  "cert_attested": "X",
+  "cert_translated": "X",
+  "cert_mofa": "X",
+  "job_title": "Senior Developer",
+  "collection_mtd": "X",
+  "delivery_mtd": "X",
+  "GAHeader": {
+    "kaust_id": "102707",
+    "iqama_duration": 1,
+    "dependant_only": "X"
+  },
+  "header": {
+    "service_code": "0004",
+    "sub_service_code": "0414",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ]
+}      
+
+### ------------------------------------------------------------------------
+# Delete JobtitleChange Entries
+DELETE  http://localhost:4004/v2/gaservice/JobtitlechangeSet(request_id='R1623066909471',kaust_id='100049')
+
+### ------------------------------------------------------------------------
+# Create SponsorshiptransferSet with header and log
+POST http://localhost:4004/v2/gaservice/SponsorshiptransferSet
+Content-Type: application/json
+
+{ 
+      "job_title":"BTP Developer",        
+      "cand_first_name":"Thaj",  
+      "cand_last_name":"M A",   
+      "cand_middle_name":"Niza", 
+      "can_iqama_no":"I123",     
+      "sponsor_name":"CTS",     
+      "sponsor_number":"CTS123",   
+      "new_job_title":"BTP LEad",    
+      "job_change":"X",       
+      "collection_mtd":"X",   
+      "delivery_mtd":"X",     
+      "ar_last_name":"M A",     
+      "ar_first_name":"Thaj",    
+      "ar_middle_name":"Niza",   
+      "dob":"1990-09-14",              
+      "religion":"Islam",         
+      "religion_ar":"Islam",      
+      "nationality_ar":"India",   
+      "nationality":"India",      
+      "new_sponsor_no":"SAP123",   
+      "new_spnsr_name":"SAP",   
+      "new_spnsr_name_ar":"SAP",  
+      "sponsor_name_ar":"SAP",     
+
+                "GAHeader":{
+                   "comments":"Transfer Spouse Visa", 
+                   "amount": "10.3"                 
+               } , 
+                "header":{
+                     "sub_service_code": "0413",
+                    "service_code": "0004",
+                    "status": 1
+                    }                   
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 1,
+                    "userid": "Abdulltm"}]
+            }
+#
+
+
+### ------------------------------------------------------------------------
+# Create SponsorTransferChild with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  "Fincomments":"comments test",
+  
+  "header": {
+    "service_code": "0004",
+  "sub_service_code": "0402",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "SponsorTransferChild": [
+    {
+      "sequence_number":1,  
+      "mar_certificate":"X",  
+      "cert_attested":"X",    
+      "cert_translated":"X",  
+      "birth_certificate":"X",
+      "cert_mofa":"X",        
+      "job_title":"BTP Lead",        
+      "first_name":"Thaj",       
+      "last_name":"M A",        
+      "middle_name":"Niza",      
+      "iqama_no":"I123",         
+      "wbs":"W123",              
+      "costcenter":"C123",       
+      "kaust_id":"K113",         
+      "sponsor_type":"X",     
+      "ar_first_name":"Thaj",    
+      "ar_last_name":"M A",     
+      "ar_middle_name":"Niza",   
+      "sponsor_name":"CTS",     
+      "sponsor_number":"C123"     
+    },
+    {
+      "sequence_number":2,  
+      "mar_certificate":"X",  
+      "cert_attested":"X",    
+      "cert_translated":"X",  
+      "birth_certificate":"X",
+      "cert_mofa":"X",        
+      "job_title":"BTP Lead",        
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Mohamed",      
+      "iqama_no":"I123",         
+      "wbs":"W123",              
+      "costcenter":"C123",       
+      "kaust_id":"K113",         
+      "sponsor_type":"X",     
+      "ar_first_name":"Zayd",    
+      "ar_last_name":"M A",     
+      "ar_middle_name":"Mohamed",   
+      "sponsor_name":"CTS",     
+      "sponsor_number":"C123"     
+    }    
+  ]
+}
+
+
+### ------------------------------------------------------------------------
+# Browse tha IqamaprofessionSet
+###
+http://localhost:4004/v2/gaservice/IqamaprofessionSet 
+
+
+### ------------------------------------------------------------------------
+# Create IqamaprofessionSet
+POST http://localhost:4004/v2/gaservice/IqamaprofessionSet 
+Content-Type: application/json
+
+{
+              "mhn_code_all":"1111041",   
+              "mhn_name":"مدير إداري",       
+              "mhn_name_latini":"Administration manager"
+}
+
+
+### ------------------------------------------------------------------------
+# Create IqamaprofessionSet
+PATCH http://localhost:4004/v2/gaservice/IqamaprofessionSet/111103 
+Content-Type: application/json
+
+{
+                
+              "mhn_name_latini":"Military trainer"
+}
+
+### ------------------------------------------------------------------------
+# Create KaustrepsSet 
+POST http://localhost:4004/v2/gaservice/KaustrepsSet  
+Content-Type: application/json
+
+{
+          "rep_date":"2020-08-01",     
+          "location":2,     
+          "id_number":"ADB8763268",    
+          "name":"Khalid Mohammed",         
+          "date_of_birth":"2001-07-14"
+}
+
+### ------------------------------------------------------------------------
+# Read KaustrepsSet 
+GET http://localhost:4004/v2/gaservice/KaustrepsSet  
+location:2
+from_date:2020-07-31
+to_date:2020-08-01
+
+### ------------------------------------------------------------------------
+# Create SaudiID with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  "rep_date":"2021-10-06",
+  "location":"Saudi",
+  "name":"Thaj",
+  "pickup_type":2,
+  "service":1,
+  "service_type":2,  
+  "header": {
+    "service_code": "0310",
+  "sub_service_code": "0003",
+    "status": 1,
+    "userid": "TST_EMPLOYEE",
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Mohamed",
+    "email":"thajunniza.m.a@cognizant.com"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "SaudiID": [
+    {
+       "kaust_id":"102707",  
+      "date_of_birth":"1990-09-14",
+      "iqama_no":"IQ123",
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Mohamed", 
+       "saudi_id_no":"SD123",
+       "nationality":"Indian" ,
+       "passport":"P1234",
+       "gender":"Female",
+       "relationship":"Self",
+       "age":4,
+       "ar_first_name":"Zayd",
+       "ar_last_name":"M A", 
+       "ar_mid_name":"Mohamed",  
+       "delivery_mtd":"X",
+        "collection_mtd":"X"
+    },
+    {
+       "kaust_id":"102708",  
+      "date_of_birth":"1990-09-14",
+      "iqama_no":"IQ123",
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Mohamed", 
+       "saudi_id_no":"SD123",
+       "nationality":"Indian" ,
+       "passport":"P1234",
+       "gender":"Female",
+       "relationship":"Self",
+       "age":4,
+       "ar_first_name":"Zayd",
+       "ar_last_name":"M A", 
+       "ar_mid_name":"Mohamed",  
+       "delivery_mtd":"X",
+        "collection_mtd":"X"    
+    }    
+  ]
+}
+
+### ------------------------------------------------------------------------
+# Create Mypreferences with header and log
+POST http://localhost:4004/v2/gaservice/MyPreferences
+Content-Type: application/json
+
+{
+     "kaust_id":"100039",        
+     "sub_service_code":"1701",
+     "userid":"TST_EMPLOYEE",          
+     "first_name":"Thaj",      
+     "middle_name":"M",     
+     "last_name":"A",       
+     "email":"thajunniza.m.a@cognizant.com" ,          
+     "mobile_no":"9840799193",       
+     "office_no":"",       
+     "level_b": "2",         
+     "building_name":"2282 WS-18",   
+     "building_no": "Bldg.5 Kindi Building",     
+     "deliv_flag": "1"      
+}
+
+### ------------------------------------------------------------------------
+# Create ConsulatesSet with header and log
+POST http://localhost:4004/v2/gaservice/ConsulatesSet
+Content-Type: application/json
+
+{
+     "code":"CA",
+     "description":"Canadia"      
+}
+
+
+### ------------------------------------------------------------------------
+# Create DrivingLicense with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  "rep_date":"2021-10-06",
+  "location":"Saudi",
+  "name":"Thaj",
+  "pickup_type":2,
+  "service":1,
+  "service_type":2,  
+  "header": {
+    "service_code": "0005",
+  "sub_service_code": "0505",
+    "status": 1,
+    "userid": "TST_EMPLOYEE",
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Mohamed",
+    "email":"thajunniza.m.a@cognizant.com"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "DrivingLicense": [
+    {
+       "kaust_id":"102707",  
+      "iqama_no":"IQ123",
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Mohamed", 
+       "saudi_id_no":"SD123",
+       "nationality":"Indian" ,
+       "passport":"P1234",
+       "gender":"Female",
+       "relationship":"Self",
+       "age":4,  
+       "delivery_mtd":"X",
+        "collection_mtd":"X",
+        "moi_absher":"X",
+        "finger_letter":"X",
+        "morror_pass":"X"
+    },
+    {
+       "kaust_id":"102708",  
+      "iqama_no":"IQ123",
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Mohamed", 
+       "saudi_id_no":"SD123",
+       "nationality":"Indian" ,
+       "passport":"P1234",
+       "gender":"Female",
+       "relationship":"Self",
+       "age":4,  
+       "delivery_mtd":"X",
+        "collection_mtd":"X" ,   
+        "moi_absher":"X",
+        "finger_letter":"X",
+        "morror_pass":"X"
+    }    
+  ]
+}
+
+
+### ------------------------------------------------------------------------
+# Create Iqama Issuance with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0001",
+  "sub_service_code": "0103",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "Iqama": [
+    {
+      "kaust_id":"102707", 
+      "gender": "Female",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Thaj",
+      "middle_name": "m A",
+      "last_name": "M A",
+      "nationality":"India",
+      "border_no":"b12",
+      "medical_test_flag":"X"
+    },
+     {
+      "kaust_id":"100049", 
+      "gender": "Male",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Aashiq",
+      "middle_name": "m h",
+      "last_name": "M A",
+      "nationality":"India",
+      "border_no":"b12",
+      "medical_test_flag":"X"
+    }
+    
+  ]
+}
+
+
+### ------------------------------------------------------------------------
+# Create Final Exit with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0002",
+  "sub_service_code": "0202",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "Iqama": [
+    {
+      "kaust_id":"102707", 
+      "gender": "Female",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Thaj",
+      "middle_name": "m A",
+      "last_name": "M A",
+      "nationality":"India",
+      "passport":"R324",
+      "visitor_check_flag":"X",
+      "sponsorship_check_flag":"X",
+      "requestor_type_flag":"X",
+      "request_type_flag":"X"
+
+    },
+     {
+      "kaust_id":"100049", 
+      "gender": "Male",
+      "saudi_id_no": "S123",
+      "iqama_no": "I1",        
+      "first_name": "Aashiq",
+      "middle_name": "m h",
+      "last_name": "M A",
+      "nationality":"India",
+      "passport":"R323",
+      "visitor_check_flag":"X",
+      "sponsorship_check_flag":"X",
+      "requestor_type_flag":"X",
+      "request_type_flag":"X"
+
+    }
+    
+  ]
+}
+
+//MyPreferencesCollection
+### ------------------------------------------------------------------------
+# Browse MyPreferencesCollection
+###
+http://localhost:4004/v2/gaservice/MyPreferencesCollection(kaust_id='100039',sub_service_code='1702')
+
+//MyPreferencesCollection
+### ------------------------------------------------------------------------
+# Browse MyPreferencesCollection
+###
+http://localhost:4004/v2/gaservice/MyPreferencesCollection
+kaust_id:100039
+sub_service_code:1702
+
+
+### ------------------------------------------------------------------------
+# Create DocumentAttestationSet with header and log
+POST http://localhost:4004/v2/gaservice/DocumentAttestationSet
+Content-Type: application/json
+
+{ 
+      "c_kaust_issued": "",
+                                "c_outside_ksa": "",
+                                "c_no_of_attestation": "",
+                                "m_issuesd_ksa": "X",
+                                "m_attested_ksa": "X",
+                                "m_foreign_consulates": "X",
+                                "f_attested_mofa": "",
+                                "f_foreign_consulates": "",
+                                "f_consulate_attestation": "",
+                                "collection_mtd": "1",
+                                "delivery_mtd": "1",
+                                "dependents_kaustid":"100039",  
+
+                "GAHeader":{
+                   "comments":"Transfer Spouse Visa", 
+                   "kaust_id": "100039"                
+               } , 
+                "header":{
+                    "sub_service_code": "1701",
+                    "service_code": "0017",
+                    "status": 1
+                    }                   
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 1,
+                    "userid": "Abdulltm"}]
+            }
+#
+
+### ------------------------------------------------------------------------
+# Create SubService
+POST http://localhost:4004/v2/gaservice/SubService
+Content-Type: application/json
+
+{ 
+  "service_code":"0001" ,   
+  "sub_service_code":"0202",
+  "sub_service_desc":"Final Exit Visa Issuance"
+} 
+
+### ------------------------------------------------------------------------
+# Create MOEAttest with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0017",
+  "sub_service_code": "1702",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "MOEAttest": [
+    {
+      "kaust_id":"102707", 
+      "gender": "Female",
+      "iqama_no": "I1",        
+      "first_name": "Thaj",
+      "middle_name": "m A",
+      "last_name": "M A",
+      "nationality":"India",
+      "collection_mtd":"X",
+      "delivery_mtd":"X", 
+      "service_type":3, 
+      "degree_type":"BE",   
+      "degree":"Engg"        
+
+    },
+     {
+      "kaust_id":"100049", 
+      "gender": "Male",
+      "iqama_no": "I1",        
+      "first_name": "Aashiq",
+      "middle_name": "m h",
+      "last_name": "M A",
+      "nationality":"India",
+      "collection_mtd":"X",
+      "delivery_mtd":"X", 
+      "service_type":3, 
+      "degree_type":"BE",   
+      "degree":"Engg" 
+
+    }
+    
+  ]
+}
+
+
+### ------------------------------------------------------------------------
+# Create DHSponsorTransfer with header and log
+POST http://localhost:4004/v2/gaservice/GASC_HeaderSet
+Content-Type: application/json
+
+{
+  "kaust_id": "100039",  
+  "iqama_duration": 1,
+  "dependant_only": "X",
+  
+  "header": {
+    "service_code": "0002",
+  "sub_service_code": "0206",
+    "status": 1,
+    "userid": "TST_EMPLOYEE"
+  },
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ],
+  "DHSponsorTransfer": [
+    {
+      "iqama_no":"I123",            
+      "first_name":"Thaj",       
+      "last_name":"M A",        
+      "middle_name":"Niza",
+      "saudi_id_no":"Sau123",      
+      "kaust_id":"K113" ,
+      "isdepnew":"X"  
+    },
+    {
+      "iqama_no":"I1234",            
+      "first_name":"Zayd",       
+      "last_name":"M A",        
+      "middle_name":"Niza",
+      "saudi_id_no":"Sau1234",      
+      "kaust_id":"K1135"  ,
+      "isdepnew":"X"  
+    }    
+  ]
+}

@@ -1,0 +1,222 @@
+<core:FragmentDefinition xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:q="sap.ui.ux3"
+    xmlns:core="sap.ui.core">
+
+    <l:Grid defaultSpan="L12 M12 S12" width="auto">
+        <l:content>
+            <!-- select="tblDependent_selectionChange" -->
+            <m:Table id="TblDependents" selectionChange="tblDependent_selectionChange" mode="SingleSelectMaster" inset="false" items="{/}">
+                <m:headerToolbar>
+                    <m:Toolbar>
+                        <core:Icon src="sap-icon://family-care" size="2em" height="50px" color="#8875E7">
+                        </core:Icon>
+                        <m:Label text="{i18n>FAMILY_DETAILS}"></m:Label>
+                    </m:Toolbar>
+                </m:headerToolbar>
+                <m:columns>
+                    <m:Column width="12em">
+                        <m:Text text="{i18n>FIRST_NAME}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true">
+                        <m:Text text="Middle Name" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>LAST_NAME}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>RELATION}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>GENDER}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>KAUST_ID}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>PASS_NO}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>BORDER_ENTRY}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>NAT}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>AGE}" />
+                    </m:Column>
+                    <m:Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                        <m:Text text="{i18n>ATTACH_FILE}" />
+                    </m:Column>
+                </m:columns>
+                <m:items>
+                    <m:ColumnListItem>
+                        <m:cells>
+
+                            <m:ObjectIdentifier title="{Fname}" />
+                            <m:Text text="{Mname}" />
+                            <m:Text text="{Lname}" />
+                            <m:Text text="{Relationship}" />
+                            <m:Text text="{Gender}" />
+                            <m:Text text="{KaustId}" />
+                            <m:Text text="{Passport}" />
+                            <m:Text text="{BorderNumber}" />
+                            <m:Text text="{Nationality}" />
+                            <m:Text text="{age}" />
+                            <m:HBox>
+                                <m:Button visible="{path:'FileName', formatter:'com.kaust.zgaiqamadepissu.utility.Formatter.checkEmptyValue'}" class="tblBtnFileUpload" icon="sap-icon://attachment" press="tableItemUploadPress" />
+                                <m:Button visible="{path:'FileName', formatter:'com.kaust.zgaiqamadepissu.utility.Formatter.checkValue'}" class="tblBtnFileOpen" icon="sap-icon://inspection" press="ItemOpenAttachment" />
+                                <m:Button class="tblBtnFileDelete" visible="{path:'FileName', formatter:'com.kaust.zgaiqamadepissu.utility.Formatter.checkValue'}" icon="sap-icon://sys-cancel-2" type="Reject" press="tableItemDeletePress" />
+                            </m:HBox>
+                        </m:cells>
+                    </m:ColumnListItem>
+                </m:items>
+            </m:Table>
+
+
+            <m:IconTabBar expandable="false" id="iconBar">
+                <m:items>
+                    <m:IconTabFilter iconColor="Critical" icon="sap-icon://employee-approvals">               
+                             <m:content>
+                            
+                         <f:SimpleForm
+                        id="disclForm"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="2"
+                        columnsL="2"
+                        columnsM="2"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        maxContainerCols="1"
+                        layout="ResponsiveGridLayout"
+                        	>
+                        	
+                        	<f:content>      
+                        	<m:VBox>                  		
+		                        	<m:CheckBox id="disclBox" text="{i18n>DISCLAIMER}" ></m:CheckBox>
+		                        	<m:Label text="{i18n>PREF_FOR_SERV}" />
+		                        	<m:HBox>
+		                        	<m:CheckBox id="cbAttachFile" text="Attach scanned copy of Passport page with Border Number" ></m:CheckBox>
+		                        	</m:HBox>
+		                    </m:VBox>   																					
+                         </f:content>
+                         
+                    </f:SimpleForm>
+
+
+                        </m:content>
+                    </m:IconTabFilter>
+
+                    <m:IconTabFilter iconColor="Critical" icon="sap-icon://create">
+                        <m:content>
+                         <f:SimpleForm
+                        id="procedureForm"
+                        labelSpanL="1"
+                        labelSpanM="1"
+                        labelSpanS="1"
+                        columnsL="5"
+                        columnsM="5"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        maxContainerCols="1"
+                        layout="ResponsiveGridLayout"
+                        
+                        	>
+                        	<f:content>
+                        	    <core:Title
+                                text="">
+                           		 </core:Title>
+                           		 <!-- <core:HTML  id="htmlDocReq"   />   -->
+                                     <!-- width="100%" -->                         		   								 -->
+                         </f:content>
+                    </f:SimpleForm> 
+
+                        </m:content>
+                    </m:IconTabFilter>
+
+                    <!-- <m:IconTabFilter icon="sap-icon://shipping-status" id="myPreferenceTabId" key="preference">
+                        <m:content>
+                            <f:Form id="myPreferenceFormId" editable="true" title="{i18n>MANAGE_PREF}">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout labelSpanL="4" labelSpanM="4" emptySpanL="1" emptySpanM="1" columnsL="1" columnsM="1" breakpointL="600" breakpointM="300" breakpointXL="1024" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="">
+                                                <f:fields>
+                                                    <m:RadioButtonGroup selectedIndex="{path:'preferenceModel>/DelivFlag',formatter:'gascdepiqamaissuance.utility.Formatter.RadioButtonSelf'}" id="idDeliveryOption" columns="3" select="onRadioBtnSelect">
+                                                        <m:buttons>
+                                                            <m:RadioButton text="{i18n>SELF_PICK_UP}" enabled="false" />
+                                                            <m:RadioButton text="{i18n>DEL_FF_LOC}" />
+                                                            <m:RadioButton text="None" enabled="false"></m:RadioButton>
+                                                        </m:buttons>
+                                                    </m:RadioButtonGroup>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Name">
+                                                <f:fields>
+                                                    <m:Input type="Text" value="{parts:[{path:'Details>/FirstName'},{path:'Details>/MiddleName'},{path:'Details>/LastName'}],formatter:'gascdepiqamaissuance.utility.Formatter.FormatFullName'}" editable="false"></m:Input>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="KAUST ID">
+                                                <f:fields>
+                                                    <m:Input type="Text" value="{Details>/KaustID}" editable="false"></m:Input>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Email Address">
+                                                <f:fields>
+                                                    <m:Input type="Email" value="{preferenceModel>/Email}" change="validateEmail" editable="{editableModel>/editable}"></m:Input>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement>
+                                                <f:label>
+                                                    <m:Label text="{i18n>TEL_NUM}" required="true"></m:Label>
+                                                </f:label>
+                                                <f:fields>
+                                                    <m:Input type="Text" value="{preferenceModel>/Mobile}" change="validateTelephoneNum" editable="{editableModel>/editable}">
+                                                    </m:Input>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement>
+                                                <f:label>
+                                                    <m:Label text="{i18n>BUILD_NAME_NUM}" required="true"></m:Label>
+                                                </f:label>
+                                                <f:fields>
+                                                    <m:Input type="Text" value="{preferenceModel>/BuildingName}" change="validateBuildingNum" editable="{editableModel>/editable}"></m:Input>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement>
+                                                <f:label>
+                                                    <m:Label text="{i18n>LEVEL}" required="true"></m:Label>
+                                                </f:label>
+                                                <f:fields>
+                                                    <m:Input type="Text" value="{preferenceModel>/levelb}" change="validateLevel" editable="{editableModel>/editable}">
+                                                    </m:Input>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement>
+                                                <f:label>
+                                                    <m:Label text="{i18n>ROOM_NO_CUB}" required="true"></m:Label>
+                                                </f:label>
+                                                <f:fields>
+                                                    <m:Input type="Text" value="{preferenceModel>/BuildingNo}" editable="{editableModel>/editable}" change="validateBuildingName">
+                                                    </m:Input>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                        </m:content>
+                    </m:IconTabFilter> -->
+
+
+                </m:items>
+            </m:IconTabBar>
+
+        </l:content>
+    </l:Grid>
+</core:FragmentDefinition>

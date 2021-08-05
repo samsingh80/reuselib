@@ -1,0 +1,451 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="VOTGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Car Ownership Transfer Information">
+						<VBox id="VOTReject">
+							<Text text="Rejection Comments" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Text id="idbcomments"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTSDetails">
+							<Text text="Seller Details" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="idskaustid"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="idsmobile"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Full Name:" class="keyClass"/>
+											<Text id="idsname"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Email:" class="keyClass"/>
+											<Text id="idsemail"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTBDetails">
+							<Text text="Buyer Details" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="idbkaustid"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="idbmobile"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Full Name:" class="keyClass"/>
+											<Text id="idbname"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Email:" class="keyClass"/>
+											<Text id="idbemail"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTCDetails">
+							<Text text="Car Details" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Brand:" class="keyClass"/>
+											<Text id="idcbrand"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Color:" class="keyClass"/>
+											<Text id="idccolor"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Year:" class="keyClass"/>
+											<Text id="idcyear"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Amount Received:" class="keyClass"/>
+											<Text id="idAmtRecdInp"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Need Vehicle Sticker?" class="keyClass"/>
+											<Text id="idvvehsticker"/>
+										</HBox>
+										<!-- HBox id="sevenseater" class="destilPartHeaderKeyStyle">
+											<Label text="Is it 7 Seater?" class="keyClass"/>
+											<Text id="idvsevenseater"/>
+										</HBox -->
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Model:" class="keyClass"/>
+											<Text id="idcmodel"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Plate:" class="keyClass"/>
+											<Text id="idcplate"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Price:" class="keyClass"/>
+											<Text id="idcprice"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Expeditor:" class="keyClass"/>
+											<Text id="idVOTExpeditor"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTAttachments">
+							<Text text="Attachments" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Car Registration Card:" class="keyClass"/>
+											<Link id="idvotatt1" emphasized="true"	href="#"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Car Inspection Card:" class="keyClass"/>
+											<Link id="idvotatt2" emphasized="true"	href="#"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTPrefHead">
+							<Text text="Manage your Preference" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Collection" class="keyClass"/>
+						                    <RadioButtonGroup id="idvotCollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <RadioButton text="Self Drop off"/>
+						                        <RadioButton text="UPS Pickup" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Delivery" class="keyClass"/>
+						                    <RadioButtonGroup id="idvotDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <RadioButton text="Self Pick Up"/>
+						                        <RadioButton text="UPS Delivery" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTCPrefBody">
+							<Text text="Collection Preference Details" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Name:" class="keyClass"/>
+											<Text id="idcpdname"  text="{CollecPreferenceModel>/first_name} {CollecPreferenceModel>/last_name}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="idcpdkaustid"  text="{CollecPreferenceModel>/kaust_id}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="idcpdmobile" text="{CollecPreferenceModel>/mobile_no}"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Building Name / Number:" class="keyClass"/>
+											<Text id="idcpdbldno" text="{CollecPreferenceModel>/building_no}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Level:" class="keyClass"/>
+											<Text id="idcpdlevel" text="{CollecPreferenceModel>/levelb}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Room No / Cubicle:" class="keyClass"/>
+											<Text id="idcpdbldname" text="{CollecPreferenceModel>/building_name}"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTDPrefBody">
+							<Text text="Delivery Preference Details" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Name:" class="keyClass"/>
+											<Text id="iddpdname" text="{DelvPreferenceModel>/first_name} {DelvPreferenceModel>/last_name}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="iddpdkaustid" text="{DelvPreferenceModel>/kaust_id}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="iddpdmobile" text="{DelvPreferenceModel>/mobile_no}"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Building Name / Number:" class="keyClass"/>
+											<Text id="iddpdbldno" text="{DelvPreferenceModel>/building_no}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Level:" class="keyClass"/>
+											<Text id="iddpdlevel" text="{DelvPreferenceModel>/levelb}"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Room No / Cubicle:" class="keyClass"/>
+											<Text id="iddpdbldname" text="{DelvPreferenceModel>/building_name}"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="VOTTracking">
+							<Text text="Tracking Details" class="clCarOwner titlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Tracking Number:" class="keyClass"/>
+											<Text id="idvotTrackingNum"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List id="commentHistory" headerText="" noDataText="No Comments Log" growing="true" growingThreshold="4" growingScrollToLoad="false"
+							items="{commentData>/CommentsInfo}">
+							<FeedListItem sender="{commentData>t_name}" text="{commentData>comments}" showIcon="false"
+								timestamp="{ path: 'commentData>timestamp', formatter: '.formatter.commentDate1' }"/>
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistory" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+                                        <Text text="{path:'historyModel>statusdesc'}" />
+                                        <Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertDate'}" />
+                                        <Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>
+
+						<!-- form:SimpleForm id="VOTSDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Seller Details" emphasized="true" />
+								<Label text="KAUST ID" />
+								<Text id="idskaustid"/>
+								<Label text="Full Name" />
+								<Text id="idsname"/>
+								<Label text="Email" />
+								<Text id="idsemail"/>
+								<Label text="Mobile" />
+								<Text id="idsmobile"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="VOTBDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Buyer Details" emphasized="true" />
+								<Label text="KAUST ID" />
+								<Text id="idbkaustid"/>
+								<Label text="Full Name" />
+								<Text id="idbname"/>
+								<Label text="Email" />
+								<Text id="idbemail"/>
+								<Label text="Mobile" />
+								<Text id="idbmobile"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="VOTCDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Car Information" emphasized="true" />
+								<Label text="Brand" />
+								<Text id="idcbrand"/>
+								<Label text="Model" />
+								<Text id="idcmodel"/>
+								<Label text="Color" />
+								<Text id="idccolor"/>
+								<Label text="Plate No" />
+								<Text id="idcplate"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="VOTADetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="formHiddenTitle">
+							<form:content>
+								<core:Title text="" emphasized="true"/>
+								<Label text="Need Vehicle Sticker?" />
+			        			<Text id="idvvehsticker"/>
+								<Label text="Is it 7 Seater?" />
+			        			<Text id="idvsevenseater"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="GenVOTDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="formHiddenTitle">
+							<form:content>
+								<core:Title text="" emphasized="true"/>
+								<Label text="Amount Received" />
+								<Text id="idAmtRecdInp"/>
+								<Label text="Expeditor" />
+								<Text id="idExpeditor"/>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="VOTAttachments" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Attachments" emphasized="true"/>
+								<Label text="Car Inspection Card" />
+								<Link id="idvotatt1" emphasized="true"	href="#"/>
+								<Label text="Car Registration Card" />
+			        			<Link id="idvotatt2" emphasized="true"	href="#"/>
+								<Label text="Car Insurance Card" />
+			        			<Link id="idvotatt3" emphasized="true"	href="#"/>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="VOTPrefHead" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Delivery" emphasized="true"/>
+			                    <RadioButtonGroup id="idvotDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+			                      <buttons>
+			                        <RadioButton text="Self Pick Up" />
+			                        <RadioButton text="UPS Delivery" />
+			                      </buttons>
+			                    </RadioButtonGroup>
+								<core:Title text="Collection" emphasized="true"/>
+			                    <RadioButtonGroup id="idvotCollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+			                      <buttons>
+			                        <RadioButton text="Self Drop off" />
+			                        <RadioButton text="UPS Pickup" />
+			                      </buttons>
+			                    </RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="VOTDPrefBody" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Delivery Preference Details" emphasized="true"/>
+								<Label text="Name" />
+			                    <Input id="iddpdname" type="Text" editable="false"/>
+								<Label text="KAUST ID" />
+			                    <Input id="iddpdkaustid" type="Text" editable="false"/>
+								<Label text="Telephone Number" />
+			                    <Input id="iddpdmobile" type="Text" editable="false"/>
+								<Label text="Building Name / Number" />
+			                    <Input id="iddpdbldno" type="Text" editable="false"/>
+								<Label text="Level" />
+			                    <Input id="iddpdlevel" type="Text" editable="false"/>
+								<Label text="Room No / Cubicle" />
+			                    <Input id="iddpdbldname" type="Text" editable="false"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="VOTCPrefBody" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Collection Preference Details" emphasized="true"/>
+								<Label text="Name" />
+			                    <Input id="idcpdname" type="Text" editable="false"/>
+								<Label text="KAUST ID" />
+			                    <Input id="idcpdkaustid" type="Text" editable="false"/>
+								<Label text="Telephone Number" />
+			                    <Input id="idcpdmobile" type="Text" editable="false"/>
+								<Label text="Building Name / Number" />
+			                    <Input id="idcpdbldno" type="Text" editable="false"/>
+								<Label text="Level" />
+			                    <Input id="idcpdlevel" type="Text" editable="false"/>
+								<Label text="Room No / Cubicle" />
+			                    <Input id="idcpdbldname" type="Text" editable="false"/>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="VOTTracking" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Tracking Details" emphasized="true"/>
+			                    <Label text="Tracking Number" />
+			                    <Input type="Text" id="idvotTrackingNum" editable="false"/>
+							</form:content>
+						</form:SimpleForm -->

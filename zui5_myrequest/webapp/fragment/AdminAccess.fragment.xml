@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<f:SimpleForm id="SimpleFormChange354" editable="true"
+		layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+		labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"
+		emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
+		columnsM="1" singleContainerFullSize="false">
+		<f:content>
+			<Label text="Are you the custodian?" class="kitsLabelClass"></Label>
+			<RadioButtonGroup columns="2" select="onUserTypeSelect"
+				enabled="{oPortModel>/bEnableFields}" selectedIndex="{oPortModel>/iCustodianRB}"
+				id="idCustodianRB">
+				<buttons>
+					<RadioButton text="Yes"></RadioButton>
+					<RadioButton text="No"></RadioButton>
+				</buttons>
+			</RadioButtonGroup>
+			
+			<Text id="custodianName" visible="false" class="sapUiMediumMarginBegin"></Text>
+			<Label text="Justification"></Label>
+			<TextArea id="idJustification" enabled="{oPortModel>/bEnableFields}" value="{oPortModel>/sJustText}"></TextArea>
+			<Label text="Tag#" required="true"></Label>
+			<Select items="{oTagModel>/tagData}" visible="{oPortModel>/bTagSelect}"
+				id="idTagSelect">
+				<core:Item key="{oTagModel>key}" text="{oTagModel>id}" />
+			</Select>
+			
+			<Input placeholder="Tag#" visible="{oPortModel>/bTagInput}" value="{oPortModel>/tagNumber}" enabled="{oPortModel>/bEnableFields}"
+				id="idTagInput"></Input>
+			<Label text="Operating System" required="true"></Label>
+			<CheckBox text="Windows" enabled="{oPortModel>/bWinEnable}"
+				select="fnWinMacCB" id="idWinCB">
+				<layoutData>
+					<l:GridData span="L1 M3 S12"></l:GridData>
+						</layoutData></CheckBox>
+			<CheckBox text="Mac OS" enabled="{oPortModel>/bMacEnable}"
+				select="fnWinMacCB" id="idMacCB">
+				<layoutData>
+					<l:GridData span="L1 M3 S12"></l:GridData>
+						</layoutData></CheckBox>
+			<CheckBox text="Linux" enabled="{oPortModel>/bLinuxEnable}"
+				select="fnLinuxCB" id="idLinuxCB">
+				<layoutData>
+					<l:GridData span="L1 M3 S12"></l:GridData>
+						</layoutData></CheckBox>
+						<!--Roopali - add user ID is linux is selected-->
+						<Label text="User ID" visible="{oPortModel>/userIDVisible}"></Label>
+					<Input id="kaustUserID" enabled="{oPortModel>/userIDEnable}" value="{oPortModel>/userKaustID}" visible="{oPortModel>/userIDVisible}">
+					</Input>
+					<!-- Andrea	 editing starts here-->
+			<!-- <Label text="{i18n>IP Address}" visible="{oPortModel>/bIpVisible}"></Label>
+					<Input id="idIpAddress" enabled="{oPortModel>/bIPEnable}" value="{oPortModel>/IP}" visible="{oPortModel>/bIpVisible}">
+					</Input> -->
+					<!-- Andrea	 editing ends here-->
+			<Label text="Expiry Date" required="true" visible="{oPortModel>/idExpiryDate}"></Label>
+				<Input value="{oPortModel>/oDateValue}" id="idExpiryDate" enabled="{oPortModel>/bEnableFields}" visible="{oPortModel>/idExpiryDate}"></Input>
+			<!-- <DatePicker change="fnEpiryDateChange" id="idExpiryDate" dateValue="{oPortModel>/oDateValue}"
+				enabled="{oPortModel>/bEnableFields}"></DatePicker> -->
+		
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

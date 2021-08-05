@@ -1,0 +1,152 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" labelSpanL="6" labelSpanM="6" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3">
+				<f:title>
+					<core:Title text="Service Details"></core:Title>
+				</f:title>
+				
+				<f:content>
+					<core:Title text=" " />
+					<!--VPN Access For External Users -->
+					<Label text="IQAMA Duration" visible="{ 
+					path: 'results/0/IqamaDuration',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{results/0/IqamaDuration}" visible="{helpModel>/durationVisible}" />
+					<Label text="Cost center" visible="{ 
+					path: '/0/Costcenter',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					
+					<Text text="{/0/Costcenter}" visible="{ 
+					path: '/0/Costcenter',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					
+					<core:Title text=" " />
+					<Label text="Name" visible="{ 
+					path: '/0/Fname',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{parts:['/0/Fname','/0/Lname','/0/ServiceCode','/0/SubServiceCode'],
+					formatter:'kaust.ui.kits.myRequest.util.Formatter.displayFullNameForFinalExit'}" 
+					visible="{ 
+					path: '/0/Fname',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Label text="KAUST Id" visible="{ 
+					path: '/0/KaustId',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{/0/KaustId}" visible="{ 
+					path: '/0/KaustId',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Label text="Iqama Number" visible="{ 
+					path: '/0/IqamaNo',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{/0/IqamaNo}" visible="{ 
+					path: '/0/IqamaNo',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Label text="Place of issue" visible="{ 
+					path: '/0/Placeofissue',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{/0/Placeofissue}" visible="{ 
+					path: '/0/Placeofissue',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Label text="Country" visible="{ 
+					path: '/0/Countryofissue',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{/0/Countryofissue}" visible="{ 
+					path: '/0/Countryofissue',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					
+					<core:Title text=" " />
+					<Label text="Position" visible="{ 
+					path: '/0/position',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{/0/position}" visible="{ 
+					path: '/0/position',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Label text="Department" visible="{ 
+					path: '/0/department',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{/0/department}" visible="{ 
+					path: '/0/department',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Label text="IQAMA Expiry Date" visible="false" />
+					<Text text="{
+	      			path: '/0/IqamaEdate', 
+	      			formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'}" visible="false" />
+					<Label text="Has the visa expired" id="lisExp" visible="false" />
+					<Text text="{/0/VisaExpired}" id="tisExp" visible="false" />
+					<Label text="Visitor's email" id="lVisaExp" visible="false" />
+					<Text id="tVisaExp" text="{/0/Email}" visible="false" />
+					<Label text="New Expiry Date" visible="{ 
+					path: '/0/NewExpDate',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{
+	      			path: '/0/NewExpDate', 
+	      			formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'}" visible="{ 
+					path: '/0/NewExpDate',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					
+					<Label text="New Passport No." visible="{ 
+					path: '/0/NewPassport',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{/0/NewPassport}" visible="{ 
+					path: '/0/NewPassport',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Label text="Passport Expiry Date" visible="{ 
+					path: '/0/PassportExpiry',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{
+	      			path: '/0/PassportExpiry', 
+	      			formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'}" visible="{ 
+					path: '/0/PassportExpiry',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					
+					<Label text="Date of issue" visible="{ 
+					path: '/0/Dateofissue',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					<Text text="{
+	      			path: '/0/Dateofissue', 
+	      			formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'}" visible="{ 
+					path: '/0/Dateofissue',
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.valueControlVisibility'
+				}" />
+					
+				</f:content>
+			</f:SimpleForm>
+			
+			<Label  text="Comment:" design="Bold" visible="{ 
+					parts:['/0/Status','/0/ServiceCode','/0/SubServiceCode'],
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentControlVisibility'
+				}"/>
+				<!-- Darshna - Edited : Changed Textarea to TextArea -->
+				<TextArea id="commentText" visible="{ 
+					parts:['/0/Status','/0/ServiceCode','/0/SubServiceCode'],
+					formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentControlVisibility'
+				}" value="{/0/ReqComment}" width="100%" />
+		</l:content>
+	</l:Grid>
+			
+</core:FragmentDefinition>

@@ -1,0 +1,167 @@
+/* Enter your custom styles here */
+
+.productsPage .productsFilterBar .sapUiCompFilterBarToolbar .sapUICompVarMngmtTitle {
+    line-height: 1.5625rem;
+    letter-spacing: 0;
+    font-size: 1.25rem !important;
+    font-family: Verdana !important;
+    color: rgb(80, 50, 145) !important;
+    padding: 0.65rem 0 0 0;
+}
+
+.productsPage .productsFilterBar .sapUiCompFilterBarToolbar .sapUICompVarMngmtTriggerBtn .sapUiIcon {
+    color: rgb(80, 50, 145) !important;
+}
+.productsPage {
+	position: relative;
+}
+.productsPage .resetBtnDiv {
+	position: absolute;
+    z-index: 9;
+    right: 11.25rem;
+    top: 1rem;
+}
+.productsPage .resetBtnDiv .resetBtn {
+	float: right;
+}
+.productsPage .productsFilterBar .sapUiCompFilterBarToolbar button:nth-last-child(2) {
+    display: none;
+}
+
+.productsPage .productsFilterBar .sapUiCompFilterBarToolbar button .sapMBtnText , 
+.resetBtn .sapMBtnText {
+    background: transparent !important;
+    border: none !important;
+    font-size: 12px !important;
+    font-family: Verdana !important;
+    line-height: 17px;
+    color: #EB3C96 !important;
+    letter-spacing: 0;
+    font-weight: normal !important;
+}
+
+.productsPage .productsFilterBar .sapUiCompFilterBarToolbar button:nth-last-child(1) .sapMBtnText {
+    background: #EB3C96 0% 0% no-repeat padding-box !important;
+    border-radius: 2px !important;
+    border: none !important;
+    color: #FFFFFF !important;
+}
+
+.productsPage .productsFilterBar .sapUiAFLayout .sapMLabel {
+    letter-spacing: 0;
+    line-height: 1.0625rem;
+    color: rgb(80, 50, 145) !important;
+    font-size: 0.8rem !important;
+    font-family: Verdana !important;
+}
+
+.productsPage .productsFilterBar .sapUiAFLayout .sapMInputBaseContentWrapper {
+    border: 1px solid #CFD1CF !important;
+    border-radius: 2px;
+}
+
+.sapMInputBaseInner:not(.sapMInputBaseReadonlyWrapper):not(.sapMInputBaseContentWrapperState):focus {
+    border-color: transparent !important;
+}
+
+
+
+.productsTableBar {
+	background: #F5FBFB 0% 0% no-repeat padding-box;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.productsTableBar .sapUiCompSmartTableToolbar {
+	margin-bottom: 0.25rem;
+	border: none !important;
+}
+.productsTableBar .sapUiCompSmartTableToolbar .sapMTitleTB {
+	letter-spacing: 0;
+    color: rgb(80, 50, 145) !important;
+    font-size: 1rem !important;
+    font-family: Verdana !important;
+    font-weight: bold !important;
+}
+.productsTableBar .sapUiCompSmartTableToolbar button .sapUiIcon {
+	color: rgb(80, 50, 145) !important;
+}
+.productsTableBar .sapUiCompSmartTableToolbar button .sapMBtnInner,
+.sapMDialog .sapMPanelWrappingDivTb button .sapMBtnInner {
+	border: none !important;
+    background: transparent !important;
+}
+.productsTableBar .sapUiCompSmartTableToolbar button .sapMBtnGhost {
+	border: .0625rem solid rgb(80, 50, 145) !important;
+}
+.productsTableBar tr {
+	box-shadow: 0 0.1875rem 0.375rem rgba(0, 0, 0, 0.1607843137254902) !important;
+}
+.productsTableBar td.sapUiTableHeaderCell {
+	background: #E0E8E7 0% 0% no-repeat padding-box !important;
+	border-top: 1px solid #8278974D;
+	border-bottom: 1px solid #8278974D;
+	border-right: 1px solid #8278974D;
+}
+.productsTableBar .sapUiTableRowSelectors:not(.sapUiTableRowHighlights) .sapUiTableRowHdrScr,
+.productsTableBar .sapUiTableRowSelectors:not(.sapUiTableRowHighlights) .sapUiTableRowSelectionHeaderCell {
+    display: none !important;
+}
+.productsTableBar .sapUiTableRowSelectors:not(.sapUiTableRowHighlights) .sapUiTableCtrlScr, 
+.productsTableBar .sapUiTableRowSelectors:not(.sapUiTableRowHighlights) .sapUiTableCtrlScrFixed {
+    margin-left: 0 !important;
+}
+.productsTableBar td.sapUiTableHeaderCell:nth-child(1){
+	border-left: 1px solid #8278974D;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.productsTableBar td.sapUiTableHeaderCell:nth-last-child(2){
+	border-right: 1px solid #8278974D;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.productsTableBar td.sapUiTableHeaderCell .sapMLabel , 
+.sapUiTable:not(.sapUiTableDragDrop) .sapUiTableHeaderDataCell.sapUiTableHeaderCellActive:active {
+	font-size: 0.685rem !important;
+    font-family: verdana !important;
+    letter-spacing: 0 !important;
+    color: #645485 !important;
+    text-transform: uppercase !important;
+    line-height: 0.9375rem !important;
+   text-align: center !important;
+    
+}
+.productsTableBar td .sapMText {
+	font-size: 0.75rem !important;
+    line-height: 1.0625rem !important;
+    font-family: Verdana !important;
+    letter-spacing: 0 !important;
+    color: #503291 !important;
+    /*word-break: break-word;*/
+    /*white-space: normal;*/
+    text-align: center !important;
+}
+.productreportoverflowbar
+{
+	border:none !important;
+	background:#FFFFFF !important;
+	padding-bottom: 0.5rem !important;
+}
+.productreportoverflowbar.sapMIBar.sapMTB .sapMBarChild
+{
+ font-size: 1.25rem !important;
+    font-family: Verdana !important;
+    color: rgb(80, 50, 145) !important;
+    line-height: 1.5625rem;
+}
+
+
+/*Style for Mobile*/
+@media only screen and (max-width: 850px) {
+.productsPage .resetBtnDiv {
+    position: absolute;
+    z-index: 9;
+    right: 1.5rem;
+    top: -2rem;
+}
+}

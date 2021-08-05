@@ -1,0 +1,517 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+     xmlns:l="sap.ui.layout" 
+     xmlns="sap.m"
+	controllerName="com.kaust.zui5approvers.controller.TerAccessRequestView"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<Page>
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Label text="MTER/TER Access" textAlign="Left" design="Bold"
+						class="header"></Label>
+				</contentMiddle>
+				<contentRight>
+							<Label text="Request ID:" textAlign="Left" design="Bold"></Label>
+							<Label text="{helpModel>/requestId}" textAlign="Left" design="Bold" class="sapUiSmallMarginEnd"></Label>
+						</contentRight>
+			</Bar>
+		</customHeader>
+		
+		<content>
+			<Toolbar design="Transparent" height="3rem">
+				<Text text="Comments" class="sapMH4FontSize" />
+				<!--   text ="Approver Comments" as per existing application but changed it to 'Comments' considering Submit scenario-->
+				<ToolbarSpacer />
+			</Toolbar>
+			
+				<f:SimpleForm labelSpanL="4" labelSpanM="5" labelSpanS="6"
+				columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1"
+				maxContainerCols="2" layout="ResponsiveGridLayout">
+				<f:content>
+					<TextArea id="commentMngr" maxLength="200" placeholder="Add note (mandatory when rejecting)"
+						width="100%" >
+					</TextArea>
+					<core:Title text="">
+					</core:Title>
+				</f:content>
+			</f:SimpleForm>
+			<Toolbar id="nwEngHeader" design="Transparent" height="3rem" visible="false">
+				<Text text="Network Engineer Feedback" class="sapMH4FontSize" />
+				<ToolbarSpacer />
+			</Toolbar>
+			<f:SimpleForm id="nwEngSelect" editable="true" layout="ResponsiveGridLayout"
+							labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+							adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+							emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+							singleContainerFullSize="false"  visible="false">
+							<f:content>
+								<Label text="Network Engineer" required="true"></Label>
+								<Select  id="selectedNwEngr" forceSelection="false" items="{netEngg>/data}" showSecondaryValues="true" width="50%">                
+								<core:ListItem key="{netEngg>kaust_Id}" text="{netEngg>name}" additionalText= "{netEngg>uname}"/> </Select>
+			</f:content></f:SimpleForm> 
+			
+				<f:Form id="nwFeedBack" editable="true" visible="false">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4"
+						labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+						columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+					<Label text="Vendor Show up" required="true"></Label>
+					</f:label>
+					<f:fields>
+					<RadioButtonGroup id="vendorShowUp" columns="3">
+						<buttons>
+							<RadioButton text="On Time"></RadioButton>
+							<RadioButton text="Late"></RadioButton>
+							<RadioButton text="Never Show Up"></RadioButton>
+						</buttons>
+					</RadioButtonGroup>
+					</f:fields>
+					</f:FormElement>
+					
+					<f:FormElement>
+								<f:label>
+					<Label text="Vendor Exceed activity time by 20%?" required="true"></Label>
+					</f:label>
+					<f:fields>
+					<RadioButtonGroup id="vendorExTime" columns="3">
+						<buttons>
+							<RadioButton text="Yes"></RadioButton>
+							<RadioButton text="No"></RadioButton>
+						</buttons>
+					</RadioButtonGroup>
+					</f:fields>
+					</f:FormElement>
+					
+					<f:FormElement>
+								<f:label>
+					<Label text="Missing tool by the Vendor?" required="true"></Label>
+					</f:label>
+					<f:fields>
+					<RadioButtonGroup id="toolbyVendor" columns="3">
+						<buttons>
+							<RadioButton text="Yes"></RadioButton>
+							<RadioButton text="No"></RadioButton>
+						</buttons>
+					</RadioButtonGroup>
+					</f:fields>
+					</f:FormElement>
+					</f:formElements></f:FormContainer></f:formContainers></f:Form>
+
+			
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+				labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+				emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="Please check all that apply"></Label>
+					<CheckBox id="partOfTeamId" text="I am part of team accessing MTER/TER"
+						enabled="false"></CheckBox>
+					<CheckBox id="othersId" text="Other team members also require access"
+						enabled="false">
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					<!-- <Label id="kLblId" text="KAUST ID" visible="false"></Label> <Input 
+						id="kInpId" visible="false" ></Input> <core:Icon id="vmsIconId" src="sap-icon://employee-lookup" 
+						press="vmsLookUp" class="helpIcon" visible="false"></core:Icon> <Button id="kIconId" 
+						icon="sap-icon://employee-lookup" press="kaustLookUp" class="helpIcon" visible="false" 
+						enabled="false"></Button> <Label id="vmsLblId" text="{i18n>KAUST_ID_VMS}" 
+						visible="false"></Label> <Input id="vmsInpId" visible="false" ></Input> <core:Icon 
+						id="vmsIconId" src="sap-icon://employee-lookup" press="vmsLookUp" class="helpIcon" 
+						visible="false"></core:Icon> <Button id="vmsIconId" icon="sap-icon://employee-lookup" 
+						press="vmsLookUp" class="helpIcon" visible="false" enabled="false"></Button> -->
+				</f:content>
+			</f:SimpleForm>
+
+			<Table id="othersTblId" visible="false" width="50%" items="" class="othersTbl">
+				<columns>
+					<Column>
+						<Text text="KAUST ID"></Text>
+					</Column>
+					<Column>
+						<Text text="NAME"></Text>
+					</Column>
+				</columns>
+
+			</Table>
+
+
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="Work Information" />
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4"
+						labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+						columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+
+									<Label text="Work Permit Number" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="workPermitId" enabled="false"></Input>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="Start Date and Time" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="startDateId" enabled="false"></Input>
+								</f:fields>
+								<!-- <Label text="{i18n>Hour}" required="true"></Label> <Select id="hourId" 
+									forceSelection="false" > <core:Item key="" text="1" /> <core:Item key="" 
+									text="2" /> </Select> <Label text="{i18n>Minutes}" required="true"></Label> 
+									<Select id="min" forceSelection="false" > <core:Item key="" text="00" /> 
+									<core:Item key="" text="30" /> </Select> -->
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+
+									<Label text="End Date" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="endDateId" enabled="false">
+									</Input>
+								</f:fields>
+							</f:FormElement>
+							<!-- Roopali(16-10-2018) - TER Issue(KS-17) -->
+							<!-- <f:FormElement>
+								<f:label>
+									<Label text="Location" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="buildingId" enabled="false">
+										<layoutData>
+											<l:GridData span="L3 M3"></l:GridData>
+										</layoutData>
+									</Input>
+									<Input id="levelSelId" change="onLevlChange" enabled="false">
+										<layoutData>
+											<l:GridData span="L1 M1"></l:GridData>
+										</layoutData>
+									</Input>
+									<Input id="terRoomId" change="onRoomChange" enabled="false">
+										<layoutData>
+											<l:GridData span="L4 M4"></l:GridData>
+										</layoutData>
+									</Input>
+								</f:fields>
+							</f:FormElement> -->
+							
+							<f:FormElement>
+								<f:label>
+									<Label text="Location" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="buildingId" enabled="false">	</Input>
+									</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+								<f:label>
+									<Label text="" ></Label>
+								</f:label>
+								<f:fields>
+									<Input id="levelSelId" change="onLevlChange" enabled="false"></Input>
+									</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+								<f:label>
+									<Label text="" ></Label>
+								</f:label>
+								<f:fields>
+									<!-- <Input id="terRoomId" change="onRoomChange" enabled="false"></Input> -->
+									<HBox class="terRoomHBoxClass">
+									<Text id="terRoomId" class="terRoomTextClass"></Text>
+									</HBox>
+									</f:fields>
+									</f:FormElement>
+									
+							<!-- Roopali(16-10-2018) - TER Issue(KS-17) -->
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+									<Label text="Scope of Work" required="true"></Label>
+								</f:label>
+								<f:fields>
+								<VBox id="pwrActVbox">
+									<CheckBox text="Power Activity/ Survey" id="powerActId"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<Label id="pwrLbl" text="Backup power will be provided"
+											class="subChkBox" visible="false"></Label>
+										<!-- <RadioButtonGroup id="pwrRdBtn" columns="2"
+											class="subChkBox" visible="false" enabled="false">
+											<buttons>
+												<RadioButton text="No"></RadioButton>
+												<RadioButton text="Yes"></RadioButton>
+											</buttons>
+										</RadioButtonGroup> -->
+								</VBox>	
+									<CheckBox text="A/C Maintenance" id="acMaintId"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox text="TER Cleaning" id="terCleanId" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox id="cblChkId" text="Cable Pulling and Testing"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox id="cblAgreeId"
+										text="I hereby agree to submit test results for this activity"
+										visible="false" class="subChkBox" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox text="HSE Inspection" id="hseInspectId"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox id="otherChkId" text="Others" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<Input id="othersTextId" class="kaustInpWidthClass"
+										visible="false" width="50%" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+				title="Severity of the Activity" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"
+				emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
+				columnsM="1" singleContainerFullSize="false">
+				<f:content>
+					<Label text="Power Interruption" required="true"></Label>
+					<RadioButtonGroup id="PowerRadioGrpId" columns="2"
+						select="onPwrIntrYes" enabled="false">
+						<buttons>
+							<RadioButton text="No"></RadioButton>
+							<RadioButton text="Yes"></RadioButton>
+						</buttons>
+					</RadioButtonGroup>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm id="pwrChkBoxId" editable="true"
+				layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"
+				emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
+				columnsM="1" singleContainerFullSize="false" visible="false">
+				<f:content>
+					<CheckBox id="prCbId" text="Primary Circuit(PR)" enabled="false">
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					<!-- <MultiComboBox id="inpPrId" items="{oPrEqipModel>/pr_data}" placeholder="{i18n>PRIMARY_CIRCUIT_PH}" 
+						class="kaustInpWidthClass" visible="false" width="30%"> <core:Item key="{oPrEqipModel>key}" 
+						text="{oPrEqipModel>val}"></core:Item> <layoutData> <l:GridData span="L12" 
+						moveForward="L3"></l:GridData> </layoutData> </MultiComboBox> -->
+					<!-- <Input id="inpPrId" visible="false" width="50%" enabled="false">
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</Input> -->
+					<TextArea id="inpPrId" visible="false" enabled="false" width="75%">
+					<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+						</TextArea>
+					<CheckBox id="brCbId" text="Back-up Circuit (BPR)"
+						enabled="false">
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					<TextArea id="inpBrId" visible="false" enabled="false" width="75%">
+					<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+						</TextArea>
+					<CheckBox id="eprCbId" text="Emergency Circuit (EPR)"
+						enabled="false">
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					
+					<TextArea id="inpEcId" visible="false" enabled="false" width="75%">
+					<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+						</TextArea>
+				</f:content>
+			</f:SimpleForm>
+
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+				labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+				emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="A/C Interruption" required="true"></Label>
+					<RadioButtonGroup id="acIntRadioGrpId" columns="1"
+						enabled="false">
+						<buttons>
+							<RadioButton text="No"></RadioButton>
+							<RadioButton text="Yes, less than 30 minutes"></RadioButton>
+							<RadioButton text="Yes, more than 30 minutes"></RadioButton>
+						</buttons>
+					</RadioButtonGroup>
+					<CheckBox id="acAgreeId"
+						text="I hereby agree to provide back-up cooling system inside TER for the ITNC Equipment"
+						visible="false" class="subChkBox" enabled="false">
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+				</f:content>
+			</f:SimpleForm>
+
+			<IconTabBar id="idTabBar">
+				<items>
+					<!-- Service Information Tab -->
+					<IconTabFilter icon="sap-icon://lightbulb" key="infoTab" tooltip="Service Information">
+						<l:Grid defaultSpan="L12">
+							<Label text="MTER/TER Access" class="kitsMachineLblClass"
+								design="Bold">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"></l:GridData>
+								</layoutData>
+							</Label>
+							<Text text="MTER/TER Access is often required when accessing the MTER/TER . IT can grant rights access MTER/TER with approvals." 
+							class="kitsProcessInfoClass">
+								<layoutData>
+									<l:GridData span="L4"></l:GridData>
+								</layoutData>
+							</Text>
+							<VBox>
+								<Label text="Quick Facts" design="Bold"></Label>
+								<Text text="Eligibility: Faculty, Staff, Researchers" class="kitsProcessInfoClass"></Text>
+								<Text text="Rates: Free of Charge" class="kitsProcessInfoClass"></Text>
+								<HBox>
+									<Text text="Training: Click " class="kitsProcessInfoClass"></Text>
+									<Link text="here" class="kitsLinkHereClass"></Link>
+									<Text text="for training video" class="kitsProcessInfoClass"></Text>
+								</HBox>
+								<layoutData>
+									<l:GridData span="L4" moveForward="L1"></l:GridData>
+								</layoutData>
+							</VBox>
+							<VBox>
+								<Label text="Support" design="Bold"></Label>
+								<Text text="For assistance please log ticket via the" class="kitsProcessInfoClass"></Text>
+								<Link text="self-service portal" class="kitsProcessInfoClass"
+									target="_blank" href="https://servicedesk.kaust.edu.sa/irj/portal"></Link>
+								<Text text="or contact IT Service Desk on" class="kitsProcessInfoClass"></Text>
+								<Text text="(+966)(12)808-0900 option 1 or email" class="kitsProcessInfoClass"></Text>
+								<Link text="ithelpdesk@kaust.edu.sa" class="kitsITHelpLinkClass"
+									press="fnHelpDeskPress"></Link>
+								<layoutData>
+									<l:GridData span="L4" moveForward="L1"></l:GridData>
+								</layoutData>
+							</VBox>
+						</l:Grid>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://hint" key="Tab1" tooltip="Requester Information">
+					<l:Grid defaultSpan="L12">
+							<Toolbar >
+								<Title text="Requester Information" level="H5"
+										titleStyle="H5" />
+							</Toolbar>
+					</l:Grid>		
+						<f:SimpleForm id="userInfoTab" layout="ResponsiveGridLayout"
+							labelSpanL="4" labelSpanM="3" labelSpanS="6" columnsL="3"
+							columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2">
+
+							<f:content>
+								<core:Title text="">
+								</core:Title>
+								<Label text="First Name" />
+								<Text id="fname" text="{oUserModel>/d/FirstName}" />
+								<Label text="Last Name" />
+								<Text id="lname" text="{oUserModel>/d/LastName}" />
+								<Label text="KAUST ID" />
+								<Text id="kaustID" text="{oUserModel>/d/KaustID}" />
+								<core:Title text="">
+								</core:Title>
+								<Label text="E-mail" />
+								<Text id="email" text="{oUserModel>/d/Email}" />
+								<Label text="Job Title" />
+								<Text id="pos" text="{oUserModel>/d/Position}" />
+								<Label text="Department" />
+								<Text id="dept" text="{oUserModel>/d/Deptname}" />
+								<core:Title text="">
+								</core:Title>
+								<Label text="Billed Cost Center" />
+								<Text id="costCntr" text="{oUserModel>/d/Costcenter}" />
+								<Label text="Office Telephone" />
+								<Text id="office" text="{oUserModel>/d/Office}" />
+								<Label text="Mobile Phone" />
+								<Text id="mobile" text="{oUserModel>/d/Mobile}" />
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="approveButton" text="Approve" icon="sap-icon://accept"
+						type="Accept" press="handleAction">
+					</Button>
+					<Button id="rejectButton" text="Reject" icon="sap-icon://sys-cancel"
+						type="Reject" press="handleAction">
+					</Button>
+					<!-- <Button id= "correctButton" text="Correct" visible="false" type="Default" 
+						press="handleAction" icon="sap-icon://refresh" /> -->
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

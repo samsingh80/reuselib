@@ -1,0 +1,18 @@
+<mvc:View
+    controllerName="ns.cap2.controller.test"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					          <List id="list" items="{oDataModel>/BookPrice}">
+            <StandardListItem type="Navigation" press="handleListItemPress" title="{oDataModel>ID}"/>
+        </List>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

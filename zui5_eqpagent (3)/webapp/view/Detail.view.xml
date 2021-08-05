@@ -1,0 +1,145 @@
+<mvc:View controllerName="com.kaust.zui5eqpagent.controller.Detail"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="app" class="customerRightpanelPage">
+        <pages>
+            <f:DynamicPage id="dynamicPage11" showFooter="true" fitContent="true">
+                <f:title>
+                    <f:DynamicPageTitle>
+                        <f:heading>
+                            <Text text="{oEquipModel>/request_id}"/>
+                        </f:heading>
+                        <f:actions>
+                            <Button type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen" tooltip="Enter Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }" class="headerIcon"/>
+                            <Button type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen" tooltip="Exit Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }" class="headerIcon"/>
+                            <Button type="Transparent" icon="sap-icon://decline" press="handleClose" tooltip="Close column" visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }" class="headerIcon"/>
+                        </f:actions>
+                    </f:DynamicPageTitle>
+                </f:title>
+
+                <f:content >
+                <VBox>
+                    <l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+                        <l:content>
+                            <form:SimpleForm id="externForm" minWidth="1024">
+                                <form:title>
+                                    <core:Title text="{i18n>IT_EQUIP}"></core:Title>
+                                </form:title>
+                                <Label id="labLocOther" text="{i18n>SEL_ITE}" design="Bold">
+                                </Label>
+                                <Text id="inputItem" text="{oEquipModel>/replenisheqip}">
+                                </Text>
+                                <Label id="labEquipNo" text="{i18n>EQ_TAG}" design="Bold">
+                                </Label>
+                                <Text id="equipNo" text="{oEquipModel>/equip_num}">
+                                </Text>
+                            </form:SimpleForm>
+
+                            <form:SimpleForm id="transferToForm" minWidth="1024" maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" labelSpanL="6" labelSpanM="6" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3">
+                                <form:title>
+                                    <core:Title text="{i18n>TRS_TO}"></core:Title>
+                                </form:title>
+                                <form:content>
+                                    <core:Title text=" " />
+                                    <Label text="{i18n>FIR_NAME}" />
+                                    <Text text="{oEquipModel>/tfirst_name}" />
+                                    <Label text="{i18n>LAS_NAME}" />
+                                    <Text text="{oEquipModel>/tlast_name}" />
+                                    <Label text="{i18n>KAU_ID}" />
+                                    <Text text="{oEquipModel>/tkaust_id}" />
+
+                                    <core:Title text=" " />
+                                    <Label text="{i18n>EMAIL}" />
+                                    <Text text="{oEquipModel>/temail}" />
+                                    <Label text="{i18n>JOB_TITLE}" />
+                                    <Text text="{oEquipModel>/tposition_text}" />
+                                    <Label text="{i18n>DEP}" />
+                                    <Text text="{oEquipModel>/tdepartment_name}" />
+
+                                    <core:Title text=" " />
+                                    <Label text="{i18n>BILL_CCOST}" />
+                                    <Text id="transBilledCostCenter" text="{oEquipModel>/tcostcenter}" />
+                                    <Label text="{i18n>OFF_TEL}" />
+                                    <Text text="{oEquipModel>/toffice_no}" />
+                                    <Label text="{i18n>MOB_TEL}" />
+                                    <Text text="{oEquipModel>/tmobile_no}" />
+                                </form:content>
+                            </form:SimpleForm>
+
+                            <IconTabBar expanded="{device>/isnophone}">
+                                <items>
+                                    <IconTabFilter icon="sap-icon://hint">
+                                        <form:SimpleForm id="userInfoForm" minWidth="1024">
+                                            <core:Title text="Requester Information" />
+                                            <Label text="{i18n>FIR_NAME}" />
+                                            <Text text="{oEquipModel>/first_name}" />
+                                            <Label text="{i18n>LAS_NAME}" />
+                                            <Text text="{oEquipModel>/last_name}" />
+                                            <Label text="{i18n>KAU_ID}" />
+                                            <Text text="{oEquipModel>/header/kaust_id}" />
+                                            <Label text="{i18n>EMAIL}" />
+                                            <Text text="{oEquipModel>/email}" />
+                                            <Label text="{i18n>JOB_TITLE}" />
+                                            <Text text="{oEquipModel>/position_text}" />
+                                            <Label text="{i18n>DEP}" />
+                                            <Text text="{oEquipModel>/department_name}" />
+                                            <Label text="{i18n>CCE}" />
+                                            <Text text="{oEquipModel>/costcenter}" />
+                                            <Label text="{i18n>OFF_TEL}" />
+                                            <Text text="{oEquipModel>/office_no}" />
+                                            <Label text="{i18n>MOB_TEL}" />
+                                            <Text text="{oEquipModel>/mobile_no}" />
+                                        </form:SimpleForm>
+                                    </IconTabFilter>
+                                    <IconTabFilter icon="sap-icon://comment">
+                                        <List headerText="{i18n>COMMENTS}" growing="true" growingThreshold="4" growingScrollToLoad="false" items="{GAComments>/}">
+                                           <FeedListItem id="itcomment" showIcon="false" visible="{path: 'GAComments>comments', formatter: '.formatter.fnNoComments'}" sender="{GAComments>trole}" text="{GAComments>comments}" info="" timestamp="{
+								path: 'GAComments>timestamp',
+								formatter: '.formatter.date'
+						  }" />
+                                  
+                                        </List>
+                                    </IconTabFilter>
+                                    <IconTabFilter icon="sap-icon://customer-history">
+                                        <Table id="TblHistory" items="{historyModel>/}">
+                                            <columns>
+                                                <Column width="12em">
+                                                    <Text text="{i18n>USER_NAME}" />
+                                                </Column>
+                                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                                    <Text text="{i18n>STATUS}" />
+                                                </Column>
+                                                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                                                    <Text text="{i18n>DATE}" />
+                                                </Column>
+                                                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                                                    <Text text="{i18n>TIME}" />
+                                                </Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Text text="{historyModel>Fname}" />
+                                                        <Text text="{path:'historyModel>statusdesc'}" />
+                                                        <Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertDate'}" />
+                                                        <Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertTime'}" />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </IconTabFilter>
+                                </items>
+                            </IconTabBar>
+                        </l:content>
+                    </l:Grid>
+                    </VBox>
+                </f:content>
+
+            </f:DynamicPage>
+        </pages>
+    </App>
+</mvc:View>

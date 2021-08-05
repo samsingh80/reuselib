@@ -1,0 +1,262 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m" 
+  xmlns:layout="sap.ui.layout"
+xmlns:form="sap.ui.layout.form"  
+controllerName="com.kaust.zui5approvers.controller.VPNAccess" 
+xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<Page title="VPN Access For Contractors">
+		<content>
+                            
+		        <Toolbar design="Transparent" height="3rem">
+			    <Text text="Manager Comments" class="sapMH4FontSize"/>
+			    <ToolbarSpacer/>
+				  </Toolbar>		      
+		    <form:SimpleForm
+                        labelSpanL="4"
+                        labelSpanM="5"
+                        labelSpanS="6"
+                        columnsL="2"
+                        columnsM="2"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        maxContainerCols="2"
+                        layout="ResponsiveGridLayout"
+                        editable="true"
+                        	>
+                        	 <form:content>
+                            <TextArea  id="comment" width="100%" placeholder="Add note(mandatory when rejecting)" >
+                            </TextArea>
+                            <core:Title
+                                text="">
+                            </core:Title>
+                            <Label
+                                        required="true"
+                                        text="Date of VPN Expiration"
+                                        design="Standard">
+                                    </Label>
+								   
+								   <Text id="expDate" text="" />
+                            
+                            
+                        	 </form:content>
+                    </form:SimpleForm>       
+                    
+                    <IconTabBar expandable="false">
+                        <items>
+                            <IconTabFilter
+                                editable="false"
+                                iconColor="Critical"
+                                icon="sap-icon://account">
+	                                <content>
+	                                    
+			                          <form:SimpleForm
+				          					
+		                                maxContainerCols="2"
+		                                labelSpanL="4"
+		                                labelSpanM="5"
+		                                labelSpanS="6"
+		                                columnsL="2"
+		                                columnsM="2"
+		                                emptySpanL="0"
+		                        		emptySpanM="0"
+		                        		editable="false"
+		                                layout="ResponsiveLayout">
+				                         <form:title>
+				                            <core:Title
+				                                text="Contractor Details">
+				                            </core:Title>
+				                        </form:title>
+		                                <form:content>
+		                                    <core:Title text=""></core:Title>
+		                                    <Label
+		                                        text="Contact Number"
+		                                        for="inputNumber">
+		                                    </Label>
+		                                    <Text
+		                                        id="inputNumber">
+		                                    </Text>
+										     <Label
+						                                text="Justification for Remote Access">
+						                            </Label>
+						                            <Text  id="justif">
+						                            </Text>
+		
+		                                </form:content>
+		                            </form:SimpleForm>
+	                                    
+	                           		</content>
+	                        </IconTabFilter>
+                              <IconTabFilter
+                                iconColor="Critical"
+                                icon="sap-icon://hint">
+                                <content>
+                          <Toolbar id="toolbarOnBehalf" design="Transparent" height="3rem">
+						    <Text text="Requestor Information" class="sapMH4FontSize"/>
+						    <ToolbarSpacer/>
+						    <CheckBox id="onBehalf" text="On Behalf" selected="true" editable="false"  />
+		    				<Button id="pickButton" text="Pick" type="Emphasized" icon="sap-icon://cause" press="handlePick" visible="false" />
+					 	 </Toolbar>
+                                    <form:SimpleForm
+                        id="userInfoForm"                
+                        layout="ResponsiveGridLayout"
+                        labelSpanL="4"
+                        labelSpanM="5"
+                        labelSpanS="6"
+                        columnsL="3"
+                        columnsM="3"
+                        emptySpanL="1"
+                        emptySpanM="3"
+                        maxContainerCols="3">
+                        
+                        <form:content>
+                            <core:Title
+                                text="">
+                            </core:Title>
+                            <Label
+                                required="true"
+                                text="User Id">
+                            </Label>
+                            <Text
+                                id="reqUserId"
+                                text="{/d/UserId}">
+                            </Text>
+                            <Label
+                                required="true"
+                                text="Kaust ID">
+                            </Label>
+                            <Text
+                                id="reqkaustID"
+                                text="{/d/KaustID}">
+                            </Text>
+                            <core:Title text=""></core:Title>                            
+                            <Label
+                                required="true"
+                                text="First Name">
+                            </Label>
+                            <Text
+                                id="reqfname"
+                                text="{/d/FirstName}">
+                            </Text>
+                            <Label
+                             	required="true"
+                            	text="Last Name">
+                           	</Label>
+		                     <Text
+		                         id="reqlname"
+		                          text="{/d/LastName}">
+		                     </Text>
+		                     <core:Title text=""></core:Title>
+                            <Label
+                                required="true"
+                                text="E-mail">
+                            </Label>
+                            <Text
+                                id="reqemail"
+                                text="{/d/Email}">
+                            </Text>
+                            
+                             <Label
+                                text="Line Manager">
+                            </Label>
+                            <Text
+                                id="reqrManager"
+                                text="{/d/RManager}">
+                            </Text>
+                            
+                        </form:content>
+                    </form:SimpleForm>
+                                    
+                                    
+	                      		  </content>
+	                            </IconTabFilter>
+                        <IconTabFilter id="OnBehalfUserInfo"  iconColor="Critical" icon="sap-icon://idea-wall">
+						<content>
+							<form:SimpleForm id="OnBehalfUserInfoForm" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="3" labelSpanS="6" columnsL="3" columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2">
+								<form:title>
+									<core:Title text="On Behalf Of User Information">
+									</core:Title>
+								</form:title>
+								<form:content>
+                        	<core:Title
+                                text="">
+                            </core:Title>
+                            <Label
+                                labelFor="fname"
+                                text="First Name"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="fname"
+                                text="{/d/FirstName}">
+                            </Text>
+                            <Label
+                                labelFor="lname"
+                                text="Last Name"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="lname"
+                                text="{/d/LastName}">
+                            </Text>
+                            <core:Title text=""></core:Title>
+                            
+                            
+                            <Label
+                                labelFor="mname"
+                                text="Middle/Initial">
+                            </Label>
+                            <Text
+                                id="mname"
+                                text="{/d/MiddleName}">
+                            </Text>
+                            <Label
+                                required="true"
+                                text="Kaust ID">
+                            </Label>
+                            <Text
+                                id="kaustID"
+                                text="{/d/KaustID}">
+                            </Text>
+                            <core:Title text=""></core:Title>
+                            <Label
+                                labelFor="email"
+                                text="E-mail"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="email"
+                                text="{/d/Email}">
+                            </Text>
+                            <Label
+                                labelFor="manager"
+                                text="Line Manager"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="rManager"
+                                text="{/d/RManager}">
+                            </Text>
+                                                                                                              
+                        </form:content>
+							</form:SimpleForm>
+						</content>
+					</IconTabFilter>  
+                              
+                            
+                        </items>
+                        
+                    </IconTabBar>
+
+                    </content>
+     <footer>
+      <Toolbar>
+        <ToolbarSpacer/>
+        <Button id="approveButton" text="Approve" icon="sap-icon://accept" type="Accept" press="handleAction" />
+        <Button id="rejectButton"  text="Reject"  icon="sap-icon://sys-cancel" type="Reject" press="handleAction"/>
+      </Toolbar>
+    </footer>
+     </Page>
+</mvc:View>

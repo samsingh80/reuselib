@@ -1,0 +1,370 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+  <l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+    <l:content>
+      <f:Form editable="true">
+            <f:layout>
+              <f:ResponsiveGridLayout labelSpanXL="3"
+                labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false"
+                emptySpanXL="4" emptySpanL="4" emptySpanM="0" emptySpanS="0"
+                columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"></f:ResponsiveGridLayout>
+            </f:layout>
+            <f:formContainers>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:fields>
+                      <RadioButtonGroup id="vpnType" columns="3" enabled="false">
+                        <buttons>
+                          <RadioButton text="VPN Access"></RadioButton>
+                          <RadioButton text="Shaheen"></RadioButton>
+                        </buttons>
+                      </RadioButtonGroup>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Request Type"></Label>
+                    </f:label>
+                    <f:fields>
+                      <ComboBox id="newOrRenew" enabled="false"/>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+            </f:formContainers>
+          </f:Form>
+          <!-- <f:SimpleForm layout="ResponsiveGridLayout"
+            labelSpanL="4" labelSpanM="3" labelSpanS="6" columnsL="3"
+            columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2">
+            <f:toolbar> --> 
+            <l:Grid defaultSpan="L12">
+              <Toolbar>
+                <Text
+                  text='The purpose of this online form is to request External user access to KAUST network in compliance with "VPN External - Users Profile" IT Security standard. Requester is acting as a sponsor. Only KAUST staff and faculty can
+ request this ser+
+vice.' />
+                <ToolbarSpacer />
+              </Toolbar>
+            </l:Grid>
+
+            <!-- </f:toolbar>
+          </f:SimpleForm> -->
+          <!-- <f:Form editable="true">
+            <f:title>
+              <core:Title text="Requester Information" />
+            </f:title>
+            <f:layout>
+              <f:ResponsiveGridLayout labelSpanXL="4"
+                labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+                emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+                columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Name" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="name" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Email" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="email" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="KAUST ID" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="kaustId" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Office Telephone" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="telephone" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Mobile Phone"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="mobile" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+            </f:formContainers>
+          </f:Form> -->
+
+          <f:Form id="newType" editable="true">
+            <f:title>
+              <core:Title text="External User Information" />
+            </f:title>
+            <f:layout>
+              <f:ResponsiveGridLayout labelSpanXL="4"
+                labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+                emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+                columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="First Name" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="eFname" tooltip="{oRequestModel>/eFname}" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Last Name" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="eLname" tooltip="{oRequestModel>/eLname}" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Date of Birth" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="dob" maxLength="40" change="validatedob" enabled="false">
+                      </Input>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Middle Name"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="eMname" tooltip="{oRequestModel>/eMname}" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Email" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="eEmail" tooltip="{oRequestModel>/eEmail}" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="VPN Expiry Date" wrapping="true" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="expDateNew" enabled="false" width="50%"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                  <f:FormElement>
+                <f:label>
+                  <Label text="Suggested User ID" visible="{oInternalModel>/suggUserIdVisible}" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="suggestedUserId" class="boldClass" enabled="false" visible="{oInternalModel>/suggUserIdVisible}" change="validateUser">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                  <CheckBox id="checkbox" select="suggestUserId" enabled="false" visible="{oInternalModel>/suggUserIdVisible}"></CheckBox>
+                </f:fields>
+              </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+
+              <f:FormContainer id="UIDSection" visible="false">
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Provisioned UserID" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Text id="suggestedUID" text="" class="boldClass">
+                        <layoutData>
+                          <l:GridData span="L5 M6 S12" />
+                        </layoutData>
+                      </Text>
+                    </f:fields>
+                  </f:FormElement>
+                  </f:formElements>
+                  </f:FormContainer>
+            </f:formContainers>
+          </f:Form>
+
+          <f:Form id="renewType" editable="true" visible="false">
+            <f:title>
+              <core:Title text="External User Information" />
+            </f:title>
+            <f:layout>
+              <f:ResponsiveGridLayout labelSpanXL="4"
+                labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+                emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+                columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="User AD Account" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="adAccount" tooltip="{oRequestModel>/adAccount}" enabled="false"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="VPN Expiry Date" wrapping="true" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="expiryDate" enabled="false" width="50%"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+            </f:formContainers>
+          </f:Form>
+          <!-- <f:SimpleForm editable="true"
+            layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+            labelSpanM="3" labelSpanS="12" adjustLabelSpan="false"
+            emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+            columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+            <f:content>
+              <TextArea id="hostIpId" enabled="false"
+                placeholder="Host name or Static IP Address of Destination System(s)"
+                growing="true" width="75%">
+                <layoutData>
+                  <l:GridData span="L12" moveForward="L2"></l:GridData>
+                </layoutData>
+              </TextArea>
+            </f:content>
+          </f:SimpleForm> -->
+          <f:Form editable="true" >
+            <f:layout>
+              <f:ResponsiveGridLayout labelSpanXL="4"
+                labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+                emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+                columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Host/IP/Services" required="true" visible="{oInternalModel>/ipVisible}"></Label>
+                    </f:label>
+                    <f:fields>
+                      <TextArea id="hostIpId" visible="{oInternalModel>/ipVisible}" placeholder="{i18n>HOST_IP}" tooltip="{oRequestModel>/hostIpId}" growing="true" enabled="false">
+                      <layoutData>
+                        <l:GridData span="L10 M8 S8" />
+                      </layoutData></TextArea>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement id="fileSection" visible="false">
+                    <f:label>
+                      <Label text="Passport/ National ID" ></Label>
+                    </f:label>
+                    <f:fields>
+                      <Link id="fileUrl" text="Click to download"></Link>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+            </f:formContainers>
+          </f:Form>
+          <!-- <f:Form editable="true">
+            <f:layout>
+              <f:ResponsiveGridLayout 
+                columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="VPN Expiration Date" required="true"></Label>
+                    </f:label>
+                    <f:fields>
+                      <Input id="expiryDate" enabled="false" width="50%"></Input>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+              <f:FormContainer>
+                <f:formElements>
+                  <f:FormElement>
+                    <f:label>
+                      <Label text="Passport/ National ID" ></Label>
+                    </f:label>
+                    <f:fields>
+                      <Link text="Click to View"></Link>
+                    </f:fields>
+                  </f:FormElement>
+                </f:formElements>
+              </f:FormContainer>
+            </f:formContainers>
+          </f:Form> -->
+
+          <Toolbar design="Transparent" height="3rem">
+            <Text text="Justification" class="sapMH4FontSize" />
+            <ToolbarSpacer />
+          </Toolbar>
+
+          <f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+            labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+            adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+            emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+            singleContainerFullSize="false">
+            <f:content>
+              <TextArea id="justification"
+                placeholder="Free Text" tooltip="{oRequestModel>/justification}" enabled="false">
+                <layoutData>
+                  <l:GridData span="L12 M8" moveForward="L2"></l:GridData>
+                </layoutData>
+              </TextArea>
+            </f:content>
+          </f:SimpleForm>
+          </l:content>
+  </l:Grid>
+</core:FragmentDefinition>

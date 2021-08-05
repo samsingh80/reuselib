@@ -1,0 +1,218 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="MCDLISSGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Iqama Issuance">
+						<VBox id="MCDLISSReject">
+							<Text text="Rejection Comments" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Text id="MCDLISSfincomments"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<Text id="MCDLISSTXT" text="Motorcycle Driving License Issue" width="400px" class="clCSTTransfer chdtitlrStyle"/>					
+						<Table id="MCDLISSDetails" items="{MCDLISSJson>/results}" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+							<columns>
+								<Column width="6%">
+									<Text text="KAUST ID"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="First Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Middle Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Last Name"/>
+								</Column>
+								<Column hAlign="Left" width="6%">
+									<Text text="Gender"/>
+								</Column>
+								<!--<Column hAlign="Left" width="5%">-->
+								<!--	<Text text="Age"/>-->
+								<!--</Column>-->
+								<Column hAlign="Left" width="9%">
+									<Text text="Nationality"/>
+								</Column>
+								<!-- Column hAlign="Left" width="9%">
+									<Text text="Attested"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Translated"/>
+								</Column -->
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{MCDLISSJson>KaustId}"/>
+										<Text text="{MCDLISSJson>Fname}"/>
+										<Text text="{MCDLISSJson>Mname}"/>
+										<Text text="{MCDLISSJson>Lname}"/>
+										<Text text="{MCDLISSJson>Gender}"/>
+										<Text text="{MCDLISSJson>Nationality}"/>
+										<!-- Link text="Birth Cert" emphasized="true" target="_blank" href="{cstJson>AttLink}" visible="false"/>
+										<Link text="Birth Cert" emphasized="true" target="_blank" href="{cstJson>TrnLink}" visible="false"/ -->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+							<VBox id="MCDLRDetails">
+							<Text text="" width="400px" class="clCSTTransfer chdtitlrStyle"/>
+							<HBox>
+								<VBox class="destilPartHeaderDLRStyle1">
+								<!-- Label labelFor="rbg2"  id="RbgLabel" text="Did you renew your driving license through MOI Absher?"/>
+									<RadioButtonGroup select="onSelect" id="rbgDLR" editable="false" columns="2" selectedIndex="2" >
+										<RadioButton id="RBDLR-1" text="Yes"/>
+										<RadioButton id="RBDLR-2" text="No"/>
+									</RadioButtonGroup -->
+									<Label text="Do you have fingerprint police clearance letter?" visible="false"/>
+									<Text id="txt_MCDLFP" width="275px" visible="false"/>
+								
+							
+									<Label text="Do you have passed letter from Moroor?" class="cls-padding"/>
+										<Text id="txt_MCDLMor" width="275px"/>
+							</VBox>	
+							</HBox>
+						</VBox>
+							<VBox id="MCDLISSAttachments">
+							<Text text="Attachments"  width="400px" class="clCSTTransfer chdtitlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+							<!--	<VBox class="destilPartHeaderCSTStyle">
+									<Link id="MCDLISSFPatt" text="Finger Print Police Clearance Letter" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>-->
+								<VBox class="destilPartHeaderCSTStyle">
+									<Link id="MCDLISSMoratt" text="Passed Letter" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						
+						
+						<VBox id="MCDLISSPrefHead">
+							<Text text="Manage your Preference" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+									<!--	<HBox id="MCDLISS_collec" class="destilPartHeaderKeyStyle">
+											<Label text="Collection" class="keyClass"/>
+						                    <RadioButtonGroup id="MCDLISSCollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <RadioButton text="Self Drop off"/>
+						                        <RadioButton text="UPS Pickup" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>-->
+										<!--<HBox class="destilPartHeaderKeyStyle">-->
+											<Label text="Delivery" class="keyClass"/>
+						                    <RadioButtonGroup id="MCDLISSDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <!--<RadioButton text="Self Pick Up"/>-->
+						                        <RadioButton text="UPS Delivery" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										<!--</HBox>-->
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="MCDLISSPrefBody">
+							<Text text="Preference Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Name:" class="keyClass"/>
+											<Text id="MCDLISScpdname"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="MCDLISScpdkaustid"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="MCDLISScpdmobile"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Building Name / Number:" class="keyClass"/>
+											<Text id="MCDLISScpdbldno"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Level:" class="keyClass"/>
+											<Text id="MCDLISScpdlevel"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Room No / Cubicle:" class="keyClass"/>
+											<Text id="MCDLISScpdbldname"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="MCDLISSTracking">
+							<Text text="Tracking Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Tracking Number:" class="keyClass"/>
+											<Text id="MCDLISSTrackingNum"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Expeditor:" class="keyClass"/>
+											<Text id="MCDLISSExpeditor"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsDLISS" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info="" timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate'
+						  }" />
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistoryDLISS" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

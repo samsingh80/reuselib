@@ -1,0 +1,186 @@
+<mvc:View
+    controllerName="com.kaust.zgamoeattest.controller.MOEATTEST"
+    xmlns:u="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:c="sap.ui.core"
+	xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="DLapp">
+			<pages>
+				<Page id="page" title="{i18n>MINOFEDUATTE}" showNavButton="true" navButtonPress="onBackPress">
+					<content>
+						<Toolbar>
+							<Title id="idTitle" textAlign="End" level="H1" width="95%" class="titleCss"></Title>
+						</Toolbar>
+						<Wizard id="CreateProductWizard" finishButtonText="{i18n>SUBREQ}" showNextButton="false"
+							class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
+							<WizardStep id="ProductTypeStep" title="{i18n>MINEDU}" validated="true">
+								<!--<Panel expandable="true" expanded="true" headerText="Requestor Information" width="auto" class="cls-panel">-->
+							<Label text="{i18n>REQINFO}" design="Bold" class="cls-label" />
+								<Table growing="true" width="70%" id="idProductsTable" itemPress="OnItemPress" items="{RequestorModel>/results}">
+									<columns>
+										<Column width="0.8rem">
+											<Label text="{i18n>KAUSTID}" design="Bold"/>
+										</Column>
+										<Column width="1.3rem">
+											<Label text="{i18n>FIRNAME}" design="Bold"/>
+										</Column>
+										<Column width="1.5rem">
+											<Label text="{i18n>MIDNAME}" design="Bold"/>
+										</Column>
+										<Column width="1.5rem">
+											<Label text="{i18n>LASTNAME}" design="Bold"/>
+										</Column>
+										<Column width="1.5rem">
+											<Label text="{i18n>NAT}" design="Bold"/>
+										</Column>
+										<Column width="2.5rem">
+											<Label text="{= ${EmpDetails>/Nationality} === 'Saudi Arabian' ? 'Saudi ID' : 'Iqama Number' }" design="Bold"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem class="cls-chckbox">
+											<cells >
+												<Text text="{RequestorModel>KaustId}"/>
+												<Text text="{RequestorModel>Fname}"/>
+												<Text text="{RequestorModel>Mname}"/>
+												<Text text="{RequestorModel>Lname}"/>
+												<Text text="{RequestorModel>Nationality}"/>
+												<Text text="{= ${EmpDetails>/Nationality} === 'Saudi Arabian' ? ${RequestorModel>SaudiNo} : ${RequestorModel>IqamaNo} }"/>
+											
+												<!--<Text text="{ path: 'CreatedOn' ,type:'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy'} }"/>-->
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							<!--	<VBox>
+									<Label labelFor="rbg2" id="RbgLabel" text="Request for?" class="Cls-vbox"/>
+								
+									<RadioButtonGroup select="onSelect" id="rbg2" columns="3" selectedIndex="3">
+										<RadioButton id="RB2-1" text="Sponsor"/>
+										<RadioButton id="RB2-2" text="Dependents"/>
+										<RadioButton id="RB2-3" text="Both"/>
+									</RadioButtonGroup>
+								</VBox>-->
+								<Table growing="true" visible="true" width="100%" id="idProductsTable1" class="Cls-vbox" itemPress="OnItemPress"
+									items="{TableModel>/results}">
+									<columns>
+										<Column width="2rem">
+											<Label text="{i18n>SELECT}" design="Bold"/>
+										</Column>
+										<Column width="3rem">
+											<Label text="{i18n>KAUSTID}" design="Bold"/>
+										</Column>
+										<Column width="3rem">
+											<Label text="{i18n>FIRNAME}" design="Bold"/>
+										</Column>
+										<Column width="3.5rem">
+											<Label text="{i18n>MIDNAME}" design="Bold"/>
+										</Column>
+										<Column width="3.5rem">
+											<Label text="{i18n>LASTNAME}" design="Bold"/>
+										</Column>
+										<Column width="3.5rem">
+											<Label text="{i18n>NAT}" design="Bold"/>
+										</Column>
+										<Column width="3rem">
+											<Label text="{i18n>GENDER}" design="Bold"/>
+										</Column>
+										<Column width="5rem">
+											<Label text="{i18n>DEGTYPE}" design="Bold"/>
+										</Column>
+										<Column width="10rem" class="cls-column">
+											<Label text="{i18n>ATTACHDEG}" design="Bold"/>
+										</Column>
+									
+									</columns>
+									<items>
+										<ColumnListItem class="cls-chckbox">
+											<cells >
+												<CheckBox id="CheckBx1" select="onCheckBoxSelect1"/>
+												<Text text="{TableModel>KaustId}"/>
+												<Text text="{TableModel>Fname}"/>
+												<Text text="{TableModel>Mname}"/>
+												<Text text="{TableModel>Lname}"/>
+												<Text text="{TableModel>Nationality}"/>
+												<Text text="{TableModel>Gender}"/>
+													<ComboBox value="{TableModel>Msg5}" editable="false"
+												items="{path:'TableModel>/Degree',templateShareable:false}"  class="cls-combo" selectionChange="onRowChange">
+													<core:ListItem key="{TableModel>Type}" text="{TableModel>Type}"/>
+												</ComboBox>
+												  <u:FileUploader enabled="false" id="idLicenseAttach"  fileType="pdf,jpg,jpeg,png,tiff,bmp" 
+												  	change="onVerify"  valueState="Error" uploadComplete="handleUploadComplete" buttonText="{i18n>UPLOAD}" />
+												<!--	<u:FileUploader enabled="false" id="idLicenseAttach" class="Css2" buttonText="Upload" uploadUrl="" valueState="Error"
+												tooltip="Upload your file (pdf,images only)"  fileType="pdf,jpg,jpeg,png,tiff,bmp" typeMissmatch="handleTypeMissmatch"
+												change="onVerify"  sendXHR="true"  placeholder="Upload File" useMultipart="false">-->
+											<!--	<u:headerParameters>
+													<u:FileUploaderParameter id="param1" name="x-csrf-token"/>
+													<u:FileUploaderParameter id="slug1" name="slug"/>
+													<u:FileUploaderParameter name="X-Requested-With1" value="XMLHttpRequest"/>
+													<u:FileUploaderParameter name="Content-Type1" value="text/rtf"/>
+												</u:headerParameters>-->
+											<!--</u:FileUploader>-->
+											<!--	<Link press="handleLinkPress" text="{= ${TableModel>/Nationality} === 'Saudi Arabian' ? 'Saudi ID' : 'Iqama' }" emphasized="true"
+												/>-->
+												<!--<Text text="{ path: 'CreatedOn' ,type:'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy'} }"/>-->
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</WizardStep>
+							<WizardStep id="idDelivery" validated="true" title="{i18n>COLLDELDOCS}">
+								<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="2" emptySpanL="0" labelSpanM="2" emptySpanM="0">
+									<l:VerticalLayout width="100%">
+										<l:content>
+											<Toolbar>
+												<Title level="H2" text="{i18n>COLLECT}"/>
+											</Toolbar>
+											<l:HorizontalLayout>
+												<RadioButtonGroup select="onCollectionSelected" columns="3" id="idCollectionType">
+													<buttons>
+														<RadioButton id="Collection" selected="true" groupName="collection" text="{i18n>DROPOFFMYSELF}" visible="false"></RadioButton>
+													</buttons>
+													<buttons>
+														<RadioButton id="Delivery" selected="true" groupName="delivery" text="{i18n>UPSPICKUP}"></RadioButton>
+													</buttons>
+												</RadioButtonGroup>
+												<Text id="isPickup" class="redColor" visible="true" text="{i18n>COLLTIMEWORK}"></Text>
+											</l:HorizontalLayout>
+											<Toolbar>
+												<Title level="H2" text="{i18n>DELIVERY}"/>
+											</Toolbar>
+											<RadioButtonGroup select="onDeliverySelected" columns="2" id="idDeliveryType">
+												<buttons>
+													<RadioButton visible="false" selected="true" groupName="delivery" text="{i18n>PICKUPMYSELF}"></RadioButton>
+												</buttons>
+												<buttons>
+													<RadioButton selected="true" groupName="delivery" text="{i18n>UPSDELI}"></RadioButton>
+												</buttons>
+											</RadioButtonGroup>
+										</l:content>
+									</l:VerticalLayout>
+								</f:SimpleForm>
+								<f:SimpleForm editable="true" id="idUpsForm" layout="ResponsiveGridLayout" labelSpanL="3" emptySpanL="2" labelSpanM="3" emptySpanM="2"
+									visible="true">
+									<c:Title/>
+									<Label text="{i18n>NAME}" design="Bold"></Label>
+									<Text id="idName"></Text>
+									<Label text="{i18n>KAUSTID}" design="Bold"></Label>
+									<Text id="idKaust"></Text>
+									<Label text="{i18n>MOBNUM}" design="Bold" required="true"></Label>
+									<Input id="idMobile" type="Number" maxLength="12" liveChange="upsDeliveryForm" value="{PrefDetails>/mobile_no}"></Input>
+									<c:Title/>
+									<Label text="{i18n>BUILNAMENO}" design="Bold" required="true"></Label>
+									<Input id="idBuilding" liveChange="upsDeliveryForm" value="{PrefDetails>/building_no}"></Input>
+									<Label text="{i18n>LEV}" design="Bold" required="true"></Label>
+									<Input id="idLevel" liveChange="upsDeliveryForm" value="{PrefDetails>/level_b}"></Input>
+									<Label text="{i18n>ROOMNOCUB}" design="Bold" required="true"></Label>
+									<Input id="idRoomNo" liveChange="upsDeliveryForm" value="{PrefDetails>/building_name}"></Input>
+								</f:SimpleForm>
+							</WizardStep>
+						</Wizard>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

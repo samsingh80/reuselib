@@ -1,0 +1,33 @@
+{
+    "authenticationMethod": "route",
+    "routes": [
+        {
+            "source": "^/commonlib/(.*)$",
+            "authenticationType": "xsuaa",           
+            "destination": "common"
+        },
+         {
+            "source": "^/Solman/(.*)$",
+            "authenticationType": "xsuaa",           
+            "destination": "Solman",
+            "target": "$1"
+        },
+        {
+            "source": "^/resource/(.*)$",
+            "authenticationType": "xsuaa",
+            "localDir": "resources",
+            "target": "$1"
+        },
+        {
+            "source": "^/v2/(.*)$",
+            "authenticationType": "xsuaa",
+            "destination": "srv"
+        },
+        {
+            "source": "^/(.*)$",
+            "authenticationType": "xsuaa",
+            "destination": "srv"
+        }
+    ],
+    "welcomeFile": "/list"
+}

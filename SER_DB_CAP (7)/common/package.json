@@ -1,0 +1,16 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sap/xsenv": "^3.1.0",
+    "@sap/xssec": "^3.2.2",
+    "express": "^4.17.1",
+    "passport": "^0.4.1"
+  }
+}

@@ -1,0 +1,57 @@
+<mvc:View controllerName="com.merckgroup.ME_Ecom_Products_UI5.controller.Products" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml" height="100%">
+	<App>
+		<Page showHeader="false" enableScrolling="true">
+			<content>
+					<OverflowToolbar class="productreportoverflowbar">
+					<Text text="{i18n>Product_title}" class="sapUiMediumMarginBegin sapUiSmallMarginTop"></Text>
+				</OverflowToolbar>
+				<VBox fitContainer="true" class="productsPage">
+					<VBox class="resetBtnDiv">
+						<Button text="{i18n>Reset}" class="resetBtn" press="onFilterReset"/>
+					</VBox>
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" class="productsFilterBar" entitySet="ProductMaster" persistencyKey="SmartFilter_Explored"
+						enableBasicSearch="false"  useToolbar="{= !${device>/system/phone} }">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="COUNTRY" visibleInAdvancedArea="true" label="{i18n>PRODUCTS_DETAILS_COUNTRY}" index="0"
+								controlType="dropDownList"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="NAME" visibleInAdvancedArea="true" label="{i18n>PRODUCTS_DETAILS_PRODUCTIDNAME}"
+								index="1" ></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="BRAND" visibleInAdvancedArea="true" label="{i18n>PRODUCTS_DETAILS_BRANDNAME}" index="2"
+								controlType="dropDownList"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="THERAPYAREANAME" visibleInAdvancedArea="true" label="{i18n>PRODUCTS_DETAILS_THERAPYAREANAME}"
+								index="3" controlType="dropDownList"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="TYPE" visibleInAdvancedArea="true" label="{i18n>PRODUCTS_DETAILS_TYPE}" index="4"
+								controlType="dropDownList"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="COMMONPRODUCT" visibleInAdvancedArea="true" label="{i18n>PRODUCTS_DETAILS_COMMONPRODUCT}"
+								index="5" controlType="dropDownList"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="new" visibleInAdvancedArea="false" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="PRODUCTID" visibleInAdvancedArea="false" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="NAME" visibleInAdvancedArea="false" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="THERAPYAREAID" visibleInAdvancedArea="false" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="UOM" visibleInAdvancedArea="false" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="CURR" visibleInAdvancedArea="true" label="Distributor" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="WHOLESALEPRICE" visibleInAdvancedArea="false" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="CIFPRICE_EUR" visibleInAdvancedArea="false" visible="false"></smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="CIFPRICE_USD" visibleInAdvancedArea="true" label="Distributor" visible="false"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<smartTable:SmartTable id="LineItemsSmartTable" entitySet="ProductMaster" smartFilterId="smartFilterBar" tableType="Table"
+						useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true"
+						header="{i18n>PRODUCTS_DETAILS}" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+						showFullScreenButton="true" class="productsTableBar" beforeRebindTable="onBeforeRebindTable"
+						ignoreFromPersonalisation="new,PRODUCTIDNAME,THERAPYAREAID,CIFPRICE_EUR,CIFPRICE_USD,DECIMAL,PRODUCTNAMEID">
+						<!-- layout data used to make the table growing but the filter bar fixed -->
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/>
+						</smartTable:layoutData>
+					</smartTable:SmartTable>
+				</VBox>
+			</content>
+		</Page>
+	</App>
+</mvc:View>

@@ -1,0 +1,6 @@
+<mvc:View
+    controllerName="com.kaust.zui5eqpagent.controller.App"
+    xmlns:mvc="sap.ui.core.mvc" height="100%" displayBlock="true"
+	xmlns="sap.m" xmlns:f="sap.f">
+<f:FlexibleColumnLayout id="fcl" stateChange=".onStateChanged" layout="{/layout}"/>
+</mvc:View>

@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout">
+	<Dialog class="sapUiSizeCompact" title="{i18n>ATTACHMENT_TITLE}" contentWidth="100%" showHeader="false" >
+		<subHeader>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Title text="Attachments" level="H3"/>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://sys-cancel" press="closeDialogBox" />
+				</Toolbar>
+			</subHeader>
+		<content>
+		    
+			<List items="{/items}" includeItemInSelection="true" select="handleAttachmentPress" press="handleAttachmentPress" mode="SingleSelectMaster" >
+			
+				<StandardListItem title="{name}" icon="sap-icon://attachment"  class="attachmentSize"
+					iconDensityAware="false" iconInset="false" >
+					<customData>
+						<core:CustomData key="{url}" />
+					</customData>
+				</StandardListItem>
+			</List>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

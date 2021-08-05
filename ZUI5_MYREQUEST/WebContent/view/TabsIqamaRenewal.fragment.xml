@@ -1,0 +1,233 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+  <l:Grid id="IqamaGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+    <l:content>
+      <IconTabBar expanded="{device>/isNoPhone}">
+        <items>
+          <IconTabFilter icon="sap-icon://hint">
+            <form:SimpleForm id="userInfoForm" minWidth="1024">
+              <core:Title text="Requester Information" />
+              <Label text="Name" />
+              <Text text="{/d/FirstName}" />
+              <Label text="KAUST Id" />
+              <Text text="{/d/KaustID}" />
+              <Label text="E-mail" />
+              <Text text="{/d/Email}" />
+              <Label text="Office Telephone" />
+              <Text text="{/d/Office}" />
+              <Label text="Mobile Telephone" />
+              <Text text="{/d/Mobile}" />
+              <Label text="Job Title" />
+              <Text text="{/d/Position}" />
+              <Label text="Department" />
+              <Text text="{/d/Deptname}" />
+              <Label text="Location" />
+              <Text text="{/d/Location}" />
+            </form:SimpleForm>
+          </IconTabFilter>          
+          
+          <IconTabFilter icon="sap-icon://family-care">
+            <form:SimpleForm minWidth="1024">
+              <core:Title id="idDetailLabel" text="Family Details" />
+              <Table id="familyTable" items="{/}">
+                <columns>
+                  <Column hAlign="Left">
+                    <Text text="First Name" />
+                  </Column>
+                  <Column hAlign="Left">
+                    <Text text="Middle Name" />
+                  </Column>
+                  <Column hAlign="Left">
+                    <Text text="Last Name" />
+                  </Column>
+                  <Column visible="false" hAlign="Left">
+                    <Text text="Relation" />
+                  </Column>
+                  <Column hAlign="Left">
+                    <Text text="Gender" />
+                  </Column>
+                  <Column hAlign="Left">
+                    <Text text="KAUST ID" />
+                  </Column>
+                  <Column hAlign="Left">
+                    <Text text="Passport No" />
+                  </Column>
+                  <Column id="passportLostColumn" hAlign="Left">
+                    <Text text="Passport Lost" />
+                  </Column>
+                  <Column hAlign="Left">
+                    <Text text="Iqama No" />
+                  </Column>
+                  <Column hAlign="Left">
+                    <Text text="Nationality" />
+                  </Column>
+                  <Column id="colGascAttachment" hAlign="Left">
+                    <core:Icon
+                    src="sap-icon://attachment"
+                    color="#031E48" />
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <ObjectIdentifier text="{Fname}" />
+                      <Text text="{Mname}" />
+                      <Text text="{Lname}" />
+                      <Text visible="false" text="{Relationship}" />
+                      <Text text="{Gender}" />
+                      <Text text="{KaustId}" />
+                      <Text text="{Passport}" />
+                      <CheckBox visible="{path:'helpModel>/helpItems/subServiceCode', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkPassportLostVisibility'}" 
+                      selected="{path:'PassportLost', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkPassportLost'}" editable="false"/>
+                      <Text text="{IqamaNo}" />
+                      <Text text="{Nationality}" />
+                      <!-- Darshna - Edited : Replaced Hbox by HBox -->
+                      <HBox>  <Button visible="{path:'FileName', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkValue'}" class="tblBtnFileOpen"  icon="sap-icon://inspection"  press="ItemOpenAttachment" /></HBox>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </form:SimpleForm>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://comment">
+            <List id="idIqamaComment" headerText="Comments" growing="true" growingThreshold="4" growingScrollToLoad="false">
+              <FeedListItem sender="HR/Gradute Affairs" text="{/0/Comments}" timestamp="{
+                path: '/0/TimeStamp',
+                formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+              }" />
+              <FeedListItem sender="Finance" text="{/0/FinComments}" timestamp="{ 
+                path: '/0/TimeStamp',
+                formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+                }" />
+              <FeedListItem sender="GA Team" text="{/0/GAComments}" timestamp="{ 
+                path: '/0/TimeStamp',
+                formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+                }" />
+
+            </List>
+            
+            <List id="idIqamaCommentGaApp" visible="false" headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{oCommentsModel>/}">
+							<FeedListItem id="tabComments" showIcon="false" sender="{oCommentsModel>t_name}" text="{oCommentsModel>Comments}" info="" timestamp="{
+								path: 'oCommentsModel>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+						  }" />
+			</List>
+			
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://customer-history">
+            <Table id="TblHistory" items="{historyModel>/}" >
+            <columns>
+              <Column width="12em">
+                <Text text="User Name" />
+              </Column>
+              <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Status" />
+              </Column>
+              <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                <Text text="Date" />
+              </Column>
+              <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+                <Text text="Time" />
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <Text text="{historyModel>Fname}" />
+                  <Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+                  <Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+                  <Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+                </cells>
+              </ColumnListItem>
+            </items>
+            </Table> 
+          </IconTabFilter>
+
+          <!-- Darshna - Editing Starts Adding My Preference Tab -->
+
+          <IconTabFilter  icon="sap-icon://shipping-status" id="myPreferenceTabId" key="preference">
+            <content>
+            <form:Form id="myPreferenceFormId" editable="true" title="Manage your Preferences">
+            <form:layout>
+              <form:ResponsiveGridLayout labelSpanL="4"
+                labelSpanM="4" emptySpanL="1" emptySpanM="1" columnsL="1"
+                columnsM="1" breakpointL="600" breakpointM="300" breakpointXL="1024" />
+            </form:layout>
+            <form:formContainers>
+              <form:FormContainer>
+                <form:formElements>
+                  <form:FormElement label="">
+                    <form:fields>
+                      <RadioButtonGroup
+                        selectedIndex="{path:'preferenceModel>/DelivFlag',formatter:'kaust.ui.kits.myRequest.util.Formatter.RadioButtonSelf'}"
+                        id="idDeliveryOption" columns="2" select="onRadioBtnSelect" enabled="false">
+                        <buttons>
+                          <RadioButton text="Self Pick Up" />
+                          <RadioButton text="Deliver Office Location" />
+                        </buttons>
+                      </RadioButtonGroup>
+                    </form:fields>
+                  </form:FormElement>
+                  <form:FormElement label="Name">
+                    <form:fields>
+                      <Input type="Text" value="{parts:[{path:'/0/Fname'},{path:'/0/Mname'},{path:'/0/Lname'}],
+                                      formatter:'kaust.ui.kits.myRequest.util.Formatter.FormatFullName'}"
+                        editable="false"></Input>
+                    </form:fields>
+                  </form:FormElement>
+                  <form:FormElement label="KAUST ID">
+                    <form:fields>
+                      <Input type="Text" value="{/0/KaustId}"
+                        editable="false"></Input>
+                    </form:fields>
+                  </form:FormElement>
+                  <form:FormElement label="Email Address">
+                    <form:fields>
+                      <Input type="Email" value="{preferenceModel>/Email}"
+                         change="validateEmail" editable="false"></Input>
+                    </form:fields>
+                  </form:FormElement>
+                  <form:FormElement label="Telephone Number">
+                    <form:fields>
+                      <Input type="Number" value="{preferenceModel>/Mobile}"
+                        change="validateTelephoneNum" editable="false">
+                      </Input>
+                    </form:fields>
+                  </form:FormElement>
+                    <form:FormElement label="Building Name / Number">
+                    <form:fields>
+                      <Input type="Text" value="{preferenceModel>/BuildingNo}"
+                        placeholder="" editable="false"></Input>
+                    </form:fields>
+                  </form:FormElement>
+                  <form:FormElement label="Level">
+                    <form:fields>
+                      <Input type="Text" value="{preferenceModel>/levelb}"
+                        editable="false">
+                      </Input>
+                    </form:fields>
+                  </form:FormElement>
+                  <form:FormElement label="Room No / Cubicle">
+                    <form:fields>
+                      <Input type="Text" value="{preferenceModel>/BuildingName}"
+                        editable="false">
+                      </Input>
+                    </form:fields>
+                  </form:FormElement>
+                  <form:FormElement label="Tracking Number">
+                    <form:fields>
+                      <Input type="Text" editable="false" value="{/0/Trackingid}"></Input>
+                    </form:fields>
+                  </form:FormElement>
+                </form:formElements>
+              </form:FormContainer>
+            </form:formContainers>
+          </form:Form>
+          </content>
+          </IconTabFilter>
+          <!-- Darshna - Editing Ends -->
+        </items>
+      </IconTabBar>
+
+    </l:content>
+  </l:Grid>
+</core:FragmentDefinition>

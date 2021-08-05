@@ -1,0 +1,9 @@
+<core:View controllerName="kaust.ui.kits.myRequest.view.Detail" xmlns="sap.m" xmlns:suite="sap.suite.ui.commons"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>.boldCSS{font-weight:bold !important;} .sapMLabel { color: #000000; font-size: 16px; display: inline-block; text-overflow:
+		ellipsis; overflow: hidden; white-space: normal !important; cursor: text; } .btmLine { border-bottom: none !important; }
+		.paddingCss{padding-right: 20px;} .noLine {border-bottom: solid .0625rem #ccc0 !important;}</html:style>
+	<Page id="page" showNavButton="{device>/isPhone}" navButtonPress="handleNavButtonPress">
+		<content></content>
+	</Page>
+</core:View>

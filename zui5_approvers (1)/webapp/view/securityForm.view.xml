@@ -1,0 +1,164 @@
+<mvc:View xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+     controllerName="com.kaust.zui5approvers.controller.securityForm"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page title="Control Access Facility Request" class="myPage">
+
+        <content>
+            <!-- <Toolbar design="Transparent" height="3rem">
+					<Button type="Emphasized" text="Print" press="onPrint"></Button>
+					<ToolbarSpacer />
+				</Toolbar> -->
+
+            <VBox id="secPage">
+                <form:SimpleForm id="externForm" maxContainerCols="2" labelSpanL="3" labelSpanM="3" labelSpanS="3" columnsL="3" columnsM="3" emptySpanL="0" emptySpanM="0" editable="true" layout="ResponsiveLayout">
+                    <form:content>
+
+                        <core:Title class="hdrDesign" text="Applicant Details" design="Bold"></core:Title>
+                        <Label text="Applicant Type" for="type" design="Standard">
+                        </Label>
+                        <Input id= "type" enabled="false" value="{reqData>/applicantType}">
+                        </Input>
+
+                        <Label text="KAUST ID" for="kId" design="Standard">
+                        </Label>
+                        <Input id= "kId" enabled="false" value="{reqData>/kaustId}">
+                        </Input>
+
+                        <Label text="Organization Code" for="code" design="Standard"></Label>
+                        <Input id="code" value="{reqData>/req_orgUnit}" enabled="false"></Input>
+
+                        <Label text = "Expiry Date" for="expDate" design="Standard" required="true"></Label>
+                        <Datepicker id="expDate" value="{reqData>/dcExpDate}" valueFormat="yyyy-MM-dd" displayFormat="MM/dd/yyyy" change="validateDate"></Datepicker>
+
+                        <core:Title class="titleForm"></core:Title>
+                        <Label text="Request Type" for="reqType" design="Standard" visible="true">
+                        </Label>
+                        <Input visible="true" id="reqType" enabled="false" value="{reqData>/requestTypeEsc}">
+                        </Input>
+
+                        <Label text="Name" for="reqName" design="Standard" visible="true">
+                        </Label>
+                        <Input id="reqName" enabled="false" value="{reqData>/Name}"></Input>
+
+                        <Label text="Organization Name" for="orgName" design="Standard" visible="true">
+                        </Label>
+                        <Input id="orgName" value="{reqData>/req_orgName}" enabled="false"></Input>
+
+
+                    </form:content>
+                </form:SimpleForm>
+
+                <VBox>
+                    <Toolbar height="3rem" class="borderRadius">
+                        <Text class="hdrDesign" text="Approver Details" design="Standard" />
+                        <ToolbarSpacer></ToolbarSpacer>
+
+                        <!-- 						<Button tooltip="View Settings" icon="sap-icon://drop-down-list" press="viewInvLineSetting" class="sapUiSmallMarginEnd" />
+ -->                    </Toolbar>
+                    <Table inset="false" id="searchResult" class="tableClass" growing="true" growingThreshold="10" items="{ path:'approverModel>/data' }">
+                        <columns>
+                            <Column width="8rem">
+                                <Label text="Team" />
+                            </Column>
+                            <Column  >
+                                <Label text="KAUST ID" />
+                            </Column>
+                            <Column>
+                                <Label text="Name" />
+                            </Column>
+                            <Column >
+                                <Label text="Organization Code" />
+                            </Column>
+                            <Column >
+                                <Label text="Organization Name" />
+                            </Column>
+                            <Column width="8rem">
+                                <Label text="Approval Date" />
+                            </Column>
+
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{approverModel>Stage}"/>
+                                    <Text text="{approverModel>t_KaustId}" />
+                                    <Text text="{approverModel>t_name}" />
+                                    <Text text="{approverModel>Orgunit}" />
+                                    <Text text="{approverModel>Orgname}"/>
+                                    <Text text="{path : 'approverModel>TimeStamp', formatter: '.getDate'} " />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                    <Toolbar height="3rem" class="borderRadius">
+                        <Text class="hdrDesign" text="Facility Access Request Details" design="Standard" />
+                        <ToolbarSpacer></ToolbarSpacer>
+
+                        <!-- <Button tooltip="View Settings" icon="sap-icon://drop-down-list" press="viewInvLineSetting" class="sapUiSmallMarginEnd" /> -->
+                    </Toolbar>
+                    <Table inset="false" id="templateResult" class="tableClass" growing="true" growingThreshold="6" items="{ path:'buildingModel>/' }">
+                        <columns>
+                            <Column>
+                                <Label text="Building" />
+                            </Column>
+                            <Column>
+                                <Label text="Room" />
+                            </Column>
+
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{buildingModel>templateType}" />
+                                    <Text text="{buildingModel>templateField}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                </VBox>
+                <form:SimpleForm maxContainerCols="2" labelSpanL="3" labelSpanM="3" labelSpanS="3" columnsL="3" columnsM="3" emptySpanL="0" emptySpanM="0" editable="true" layout="ResponsiveLayout">
+                    <form:content>
+
+                        <core:Title class=" hdrDesign" text="Security Details"></core:Title>
+                        <Label text="KAUST ID" design="Standard">
+                        </Label>
+                        <Input enabled="false" value="{oUserModel>/d/results/0/KaustID}">
+                        </Input>
+
+                        <Label text="Phone Number" design="Standard">
+                        </Label>
+                        <Input enabled="false" value="{oUserModel>/d/results/0/Mobile}">
+                        </Input>
+
+
+
+                        <core:Title class="titleForm"></core:Title>
+                        <Label text="Name" design="Standard" visible="true">
+                        </Label>
+                        <Input visible="true" value="{oUserModel>/d/results/0/FirstName}" enabled="false">
+                        </Input>
+
+                        <Label text="Date" design="Standard" visible="true">
+                        </Label>
+                        <Input id="securityFormDate" enabled="false" value=""></Input>
+                    </form:content>
+                </form:SimpleForm>
+            </VBox>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer></ToolbarSpacer>
+                    <Button id="completeButton" icon="sap-icon://accept" type="Accept" text="Complete" press="onComplete"></Button>
+                    <Button type="Emphasized" icon="sap-icon://print" text="Print" press="onPrint"></Button>
+                </content>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

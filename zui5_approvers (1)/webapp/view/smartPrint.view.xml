@@ -1,0 +1,208 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m" 
+   xmlns:form="sap.ui.layout.form"
+		controllerName="com.kaust.zui5approvers.controller.smartPrint"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<Page title="Smart Printing Registration Request Service">
+		<content>
+		    
+		    <Toolbar design="Transparent" height="3rem">
+			    <Text text="Line Manager Comments" class="sapMH4FontSize"/>
+			    <ToolbarSpacer/>
+				  </Toolbar>
+				  		      
+		    <form:SimpleForm
+                        labelSpanL="4"
+                        labelSpanM="5"
+                        labelSpanS="6"
+                        columnsL="2"
+                        columnsM="2"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        maxContainerCols="2"
+                        layout="ResponsiveGridLayout"
+                        	>
+                        	 <form:content>
+                            <TextArea  id="comment" width="100%" placeholder="Add note (mandatory when rejecting the request)" >
+                            </TextArea>
+                            <core:Title
+                                text="">
+                            </core:Title>
+                            
+                        	 </form:content>
+                    </form:SimpleForm>   
+		    
+		    <IconTabBar expandable="false">
+                        <items>
+                            <IconTabFilter
+                                iconColor="Critical"
+                                icon="sap-icon://hint">
+                                <content>
+                          <Toolbar id="toolbarOnBehalf" design="Transparent" height="3rem">
+						    <Text text="Requestor Information" class="sapMH4FontSize"/>
+						    <ToolbarSpacer/>
+						    <CheckBox id="onBehalf" text="On Behalf" selected="true" editable="false" />
+		    				<Button id="pickButton" text="Pick" type="Emphasized" icon="sap-icon://cause" press="handlePick" visible="false" />
+					 	 </Toolbar>
+                          
+			                   <form:SimpleForm
+			                        id="userInfoForm"                
+			                        layout="ResponsiveGridLayout"
+			                        labelSpanL="4"
+			                        labelSpanM="5"
+			                        labelSpanS="6"
+			                        columnsL="3"
+			                        columnsM="3"
+			                        emptySpanL="1"
+			                        emptySpanM="3"
+			                        maxContainerCols="3">
+			                        
+			                         <form:content>
+                            <core:Title
+                                text="">
+                            </core:Title>
+                            <Label
+                                required="true"
+                                text="User Id">
+                            </Label>
+                            <Text
+                                id="reqUserId"
+                                text="{/UserId}">
+                            </Text>
+                            <Label
+                                required="true"
+                                text="Kaust ID">
+                            </Label>
+                            <Text
+                                id="reqkaustID"
+                                text="{/KaustID}">
+                            </Text>
+                            <core:Title text=""></core:Title>                            
+                            <Label
+                                required="true"
+                                text="First Name">
+                            </Label>
+                            <Text
+                                id="reqfname"
+                                text="{/FirstName}">
+                            </Text>
+                            <Label
+                             	required="true"
+                            	text="Last Name">
+                           	</Label>
+		                     <Text
+		                         id="reqlname"
+		                          text="{/LastName}">
+		                     </Text>
+		                     <core:Title text=""></core:Title>
+                            <Label
+                                required="true"
+                                text="E-mail">
+                            </Label>
+                            <Text
+                                id="reqemail"
+                                text="{/Email}">
+                            </Text>
+                            
+                             <Label
+                                text="Line Manager">
+                            </Label>
+                            <Text
+                                id="reqrManager"
+                                text="{/RManager}">
+                            </Text>
+                            
+                        </form:content>
+			                    </form:SimpleForm>
+                                  
+                                    
+	                      		  </content>
+	                            </IconTabFilter>
+                            <IconTabFilter id="OnBehalfUserInfo"  iconColor="Critical" icon="sap-icon://idea-wall">
+						<content>
+							<form:SimpleForm id="OnBehalfUserInfoForm" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="3" labelSpanS="6" columnsL="3" columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2">
+								<form:title>
+									<core:Title text="On Behalf Of User Information">
+									</core:Title>
+								</form:title>
+								<form:content>
+                        	<core:Title
+                                text="">
+                            </core:Title>
+                            <Label
+                                labelFor="fname"
+                                text="First Name"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="fname"
+                                text="{/d/FirstName}">
+                            </Text>
+                            <Label
+                                labelFor="lname"
+                                text="Last Name"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="lname"
+                                text="{/d/LastName}">
+                            </Text>
+                            <core:Title text=""></core:Title>                                                        
+                            <Label
+                                labelFor="mname"
+                                text="Middle/Initial">
+                            </Label>
+                            <Text
+                                id="mname"
+                                text="{/d/MiddleName}">
+                            </Text>
+                            <Label
+                                required="true"
+                                text="Kaust ID">
+                            </Label>
+                            <Text
+                                id="kaustID"
+                                text="{/d/KaustID}">
+                            </Text>
+                            <core:Title text=""></core:Title>
+                            <Label
+                                labelFor="email"
+                                text="E-mail"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="email"
+                                text="{/d/Email}">
+                            </Text>
+                            <Label
+                                labelFor="manager"
+                                text="Line Manager"
+                                required="true">
+                            </Label>
+                            <Text
+                                id="manager"
+                                text="{/d/RManager}">
+                            </Text>
+                                                                                                              
+                        </form:content>
+							</form:SimpleForm>
+						</content>
+					</IconTabFilter>  
+                            
+                        </items>
+                        
+                    </IconTabBar>
+		</content>
+		<footer>
+      <Toolbar>
+        <ToolbarSpacer/>
+        <Button id="approveButton" text="Approve" type="Accept" press="handleAction" icon="sap-icon://accept"/>
+        <Button id="rejectButton" text="Reject" type="Reject" press="handleAction" icon="sap-icon://sys-cancel"/>
+
+      </Toolbar>
+    </footer>
+	</Page>
+</mvc:View>

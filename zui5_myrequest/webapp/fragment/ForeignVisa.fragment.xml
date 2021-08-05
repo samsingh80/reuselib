@@ -1,0 +1,104 @@
+<!-- Start: Foreign Visa - Sri Lakshmi -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0" id="idApplyVisaSet" visible="false">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://family-care">
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar>
+									<Title id="idApplyVisa" text="Foreign Visa" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Country"></Label>
+								<Text id="idCountry" text="{visaSet>/country_slt}"></Text>
+								<Label text="Attendance"></Label>
+								<Text text="{visaSet>/attendence}"></Text>
+								<Label text="Amount"></Label>
+								<Text text="{visaSet>/GAHeader/amount}"></Text>
+								<Label text="Status"></Label>
+								<Text text="{ path: 'visaSet>/header/status', formatter: '.formatter.statusCodeText' }"></Text>
+								<Label text="Expeditor"></Label>
+								<Text text="{visaSet>/header/expeditor}"></Text>
+								<Label text="Selected Requestors" />
+								<Text id="idSelectedReq"/>								
+								<Toolbar>
+									<Title id="idDelivery" text="Delivery" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idDeliveryType">
+									<buttons>
+										<RadioButton groupName="delivery" text="Self pickup" editable="false"></RadioButton>
+										<RadioButton groupName="delivery" text="UPS delivery" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+								<Toolbar>
+									<Title id="idCollection" text="Collection" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idCollectionType">
+									<buttons>
+										<RadioButton groupName="collection" text="Drop off myself" editable="false"></RadioButton>
+										<RadioButton groupName="collection" text="UPS pick up" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="idUpsForm" editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar id="idDeliveryTool">
+									<Title id="idPref" text="Preference" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Kaust Id"></Label>
+								<Text text="{preferenceModel>/kaust_id}"></Text>
+								<Label text="Name"></Label>
+								<Text text="{preferenceModel>/first_name} {preferenceModel>/last_name}"></Text>
+								<Label text="Building No."></Label>
+								<Text text="{preferenceModel>/building_no}"></Text>
+								<Label text="Building Name"></Label>
+								<Text text="{preferenceModel>/building_name}"></Text>
+								<Label text="Level"></Label>
+								<Text text="{preferenceModel>/level_b}"></Text>
+								<Label text="Mobile"></Label>
+								<Text text="{preferenceModel>/mobile_no}"></Text>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List id="commentHistory" headerText="" noDataText="No Comments Log" growing="true" growingThreshold="4" growingScrollToLoad="false"
+							items="{commentData>/CommentsInfo}">
+							<FeedListItem sender="{commentData>t_name}" text="{commentData>comments}" showIcon="false"
+								timestamp="{ path: 'commentData>timestamp', formatter: '.formatter.commentDate1' }"/>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{histData>/historyInfo}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Date"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Time"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{histData>Fname}"/>
+										<Text text="{path:'histData>statusdesc'}" />
+										<Text text="{path:'histData>timestamp', formatter:'.formatter.convertDate'}" />
+										<Text text="{path:'histData>timestamp', formatter:'.formatter.convertTime'}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

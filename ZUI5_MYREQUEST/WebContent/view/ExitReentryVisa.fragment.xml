@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="ExitReentryVisaGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Exit Reentry Visa Information">
+						<form:SimpleForm id="EREDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Exit Reentry Visa" emphasized="true" />
+								<Label text="Iqama Number" />
+								<Text id="idereiqamano"/>
+								<Label text="Iqama Expiry date" />
+								<Text id="idereiqamaexpdate"/>
+								<Label text="Visa Class" />
+								<Text id="iderevisaclass"/>
+								<Label id="lblvisaduration" text="Visa Duration" />
+								<Text id="iderevisaduration"/>
+								<Label id="lblretbefdate" text="Return Before Date" />
+								<Text id="idereretbefdate"/>
+								<Label text="Expeditor" />
+								<Text id="idereExpeditor"/>
+							</form:content>
+						</form:SimpleForm>							
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsERE" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info="" timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate'
+						  }" />
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistoryERE" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

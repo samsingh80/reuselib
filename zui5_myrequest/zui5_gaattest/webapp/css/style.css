@@ -1,0 +1,139 @@
+.sapUiFormEdit-CTX .sapMRbBLabel {
+    line-height: 3rem;
+    min-width: 6rem;
+}
+.redClass{
+	color: red;
+}
+.sapMCb {
+    padding: 0 0.75rem 0 2rem !important;
+}
+.sapUiFormResGrid>div {
+    padding: 0rem 0rem 0.5rem 1.25rem !important;
+}
+.sapMFlexBoxWrapWrap {
+    flex-wrap: wrap;
+}
+.sapMTB {
+    height: 3rem;
+    background: transparent;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+}
+
+input::-webkit-input-placeholder {
+color: red !important;
+font-weight: bold;
+font-size: 16px;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+color: red !important;
+font-weight: bold; 
+font-size: 16px;
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+color: red !important;
+font-weight: bold;  
+font-size: 16px;
+}
+ 
+input:-ms-input-placeholder {  
+color: red !important;  
+font-weight: bold;
+font-size: 16px;
+}
+
+.sapUiSizeCompact .sapMSFF 
+{
+ 	height: 3rem;
+	line-height: 3rem;
+    padding-left: 0.5rem;
+    padding-right: 4rem;
+}
+		
+.sapMSFI[type='search'] {
+    font-weight: 700;
+    color: red;
+}
+.sapUiSizeCompact .sapMSFI {
+    height: 2.5rem;
+    color: red;
+}
+
+.sapUiSizeCompact .sapMSFR:not(.sapMSFNS) {
+    right: 2rem;
+    padding-top: 5px;
+}
+
+.sapMBarChild>.sapMSFF>.sapMSFB {
+    text-shadow: none;
+    padding-top: 5px;
+}
+
+.sapMLnk {
+    color: #0000FF;
+    text-decoration: none;
+    display: contents;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    font-family: Arial,Helvetica,sans-serif;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sapMLnk:visited {
+    color: #0070b1;
+}
+
+.sapMWizardStep .sapMWizardStepTitle {
+    color: #2F4F4F;
+    font-weight: 700;
+}
+
+#__title0-inner{
+color: white;
+}
+
+#idCOCAttest--COCAttestPage-cont{
+max-width: 100%;
+margin-right: auto;
+margin-left: auto;
+max-width: 1350px;
+background-color: #427cac;
+overflow: initial!important;
+}
+
+#idCOCAttest--COCAttestPage{
+background-color: #bbd0e1;
+}
+
+#idFRCONAttest--FRCONAttestPage-cont{
+max-width: 100%;
+margin-right: auto;
+margin-left: auto;
+max-width: 1350px;
+background-color: #427cac;
+overflow: initial!important;
+}
+
+#idFRCONAttest--FRCONAttestPage{
+background-color: #bbd0e1;
+}
+
+#idMOFAAttest--MOFAAttestPage-cont{
+max-width: 100%;
+margin-right: auto;
+margin-left: auto;
+max-width: 1350px;
+background-color: #427cac;
+overflow: initial!important;
+}
+
+#idMOFAAttest--MOFAAttestPage{
+background-color: #bbd0e1;
+}

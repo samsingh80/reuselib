@@ -1,0 +1,217 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:form="sap.ui.layout.form" 
+ xmlns="sap.m"
+controllerName="com.kaust.zui5approvers.controller.Jobtitlechange" 
+xmlns:l="sap.ui.layout" 
+xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<html:style>.leftCss{text-align: left !important;}
+		.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel { text-align:
+		start!important; float: none; position: relative; } .sapMITBContent { background-color: #dcedf0; }</html:style>
+	<Page title="Job Title Change Approval Screen">
+		<content>
+			<f:SimpleForm labelSpanL="4" labelSpanM="5" labelSpanS="6" columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1" maxContainerCols="2"
+				layout="ResponsiveGridLayout" class="sapUiMediumMarginBeginEnd">
+				<f:content>
+					<TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)" width="100%"></TextArea>
+					<core:Title text=""></core:Title>
+				</f:content>
+			</f:SimpleForm>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Job Title Change Information">
+						<!-- Requester Information -->
+						<f:SimpleForm id="idRequesterForm" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="3"
+							labelSpanS="12" title="Requester Information" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="2" emptySpanM="4" emptySpanS="0"
+							columnsXL="1" columnsL="2" columnsM="1" singleContainerFullSize="false" class="sapUiMediumMarginBeginEnd">
+							<f:content>
+								<core:Title text="Request ID: {oUserModel>/oUserData/RequestId}"/>
+								<Label text="Name"/>
+								<Text text="{Details>/FirstName} {Details>/MiddleName} {Details/LastName}"/>
+								<Label text="Kaust Id"/>
+								<Text text="{Details>/KaustID}"/>
+								<Label text="Nationality"/>
+								<Text text="{Details>/Nationality}"/>
+								<Label text="Gender"/>
+								<Text text="{Details>/Gender}"/>
+								<Label text="Iqama No"/>
+								<Text text="{Details>/Iqama}"/>
+								<core:Title text=""/>
+								<Label text="Passport"/>
+								<Text text="{Details>/Passport}"/>
+								<Label text="Cost Center"/>
+								<Text text="{Details>/Costcenter}"/>
+								<Label text="Position"/>
+								<Text text="{Details>/Position}"/>
+								<Label text="Department"/>
+								<Text text="{Details>/Deptname}"/>
+								<Label text="Mobile"/>
+								<Text text="{Details>/Mobile}"/>
+							</f:content>
+						</f:SimpleForm>
+						<f:SimpleForm editable="true" title="Job Title Change Details" layout="ResponsiveGridLayout" labelSpanXL="6" labelSpanL="6" labelSpanM="6"
+							labelSpanS="12" class="sapUiMediumMarginBeginEnd">
+							<f:content>
+								<VBox>
+									<Label text="Degree certificate from KSA" design="Bold" class="leftCss"></Label>
+									<RadioButtonGroup id="idDC" columns="2" editable="false">
+										<buttons>
+											<RadioButton groupName="degreeCertificate" text="Yes"></RadioButton>
+										</buttons>
+										<buttons>
+											<RadioButton groupName="degreeCertificate" text="No"></RadioButton>
+										</buttons>
+									</RadioButtonGroup>
+								</VBox>
+								<Label class="leftCss" id="idAClbl" text="Degree certificate attested from Saudi embassy in your home country" design="Bold"></Label>
+								<RadioButtonGroup id="idAC" columns="2" editable="false">
+									<buttons>
+										<RadioButton groupName="certificateAttested" text="Yes"></RadioButton>
+									</buttons>
+									<buttons>
+										<RadioButton groupName="certificateAttested" text="No"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+								<Label class="leftCss" id="idMClbl" text="Degree certificate attested by MOFA" design="Bold"></Label>
+								<RadioButtonGroup id="idMC" columns="2" editable="false">
+									<buttons>
+										<RadioButton groupName="certificateMOFA" text="Yes"></RadioButton>
+									</buttons>
+									<buttons>
+										<RadioButton groupName="certificateMOFA" text="No"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+								<Label class="leftCss" id="idTClbl" text="Degree certificate translated to Arabic from an authorized office" design="Bold"></Label>
+								<RadioButtonGroup id="idTC" columns="2" editable="false">
+									<buttons>
+										<RadioButton groupName="certificteTranslator" text="Yes"></RadioButton>
+									</buttons>
+									<buttons>
+										<RadioButton groupName="certificteTranslator" text="No"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+							</f:content>
+						</f:SimpleForm>
+						<!-- Family Dependents Table -->
+						<Table noDataText="{i18n>NODATA_TABLE}" mode="None" id="idTable" class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop">
+							<columns>
+								<Column width="5%">
+									<Text text="Kaust ID"/>
+								</Column>
+								<Column width="6%">
+									<Text text="First Name"/>
+								</Column>
+								<Column width="6%">
+									<Text text="Middle Name"/>
+								</Column>
+								<Column width="6%">
+									<Text text="Last Name"/>
+								</Column>
+								<Column width="4%">
+									<Text text="Gender"/>
+								</Column>
+								<Column width="6%">
+									<Text text="Nationality"/>
+								</Column>
+								<Column width="6%">
+									<Text text="Cost Center"/>
+								</Column>
+								<Column width="7%">
+									<Text text="Iqama Number"/>
+								</Column>
+								<Column width="9%">
+									<Text text="Job Title"/>
+								</Column>
+								<Column width="9%">
+									<Text text="Arabic Job Title"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{oUserModel>/oUserData/KaustId}"/>
+										<Text text="{oUserModel>/oUserData/FirstName}"/>
+										<Text text="{oUserModel>/oUserData/MiddleName}"/>
+										<Text text="{oUserModel>/oUserData/LastName}"/>
+										<Text text="{oUserModel>/oUserData/Gender}"/>
+										<Text text="{oUserModel>/oUserData/Nationality}"/>
+										<Text text="{oUserModel>/oUserData/Costcenter}"/>
+										<Text text="{oUserModel>/oUserData/IqamaNo}"/>
+										<Text text="{JobDetails>/MhnNameLatini}"/>
+										<Text text="{JobDetails>/MhnName}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<f:SimpleForm editable="true" title="Attachments" layout="ResponsiveGridLayout" class="sapUiMediumMarginBeginEnd">
+							<f:content>
+								<VBox>
+									<HBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Iqama" emphasized="true" href="{filereadModel>/iqamafile/URL}" target="_blank"></Link>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Passport" emphasized="true" href="{filereadModel>/passportfile/URL}" target="_blank"></Link>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Saudi Visa" emphasized="true" href="{filereadModel>/saudiVisa/URL}" target="_blank"></Link>
+										</VBox>
+									</HBox>
+									<HBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Degree Certificate" emphasized="true" href="{filereadModel>/degreeFile/URL}" target="_blank"></Link>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Attested Degree Certificate" emphasized="true" href="{filereadModel>/attestedDegree/URL}" target="_blank"></Link>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Translated Degree Certificate" emphasized="true" href="{filereadModel>/translatedDegree/URL}" target="_blank"></Link>
+										</VBox>
+									</HBox>
+								</VBox>
+							</f:content>
+						</f:SimpleForm>
+						<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12"
+							class="sapUiMediumMarginBeginEnd">
+							<f:content>
+								<VBox>
+									<Label text="Select Action" design="Bold"></Label>
+									<RadioButtonGroup id="idAction" columns="3" selectedIndex="-1">
+										<buttons>
+											<RadioButton groupName="Approval" text="Approve"></RadioButton>
+										</buttons>
+										<buttons>
+											<RadioButton groupName="Approval" text="Modify"></RadioButton>
+										</buttons>
+										<buttons>
+											<RadioButton groupName="Approval" text="Reject"></RadioButton>
+										</buttons>
+									</RadioButtonGroup>
+								</VBox>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabComments" showIcon="false" sender="{= ${GAComments>t_name}?${GAComments>t_name}:''}" text="{GAComments>Comments}"
+								info="" timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.approvers.util.formatter.commentDate'}"/>
+						</List>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="approveButton" text="Submit" icon="sap-icon://sys-enter" type="Emphasized" press="handleAction"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

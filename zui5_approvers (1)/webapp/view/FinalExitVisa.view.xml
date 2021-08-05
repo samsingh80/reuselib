@@ -1,0 +1,344 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:form="sap.ui.layout.form"
+  xmlns="sap.m"
+  controllerName="com.kaust.zui5approvers.controller.FinalExitVisa" 
+  xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+>
+ <html:style>.leftCss{text-align: left !important;}
+    .sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel,
+    .sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel,
+    .sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel,
+    .sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel { text-align:
+    start!important; float: none; position: relative; } .sapMITBContent { background-color: #dcedf0; }</html:style>
+  <Page title="Final Exit Visa">
+    <content>
+      <IconTabBar expanded="{device>/isNoPhone}">
+        <items>
+          <IconTabFilter icon="sap-icon://hint" tooltip="Final Exit Visa">
+            <VBox id="FEVDetails1">
+              <Text text="Requestor Information" width="400px" class="clIqamaIssue chdtitlrStyle"/>
+              <FlexBox wrap="Wrap" direction="Row" backgroundDesign="Transparent">
+                <items>
+					<VBox class="cls-vbox">
+						<Input value="Kaust ID" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idSKaustid" class="cls-Padd" editable="false" width="200px"></Input>
+					</VBox>
+					<VBox class="cls-vbox">
+						<Input value="First Name" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idSFname" class="cls-Padd" editable="false" width="200px"></Input>
+					</VBox>
+					<VBox class="cls-vbox">
+						<Input value="Middle Name" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idSMname" class="cls-Padd" editable="false" width="200px"></Input>
+					</VBox>
+					<VBox class="cls-vbox">
+						<Input value="Last Name" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idSLname" class="cls-Padd" editable="false" width="200px"></Input>
+					</VBox>
+					<VBox class="cls-vbox">
+						<Input value="Gender" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idSGender" class="cls-Padd" editable="false" width="200px"></Input>
+					</VBox>
+					<VBox class="cls-vbox">
+						<Input value="Nationality" id="idIqamaLbl" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idIqValue" class="cls-Padd" width="200px" editable="false"></Input>
+					</VBox>
+					<VBox class="cls-vbox">
+						<Input value="Job Title" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idReqType" class="cls-Padd" width="200px" editable="false"></Input>
+					</VBox>
+					<VBox class="cls-vbox" visible="false">
+						<Input value="Passport Number" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idpassportNuber" width="200px" class="cls-Padd" editable="false"></Input>
+					</VBox>
+					<VBox class="cls-vbox" visible="false">
+						<Input value="Passport Issue Date" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idpassportdatee" editable="false" width="200px" class="cls-Padd"></Input>
+					</VBox>
+					<VBox class="cls-vbox" visible="false">
+						<Input value="Passport Expiry Date" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idpassportExpdate" editable="false" class="cls-Padd" width="200px"></Input>
+					</VBox>
+					<!-- VBox class="cls-vbox" id="idbDateofEntrance" >
+						<Input value="Date of Entrance" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idDateofEntrance" class="cls-Padd" width="200px" editable="false"></Input>
+					</VBox -->
+					<VBox class="cls-vbox" id="idbiqamano" >
+						<Input value="Iqama Number" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idiqamano" class="cls-Padd" width="200px" editable="false"></Input>
+					</VBox>
+					<VBox class="cls-vbox" id="idbBoarderNum" visible="false" >
+						<Input value="Border Number" editable="false" class="boldCSS" width="200px"></Input>
+						<Input id="idBoarderNum" class="cls-Padd" width="200px" editable="false"></Input>
+					</VBox>
+                </items>
+              </FlexBox>
+            </VBox>
+
+			<HBox class="destilPartHeaderKeyStyle" visible="true">
+				<VBox class="destilPartHeaderIQMISSStyle1">
+					<Label text="Request for?" design="Bold"/>
+					<Text id="fev_requstorflag" width="275px"/>
+				</VBox>
+			</HBox>
+			<HBox id="fev_sps" class="destilPartHeaderKeyStyle">
+				<VBox class="destilPartHeaderIQMISSStyle1">
+					<Label text="Do you have a domestic helper under your sponsorship??" design="Bold"/>
+					<Text id="fev_sponsorshipflag" width="275px"/>
+				</VBox>
+			</HBox>
+			<HBox id="fev_car" class="destilPartHeaderKeyStyle">
+				<VBox class="destilPartHeaderIQMISSStyle1">
+					<Label text="Do you have a car under your sponsorship??" design="Bold"/>
+					<Text id="fev_carflag" width="275px"/>
+				</VBox>
+			</HBox>
+			<HBox id="fev_vis" class="destilPartHeaderKeyStyle" visible="true">
+				<VBox class="destilPartHeaderIQMISSStyle1">
+					<Label text="Do you have visitor's under your sponsorship (Family Visit Visa)?" design="Bold"/>
+					<Text id="fev_visitorflag" width="275px"/>
+				</VBox>
+			</HBox>
+
+            <Text text="Dependents" visible="false" width="400px" class="clCSTTransfer titlrStyle"/>
+            <FlexBox>
+              <VBox>
+				<List id="idListDep" items="{FEVNEWJson>/results}" class="sapUiSmallMarginBeginEnd listVboxPad sapUiSmallMarginTop cls-Padd">
+					<CustomListItem class="listVboxPad">
+						<HBox height="2rem" class="destilPartHeaderKeyStyle">
+							<items>
+								<VBox class="leftCss">
+									<items>
+										<Label text="Kaust ID" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Label text="First Name" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Label text="Middle Name" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Label text="Last Name" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+							</items>
+						</HBox>
+						<HBox height="2rem" class="destilPartHeaderKeyStyle">
+							<items>
+								<VBox class="leftCss">
+									<items>
+										<Text text="{FEVNEWJson>KaustId}" width="200px"></Text>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Text text="{FEVNEWJson>FirstName}" width="200px"></Text>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Text text="{FEVNEWJson>MiddleName}" width="200px"></Text>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Text text="{FEVNEWJson>LastName}" width="200px"></Text>
+									</items>
+								</VBox>
+							</items>
+						</HBox>
+						<HBox height="2rem" class="destilPartHeaderKeyStyle">
+							<items>
+								<VBox class="leftCss">
+									<items>
+										<Label text="Gender" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Label text="Nationality" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Label text="Relationship" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Label text="Iqama Number" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+							</items>
+						</HBox>
+						<HBox height="4rem" class="destilPartHeaderKeyStyle">
+							<items>
+								<VBox class="leftCss">
+									<items>
+										<Text text="{FEVNEWJson>Gender}" width="200px"></Text>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Text text="{FEVNEWJson>Nationality}" width="200px"></Text>
+									</items>
+								</VBox>
+								<VBox class="leftCss">
+									<items>
+										<Text text="{FEVNEWJson>Relationship}" width="200px"></Text>
+									</items>
+								</VBox>
+								<VBox class="leftCss listVboxPad">
+									<items>
+										<Text text="{FEVNEWJson>IqamaNo}" width="200px"></Text>
+									</items>
+								</VBox>												
+							</items>
+						</HBox>
+						<HBox height="2rem" class="destilPartHeaderKeyStyle" visible="false">
+							<items>
+								<VBox class="leftCss" visible="false">
+									<items>
+										<Label text="Passport Number" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss" visible="false">
+									<items>
+										<Label text="Passport Issue Date" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<VBox class="leftCss" visible="false">
+									<items>
+										<Label text="Passport Expiry Date" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<!-- VBox class="leftCss">
+									<items>
+										<Label text="Date of Entrance" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox -->
+								<VBox class="leftCss" visible="false">
+									<items>
+										<Label text="Border Number" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox>
+								<!-- VBox class="leftCss">
+									<items>
+										<Label text="Passport Issue Place" width="200px" class="boldCSS"></Label>
+									</items>
+								</VBox -->
+							</items>
+						</HBox>
+						<HBox height="4rem" class="destilPartHeaderKeyStyle" visible="false">
+							<items>
+								<VBox class="leftCss" visible="false">
+									<items>
+										<Text text="{FEVNEWJson>Passport}" width="200px"></Text>
+									</items>
+								</VBox>
+								<VBox class="leftCss listVboxPad" visible="false">
+									<items>
+										<!--<Text text="{FEVNEWJson>DateOfIssue}" width="200px"></Text>-->
+										<Text text="{path:'FEVNEWJson>DateOfIssue', formatter:'kaust.ui.kits.approvers.util.formatter.date2'}" width="200px"/>
+									</items>
+								</VBox>
+								<VBox class="leftCss" visible="false">
+									<items>
+										<!--<Text text="{FEVNEWJson>PpExpiryDate}"  width="200px"></Text>-->
+										<Text text="{path:'FEVNEWJson>PpExpiryDate', formatter:'kaust.ui.kits.approvers.util.formatter.date2'}" width="200px"/>
+										<!--<Text text="{ path: 'FEVNEWJson>PpExpiryDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy } }"/>-->
+									</items>
+								</VBox>
+								<!-- VBox class="leftCss listVboxPad">
+									<items>
+										<Text text="{path:'FEVNEWJson>DateOfEntrance', formatter:'kaust.ui.kits.approvers.util.formatter.date2'}" width="200px"/>
+									</items>
+								</VBox -->
+								<VBox class="leftCss listVboxPad">
+									<items>
+										<Text text="{FEVNEWJson>BorderNo}" width="200px"></Text>
+									</items>
+								</VBox>
+								<!-- VBox class="leftCss listVboxPad">
+									<items>
+										<Text text="{FEVNEWJson>PlaceOfIssue}" width="200px"></Text>
+									</items>
+								</VBox -->
+							</items>
+						</HBox>
+					</CustomListItem>
+				</List>
+              </VBox>
+            </FlexBox>
+            <VBox id="CSTAttachments" visible="false">
+              <Text text="Attachments" width="400px" class="clCSTTransfer titlrStyle"/>
+              <HBox class="destilPartHeaderKeyStyle">
+                <VBox class="destilPartHeaderFEVStyle">
+                  <Link id="idCSTatt1" emphasized="true" target="_blank" href="#" width="275px"/>
+                </VBox>
+                <VBox class="destilPartHeaderFEVStyle">
+                  <Link id="idCSTatt2" emphasized="true" target="_blank" href="#" width="275px"/>
+                </VBox>
+              </HBox>
+              <HBox class="destilPartHeaderKeyStyle">
+                <VBox class="destilPartHeaderFEVStyle">
+                  <Link id="idCSTatt3" emphasized="true" target="_blank" href="#" width="275px"/>
+                </VBox>
+                <VBox class="destilPartHeaderFEVStyle">
+                  <Link id="idCSTatt4" emphasized="true" target="_blank" href="#" width="275px"/>
+                </VBox>
+              </HBox>
+            </VBox>
+            <VBox id="FEVSelect">
+              <Text text="Select Action" width="400px" class="clDPSPTransfer titlrStyle"/>
+              <HBox class="destilPartHeaderKeyStyle">
+                <VBox class="destilPartHeaderFEVStyle">
+                  <RadioButtonGroup id="fev_select" columns="3" width="600px" selectedIndex="-1">
+                    <buttons>
+                      <RadioButton id="fev_selapp" select="onFEVSelect" groupName="FEVSelect" text="Approve" selected="false"/>
+                    </buttons>
+                    <buttons>
+                      <RadioButton id="fev_selmod" select="onFEVSelect" groupName="FEVSelect" text="Modify" selected="false"/>
+                    </buttons>
+                    <buttons>
+                      <RadioButton id="fev_selrej" select="onFEVSelect" groupName="FEVSelect" text="Reject" selected="false"/>
+                    </buttons>
+                  </RadioButtonGroup>
+                </VBox>
+              </HBox>
+            </VBox>
+            <VBox id="FEVReject">
+              <HBox class="destilPartHeaderKeyStyle">
+                <VBox class="destilPartHeaderFEVStyle1">
+                  <TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)" width="500px" liveChange="changeComment"></TextArea>
+                </VBox>
+              </HBox>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+            <List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+              <FeedListItem id="tabCommentsFEV" showIcon="false" sender="{= ${GAComments>t_name}?${GAComments>t_name}:''}" text="{GAComments>Comments}"
+                info="" timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.approvers.util.formatter.commentDate'}"/>
+            </List>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+    </content>
+    <footer>
+      <Bar>
+        <contentRight>
+          <Button id="fev_action" text="Submit" icon="sap-icon://sys-enter" type="Emphasized" press="onFEVAction"/>
+        </contentRight>
+      </Bar>
+    </footer>
+  </Page>
+</mvc:View>

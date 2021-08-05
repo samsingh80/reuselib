@@ -1,0 +1,122 @@
+_schema-version: '3.2'
+ID: SER_DB_CAP
+version: 0.0.1
+
+parameters:
+  enable-parallel-deployments: true
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install --production
+        - npx -p @sap/cds-dk cds build --production
+
+modules:
+  # ---------------- DATABASE DEPLOYER MODULE ------------------
+  - name: SER_DB_CAP-db-deployer
+  # ------------------------------------------------------------
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 1024M
+    requires:
+      - name: SER_DB_CAP-uaa
+      - name: wf_ui5_ser
+
+  # --------------------- SERVER MODULE ------------------------
+  - name: SER_DB_CAP-srv
+  # ------------------------------------------------------------
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 512M
+      disk-quota: 1024M
+    requires:
+      - name: SER_DB_CAP-uaa      
+      - name: Destination
+      - name: Connectivity
+      - name: wf_ui5_ser
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+
+  # ------------------ APP ROUTER MODULE -----------------------
+  - name: SER_DB_CAP
+  # ------------------------------------------------------------
+    type: approuter.nodejs
+    path: app
+    parameters:
+      memory: 256M
+      disk-quota: 1024M
+    requires:
+      - name: SER_DB_CAP-uaa      
+      - name: Destination
+      - name: Connectivity
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv
+          url: ~{srv-url}
+          timeout: 60000
+          forwardAuthToken: true
+      - name: node-api      
+        group: destinations
+        properties:
+          name: common
+          url: ~{node-url}
+          timeout: 60000
+          forwardAuthToken: true
+
+  - name: common
+    type: nodejs
+    path: common
+    parameters:
+        buildpack: nodejs_buildpack
+        memory: 256M
+        disk-quota: 1024M
+    requires:
+      - name: SER_DB_CAP-uaa
+    provides:
+      - name: node-api
+        properties:
+          node-url: ${default-url}
+resources:
+  # ----------------------- UAA SERVICE ------------------------
+  - name: SER_DB_CAP-uaa
+  # ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+
+
+
+
+  # ------------------- HDI CONTAINER SERVICE ------------------
+  - name: wf_ui5_ser
+  # ------------------------------------------------------------
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+    properties:
+      hdi-service-name: wf_ui5_ser
+
+  - name: Destination
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: Destination
+      
+  - name: Connectivity
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: Connectivity
+
+
+

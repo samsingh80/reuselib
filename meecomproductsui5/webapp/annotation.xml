@@ -1,0 +1,232 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/HANAXS/com/merckgroup/ecomm/webshop/services/odata/Service_Access.xsodata/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="com.merckgroup.ecomm"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ME_Ecom_Products_UI5.annotation.com.merckgroup.ecomm">
+			<!--Product-->
+			<!--Country-->
+			<Annotations Target="Metadata.ProductMasterType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<!--Post_Prod_Chg_6-->
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="COUNTRY"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_COUNTRY}"/>
+						</Record>
+						<!--Post_Prod_Chg_6-->
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="PRODUCTID"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_PRODUCTID}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="NAME"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_PRODUCTIDNAME}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="THERAPYAREANAME"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_THERAPYAREANAME}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UOM"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_UOM}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="BRAND"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_BRANDNAME}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TYPE"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_TYPE}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="WHOLESALEPRICE"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_WHOLESALEPRICE}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="N_CIFPRICE_USD"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_CIFPRICE_USD}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="N_CIFPRICE_EUR"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_CIFPRICE_EUR}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CURR"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_CURRENCY}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="COMMONPRODUCT"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_COMMONPRODUCT}"/>
+						</Record>
+						<!--Post_Prod_Chg_6-->
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ALWAYSREVIEW"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_MUSTREVIEW}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="HIGHORDERQTY"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_MAXORDQTY}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="LOWSTOCKQTY"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;PRODUCTS_DETAILS_LOWSTKQTY}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DISTRIBUTORID"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTORID}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DIST_PRODUCT_CODE"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;DIST_PRODUCT_CODE}"/>
+						</Record>
+						<!--Post_Prod_Chg_6-->
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductMasterType/NAME">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="CollectionPath" String="Products"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="NAME"/>
+									<PropertyValue Property="ValueListProperty" String="NAME"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="PRODUCTID"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductMasterType/COUNTRY">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="Country"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="COUNTRY"/>
+									<PropertyValue Property="ValueListProperty" String="COUNTRY"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductMasterType/THERAPYAREANAME">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="Therapy"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="THERAPYAREANAME"/>
+									<PropertyValue Property="ValueListProperty" String="THERAPYAREANAME"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductMasterType/BRAND">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ProductBrand"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="BRAND"/>
+									<PropertyValue Property="ValueListProperty" String="BRAND"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductMasterType/TYPE">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ProductType"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="TYPE"/>
+									<PropertyValue Property="ValueListProperty" String="TYPE"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductMasterType/COMMONPRODUCT">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="CommonProduct"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="COMMONPRODUCT"/>
+									<PropertyValue Property="ValueListProperty" String="COMMONPRODUCT"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductsType/new">
+				<Annotation Term="UI.Hidden" Bool="true"/>
+			</Annotations>
+			<Annotations Target="Metadata.ProductsType/PRODUCTNAMEID">
+				<Annotation Term="UI.Hidden" Bool="true"/>
+			</Annotations>
+			<Annotations Target="Metadata.ProductsType/NAME">
+				<Annotation Term="Common.Label" String="{@i18n&gt;Product}"/>
+			</Annotations>
+			<Annotations Target="Metadata.ProductsType/PRODUCTID">
+				<Annotation Term="Common.Label" String="Product ID"/>
+			</Annotations>
+			<Annotations Target="Metadata.ProductsType/NAME">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="Products"/>
+						<PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="NAME"/>
+									<PropertyValue Property="ValueListProperty" String="NAME"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ProductsType/PRODUCTID">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record Type="com.sap.vocabularies.Common.v1.ValueListType">
+						<PropertyValue Property="CollectionPath" String="Products"/>
+						<PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="PRODUCTID"/>
+									<PropertyValue Property="ValueListProperty" String="PRODUCTID"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

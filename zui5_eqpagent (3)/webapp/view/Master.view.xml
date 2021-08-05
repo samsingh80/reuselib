@@ -1,0 +1,46 @@
+<mvc:View controllerName="com.kaust.zui5eqpagent.controller.Master"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+    <Page title="{i18n>title}">
+        <subHeader>
+            <Bar>
+                <contentLeft>
+                    <VBox>
+                        <Input id="srchfld" type="Text" width="300px" liveChange="onType" submit="searchreq" placeholder="{i18n>ENT_REQ}" />
+                        <SearchField id="srch" visible="false" search="handleSearch" showRefreshButton="true" width="100%">
+                        </SearchField>
+                    </VBox>
+                </contentLeft>
+            </Bar>
+        </subHeader>
+
+        <List id="list" visible="false" mode="{device>/listMode}" items="{oListModel>/}" includeItemInSelection="true" growing="true" growingThreshold="50">
+            <ObjectListItem type="Active" press="handleListItemPress" title="{oListModel>request_id}" number="{oListModel>kaust_id}" app:stage="{oListModel>stage}" app:subServiceCode="{oListModel>sub_service_code}">
+                <attributes>
+                    <ObjectAttribute text="{ 
+						path: 'oListModel>status',
+						formatter: '.formatter.statusCodeText'						
+					}" visible="false"/>
+                    <ObjectAttribute text="{oListModel>status}" visible="false" />
+                    <ObjectAttribute text="{i18n>EXP}" visible="false"/>
+                </attributes>
+                <firstStatus>
+                    <ObjectStatus text="{ 
+					path: 'oListModel>sub_service_code',
+					formatter: '.formatter.subServiceDescription'
+				}" />
+                </firstStatus>
+                <secondStatus>
+                    <ObjectStatus text="{ 
+						path: 'oListModel>status',
+						formatter: '.formatter.statusCodeText'						
+					}" />
+                </secondStatus>
+            </ObjectListItem>
+        </List>
+
+    </Page>
+
+</mvc:View>

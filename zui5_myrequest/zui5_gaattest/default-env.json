@@ -1,0 +1,15 @@
+{
+ 
+    "destinations": [
+      {
+        "name": "S4HANA",
+        "Type": "HTTP",
+        "Authentication": "BasicAuthentication",
+        "ProxyType": "Internet",
+        "URL": "https://lazaedq.kaust.edu.sa:8006/sap/opu/odata/sap/",
+        "User": "rajagos",
+        "Password": "Sri@kaust1234"
+      }
+    ]
+  
+}

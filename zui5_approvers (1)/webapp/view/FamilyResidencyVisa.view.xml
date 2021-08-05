@@ -1,0 +1,231 @@
+<mvc:View
+xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:form="sap.ui.layout.form"
+ xmlns="sap.m"
+controllerName="com.kaust.zui5approvers.controller.FamilyResidencyVisa"
+ xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml"
+>
+	<html:style>.leftCss{text-align: left !important;}
+		.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel { text-align:
+		start!important; float: none; position: relative; } .sapMITBContent { background-color: #dcedf0; } sapMTB { height: 3rem; background:
+		transparent; border-bottom: none !important; } .labelpadding {padding-left: 10%;}</html:style>
+	<Page title="Family Residency Visa Approval Screen">
+		<content>
+			<f:SimpleForm labelSpanL="4" labelSpanM="5" labelSpanS="6" columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1" maxContainerCols="2"
+				layout="ResponsiveGridLayout" class="sapUiMediumMarginBeginEnd">
+				<f:content>
+					<TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)" width="100%"></TextArea>
+					<core:Title text=""></core:Title>
+				</f:content>
+			</f:SimpleForm>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Family Residency Visa Information">
+						<!-- Requester Information -->
+						<f:SimpleForm id="idRequesterForm" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="3"
+							labelSpanS="12" title="Requester Information" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="2" emptySpanM="4" emptySpanS="0"
+							columnsXL="1" columnsL="2" columnsM="1" singleContainerFullSize="false" class="sapUiMediumMarginBeginEnd">
+							<f:content>
+								<core:Title level="H4" text="Request ID: {oUserModel>/oUserData/RequestId}"/>
+								<Label text="Name"/>
+								<Text text="{Details>/FirstName} {Details>/MiddleName} {Details/LastName}"/>
+								<Label text="Kaust Id"/>
+								<Text text="{Details>/KaustID}"/>
+								<Label text="Nationality"/>
+								<Text text="{Details>/Nationality}"/>
+								<Label text="Gender"/>
+								<Text text="{Details>/Gender}"/>
+								<Label id="idIqamalbl"/>
+								<Text id="idIqamaval"/>
+								<Label text="Requester Type"/>
+								<Text text="{Details>/Type}"/>
+								<core:Title text=" "/>
+								<Label text="Passport"/>
+								<Text text=" {Details>/Passport}"/>
+								<Label text="Cost Center"/>
+								<Text text="{Details>/Costcenter}"/>
+								<Label text="Position"/>
+								<Text text="{Details>/Position}"/>
+								<Label text="Department"/>
+								<Text text="{Details>/Deptname}"/>
+								<Label text="Mobile"/>
+								<Text text="{Details>/Mobile}"/>
+								<Label id="idVisaLbl" text="Visa Number"/>
+								<Text id="idVisaNo"/>
+							</f:content>
+						</f:SimpleForm>
+						<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="12" emptySpanL="0" labelSpanM="12" emptySpanM="0"
+							singleContainerFullSize="false" class="sapUiMediumMarginBeginEnd">
+							<f:content>
+								<Toolbar>
+									<Title text="Degree Certificate Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Degree certificate from KSA" design="Bold"></Label>
+								<Text text="{= ${oDegJson>/Ksadegree}==='1' ? 'Yes' : 'No'}" id="idDC"></Text>
+								<Label id="idAClbl" text="Degree certificate attested from Saudi embassy in your home country" design="Bold"
+									visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Label>
+								<Text text="{= ${oDegJson>/Attesteddegree}==='1' ? 'Yes' : 'No'}" id="idAC" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Text>
+								<Label id="idTClbl" text="Degree certificate translated to Arabic from an authorized office" design="Bold"
+									visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Label>
+								<Text text="{= ${oDegJson>/Translateddegree}==='1' ? 'Yes' : 'No'}" id="idTC" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Text>
+								<Label id="idMClbl" text="Degree certificate attested by MOFA" design="Bold" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Label>
+								<Text text="{= ${oDegJson>/Mofadegree}==='1' ? 'Yes' : 'No'}" id="idMC" visible="{= ${oDegJson>/Ksadegree}==='1' ? false : true}"></Text>
+							</f:content>
+						</f:SimpleForm>
+						<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="12" emptySpanL="0" labelSpanM="12" emptySpanM="0"
+							singleContainerFullSize="false" class="sapUiMediumMarginBeginEnd" 
+							visible="{= ${oVisaJson>/Relationship}==='Spouse' ? true : false}">
+							<f:content>
+								<Toolbar>
+									<Title text="Marriage Certificate Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Marriage certificate from KSA" design="Bold"></Label>
+								<Text text="{= ${oVisaJson>/Ksamarriage}==='1' ? 'Yes' : 'No'}" id="idMrgC"></Text>
+								<Label id="idMrgAClbl" text="Marriage certificate attested from Saudi embassy in your home country" design="Bold"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Attestmarriage}==='1' ? 'Yes' : 'No'}" id="idMrgAC" visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Text>
+								<Label id="idMrgTClbl" text="Marriage certificate translated to Arabic from an authorized office" design="Bold"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Translatmarriage}==='1' ? 'Yes' : 'No'}" id="idMrgTC"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Text>
+								<Label id="idMrgMClbl" text="Marriage certificate attested by MOFA" design="Bold"
+									visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson>/Mofamarriage}==='1' ? 'Yes' : 'No'}" id="idMrgMC" visible="{= ${oVisaJson>/Ksamarriage}==='1' ? false : true}"></Text>
+							</f:content>
+						</f:SimpleForm>
+						<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="12" emptySpanL="0" labelSpanM="12" emptySpanM="0"
+							singleContainerFullSize="false" class="sapUiMediumMarginBeginEnd" 
+							visible="{= (${oVisaJson1>/Relationship}==='Child' || ${oVisaJson1>/Relationship}==='Stepchild') ? true : false}">
+							<f:content>
+								<Toolbar>
+									<Title text="Birth Certificate Details" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Birth certificate(s) from KSA" design="Bold"></Label>
+								<Text text="{= ${oVisaJson1>/Ksabirth}==='1' ? 'Yes' : 'No'}" id="idBDC"></Text>
+								<Label id="idBAClbl" text="Birth certificate(s) attested from Saudi embassy in your home country" design="Bold"
+									visible="{= ${oVisaJson1>/Ksabirth}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson1>/Attestbirth}==='1' ? 'Yes' : 'No'}" id="idBAC" visible="{= ${oVisaJson1>/Ksabirth}==='1' ? false : true}"></Text>
+								<Label id="idBTClbl" text="Birth certificate(s) translated to Arabic from an authorized office" design="Bold"
+									visible="{= ${oVisaJson1>/Ksabirth}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson1>/Translatebirth}==='1' ? 'Yes' : 'No'}" id="idBTC" visible="{= ${oVisaJson1>/Ksabirth}==='1' ? false : true}"></Text>
+								<Label id="idBMClbl" text="Birth certificate(s) attested by MOFA" design="Bold" visible="{= ${oVisaJson1>/Ksabirth}==='1' ? false : true}"></Label>
+								<Text text="{= ${oVisaJson1>/Mofabirth}==='1' ? 'Yes' : 'No'}" id="idBMC" visible="{= ${oVisaJson1>/Ksabirth}==='1' ? false : true}"></Text>
+							</f:content>
+						</f:SimpleForm>
+						<Table id="idFamilyDetails" headerText="Family Details" items="{frJson>/results}" class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop">
+							<columns>
+								<Column hAlign="Left" width="9%">
+									<Text text="First Name"/>
+								</Column>
+								<Column width="9%">
+									<Text text="Middle Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Last Name"/>
+								</Column>
+								<Column hAlign="Left" width="6%">
+									<Text text="Gender"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Nationality"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Relationship"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Religion"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Coming From"/>
+								</Column>
+								<Column hAlign="Left">
+									<Text text="Action" class="labelpadding"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{frJson>FirstName}"/>
+										<Text text="{frJson>MiddleName}"/>
+										<Text text="{frJson>LastName}"/>
+										<Text text="{frJson>Gender}"/>
+										<Text text="{frJson>nation}"/>
+										<Text text="{frJson>Relationship}"/>
+										<Text text="{frJson>ReliName}"/>
+										<Text text="{frJson>CountryOfOrigin}"/>
+										<RadioButtonGroup id="idAction" columns="3" selectedIndex="-1">
+											<buttons>
+												<RadioButton groupName="Approval" text="Approve"></RadioButton>
+											</buttons>
+											<buttons>
+												<RadioButton groupName="Approval" text="Modify"></RadioButton>
+											</buttons>
+											<buttons>
+												<RadioButton groupName="Approval" text="Reject"></RadioButton>
+											</buttons>
+										</RadioButtonGroup>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0"
+							singleContainerFullSize="false" class="sapUiMediumMarginBeginEnd">
+							<f:content>
+								<Toolbar>
+									<Title text="Attachments" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<VBox>
+									<VBox class="destilPartHeaderKeyStyle">
+										<VBox class="destilPartHeaderDSTStyle">
+											<FormattedText htmlText="&lt;strong&gt;{Details>/FirstName} {Details>/LastName}&lt;/strong&gt;"></FormattedText>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link emphasized="true" id="idIqamaAttach" href="{filereadModel>/fileCheckIqama/URL}" target="_blank"/>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link emphasized="true" text="Passport" href="{filereadModel>/fileCheckPassport/URL}" target="_blank"/>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle" id="idReqSaudiVisa">
+											<Link id="idVisaLink" emphasized="true" text="Saudi Visa" href="{filereadModel>/fileCheckSAVisa/URL}" target="_blank"/>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link emphasized="true" text="Degree Certificate" href="{filereadModel>/fileCheckDegreeCert/URL}" target="_blank"/>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Attested Degree Certificate" emphasized="true" href="{filereadModel>/attestedDegree/URL}"
+												visible="{= ${filereadModel>/attestedDegree/URL}?true:false}" target="_blank"></Link>
+										</VBox>
+										<VBox class="destilPartHeaderDSTStyle">
+											<Link text="Translated Degree Certificate" emphasized="true" href="{filereadModel>/translatedDegree/URL}"
+												visible="{= ${filereadModel>/translatedDegree/URL}?true:false}" target="_blank"></Link>
+										</VBox>
+									</VBox>
+									<VBox class="destilPartHeaderKeyStyle" id="idhb"></VBox>
+									<VBox class="destilPartHeaderKeyStyle" id="idhb1"></VBox>
+								</VBox>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabComments" showIcon="false" sender="{= ${GAComments>t_name}?${GAComments>t_name}:''}" text="{GAComments>Comments}"
+								info="" timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.approvers.util.formatter.commentDate'}"/>
+						</List>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="approveButton" text="Submit" icon="sap-icon://sys-enter" type="Emphasized" press="handleAction"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

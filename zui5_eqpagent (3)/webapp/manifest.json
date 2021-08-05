@@ -1,0 +1,170 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.kaust.zui5eqpagent",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "crossNavigation": {
+            "inbounds": {
+                "com-kaust-zui5eqpagent-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "eqpagent",
+                    "action": "display",
+                    "title": "Transfer Equipment List",
+                    "subTitle": "",
+                    "icon": ""
+                }
+            }
+        },
+        "dataSources": {
+            "KITS": {
+                "uri": "v2/kitservice/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "GA": {
+                "uri": "v2/gaservice",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.kaust.zui5eqpagent.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.kaust.zui5eqpagent.i18n.i18n"
+                }
+            },
+            "oDataModel": {
+                "dataSource": "KITS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+             "oGAModel": {
+                "dataSource": "GA",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+         "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.kaust.zui5eqpagent.view",
+                "controlId": "fcl",
+                "controlAggregation": "midColumnPages",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "Routeapp",
+                    "pattern": ":layout:",
+                    "target": [
+                        "Master",
+                        "Detail"
+                    ]
+                },
+                {
+                    "name": "detail",
+                    "pattern": "conf/{layout}/{path}",
+                    "target": [
+                        "Master",
+                        "Detail"
+                    ]
+                }
+            ],
+            "targets": {
+                "Targetapp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "App",
+                    "viewName": "App"
+                },
+                "Master": {
+                    "viewType": "XML",
+                    "viewName": "Master",
+                    "controlAggregation": "beginColumnPages"
+                },
+                "Detail": {
+                    "viewType": "XML",
+                    "viewName": "Detail",
+                    "controlAggregation": "midColumnPages"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "com-kaust-zui5eqpagent"
+    }
+}

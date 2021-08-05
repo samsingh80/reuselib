@@ -1,0 +1,141 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Requester Information">
+						<form:SimpleForm id="userInfoForm" minWidth="1024">
+							<core:Title text="Requester Information" />
+							<Label text="Name" />
+							<Text text="{/d/FirstName}" />
+							<Label text="KAUST Id" />
+							<Text text="{/d/KaustID}" />
+							<!-- Roopali - add User KASUT Network ID -->
+							<Label text="KAUST Network Id" />
+							<Text text="{/d/UserId}" />							
+							<Label text="E-mail" />
+							<Text text="{/d/Email}" />
+							<Label text="Office Telephone" />
+							<Text text="{/d/Office}" />
+							<Label text="Mobile Telephone" />
+							<Text text="{/d/Mobile}" />
+							<Label text="Job Title" />
+							<Text text="{/d/Position}" />
+							<Label text="Department" />
+							<Text text="{/d/Deptname}" />
+							<Label text="Billed Cost Center" />
+							<Text text="{/d/Costcenter}" />
+						</form:SimpleForm>
+						
+						<form:SimpleForm id="userInfoFormDC" tooltip="Requester Information" minWidth="1024" visible="false">
+							<core:Title text="Requester Information" />
+							<Label text="Name" />
+							<Text text="{/d/FirstName}" />
+							<Label text="KAUST Id" />
+							<Text text="{/d/KaustID}" />
+							<!-- Roopali - add User KASUT Network ID -->
+							<Label text="KAUST Network Id" />
+							<Text text="{/d/UserId}" />
+							<Label text="E-mail" />
+							<Text text="{/d/Email}" />
+							<Label text="Office Telephone" />
+							<Text text="{/d/Office}" />
+							<Label text="Mobile Telephone" />
+							<Text text="{/d/Mobile}" />
+							<Label text="Job Title" />
+							<Text text="{/d/Position}" />
+							<Label text="Department" />
+							<Text text="{/d/Deptname}" />
+							<Label text="Billed Cost Center" />
+							<Text text="{/d/Costcenter}" />
+							<Label text="Nationality" />
+                            <Text id="nationality" text="{/d/Nationality}" />
+                            <Label text="Kaust ID Expiry Date" />
+                            <Text id="KexpDate" text="{path : '/d/KaustIdExpiry', formatter: 'kaust.ui.kits.myRequest.util.Formatter.fnDateFormatter'}" />
+                            <Label text="Vendor Company" />
+                            <Text id="vendorName" text="{/d/VendorDescription}" />
+						</form:SimpleForm>
+					</IconTabFilter>
+					<!-- <IconTabFilter -->
+					<!-- icon="sap-icon://history"> -->
+					<!-- <form:SimpleForm -->
+					<!-- minWidth="1024" > -->
+					<!-- <core:Title text="History" /> -->
+					<!-- <Label text="Name"/> -->
+					<!-- <Text text="{/FirstName}" /> -->
+					<!-- <Label text="City"/> -->
+					<!-- <Text text="{BusinessPartner/City}, {BusinessPartner/PostalCode}" /> -->
+					<!-- <Label text="Street"/> -->
+					<!-- <Text text="{BusinessPartner/Street}" /> -->
+					<!-- </form:SimpleForm> -->
+					<!-- </IconTabFilter> -->
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabComments" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info="" timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+						  }" />
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistory" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+						<IconTabSeparator icon="" />
+						
+					<IconTabFilter key="Justification" id="justificationtab" icon="sap-icon://request" tooltip="Justification"
+						visible="false">
+						<l:Grid defaultSpan="L12">
+							<Toolbar>
+								<Title text="Justification" level="H5"
+									titleStyle="H5" />
+							</Toolbar>
+						</l:Grid>
+						<form:SimpleForm id="JustificationTabFrm" labelSpanL="4"
+							labelSpanM="5" labelSpanS="6" columnsL="2" columnsM="2"
+							emptySpanL="1" emptySpanM="1" maxContainerCols="2"
+							layout="ResponsiveGridLayout">
+							<form:content>
+								<Label text="Justification">
+									<layoutData>
+										<l:GridData span="L3 M3 S12" />
+									</layoutData>
+								</Label> 
+								<TextArea id="justifctnTab" rows="4" enabled="false">
+									<layoutData>
+										<l:GridData span="L9 M9 S12" />
+									</layoutData>
+								</TextArea>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

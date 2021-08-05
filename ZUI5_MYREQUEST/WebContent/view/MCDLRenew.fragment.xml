@@ -1,0 +1,211 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="MCDLRENEWGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Iqama Issuance">
+						<VBox id="MCDLRENEWReject">
+							<Text text="Rejection Comments" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Text id="MCDLRENEWfincomments"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<Text id="MCDLRENEWTXT" text="Motorcycle Driving License Renewal" width="400px" class="clCSTTransfer chdtitlrStyle"/>					
+						<Table id="MCDLRENEWDetails" items="{MCDLRENEWJson>/results}" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+							<columns>
+								<Column width="6%">
+									<Text text="KAUST ID"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="First Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Middle Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Last Name"/>
+								</Column>
+								<Column hAlign="Left" width="6%">
+									<Text text="Gender"/>
+								</Column>
+								<!--<Column hAlign="Left" width="5%">-->
+								<!--	<Text text="Age"/>-->
+								<!--</Column>-->
+								<Column hAlign="Left" width="9%">
+									<Text text="Nationality"/>
+								</Column>
+								<!-- Column hAlign="Left" width="9%">
+									<Text text="Attested"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Translated"/>
+								</Column -->
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{MCDLRENEWJson>KaustId}"/>
+										<Text text="{MCDLRENEWJson>Fname}"/>
+										<Text text="{MCDLRENEWJson>Mname}"/>
+										<Text text="{MCDLRENEWJson>Lname}"/>
+										<Text text="{MCDLRENEWJson>Gender}"/>
+										<Text text="{MCDLRENEWJson>Nationality}"/>
+										<!-- Link text="Birth Cert" emphasized="true" target="_blank" href="{cstJson>AttLink}" visible="false"/>
+										<Link text="Birth Cert" emphasized="true" target="_blank" href="{cstJson>TrnLink}" visible="false"/ -->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+							<VBox id="MCDLRDetails">
+							<Text text="" width="400px" class="clCSTTransfer chdtitlrStyle"/>
+							<HBox>
+								<VBox class="destilPartHeaderDLRStyle1">
+								<!-- Label labelFor="rbg2"  id="RbgLabel" text="Did you renew your driving license through MOI Absher?"/>
+									<RadioButtonGroup select="onSelect" id="rbgDLR" editable="false" columns="2" selectedIndex="2" >
+										<RadioButton id="RBDLR-1" text="Yes"/>
+										<RadioButton id="RBDLR-2" text="No"/>
+									</RadioButtonGroup -->
+									<Label text="Did you renew your driving license through MOI Absher?"/>
+									<Text id="txt_MCDLR" width="275px"/>
+							</VBox>	
+							</HBox>
+						</VBox>
+							<VBox id="MCDLRAttachments">
+							<Text text="Attachments"  width="400px" class="clCSTTransfer chdtitlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle">
+									<Link id="MCDLRatt" text="MOI Renewal Letter" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						
+						
+						<VBox id="MCDLRENEWPrefHead">
+							<Text text="Manage your Preference" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox id="MCDLRENEW_collec" class="destilPartHeaderKeyStyle">
+											<Label text="Collection" class="keyClass"/>
+						                    <RadioButtonGroup id="MCDLRENEWCollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <RadioButton text="Self Drop off"/>
+						                        <RadioButton text="UPS Pickup" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Delivery" class="keyClass"/>
+						                    <RadioButtonGroup id="MCDLRENEWDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <RadioButton text="Self Pick Up"/>
+						                        <RadioButton text="UPS Delivery" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="MCDLRENEWPrefBody">
+							<Text text="Preference Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Name:" class="keyClass"/>
+											<Text id="MCDLrenewcpdname"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="MCDLrenewcpdkaustid"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="MCDLrenewcpdmobile"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Building Name / Number:" class="keyClass"/>
+											<Text id="MCDLrenewcpdbldno"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Level:" class="keyClass"/>
+											<Text id="MCDLrenewcpdlevel"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Room No / Cubicle:" class="keyClass"/>
+											<Text id="MCDLrenewcpdbldname"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="MCDLRENEWTracking">
+							<Text text="Tracking Details" class="clIqamaIssue chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Tracking Number:" class="keyClass"/>
+											<Text id="MCDLRENEWTrackingNum"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Expeditor:" class="keyClass"/>
+											<Text id="MCDLRENEWExpeditor"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsDLRENEW" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info="" timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate'
+						  }" />
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistoryDLRENEW" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

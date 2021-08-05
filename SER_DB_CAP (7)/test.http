@@ -1,0 +1,913 @@
+### ------------------------------------------------------------------------
+# Browse Access Request with header
+###
+http://localhost:4004/v2/kitservice/AccessRequest?&$expand=header,log
+
+### ------------------------------------------------------------------------
+# Browse Access Request with header with key
+###
+http://localhost:4004/v2/kitservice/AccessRequest(request_id='12345678')?&$expand=header,log
+
+### ------------------------------------------------------------------------
+# Browse tha header from accessrequest
+###
+http://localhost:4004/v2/kitservice/AccessRequest(request_id='R1620877401970')/header(request_id='R1620877401970')
+
+
+### ------------------------------------------------------------------------
+# Create Access Request with header and log
+POST http://localhost:4004/v2/kitservice/AccessRequest
+Content-Type: application/json
+
+{
+                
+                "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+                "comments": "",
+                "location": "Chennai",
+                "data2enc": "",
+                "data2oth": "",
+                "datasize": "",
+                "locationin": "",
+                "isagree": "",
+                "efirst_name": "",
+                "emiddle_name": "",
+                "elast_name": "",
+                "eemail": "",
+                "destsys": "",
+                "vpnexpdate": null,
+                "sr_number": "S1224789",
+                "header":{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "SU03",
+                    "service_code": "S002",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+### ------------------------------------------------------------------------
+# Browse Gemail with header
+###
+http://localhost:4004/v2/kitservice/Gemail?&$expand=item,header,log
+
+
+### ------------------------------------------------------------------------
+# Create Gemail with item ,header and log
+POST http://localhost:4004/v2/kitservice/Gemail
+Content-Type: application/json
+
+{
+                
+                "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+                "grpdisplayname"  : "BTP",
+                "grpemail"        : "BTP@cognizant.com",
+                "owneremail"      : "Thajunniza.M.A@cognizant.com",
+                "coowneremail"    : "Thajunniza.M.A@cognizant.com",
+                "mcomments"       : "Test",
+                "accountdesc"     : "BTP Account",
+                "item":[
+                    {
+                  "itm_sequence" : 1,
+                  "grpmember"    : "Thaj",
+                  "authsender"   : "Niza"
+                    },
+                     {
+                  "itm_sequence" : 2,
+                  "grpmember"    : "Esaki",
+                  "authsender"   : "Siva"
+                    }
+
+                ],
+                "header":[{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "SU03",
+                    "service_code": "S002",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+### ------------------------------------------------------------------------
+# Browse SecurityIncidentRequest with header
+###
+http://localhost:4004/v2/kitservice/SecurityIncidentRequest?&$expand=header,log            
+
+
+
+### ------------------------------------------------------------------------
+# Create SecurityIncidentRequest with header and log
+POST https://cfdevelopment-cts---ui5---wf-developments-ser-db-cap-srv.cfapps.eu20.hana.ondemand.com/v2/kitservice/SecurityIncidentRequest
+Content-Type: application/json
+
+{
+                
+                "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+                "comments"       : "Test",
+                "location"         : "Chennai",
+                "incident_type"    : "Test",
+                "suspected_source" : "Src1",
+                "scan_priority"    : "High",
+                "sr_number"        : "SR1234",
+                "ip_address"       : "10.234.50.78",              
+                "header":[{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "SU03",
+                    "service_code": "S002",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "76",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+
+### ------------------------------------------------------------------------
+# Browse PortActivationRequest with header
+###
+http://localhost:4004/v2/kitservice/PortActivationRequest?&$expand=header,log            
+
+
+### ------------------------------------------------------------------------
+# Create PortActivationRequest with header and log
+POST http://localhost:4004/v2/kitservice/PortActivationRequest
+Content-Type: application/json
+
+{
+                
+                "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+                "requesttype"     : 2,
+                "port_tag_number" : "P123",
+                "service_type"    : "test",
+                "crmsrno"         : "crm123",
+                "l_building"      : "Test build",
+                "l_level"         : "Level5",
+                "l_room"          : "Conf Room",
+                "ip_address"      : "10.29.234",             
+                "header":[{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "SU03",
+                    "service_code": "S002",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+### ------------------------------------------------------------------------
+# Browse Email with header
+###
+http://localhost:4004/v2/kitservice/Email?&$expand=item,header,log       
+
+### ------------------------------------------------------------------------
+# Create Email with item ,header and log
+POST http://localhost:4004/v2/kitservice/Email
+Content-Type: application/json
+
+{
+                
+                "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+                "requesttype"     : "test",
+                "remail"  : "BTP@cognizant.com",
+                "displayname"        : "Thaj",
+                "owneremail"      : "Thajunniza.M.A@cognizant.com",                
+                "accountdesc"     : "BTP Account",
+                "ruserid"    : "thaj123",
+                "mcomments"       : "Test",
+                "item":[
+                    {
+                  "itm_sequence" : 1,
+                  "delegates": "Del1"
+                    },
+                     {
+                  "itm_sequence" : 2,
+                  "delegates": "Del2"
+                    }
+
+                ],             
+                "header":{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "SU03",
+                    "service_code": "S002",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "2021-05-15T09:56:10.339Z",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+### ------------------------------------------------------------------------
+# Browse AdminRightsReq with header
+###
+http://localhost:4004/v2/kitservice/AdminRightsReq?&$expand=header,log    
+
+### ------------------------------------------------------------------------
+# Create AdminRightsReq with header and log
+POST http://localhost:4004/v2/kitservice/AdminRightsReq
+Content-Type: application/json
+
+{
+                
+                "first_name": "Sridhar",
+                "middle_name": "test",
+                "last_name": "Rajagopal",
+                "email": "Sridhar@cognizant.com",
+                "mobile_no": "1234599193",
+                "office_no": "",
+                "rept_manager": "ABC",
+                "department_name": "SCP",
+                "position_text": " Lead",
+                "custodian"       : "X",
+                "justification"   : "test",
+                "tagnumber"       : "TAG124324",
+                "operatingsys"    : "WIndows10",
+                "expirydate"      : "2021-05-15T09:56:10.339Z",
+                "custodian_usrid" : "Cust123",
+                "linux_ip"        : "10.45.67",
+                "crmsrno"         : "CRM123",
+                "userid_ext"      : "Abdulltm",                        
+               "header":{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "0054",
+                    "service_code": "0054",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "X",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "xyz123",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "rajagos"}]
+                
+            }
+
+### ------------------------------------------------------------------------
+# Browse VPNRequest with header
+###
+http://localhost:4004/v2/kitservice/VPNRequest?&$expand=header,log   
+
+### ------------------------------------------------------------------------
+# Create VPNRequest with header and log
+POST http://localhost:4004/v2/kitservice/VPNRequest
+Content-Type: application/json
+
+{
+                
+               "name":"Thajunniza",     
+               "email"  : "Thajunniza.M.A@cognizant.com",  
+               "mobile_no" : "9840799190",
+               "office_no" : "9840799190",
+               "requesttype":"Mobile", 
+               "kaust_id": "Abdulltm",    
+               "efirst_name":"Thaj", 
+               "emiddle_name":"Niza",
+               "elast_name" : "M A",  
+               "eemail": "Thajunniza.M.A@cognizant.com",      
+               "eipaddress": "123.45.6778",
+               "justification" : "VPN Req Test",      
+               "adid" : "Test",         
+               "header":[{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "0055",
+                    "service_code": "0016",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+### ------------------------------------------------------------------------
+# Browse Vulnerabilityscan with header
+###
+http://localhost:4004/v2/kitservice/Vulnerabilityscan?&$expand=header,log   
+
+### ------------------------------------------------------------------------
+# Create Vulnerabilityscan with header and log
+POST http://localhost:4004/v2/kitservice/Vulnerabilityscan
+Content-Type: application/json
+
+          {                
+                "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+                "comments"         : "Test VSCAN",
+                "location"         : "Valasaravakkam",
+                "scan_type"        : "CTSCAN",
+                "scan_start"       : "2021-05-13",
+                "scan_end"         : "2021-05-13",
+                "scan_time"        : "14:58:35",
+                "operating_system" : "Windows 8",
+                "ip_address"       : "12.45.6575",
+                "sr_number"        : "SR3456",
+                "scan_priority"    :  "High",         
+                "header":[{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "0019",
+                    "service_code": "0010",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+
+### ------------------------------------------------------------------------
+# Browse TERRequest with header
+###
+http://localhost:4004/v2/kitservice/TERRequest?&$expand=members,pow,sow,header,log             
+
+
+### ------------------------------------------------------------------------
+# Create TERRequest with members,pow,sow,header and log
+POST http://localhost:4004/v2/kitservice/TERRequest
+Content-Type: application/json
+
+{
+                
+               "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+                "workpermit": "Saudi Permit", 
+                "startdate": "2021-05-13", 
+                "starttime"        : "14:58:35",  
+                "enddate": "2021-05-13",    
+                "endtime"        : "14:58:35",    
+                "l_building" : "Rizwana Apartment", 
+                "l_level":  "2",    
+                "l_room": "203",
+                "members":[{
+                   "sequence_number":1,  
+                   "kaustid": "Abdulltm",        
+                   "vms_control_num": "V1",
+                   "name": "Thaj"           
+                }],
+                "pow":[{
+                   "sequence_number":1,         
+                   "circuittype": "AD",
+                   "equipmentnumbner": "EQ2424"           
+                }],   
+                "sow":[{
+                   "sow":"sow1",         
+                   "sow_comments": "SOW Test",
+                   "power_backup": "X"           
+                }],          
+               "header":[{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "0055",
+                    "service_code": "0016",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+
+### ------------------------------------------------------------------------
+# Browse All Request 
+###
+GET http://localhost:4004/v2/kitservice/AllRequests
+sub_service_code:0011
+request_id:R1621406925222
+   
+
+
+### ------------------------------------------------------------------------
+# Browse All Request 
+###
+http://localhost:4004/v2/kitservice/Infra_DetailSet(k_building='BUILDING 14',k_level='3',k_room='MDR R13')/Set 
+
+
+### ------------------------------------------------------------------------
+# Get Infra_DetailSet
+GET http://localhost:4004/v2/kitservice/Infra_DetailSet
+k_building:BUILDING 2
+
+### ------------------------------------------------------------------------
+# Get Infra_DetailSet
+GET http://localhost:4004/v2/kitservice/Infra_DetailSet
+k_building:BUILDING 2
+k_level:4
+k_room:ROOM 4116 (TER 19)
+
+### ------------------------------------------------------------------------
+# Get Infra_DetailSet
+http://localhost:4004/v2/kitservice/Infra_DetailSet
+
+
+
+### ------------------------------------------------------------------------
+# Create Infra_DetailSet
+POST http://localhost:4004/v2/kitservice/Infra_DetailSet
+Content-Type: application/json
+
+{
+                
+               "sequence_number": 10,
+                "k_level"         : "4",
+                "k_room"          : "ROOM 4103 (TER 18)",
+                "k_building"      : "BUILDING 2",
+                "bpc_equip"       :"",
+                "ec_equip"        :"",
+                "pc_equip"        :"RPS(AS-3750-BDC-02-01)"
+}
+                
+
+
+#### ------------------------------------------------------------------------
+# Browse Vsm with header
+###
+http://localhost:4004/v2/kitservice/Vsm?&$expand=header,log   
+
+#### ------------------------------------------------------------------------
+# Browse Vsm with request id
+###
+http://localhost:4004/v2/kitservice/Vsm?&$expand=header,log 
+request_id:R1621406925222
+
+### ------------------------------------------------------------------------
+# Create Vsm with header and log
+POST http://localhost:4004/v2/kitservice/Vsm
+Content-Type: application/json
+
+{
+  "itm_sequence": "1",
+  "first_name": "Thaj",
+  "middle_name": "Niza",
+  "last_name": "M A",
+  "email": "Thajunniza.M.A@cognizant.com",
+  "mobile_no": "9840799193",
+  "office_no": "",
+  "rept_manager": "Sridhar",
+  "department_name": "SCP",
+  "position_text": "UI5 Lead",
+  "aemail": "Thajunniza.M.A@cognizant.com",
+  "eventlocation": "Saudi",
+  "attendees": "10",
+  "bldgname": "BUILDING 2",
+  "bldglevel": "4",
+  "roomno": "ROOM 4116 (TER 19)",
+  "confroom": "ROOM 4116 (TER 19)",
+  "foodservices": "X",
+  "recording": "X",
+  "presentation": "X",
+  "layout": "test",
+  "hostuserid": "TST_EMPLOYEE",
+  "hostusername": "Thaj",
+  "ishost": "X",
+  "eventname": "Client Meeting",
+  "adevent": "X",
+  "starttime": "10:00:00",
+  "endtime": "12:00:00",
+  "rdevent": "X",
+  "rstartdate": "2021-05-13",
+  "renddate": "2021-05-13",
+  "daily": "X",
+  "monthly": "X",
+  "weekly": "X",
+  "flipchart": "X",
+  "others": "X",
+  "avsupport": "X",
+  "laptop": "X",
+  "clicker": "X",
+  "adapter": "X",
+  "mphone": "X",
+  "speakers": "X",
+  "projector": "X",
+  "monitor": "X",
+  "videowebconf": "X",
+  "protocol": "test",
+  "ipaddress": "10.234.56",
+  "contact": "Sridhar",
+  "cemail": "Thajunniza.M.A@cognizant.com",
+  "webex": "X",
+  "externalmail": "Thajunniza.M.A@cognizant.com",
+  "confrecord": "X",
+  "lpublic": "X",
+  "lprivate": "X",
+  "title": "Conf room booking",
+  "presenter": "thaj",
+  "department": "BTP",
+  "comments": "Conf room booking",
+  "mcomments": "Conf room booking",
+  "header": [
+    {
+      "userid": "Abdulltm",
+      "sub_service_code": "0011",
+      "service_code": "0009",
+      "status": 1,
+      "process_id": "",
+      "kaust_id": "Abdulltm",
+      "stage": "",
+      "last_name": "",
+      "first_name": "Abdulltm",
+      "middle_name": "",
+      "email": "Thajunniza.M.A@cognizant.com",
+      "expeditor": "",
+      "on_behalf": "",
+      "role": "",
+      "requestor_kaustid": "",
+      "onbehalfuserid": "",
+      "request_type": "",
+      "activity_type": "",
+      "flow": "",
+      "previous_step_process": ""
+    }
+  ],
+  "log": [
+    {
+      "sequence_number": 1,
+      "timestamp": "8",
+      "status": 1,
+      "userid": "Abdulltm"
+    }
+  ]
+}
+
+
+### ------------------------------------------------------------------------
+# Create Status
+POST http://localhost:4004/v2/kitservice/Status
+Content-Type: application/json
+
+{                
+               "status": 13,
+              "desc": "Resolved"
+}
+
+#### ------------------------------------------------------------------------
+# Browse gaservice Requestlog with header
+###
+http://localhost:4004/v2/gaservice/Requestlog   
+
+#### ------------------------------------------------------------------------
+# Browse Status with request id
+###
+http://localhost:4004/v2/gaservice/Requestlog 
+request_id:R1621406925222
+
+### ------------------------------------------------------------------------
+# Create Status
+POST http://localhost:4004/v2/kitservice/Log
+Content-Type: application/json
+
+{                
+       "request_id"      : "R1621406925222",
+       "sequence_number" : 2,
+       "timestamp"       : "3:45:67",
+       "status"          : 2,
+       "userid"          : "TST_EMPLOYEE"
+}
+
+
+###CommentSet
+http://localhost:4004/v2/gaservice/CommentSet  
+
+#### ------------------------------------------------------------------------
+# Browse CommentSet with request id
+###
+http://localhost:4004/v2/gaservice/CommentSet
+request_id:R1621406656860
+
+### ------------------------------------------------------------------------
+# Create CommentSet
+POST http://localhost:4004/v2/gaservice/CommentSet
+Content-Type: application/json
+
+{                
+       "request_id"      : "R1622548265993",
+       "status"          : 1,
+       "t_userid"          : "Abdulltm",         
+       "stage"  :   "Stage1",     
+       "comments": "Test comments1",  
+       "t_name" : "Thaj",    
+       "t_kaust_id" : "TST_EMPLOYEE",
+       "org_unit" :"O001",  
+       "org_name" : "KAUST",  
+       "t_role" :"Assigner"    
+}
+
+### ------------------------------------------------------------------------
+# Browse Replenish with header
+###
+http://localhost:4004/v2/kitservice/Replenish?&$expand=header,log   
+
+
+### ------------------------------------------------------------------------
+# Create Replenish with header and log
+POST http://localhost:4004/v2/kitservice/Replenish
+Content-Type: application/json
+
+          {                
+                "first_name": "Thaj",
+                "middle_name": "Niza",
+                "last_name": "M A",
+                "email": "Thajunniza.M.A@cognizant.com",
+                "mobile_no": "9840799193",
+                "office_no": "",
+                "rept_manager": "Sridhar",
+                "department_name": "SCP",
+                "position_text": "UI5 Lead",
+               "costcenter"      : "0010",
+               "replenisheqip"   : "123",
+               "replenisheqname" : "test",
+               "comments"        : "test",
+               "justification"   : "test",
+               "disclaimer"      : "X",
+               "employeenotes"   :  "Notes",
+               "custodianusrid"  : "cus123",
+               "neweqpno"        :  "Eq123",      
+                "header":[{
+                    "userid": "Abdulltm",
+                    "sub_service_code": "SU03",
+                    "service_code": "S002",
+                    "status": 2,
+                    "process_id": "",
+                    "kaust_id": "Abdulltm",
+                    "stage": "",
+                    "last_name": "",
+                    "first_name": "Abdulltm",
+                    "middle_name": "",
+                    "email": "Thajunniza.M.A@cognizant.com",
+                    "expeditor": "",
+                    "on_behalf": "",
+                    "role": "",
+                    "requestor_kaustid": "",
+                    "onbehalfuserid": "cus123",
+                    "request_type": "",
+                    "activity_type": "",
+                    "flow": "",
+                    "previous_step_process": ""}
+                    ]
+                ,
+                "log": [ {
+                    "sequence_number": 1,
+                    "timestamp": "8",
+                    "status": 5,
+                    "userid": "Abdulltm"}]
+                
+            }
+
+### ------------------------------------------------------------------------
+# Call Get Table
+http://localhost:4004/v2/commonservice/getTable()?request_id='R1621313899272'&header=false
+
+
+
+### ------------------------------------------------------------------------
+# Create Request Table Entries
+POST http://localhost:4004/v2/commonservice/ServiceTable
+Content-Type: application/json
+
+          {                
+               "service_code":"0005" ,   
+               "sub_service_code":"0507",
+               "model_name":"GA",    
+               "table_name":"CarOwnership",      
+               "updation_type":"I"   
+          }
+
+### ------------------------------------------------------------------------
+# Create Request Table Entries
+DELETE  http://localhost:4004/v2/commonservice/ServiceTable(service_code='0010',sub_service_code='0019',model_name='KITS',table_name='Vscan')
+
+### ------------------------------------------------------------------------
+# Call Get Table
+http://localhost:4004/v2/commonservice/ReadOnBehalf()?request_id='R1623352014734'&sub_service_code='00'
+
+
+
+

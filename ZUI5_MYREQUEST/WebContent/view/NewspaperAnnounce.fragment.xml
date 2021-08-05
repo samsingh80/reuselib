@@ -1,0 +1,248 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<Table id="idTable" class="sapUiTinyMarginBegin" noDataText="No Data Available" selectionChange="onChange" items="{/}">
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{KaustId}"/>
+							<Text text="{Fname} {Lname}"/>
+							<Text text="{Gender}"/>
+							<Text text="{Relationship}"/>
+							<Text text="{IqamaNo}"/>
+							<Text text="{Passport}"/>
+							<Text text="{Nationality}"/>
+							<DatePicker placeholder=" " valueFormat="yyyy-MM-dd" displayFormatType="Islamic" displayFormat="long" change="onAppDateSelect"
+								editable="false"
+								value="{path: 'marriageDate', formatOptions: { style: 'long'}, formatter:'kaust.ui.kits.myRequest.util.Formatter.AppointmentDateFormat'}"/>
+							<!-- <Text text="{path : 'marriageDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.fnMarriageDateFormat'}" /> -->
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column>
+						<header>
+							<Label text="KAUST ID"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Name"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Gender"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Relation"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="IQAMA No"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Passport No"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Nationality"/>
+						</header>
+					</Column>
+					<Column visible="{path:'/0/marriageDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.fnColVisibility'}" width="12em">
+						<header>
+							<Label text="Marriage Date"/>
+						</header>
+					</Column>
+				</columns>
+			</Table>
+			<!-- Dikhu edit starts -->
+			<form:SimpleForm visible="false" minWidth="1024" id="CarLicenseIssue" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				title="" labelSpanL="7" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="editableForm sapUiTinyMarginBegin">
+				<form:content>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Appointment Date"/>
+					<Text width="70%" text="{path:'appointmentDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<Label text="License Language"/>
+					<Text width="70%" text="{ path: 'licLangu', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Label text="License Number"/>
+					<Text width="70%" text="{ path: 'licNum', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Label text="License Issuance Country"/>
+					<Text width="70%" text="{ path: 'licIssuanceCountryDesc', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="License Issuance Date"/>
+					<Text width="70%" text="{ path: 'licIssuanceDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<Label text="License Expiration Date"/>
+					<Text width="70%" text="{ path: 'licExpiryDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<Label text="Birth Date"/>
+					<Text width="70%" text="{ path: 'birthDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<Label text="Blood Type"/>
+					<Text width="70%" text="{ path: 'ddtextDomainB', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm id="MotorcycleLicenseIssue" minWidth="1024" visible="false" maxContainerCols="2" editable="true"
+				layout="ResponsiveGridLayout" title="" labelSpanL="7" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2"
+				class="editableForm">
+				<form:content>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="License Language"/>
+					<Text width="70%" text="{path:'licLangu', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Label text="License Number"/>
+					<Text width="70%" text="{ path: 'licNum', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Label text="License Issuance Country"/>
+					<Text width="70%" text="{ path: 'licIssuanceCountryDesc', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Label text="License Issuance Date"/>
+					<Text width="70%" text="{ path: 'licIssuanceDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="License Expiration Date"/>
+					<Text width="70%" text="{ path: 'licExpiryDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<Label text="Birth Date"/>
+					<Text width="70%" text="{ path: 'birthDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<Label text="Blood Type"/>
+					<Text width="70%" text="{ path: 'ddtextDomainB', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Label text="Motorcycle Type"/>
+					<Text width="70%" text="{ path: 'ddtextDomainA', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm visible="false" minWidth="1024" id="DivingLicenseRenew" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				title="" labelSpanL="7" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="editableForm sapUiTinyMarginBegin">
+				<form:content>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Saudi Diving License Number"/>
+					<Text width="70%" text="{ path: 'licNum', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Saudi Diving License Expiry Date"/>
+					<Text width="70%" text="{ path: 'licExpiryDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm id="PetsImportExport" minWidth="1024" visible="false" maxContainerCols="3" editable="true" layout="ResponsiveGridLayout"
+				title="" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0"
+				emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" class="editableForm sapUiTinyMarginBegin">
+				<form:content>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Name"/>
+					<Text width="70%" text="{path: 'petName', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Breed"/>
+					<Text width="70%" text="{path: 'breed', formatter:'kaust.ui.kits.myRequest.util.Formatter.checkAvailable'}"/>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Date of Birth"/>
+					<Text width="70%" text="{path: 'petDob', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+				</form:content>
+			</form:SimpleForm>
+			<!-- Dikhu edit ends -->
+			<!-- navin edit starts -->
+			<form:SimpleForm visible="false" id="Sponsortransfer" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" title=""
+				labelSpanL="7" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="editableForm sapUiTinyMarginBegin">
+				<form:content>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Old Sponsor Name"/>
+					<Text text="{ path: 'Old_Fname'}" width="70%"/>
+					<Title xmlns="sap.ui.core" text=" "/>
+					<Label text="Old Sponsor ID(Government ID)"/>
+					<Text text="{ path: 'Old_Sponsor_Id'}" width="70%"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm visible="false" minWidth="1024" id="policeClearance" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+				emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" class="editableForm sapUiTinyMarginBegin">
+				<form:content>
+					<Label text="Police Dept Appointment"/>
+					<Text width="70%" text="{path: 'Appointment_Date', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm visible="false" minWidth="1024" id="zakatLetter" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+				emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" class="editableForm sapUiTinyMarginBegin">
+				<form:content>
+					<Label text="Year of Tax Letter"/>
+					<Text width="70%" text="{ path: 'taxYear1'}"/>
+				</form:content>
+			</form:SimpleForm>
+			<!-- navin edit ends -->
+			<!-- Start - Birth Certificate - Shailesh -->
+			<form:SimpleForm visible="false" id="idBirthCertificateDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+				columnsL="1" columnsM="1" singleContainerFullSize="false">
+				<form:content>
+					<Label text="Request Type"/>
+					<Text text="{path:'requestType', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatRequestType'}"/>
+					<Label text="Date of Birth"/>
+					<Text width="70%" text="{path: 'birthDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDateSrv'}"/>
+					<!-- <DatePicker editable="false"
+						value="{path:'birthDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDate'}"
+						ediatable="false" /> -->
+					<Label text="Justification"/>
+					<TextArea value="{justification}" editable="false"/>
+				</form:content>
+			</form:SimpleForm>
+			<!-- End - Birth Certificate - Shailesh -->
+			<!-- Start - Information Correction - Shailesh -->
+			<!--<form:SimpleForm visible="false" id="idInfoCorrect" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"-->
+			<!--	labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"-->
+			<!--	columnsL="1" columnsM="1" singleContainerFullSize="false">-->
+			<!--	<form:content>-->
+			<!--		<Label text="Document Type"/>-->
+			<!--		<Text text="{ddtextDomain}"/>-->
+			<!--		<Label text="Other" visible="{path:'Other', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayInfoCorrectOther'}"/>-->
+			<!--		<Text text="{Other}" visible="{path:'Other', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayInfoCorrectOther'}"/>-->
+			<!--		<Label text="Comments"/>-->
+			<!--		<TextArea editable="false" value="{WrongInfo}"/>-->
+			<!--	</form:content>-->
+			<!--</form:SimpleForm>-->
+			<!-- End - Information Correction - Shailesh -->
+			<!-- Start - Madan'en Salah -->
+			<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				class="sapUiMediumMarginTop" singleContainerFullSize="false" visible="false" id="idMandanSalehForm">
+				<form:content>
+					<Label text="Visit Date"></Label>
+					<Text text="{path:'/0/visitDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDate'}"/>
+					<!-- <DatePicker
+						value="{path:'/0/visitDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDate'}"
+						valueFormat="yyyy-MM-dd" enabled="false"></DatePicker> -->
+					<Label text="Return Date"></Label>
+					<Text text="{path:'/0/endDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDate'}"/>
+					<!-- <DatePicker
+						value="{path:'/0/endDate', formatter:'kaust.ui.kits.myRequest.util.Formatter.formatDisplayDate'}"
+						valueFormat="yyyy-MM-dd" enabled="false"></DatePicker> -->
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm id="idCarOwnershipTransfer" visible="false" minWidth="1024" maxContainerCols="2" editable="true"
+				layout="ResponsiveGridLayout" title="" labelSpanL="7" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2"
+				class="editableForm">
+				<form:content>
+					<core:Title text=""/>
+					<Label text="Seller Name"/>
+					<Text width="70%" text="{sellerName}"/>
+					<Label text="Seller Email"/>
+					<Text width="70%" text="{sellerEmailId}"/>
+					<Label text="Seller Mobile"/>
+					<Text width="70%" text="{sellerNumber}"/>
+					<core:Title text=""/>
+					<Label text="License Number"/>
+					<Text width="70%" text="{licenseNumber}"/>
+					<Label text="Car Model"/>
+					<Text width="70%" text="{carModel}"/>
+					<Label text="Car Type"/>
+					<Text width="70%" text="{carMake}"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm id="idCarPlateChange" visible="false" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				title="" labelSpanL="7" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+				<form:content>
+					<Label text="Car Make"/>
+					<Text width="70%" text="{carMake}"/>
+					<Label text="Car Plate Number"/>
+					<Text width="70%" text="{carNumberPlate}"/>
+				</form:content>
+			</form:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

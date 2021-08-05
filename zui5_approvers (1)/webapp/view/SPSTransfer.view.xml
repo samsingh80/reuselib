@@ -1,0 +1,261 @@
+<mvc:View
+xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:form="sap.ui.layout.form" 
+xmlns="sap.m"
+controllerName="com.kaust.zui5approvers.controller.SPSTransfer"
+ xmlns:l="sap.ui.layout" 
+ xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<html:style>.leftCss{text-align: left !important;}
+		.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel { text-align:
+		start!important; float: none; position: relative; } .sapMITBContent { background-color: #dcedf0; }</html:style>
+	<Page title="Sponsorship Transfer (Spouse) Approval Screen">
+		<content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Sponsorship Transfer (Spouse)">
+						<VBox id="SSTRQDetails">
+							<Text text="Requestor Information" width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Request ID:" design="Bold" width="275px"/>
+									<Text id="sst_requestid" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Name:" design="Bold" width="275px"/>
+									<Text text="{Details>/FirstName} {Details>/MiddleName} {Details>/LastName}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Kaust Id:" design="Bold" width="275px"/>
+									<Text text="{Details>/KaustID}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Nationality:" design="Bold" width="275px"/>
+									<Text text="{Details>/Nationality}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Gender:" design="Bold" width="275px"/>
+									<Text text="{Details>/Gender}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Mobile:" design="Bold" width="275px"/>
+									<Text text="{Details>/Mobile}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Iqama No:" design="Bold" width="275px"/>
+									<Text text="{Details>/Iqama}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Position:" design="Bold" width="275px"/>
+									<Text text="{Details>/Position}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Department:" design="Bold" width="275px"/>
+									<Text text="{Details>/Deptname}" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox id="SSTSTDetails">
+							<Text text="Sponsorship Transfer" width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Is current sponsor in KAUST?" design="Bold"/>
+									<Text id="sst_sponsortype" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle" visible="false">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Is Marriage Certificate issued from KSA?" design="Bold"/>
+									<Text id="sst_marcertificate" width="275px"/>
+								</VBox>	
+							</HBox>
+						</VBox>
+						<VBox id="SSTMCDetails" visible="false">
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Is Marriage Certificate attested from saudi embassy in your home country?" design="Bold"/>
+									<Text id="sst_certattested" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Is Marriage Certificate translated to Arabic from an authorized office?" design="Bold"/>
+									<Text id="sst_certtranslated" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Is Marriage Certificate attested by MOFA?" design="Bold"/>
+									<Text id="sst_certmofa" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>						
+						<VBox id="SSTRIDetails">
+							<Text text="Spouse Information" width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Does the spouse have valid KAUST ID:" design="Bold" width="350px"/>
+									<Text id="sst_kaustflg" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox id="sps_kaustid" class="destilPartHeaderKeyStyle"  visible="false">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Spouse KAUST ID:" design="Bold" width="275px"/>
+									<Text id="sst_kaustid" width="275px"/>
+								</VBox>
+							</HBox>							
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="English First Name:" design="Bold" width="275px"/>
+									<Text id="sst_firstname" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="English Middle Name:" design="Bold" width="275px"/>
+									<Text id="sst_middlename" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="English Last Name:" design="Bold" width="275px"/>
+									<Text id="sst_lastname" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Iqama Number:" design="Bold" width="275px"/>
+									<Text id="sst_iqama" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Date of Birth:" design="Bold" width="275px"/>
+									<Text id="sst_birthdate" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Nationality:" design="Bold" width="275px"/>
+									<Text id="sst_nation" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Religion:" design="Bold" width="275px"/>
+									<Text id="sst_religion" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Gender:" design="Bold" width="275px"/>
+									<Text id="sst_gender" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Current Sponsor Number:" design="Bold" width="275px"/>
+									<Text id="sst_currsponsornum" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Current Sponsor Name:" design="Bold" width="275px"/>
+									<Text id="sst_currsponsorname" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="New Sponsor Number:" design="Bold" width="275px"/>
+									<Text id="sst_newsponsornum" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="New Sponsor Name:" design="Bold" width="275px"/>
+									<Text id="sst_newsponsorname" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Job Title:" design="Bold" width="275px"/>
+									<Text id="sst_jobtitle" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Transfer Type:" design="Bold" width="275px"/>
+									<Text id="sst_transfertype" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Sponsorship Transfer Fee:" design="Bold" width="275px"/>
+									<Text id="sst_transferfee" width="275px"/>
+								</VBox>
+							</HBox>
+					
+						</VBox>
+						<VBox id="SSTAttachments">
+							<Text text="Attachments"  width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Link id="idSSTatt1" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Link id="idSSTatt2" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Link id="idSSTatt3" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Link id="idSSTatt4" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle" visible="false">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Link id="idSSTatt5" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Link id="idSSTatt6" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Link id="idSSTatt7" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						
+						<VBox id="SSTSelect">
+							<Text text="Select Action"  width="400px" class="clDPSPTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<RadioButtonGroup id="sst_select" columns="3" width="600px" selectedIndex="-1">
+										<buttons>
+											<RadioButton id="sst_selapp" select="onSSTSelect" groupName="SSTSelect" text="Approve" selected="false"/>
+										</buttons>
+										<buttons>
+											<RadioButton id="sst_selmod" select="onSSTSelect" groupName="SSTSelect" text="Modify" selected="false"/>
+										</buttons>
+										<buttons>
+											<RadioButton id="sst_selrej" select="onSSTSelect" groupName="SSTSelect" text="Reject" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox id="SSTReject">
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)" width="500px" liveChange="changeComment"></TextArea>
+								</VBox>
+							</HBox>
+						</VBox>
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsSST" showIcon="false" sender="{= ${GAComments>t_name}?${GAComments>t_name}:''}" 
+								text="{GAComments>Comments}" info="" timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.approvers.util.formatter.commentDate'}" />
+						</List>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="sst_action" text="Submit" icon="sap-icon://sys-enter" type="Emphasized" press="onSSTAction" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

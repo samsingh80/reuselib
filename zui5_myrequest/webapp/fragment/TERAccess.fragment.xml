@@ -1,0 +1,306 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>		    
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+				labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+				adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+				emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<CheckBox id="partOfTeamId" text="I am part of team accessing MTER/TER"
+						enabled="false"></CheckBox>
+					<CheckBox id="othersId" text="Other team members also require access"
+						enabled="false"> 
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</CheckBox>					
+				</f:content>
+			</f:SimpleForm>
+			<Table id="othersTblId" visible="false" width="50%" items="" class="othersTbl">
+				<columns>
+					<Column>
+						<Text text="KAUST ID"></Text>
+					</Column>
+					<Column>
+						<Text text="NAME"></Text>
+					</Column>
+				</columns>
+			</Table>
+			
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="Work Information" />
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4"
+						labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+						emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+						columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+
+									<Label text="Work Permit Number" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="workPermitId" enabled="false"></Input>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="Start Date and Time" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="startDateId" enabled="false"></Input>
+								</f:fields>
+								<!-- <Label text="{i18n>Hour}" required="true"></Label> <Select id="hourId" 
+									forceSelection="false" > <core:Item key="" text="1" /> <core:Item key="" 
+									text="2" /> </Select> <Label text="{i18n>Minutes}" required="true"></Label> 
+									<Select id="min" forceSelection="false" > <core:Item key="" text="00" /> 
+									<core:Item key="" text="30" /> </Select> -->
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+
+									<Label text="End Date" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="endDateId" enabled="false">
+									</Input>
+								</f:fields>
+							</f:FormElement>
+							<!-- Roopali(16-10-2018) - TER Issue(KS-17) -->
+							<!-- <f:FormElement>
+								<f:label>
+									<Label text="Location" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="buildingId" enabled="false">
+										<layoutData>
+											<l:GridData span="L3 M3"></l:GridData>
+										</layoutData>
+									</Input>
+									<Input id="levelSelId" change="onLevlChange" enabled="false">
+										<layoutData>
+											<l:GridData span="L1 M1"></l:GridData>
+										</layoutData>
+									</Input>
+									<Input id="terRoomId" change="onRoomChange" enabled="false">
+										<layoutData>
+											<l:GridData span="L4 M4"></l:GridData>
+										</layoutData>
+									</Input>
+								</f:fields>
+							</f:FormElement> -->
+							<f:FormElement>
+								<f:label>
+									<Label text="Location" required="true"></Label>
+								</f:label>
+								<f:fields>
+									<Input id="buildingId" enabled="false">
+										<!-- <layoutData>
+											<l:GridData span="L3 M3"></l:GridData>
+										</layoutData> -->
+									</Input>
+									</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+								<f:label>
+									<Label text="" ></Label>
+								</f:label>
+								<f:fields>
+									<Input id="levelSelId" change="onLevlChange" enabled="false">
+										<!-- <layoutData>
+											<l:GridData span="L1 M1"></l:GridData>
+										</layoutData> -->
+									</Input>
+									</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+								<f:label>
+									<Label text="" ></Label>
+								</f:label>
+								<f:fields>
+									<!-- <Input id="terRoomId" change="onRoomChange" enabled="false"></Input> -->
+									<HBox class="terRoomHBoxClass">
+									<Text id="terRoomId" class="terRoomTextClass"></Text>
+									</HBox>
+										<!-- <layoutData>
+											<l:GridData span="L4 M4"></l:GridData>
+										</layoutData> -->
+									
+									</f:fields>
+									</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+									<Label text="Scope of Work" required="true"></Label>
+								</f:label>
+								<f:fields>
+								<VBox id="pwrActVbox">
+									<CheckBox text="Power Activity/ Survey" id="powerActId"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<Label id="pwrLbl" text="Backup power will be provided"
+											class="subChkBox" visible="false"></Label>
+										<!-- <RadioButtonGroup id="pwrRdBtn" columns="2"
+											class="subChkBox" visible="false" enabled="false">
+											<buttons>
+												<RadioButton text="No"></RadioButton>
+												<RadioButton text="Yes"></RadioButton>
+											</buttons>
+										</RadioButtonGroup> -->
+									</VBox>	
+									<CheckBox text="A/C Maintenance" id="acMaintId"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox text="TER Cleaning" id="terCleanId" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox id="cblChkId" text="Cable Pulling and Testing"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox id="cblAgreeId"
+										text="I hereby agree to submit test results for this activity"
+										visible="false" class="subChkBox" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox text="HSE Inspection" id="hseInspectId"
+										enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<CheckBox id="otherChkId" text="Others" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</CheckBox>
+									<Input id="othersTextId" class="kaustInpWidthClass"
+										visible="false" width="50%" enabled="false">
+										<layoutData>
+											<l:GridData span="L12 M12" moveForward="L4 M4"></l:GridData>
+										</layoutData>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+				title="Severity of the Activity" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"
+				emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
+				columnsM="1" singleContainerFullSize="false">
+				<f:content>
+					<Label text="Power Interruption" required="true"></Label>
+					<RadioButtonGroup id="PowerRadioGrpId" columns="2"
+						select="onPwrIntrYes" enabled="false">
+						<buttons>
+							<RadioButton text="No"></RadioButton>
+							<RadioButton text="Yes"></RadioButton>
+						</buttons>
+					</RadioButtonGroup>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm id="pwrChkBoxId" editable="true"
+				layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4"
+				emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
+				columnsM="1" singleContainerFullSize="false" visible="false">
+				<f:content>
+					<CheckBox id="prCbId" text="Primary Circuit(PR)" enabled="false">
+						<layoutData>
+							<l:GridData span="L12 M12" moveForward="M3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					<!-- <MultiComboBox id="inpPrId" items="{oPrEqipModel>/pr_data}" placeholder="{i18n>PRIMARY_CIRCUIT_PH}" 
+						class="kaustInpWidthClass" visible="false" width="30%"> <core:Item key="{oPrEqipModel>key}" 
+						text="{oPrEqipModel>val}"></core:Item> <layoutData> <l:GridData span="L12" 
+						moveForward="L3"></l:GridData> </layoutData> </MultiComboBox> -->
+					<!-- <Input id="inpPrId" visible="false" width="50%" enabled="false">
+						<layoutData>
+							<l:GridData span="L12" moveForward="L3"></l:GridData>
+						</layoutData>
+					</Input> -->
+					<TextArea id="inpPrId" visible="false" enabled="false" width="75%">
+					<layoutData>
+							<l:GridData span="L12 M12" moveForward="M3"></l:GridData>
+						</layoutData>
+						</TextArea>
+					<CheckBox id="brCbId" text="Back-up Circuit (BPR)"
+						enabled="false">
+						<layoutData>
+							<l:GridData span="L12 M12" moveForward="M3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					
+					<TextArea id="inpBrId" visible="false" enabled="false" width="75%">
+					<layoutData>
+							<l:GridData span="L12 M12" moveForward="M3"></l:GridData>
+						</layoutData>
+						</TextArea>
+					<CheckBox id="eprCbId" text="Emergency Circuit (EPR)"
+						enabled="false">
+						<layoutData>
+							<l:GridData span="L12 M12" moveForward="M3"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					
+					<TextArea id="inpEcId" visible="false" enabled="false" width="75%">
+					<layoutData>
+							<l:GridData span="L12 M12" moveForward="M3"></l:GridData>
+						</layoutData>
+						</TextArea>
+				</f:content>
+			</f:SimpleForm>
+
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+				columnsXL="1" columnsL="1" columnsM="1">
+				<f:content>
+					<Label text="A/C Interruption" required="true"></Label>
+					<RadioButtonGroup id="acIntRadioGrpId" columns="1"
+						enabled="false">
+						<buttons>
+							<RadioButton text="No"></RadioButton>
+							<RadioButton text="Yes, less than 30 minutes"></RadioButton>
+							<RadioButton text="Yes, more than 30 minutes"></RadioButton>
+						</buttons>
+					</RadioButtonGroup>
+					<CheckBox id="acAgreeId"
+						text="I hereby agree to provide back-up cooling system inside TER for the ITNC Equipment"
+						visible="false" class="subChkBox" enabled="false">
+						<layoutData>
+							<l:GridData span="L12 M12" moveForward="M2"></l:GridData>
+						</layoutData>
+					</CheckBox>
+				</f:content>
+			</f:SimpleForm>
+			
+			
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

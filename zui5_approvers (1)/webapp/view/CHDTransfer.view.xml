@@ -1,0 +1,255 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc"
+  xmlns:form="sap.ui.layout.form" 
+  xmlns="sap.m"
+	controllerName="com.kaust.zui5approvers.controller.CHDTransfer"
+     xmlns:l="sap.ui.layout"
+      xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+>
+	<!-- <html:style>.leftCss{text-align: left !important;}
+		.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel { text-align:
+		start!important; float: none; position: relative; } .sapMITBContent { background-color: #dcedf0; }</html:style> -->
+	<Page title="Sponsorship Transfer (Child) Approval Screen">
+		<content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Sponsorship Transfer (Child)">
+						<VBox id="CSTRQDetails">
+							<Text text="Requestor Information" width="400px" class="clCSTTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Request ID:" design="Bold" width="275px"/>
+									<Text id="cst_requestid" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Name:" design="Bold" width="275px"/>
+									<Text text="{Details>/FirstName} {Details>/MiddleName} {Details>/LastName}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Kaust Id:" design="Bold" width="275px"/>
+									<Text text="{Details>/KaustID}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Nationality:" design="Bold" width="275px"/>
+									<Text text="{Details>/Nationality}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Gender:" design="Bold" width="275px"/>
+									<Text text="{Details>/Gender}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Mobile:" design="Bold" width="275px"/>
+									<Text text="{Details>/Mobile}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Iqama No:" design="Bold" width="275px"/>
+									<Text text="{Details>/Iqama}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Position:" design="Bold" width="275px"/>
+									<Text text="{Details>/Position}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Label text="Department:" design="Bold" width="275px"/>
+									<Text text="{Details>/Deptname}" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox id="CSTSTDetails">
+							<Text text="Sponsorship Transfer" width="400px" class="clCSTTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Is current sponsor in KAUST?" design="Bold"/>
+									<Text id="cst_sponsortype" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle" visible="false">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Is Birth Certificate issued from KSA?" design="Bold"/>
+									<Text id="cst_birthcertificate" width="275px"/>
+								</VBox>	
+							</HBox>
+						</VBox>
+						<VBox id="CSTNSDetails">
+							<Text text="New Sponsor Details" width="400px" class="clCSTTransfer titlrStyle"/>
+							<HBox id="nsp_kaust" class="destilPartHeaderKeyStyle" visible="false">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="KAUST ID" design="Bold"/>
+									<Text id="nsp_kaustid" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="First Name" design="Bold"/>
+									<Text id="nsp_fname" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Middle Name" design="Bold"/>
+									<Text id="nsp_mname" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Last Name" design="Bold"/>
+									<Text id="nsp_lname" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Iqama Number" design="Bold"/>
+									<Text id="nsp_iqama" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Nationality" design="Bold"/>
+									<Text id="nsp_nation" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox id="CSTBCDetails" visible="false">
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Is Birth Certificate attested from saudi embassy in your home country?" design="Bold"/>
+									<Text id="cst_certattested" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Is Birth Certificate translated to Arabic from an authorized office?" design="Bold"/>
+									<Text id="cst_certtranslated" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<Label text="Is Birth Certificate attested by MOFA?" design="Bold"/>
+									<Text id="cst_certmofa" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>		
+						<Text text="Child Details" width="400px" class="clCSTTransfer titlrStyle"/>					
+						<Table id="CSTRIDetails" items="{cstJson>/results}" class="sapUiMediumMarginBeginEnd sapUiSmallMarginTop">
+							<columns>
+								<Column width="6%">
+									<Text text="KAUST ID"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="First Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Middle Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Last Name"/>
+								</Column>
+								<Column hAlign="Left" width="6%">
+									<Text text="Gender"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Nationality"/>
+								</Column>
+								<Column hAlign="Left" width="5%">
+									<Text text="Age"/>
+								</Column>
+								<Column hAlign="Left" width="7%">
+									<Text text="Date of Birth"/>
+								</Column>
+								<Column hAlign="Left" width="7%">
+									<Text text="Religion"/>
+								</Column>
+								<!-- Column hAlign="Left" width="9%">
+									<Text text="Attested"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Translated"/>
+								</Column -->
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{cstJson>KaustId}"/>
+										<Text text="{cstJson>FirstName}"/>
+										<Text text="{cstJson>MiddleName}"/>
+										<Text text="{cstJson>LastName}"/>
+										<Text text="{cstJson>Gender}"/>
+										<Text text="{cstJson>Nationality}"/>
+										<Text text="{cstJson>Age}"/>
+										<Text text="{cstJson>Dob}"/>
+										<Text text="{cstJson>Religion}"/>
+										<!-- Link text="Birth Certificate" emphasized="true" target="_blank" href="{cstJson>AttLink}"/>
+										<Link text="Birth Certificate" emphasized="true" target="_blank" href="{cstJson>TrnLink}"/ -->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						
+						<VBox id="CSTAttachments">
+							<Text text="Attachments"  width="400px" class="clCSTTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle">
+									<Link id="idCSTatt1" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Link id="idCSTatt2" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle">
+									<Link id="idCSTatt3" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderCSTStyle">
+									<Link id="idCSTatt4" emphasized="true" target="_blank" href="#" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						
+						<VBox id="CSTSelect">
+							<Text text="Select Action"  width="400px" class="clDPSPTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle">
+									<RadioButtonGroup id="cst_select" columns="3" width="600px" selectedIndex="-1">
+										<buttons>
+											<RadioButton id="cst_selapp" select="onCSTSelect" groupName="CSTSelect" text="Approve" selected="false"/>
+										</buttons>
+										<buttons>
+											<RadioButton id="cst_selmod" select="onCSTSelect" groupName="CSTSelect" text="Modify" selected="false"/>
+										</buttons>
+										<buttons>
+											<RadioButton id="cst_selrej" select="onCSTSelect" groupName="CSTSelect" text="Reject" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox id="CSTReject">
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderCSTStyle1">
+									<TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)" width="500px" liveChange="changeComment"></TextArea>
+								</VBox>
+							</HBox>
+						</VBox>
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsCST" showIcon="false" sender="{= ${GAComments>t_name}?${GAComments>t_name}:''}" 
+								text="{GAComments>Comments}" info="" timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.approvers.util.formatter.commentDate'}" />
+						</List>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="cst_action" text="Submit" icon="sap-icon://sys-enter" type="Emphasized" press="onCSTAction" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

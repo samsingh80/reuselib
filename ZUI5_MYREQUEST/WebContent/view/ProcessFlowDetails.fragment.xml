@@ -1,0 +1,34 @@
+ <core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"> 
+
+	<l:Grid
+    defaultSpan="L12 M12 S12"
+    width="auto" vSpacing="0">
+    <l:content>
+        
+      <f:SimpleForm
+        minWidth="1024"
+        maxContainerCols="3"
+        editable="false"
+        layout="ResponsiveGridLayout"
+        labelSpanL="6"
+        labelSpanM="6"
+        emptySpanL="0"
+        emptySpanM="0"
+        columnsL="3"
+        columnsM="3">
+                
+        <f:title>
+		  <core:Title text="Process Flow"></core:Title>
+		</f:title>
+        <f:content>                   
+        </f:content>
+      </f:SimpleForm>
+      
+    </l:content>
+  </l:Grid>
+    
+</core:FragmentDefinition>

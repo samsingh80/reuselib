@@ -1,0 +1,177 @@
+<mvc:View
+xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" 
+    xmlns="sap.m"
+	controllerName="com.kaust.zui5approvers.controller.IqamaRenew"
+	xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<Page title="Iqama Renew">
+		<content>
+				<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Sponsorship Transfer (Spouse)">
+						<VBox id="IqamaRenRQDetails">
+							<Text text="Requestor Information" width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Request ID:" design="Bold" width="275px"/>
+									<Text id="IqamaRen_requestid" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Name:" design="Bold" width="275px"/>
+									<Text text="{Details>/FirstName} {Details>/MiddleName} {Details>/LastName}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Kaust Id:" design="Bold" width="275px"/>
+									<Text text="{Details>/KaustID}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Nationality:" design="Bold" width="275px"/>
+									<Text text="{Details>/Nationality}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Gender:" design="Bold" width="275px"/>
+									<Text text="{Details>/Gender}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Mobile:" design="Bold" width="275px"/>
+									<Text text="{Details>/Mobile}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Iqama No:" design="Bold" width="275px"/>
+									<Text text="{Details>/Iqama}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Position:" design="Bold" width="275px"/>
+									<Text text="{Details>/Position}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Department:" design="Bold" width="275px"/>
+									<Text text="{Details>/Deptname}" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+			
+						<VBox id="DLRDetails" visible="false">
+							<Text text="" width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Request for?"/>
+									<Text id="txt_IqamaRenReq" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						
+						<VBox id="IDRDetails">
+							<Text text="" width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Iqama Duration" design="Bold" width="275px"/>
+									<Text id="txt_IqamaDuration" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+
+						<Table growing="true" visible="true" width="100%" id="idProductsTable1" class="sapUiSmallMarginTop Cls-vbox" itemPress="OnItemPress"
+							items="{IqamaRenItemJson>/results}">
+							<columns>
+								<Column width="1.2rem">
+									<Label text="Kaust Id" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="First Name" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Middle Name" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Last Name" design="Bold"/>
+								</Column>
+								<Column width="1.5rem">
+									<Label text="Gender" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Nationality" design="Bold"/>
+								</Column>
+								<Column width="2rem">
+									<Label text="Iqama Number" design="Bold"/>
+								</Column>
+								<Column width="2.5rem">
+									<Label text="Iqama Expiry Date" design="Bold"/>
+								</Column>
+								<Column width="2.5rem" visible="false">
+									<Label text="Inside Kingdom" design="Bold"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells class="cls-chckbox">
+										<Text text="{IqamaRenItemJson>KaustId}"/>
+										<Text text="{IqamaRenItemJson>FirstName}"/>
+										<Text text="{IqamaRenItemJson>MiddleName}"/>
+										<Text text="{IqamaRenItemJson>LastName}"/>
+										<Text text="{IqamaRenItemJson>Gender}"/>
+										<Text text="{IqamaRenItemJson>Nationality}"/>
+										<Text text="{IqamaRenItemJson>IqamaNo}"/>
+									<!--	<Text
+											text="{ path: 'IqamaRenItemJson>IqamaEdate' ,type:'sap.ui.model.type.Date', formatOptions: { source: { pattern: 'yyyy-MM-ddTHH:mm:ss' }, pattern: 'dd.MM.yyyy' } }"/>-->
+										<Text text="{path:'IqamaRenItemJson>IqamaEdate', formatter:'.formatDisplayDate'}"/>
+										<Text text="{= ${IqamaRenItemJson>InsideKingdomFlag} === 'X' ? 'Yes' : 'No' }" visible="false"/>
+
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+	
+	
+	 <VBox id="IqamaRenSelect">
+              <Text text="Select Action" width="400px" class="clDPSPTransfer titlrStyle"/>
+              <HBox class="destilPartHeaderKeyStyle">
+                <VBox class="destilPartHeaderIqamaRenStyle">
+                  <RadioButtonGroup id="IqamaRen_select" columns="3" width="600px" selectedIndex="-1">
+                    <buttons>
+                      <RadioButton id="IqamaRen_selapp" select="onIqamaRenSelect" groupName="IqamaRenSelect" text="Approve" selected="false"/>
+                    </buttons>
+                    <buttons>
+                      <RadioButton id="IqamaRen_selmod" select="onIqamaRenSelect" groupName="IqamaRenSelect" text="Modify" selected="false"/>
+                    </buttons>
+                    <buttons>
+                      <RadioButton id="IqamaRen_selrej" select="onIqamaRenSelect" groupName="IqamaRenSelect" text="Reject" selected="false"/>
+                    </buttons>
+                  </RadioButtonGroup>
+                </VBox>
+              </HBox>
+            </VBox>
+            <VBox id="IqamaRenReject">
+              <HBox class="destilPartHeaderKeyStyle">
+                <VBox class="destilPartHeaderIqamaRenStyle1">
+                  <TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)" width="500px" liveChange="changeComment"></TextArea>
+                </VBox>
+              </HBox>
+            </VBox>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+            <List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+              <FeedListItem id="tabCommentsIqamaRen" showIcon="false" sender="{= ${GAComments>t_name}?${GAComments>t_name}:''}" text="{GAComments>Comments}"
+                info="" timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.approvers.util.formatter.commentDate'}"/>
+            </List>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+    </content>
+    <footer>
+      <Bar>
+        <contentRight>
+          <Button id="IqamaRen_action" text="Submit" enabled="false" icon="sap-icon://sys-enter" type="Emphasized" press="onIqamaRenAction"/>
+        </contentRight>
+      </Bar>
+    </footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,482 @@
+<mvc:View
+xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.ui.layout.form"
+   xmlns:l="sap.ui.layout" 
+   xmlns="sap.m"
+  controllerName="com.kaust.zui5approvers.controller.VpnRequestForm"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<Page id="vpnPage">
+    <customHeader>
+      <Bar>
+
+        <contentMiddle>
+          <Label text="VPN ACCESS FOR EXTERNAL USERS" textAlign="Left"
+            design="Bold" class="header"></Label>
+        </contentMiddle>
+        <contentRight>
+          <Label text="Request ID:" textAlign="Left" design="Bold"></Label>
+          <Label text="{helpModel>/requestId}" textAlign="Left" design="Bold"
+            class="sapUiSmallMarginEnd"></Label>
+        </contentRight>
+      </Bar>
+    </customHeader>
+
+    <content>
+      <Toolbar design="Transparent" height="3rem">
+        <Text text="Comments" class="sapMH4FontSize"/>
+        <!-- text ="Approver Comments" as per existing application but changed 
+          it to 'Comments' considering Submit scenario -->
+        <ToolbarSpacer />
+      </Toolbar>
+
+      <f:SimpleForm labelSpanL="4" labelSpanM="5" labelSpanS="6"
+        columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1"
+        maxContainerCols="2" layout="ResponsiveGridLayout">
+        <f:content>
+          <TextArea id="commentMngr" maxLength="200"
+            placeholder="Add note (mandatory when rejecting)" width="100%">
+          </TextArea>
+          <core:Title text="">
+          </core:Title>
+        </f:content>
+      </f:SimpleForm>
+      <f:Form editable="true">
+        <f:layout>
+          <f:ResponsiveGridLayout labelSpanXL="3"
+            labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false"
+            emptySpanXL="4" emptySpanL="4" emptySpanM="0" emptySpanS="0"
+            columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"></f:ResponsiveGridLayout>
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:fields>
+                  <RadioButtonGroup id="vpnType" columns="3"
+                    enabled="false">
+                    <buttons>
+                      <RadioButton text="VPN Access"></RadioButton>
+                      <RadioButton text="Shaheen"></RadioButton>
+                    </buttons>
+                  </RadioButtonGroup>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Request Type"></Label>
+                </f:label>
+                <f:fields>
+                  <ComboBox id="newOrRenew" enabled="false">
+                    <layoutData>
+                      <l:GridData span="L4 M6 S12" />
+                    </layoutData>
+                  </ComboBox>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+
+      <!-- <f:SimpleForm layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="3" 
+        labelSpanS="6" columnsL="3" columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2"> 
+        <f:toolbar> -->
+      <l:Grid defaultSpan="L12">
+        <Toolbar>
+          <Text
+            text='The purpose of this online form is to request External user access to KAUST network in compliance with "VPN External - Users Profile" IT Security standard. Requester is acting as a sponsor. Only KAUST staff and faculty can request this
+ servic+
+e.' />
+        </Toolbar>
+      </l:Grid>
+      <!-- </f:toolbar> </f:SimpleForm> -->
+
+      <!-- <f:Form editable="true"> <f:title> <core:Title text="Requester Information" 
+        /> </f:title> <f:layout> <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" 
+        labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" 
+        emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" 
+        /> </f:layout> <f:formContainers> <f:FormContainer> <f:formElements> <f:FormElement> 
+        <f:label> <Label text="Name" required="true"></Label> </f:label> <f:fields> 
+        <Input id="name" enabled="false"> <layoutData> <l:GridData span="L5 M6 S12" 
+        /> </layoutData> </Input> </f:fields> </f:FormElement> <f:FormElement> <f:label> 
+        <Label text="Email" required="true"></Label> </f:label> <f:fields> <Input 
+        id="email" enabled="false"> <layoutData> <l:GridData span="L5 M6 S12" /> 
+        </layoutData></Input> </f:fields> </f:FormElement> <f:FormElement> <f:label> 
+        <Label text="KAUST ID" required="true"></Label> </f:label> <f:fields> <Input 
+        id="kaustId" enabled="false"> <layoutData> <l:GridData span="L5 M6 S12" /> 
+        </layoutData></Input> </f:fields> </f:FormElement> </f:formElements> </f:FormContainer> 
+        <f:FormContainer> <f:formElements> <f:FormElement> <f:label> <Label text="Office 
+        Telephone" required="true"></Label> </f:label> <f:fields> <Input id="telephone" 
+        enabled="false"> <layoutData> <l:GridData span="L5 M6 S12" /> </layoutData></Input> 
+        </f:fields> </f:FormElement> <f:FormElement> <f:label> <Label text="Mobile 
+        Phone"></Label> </f:label> <f:fields> <Input id="mobile" enabled="false"> 
+        <layoutData> <l:GridData span="L5 M6 S12" /> </layoutData></Input> </f:fields> 
+        </f:FormElement> </f:formElements> </f:FormContainer> </f:formContainers> 
+        </f:Form> -->
+      <f:Form id="newType" editable="true">
+        <f:title>
+          <core:Title text="External User Information" />
+        </f:title>
+        <f:layout>
+          <f:ResponsiveGridLayout labelSpanXL="4"
+            labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+            emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+            columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label text="First Name" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="eFname" maxLength="40" change="UID_creation"
+                    enabled="false">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Last Name" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="eLname" maxLength="40" change="UID_creation"
+                    enabled="false">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Date of Birth" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="dob" maxLength="40" change="validatedob"
+                    enabled="false">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Middle Name"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="eMname" maxLength="40" change="UID_creation"
+                    enabled="false">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Email" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="eEmail" enabled="false">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label id="lblexpdate" text="VPN Expiry Date" wrapping="true" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="expDateNew" enabled="false" width="50%"></Input>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+
+          <f:FormContainer id="UIDSection" visible="false">
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Suggested User ID" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="suggestedUID" maxLength="20" class="boldClass"
+                    enabled="{oInternalModel>/enabled}" change="validateUser">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                  <CheckBox id="checkbox" select="suggestUserId"></CheckBox>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+
+      <f:Form id="renewType" editable="true" visible="false">
+        <f:title>
+          <core:Title text="External User Information" />
+        </f:title>
+        <f:layout>
+          <f:ResponsiveGridLayout labelSpanXL="4"
+            labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+            emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+            columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label text="User AD Account" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="adAccount" enabled="false">
+                    <layoutData>
+                      <l:GridData span="L5 M6 S12" />
+                    </layoutData>
+                  </Input>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label text="New VPN Expiration Date" required="true"></Label>
+                </f:label>
+                <f:fields>
+                  <Input id="expiryDate" enabled="false"></Input>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+      <!-- <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" 
+        labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" 
+        emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" 
+        singleContainerFullSize="false"> <f:content> <TextArea id="hostIpId" enabled="false" 
+        placeholder="Host name or Static IP Address of Destination System(s)" growing="true" 
+        width="75%"> <layoutData> <l:GridData span="L12" moveForward="L2"></l:GridData> 
+        </layoutData> </TextArea> </f:content> </f:SimpleForm> -->
+      <f:Form>
+        <f:layout>
+          <f:ResponsiveGridLayout labelSpanXL="4"
+            labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false"
+            emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+            columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Host/IP/Services" required="true"
+                    visible="{oInternalModel>/visible1}"></Label>
+                </f:label>
+
+                <TextArea id="hostIpId" placeholder="{i18n>HOST_IP}"
+                  visible="{oInternalModel>/visible1}" growing="true" enabled="false">
+                  <layoutData>
+                    <l:GridData span="L8 M8 S8" />
+                  </layoutData>
+                </TextArea>
+              </f:FormElement>
+              <f:FormElement>
+                <f:label>
+                  <Label text="Note" visible="{oInternalModel>/visible}" class="renewNoteTxt"></Label>
+                </f:label>
+                <Text visible="{oInternalModel>/visible}"
+                  text="'For changes in IP addresses previously requested, please contact IT Helpdesk.'" class="renewNoteTxt">
+ 
+                  <layoutData>
+                    <l:GridData span="L8 M8 S8" />
+                  </layoutData>
+                </Text>
+
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement id="fileSection" visible="true">
+                <f:label>
+                  <Label text="Passport/ National ID" required="false"></Label>
+                </f:label>
+                <f:fields>
+                  <Link id="fileUrl" text="Click to download"></Link>
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+
+      <!-- <f:Form editable="true"> <f:layout> <f:ResponsiveGridLayout labelSpanXL="4" 
+        labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" 
+        emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" 
+        singleContainerFullSize="false" /> </f:layout> <f:formContainers> <f:FormContainer> 
+        <f:formElements> <f:FormElement> <f:label> <Label text="VPN Expiration Date" 
+        required="true"></Label> </f:label> <f:fields> <Input id="expiryDate" enabled="false"></Input> 
+        </f:fields> </f:FormElement> </f:formElements> </f:FormContainer> <f:FormContainer> 
+        <f:formElements> <f:FormElement> <f:label> <Label text="Passport/ National 
+        ID" required="true"></Label> </f:label> <f:fields> <Link text="Click to View"></Link> 
+        </f:fields> </f:FormElement> </f:formElements> </f:FormContainer> </f:formContainers> 
+        </f:Form> -->
+
+      <Toolbar design="Transparent" height="3rem">
+        <Text text="Justification" class="sapMH4FontSize" />
+        <ToolbarSpacer />
+      </Toolbar>
+
+      <f:SimpleForm editable="true" layout="ResponsiveGridLayout"
+        labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+        adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+        emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+        singleContainerFullSize="false">
+        <f:content>
+          <TextArea id="justification" width="75%" placeholder="Free Text"
+            enabled="false">
+            <layoutData>
+              <l:GridData span="L12" moveForward="L2"></l:GridData>
+            </layoutData>
+          </TextArea>
+        </f:content>
+      </f:SimpleForm>
+
+      <IconTabBar id="idTabBar">
+        <items>
+          <IconTabFilter icon="sap-icon://lightbulb" key="infoTab"
+            tooltip="Service Information">
+            <l:Grid defaultSpan="L12">
+              <Label text="VPN Access" class="kitsMachineLblClass"
+                design="Bold">
+                <layoutData>
+                  <l:GridData span="L12 M12 S12"></l:GridData>
+                </layoutData>
+              </Label>
+              <Text
+                text="The purpose of this online form is to request External user access to KAUST network in compliance with 'VPN External - Users Profile' IT Security standard. Requester is acting as a sponsor. Only KAUST staff and faculty can request
+ this serv+
+ice."
+                class="kitsProcessInfoClass">
+                <layoutData>
+                  <l:GridData span="L4"></l:GridData>
+                </layoutData>
+              </Text>
+              <VBox>
+                <Label text="Quick Facts" design="Bold"></Label>
+                <Text text="Eligibility: Faculty, Staff, Researchers"
+                  class="kitsProcessInfoClass"></Text>
+                <Text text="Rates: Free of Charge" class="kitsProcessInfoClass"></Text>
+                <HBox>
+                  <Text text="Training: Click " class="kitsProcessInfoClass"></Text>
+                  <Link text="here" class="kitsLinkHereClass"></Link>
+                  <Text text="for training video" class="kitsProcessInfoClass"></Text>
+                </HBox>
+                <layoutData>
+                  <l:GridData span="L4" moveForward="L1"></l:GridData>
+                </layoutData>
+              </VBox>
+              <VBox>
+                <Label text="Support" design="Bold"></Label>
+                <Text text="For assistance please log ticket via the"
+                  class="kitsProcessInfoClass"></Text>
+                <Link text="self-service portal" class="kitsProcessInfoClass"
+                  target="_blank" href="https://servicedesk.kaust.edu.sa/irj/portal"></Link>
+                <Text text="or contact IT Service Desk on" class="kitsProcessInfoClass"></Text>
+                <Text text="(+966)(12)808-0900 option 1 or email" class="kitsProcessInfoClass"></Text>
+                <Link text="ithelpdesk@kaust.edu.sa" class="kitsITHelpLinkClass"
+                  press="fnHelpDeskPress"></Link>
+                <layoutData>
+                  <l:GridData span="L4" moveForward="L1"></l:GridData>
+                </layoutData>
+              </VBox>
+            </l:Grid>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://hint" key="Tab1"
+            tooltip="Requester Information">
+            <l:Grid defaultSpan="L12">
+              <Toolbar>
+                <Title text="Requester Information" level="H5" titleStyle="H5" />
+              </Toolbar>
+            </l:Grid>
+            <f:SimpleForm id="userInfoTab" layout="ResponsiveGridLayout"
+              labelSpanL="4" labelSpanM="3" labelSpanS="6" columnsL="3"
+              columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2">
+
+              <f:content>
+                <core:Title text="">
+                </core:Title>
+                <Label text="First Name" />
+                <Text id="fname" text="{oUserModel>/d/FirstName}" />
+                <Label text="Last Name" />
+                <Text id="lname" text="{oUserModel>/d/LastName}" />
+                <Label text="KAUST ID" />
+                <Text id="kaustID" text="{oUserModel>/d/KaustID}" />
+                <core:Title text="">
+                </core:Title>
+                <Label text="E-mail" />
+                <Text id="email" text="{oUserModel>/d/Email}" />
+                <Label text="Job Title" />
+                <Text id="pos" text="{oUserModel>/d/Position}" />
+                <Label text="Department" />
+                <Text id="dept" text="{oUserModel>/d/Deptname}" />
+                <core:Title text="">
+                </core:Title>
+                <Label text="Billed Cost Center" />
+                <Text id="costCntr" text="{oUserModel>/d/Costcenter}" />
+                <Label text="Office Telephone" />
+                <Text id="office" text="{oUserModel>/d/Office}" />
+                <Label text="Mobile Phone" />
+                <Text id="mobile" text="{oUserModel>/d/Mobile}" />
+              </f:content>
+            </f:SimpleForm>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+
+    </content>
+    <footer>
+      <Bar>
+        <contentRight>
+          <Button id="approveButton" text="Approve" icon="sap-icon://accept"
+            type="Accept" press="handleAction">
+          </Button>
+          <Button id="rejectButton" text="Reject" icon="sap-icon://sys-cancel"
+            type="Reject" press="handleAction">
+          </Button>
+          <!-- <Button id= "correctButton" text="Correct" visible="false" type="Default" 
+            press="handleAction" icon="sap-icon://refresh" /> -->
+        </contentRight>
+      </Bar>
+    </footer>
+  </Page>
+</mvc:View>

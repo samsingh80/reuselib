@@ -1,0 +1,19 @@
+<mvc:View controllerName="com.kaust.zui5myrequest.controller.Detail"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="app" class="customerRightpanelPage">
+       <Page id="page" showNavButton="{device>/isPhone}" navButtonPress="handleNavButtonPress">
+       <headerContent>
+			  <Button type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen" tooltip="Enter Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }" class="headerIcon"/>
+                            <Button type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen" tooltip="Exit Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }" class="headerIcon"/>
+                            <Button type="Transparent" icon="sap-icon://decline" press="handleClose" tooltip="Close column" visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }" class="headerIcon"/>
+                        
+		</headerContent>
+		<content></content>
+	</Page>
+    </App>
+</mvc:View>

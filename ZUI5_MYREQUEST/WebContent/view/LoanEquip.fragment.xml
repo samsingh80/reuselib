@@ -1,0 +1,106 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<form:SimpleForm id="loanForm" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="6" labelSpanM="6" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+				<form:title>
+					<core:Title text="Event Information"></core:Title>
+				</form:title>
+				
+				<form:content>
+					<core:Title text=" " />
+					<Label text="Event Name" />
+					<Text text="{/Eventname}" />
+					<Label text="Event Location" />
+					<Text text="{/Eventlocation}" />
+					<Label text="Event Type" />
+					<Text text="{/Eventtype}" />
+
+					<core:Title text=" " />
+					<Label text="Delivery Method" />
+					<Text text="{/Delivery}" />
+					<Label text="Start Date and Start Time" />
+					<Text id="startTime" />
+					<Label text="End Date and End Time" />
+					<Text id="endTime" />
+				</form:content>
+			</form:SimpleForm>
+			
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://laptop">
+						<form:SimpleForm id="devicesForm" minWidth="1024">
+							<core:Title text="Devices and Accessories" />
+							<Label text="Audio/Visual devices" />
+							<Text id="avTxt" />
+							<Label id="devLbl" text="Devices"></Label>
+							<Text id="devices"></Text>
+							<Label id="reasonLbl" text="Reason"></Label>
+							<Text id="reason"></Text>
+							<Label id="incidentLbl" visible="false" text="Incident Report"></Label>
+							<Text id="incident" visible="false"></Text>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://hint">
+						<form:SimpleForm id="userInfoForm" minWidth="1024">
+							<core:Title text="Requester Information" />
+							<Label text="First Name" />
+							<Text text="{/d/FirstName}" />
+							<Label text="Last Name" />
+							<Text text="{/d/LastName}" />
+							<Label text="KAUST Id" />
+							<Text text="{/d/KaustID}" />
+							<Label text="E-mail" />
+							<Text text="{/d/Email}" />
+							<Label text="Job Title" />
+							<Text text="{/d/Position}" />
+							<Label text="Department" />
+							<Text text="{/d/Deptname}" />
+							<Label text="Cost Center" />
+							<Text text="{/d/Costcenter}" />
+							<Label text="Office Telephone" />
+							<Text text="{/d/Office}" />
+							<Label text="Mobile Telephone" />
+							<Text text="{/d/Mobile}" />
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List headerText="Comments" growing="true" growingThreshold="4" growingScrollToLoad="false">
+							<FeedListItem id="itComment" sender="" text="{Justification}" info="{/Comments}" timestamp="{
+								path: 'TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+						  }" />
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

@@ -1,0 +1,168 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.kaust.zgamoeattest",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "crossNavigation": {
+            "inbounds": {
+                "com-kaust-zgamoeattest-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "MOEattest",
+                    "action": "display",
+                    "title": "MOE attest",
+                    "subTitle": "",
+                    "icon": ""
+                }
+            }
+        },
+        "dataSources": {
+            "GA": {
+                "uri": "CAPM/v2/gaservice/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "Commons": {
+                "uri": "CAPM/v2/commonservice/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "S4HANA": {
+                "uri": "S4HANA/ZCUUTLO0006_USER_DEP_DETAILS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.kaust.zgamoeattest.view.MOEATTEST",
+            "type": "XML",
+            "async": true,
+            "id": "MOEATTEST"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.kaust.zgamoeattest.i18n.i18n"
+                }
+            },
+            "oDataModel": {
+                "dataSource": "GA",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+            "oCommonModel": {
+                "dataSource": "Commons",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+             "oHanaModel": {
+                "dataSource": "S4HANA",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.kaust.zgamoeattest.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMOEATTEST",
+                    "pattern": "RouteMOEATTEST",
+                    "target": [
+                        "TargetMOEATTEST"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMOEATTEST": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MOEATTEST",
+                    "viewName": "MOEATTEST"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "zui5gav4"
+    }
+}

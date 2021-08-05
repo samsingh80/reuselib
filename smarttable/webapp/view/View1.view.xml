@@ -1,0 +1,37 @@
+<mvc:View
+    controllerName="com.thaj.smarttable.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+                    <smartFilterBar:SmartFilterBar id="smartFilterBar" class="productsFilterBar" entitySet="PortReportSet" persistencyKey="SmartFilter_Explored"
+						useToolbar="{= !${device>/system/phone} }">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="request_id" visibleInAdvancedArea="true" label="" index="0"
+								></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<smartTable:SmartTable id="LineItemsSmartTable" entitySet="PortReportSet" smartFilterId="smartFilterBar" tableType="Table"
+						useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true"
+						header="{i18n>PRODUCTS_DETAILS}" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+						showFullScreenButton="true" class="productsTableBar" 
+						>
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/>
+						</smartTable:layoutData>
+					</smartTable:SmartTable>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,209 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="IQMLDRGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Iqama Cancellation (Exit No Return)">
+						<VBox id="IQMLDRReject">
+							<Text text="Rejection Comments" class="clCSTTransfer chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Text id="idiqmldrfincomments"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<Text id="REQLDRTXT" text="Requestor Details" width="400px" class="clCSTTransfer chdtitlrStyle"/>					
+						<VBox id="IQMLDRMCDetails">
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Do you report to GA center?" design="Bold"/>
+									<Text id="iqmldr_gareportflag" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Request Type" design="Bold"/>
+									<Text id="iqmldr_lstdmgflag" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox id="iqmldr_ilp" class="destilPartHeaderKeyStyle" visible="false">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Iqama Lost Place" design="Bold"/>
+									<Text id="iqmldr_inkflag" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle1">
+									<Label text="Requestor type" design="Bold"/>
+									<Text id="iqmldr_reqtypeflag" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>						
+						<Table id="IQMLDRRIDetails" items="{iqmldrJson>/results}" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+							<columns>
+								<Column width="6%">
+									<Text text="KAUST ID"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="First Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Middle Name"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Last Name"/>
+								</Column>
+								<Column hAlign="Left" width="6%">
+									<Text text="Gender"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Relationship"/>
+								</Column>
+								<Column hAlign="Left" width="9%">
+									<Text text="Nationality"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{iqmldrJson>KaustId}"/>
+										<Text text="{iqmldrJson>FirstName}"/>
+										<Text text="{iqmldrJson>MiddleName}"/>
+										<Text text="{iqmldrJson>LastName}"/>
+										<Text text="{iqmldrJson>Gender}"/>
+										<Text text="{iqmldrJson>Relation}"/>
+										<Text text="{iqmldrJson>Nationality}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<VBox height="1rem"> </VBox>
+						<Text text="Attachments" class="clCSTTransfer chdtitlrStyle"/>
+						<VBox id="iqmldr_attach" class="destilPartHeaderKeyStyle"> </VBox>
+						<VBox id="IQMLDRPrefHead">
+							<Text text="Manage your Preference" class="clCSTTransfer chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox id="LDR_Collec" class="destilPartHeaderKeyStyle">
+											<Label text="Collection" class="keyClass"/>
+						                    <RadioButtonGroup id="idIQMLDRCollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <RadioButton text="Self Drop off"/>
+						                        <RadioButton text="UPS Pickup" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Delivery" class="keyClass"/>
+						                    <RadioButtonGroup id="idIQMLDRDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+						                      <buttons>
+						                        <RadioButton text="Self Pick Up"/>
+						                        <RadioButton text="UPS Delivery" />
+						                      </buttons>
+						                    </RadioButtonGroup>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="IQMLDRPrefBody">
+							<Text text="Preference Details" class="clCSTTransfer chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Name:" class="keyClass"/>
+											<Text id="iqmldrcpdname"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="KAUST ID:" class="keyClass"/>
+											<Text id="iqmldrcpdkaustid"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Mobile:" class="keyClass"/>
+											<Text id="iqmldrcpdmobile"/>
+										</HBox>
+									</VBox>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Building Name / Number:" class="keyClass"/>
+											<Text id="iqmldrcpdbldno"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Level:" class="keyClass"/>
+											<Text id="iqmldrcpdlevel"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Room No / Cubicle:" class="keyClass"/>
+											<Text id="iqmldrcpdbldname"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+						<VBox id="IQMLDRTracking">
+							<Text text="Tracking Details" class="clCSTTransfer chdtitlrStyle"/>
+							<l:Grid defaultSpan="L6 M6 S12" width="auto" vSpacing="0">
+								<l:content>
+									<VBox class="destilPartHeaderStyle">
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Tracking Number:" class="keyClass"/>
+											<Text id="idIQMLDRTrackingNum"/>
+										</HBox>
+										<HBox class="destilPartHeaderKeyStyle">
+											<Label text="Expeditor:" class="keyClass"/>
+											<Text id="idIQMLDRExpeditor"/>
+										</HBox>
+									</VBox>
+								</l:content>
+							</l:Grid>
+						</VBox>
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsIQMLDR" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info="" timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate'
+						  }" />
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistoryIQMLDR" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

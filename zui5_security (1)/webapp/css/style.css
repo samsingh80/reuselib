@@ -1,0 +1,23 @@
+/* Enter your custom styles here */
+@media only screen and (max-width: 500px) {
+.flexHead {
+flex-direction: column;
+align-items: flex-start;
+align-content: center;
+}
+}
+.userLabel {
+    min-width: 8rem;
+    overflow:unset !important;
+    text-align: right !important;
+}
+@media only screen and (max-width: 500px) {
+.userLabel {
+min-width: 7.8rem;
+overflow:unset !important;
+}
+.toolbarKITS
+{
+    height:3rem !important;
+}
+}

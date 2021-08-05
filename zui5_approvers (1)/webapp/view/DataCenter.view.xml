@@ -1,0 +1,646 @@
+<mvc:View
+xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+     xmlns:l="sap.ui.layout" 
+     xmlns:u="sap.ui.unified"
+	controllerName="com.kaust.zui5approvers.controller.DataCenter"
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+    xmlns:f="sap.ui.layout.form"
+>
+<html:style>
+		.borderCheck
+		{
+		border:1px solid #b6b6b6 !important;
+		}
+	</html:style>
+	<Page>
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Label text="Data Center Access" textAlign="Left" design="Bold"
+						class="header"></Label>
+				</contentMiddle>
+				<contentRight>
+					<Label text="Request ID:" textAlign="Left" design="Bold"></Label>
+					<Label text="{helpModel>/requestId}" textAlign="Left" design="Bold"
+						class="sapUiSmallMarginEnd"></Label>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+
+			<Toolbar id="commentToolbar" design="Transparent" height="3rem">
+				<Text id="commentsLbl" text="Comments" class="sapMH4FontSize" />
+				<!-- text ="Approver Comments" as per existing application but changed 
+					it to 'Comments' considering Submit scenario -->
+				<ToolbarSpacer />
+
+			</Toolbar>
+
+			<f:SimpleForm id="CommentsForm" labelSpanL="4"
+				labelSpanM="5" labelSpanS="6" columnsL="2" columnsM="2" emptySpanL="1"
+				emptySpanM="1" maxContainerCols="2" layout="ResponsiveGridLayout">
+				<f:content>
+					<TextArea id="comments" placeholder="Add note (mandatory when rejecting)"
+						maxLength="200" width="100%">
+
+					</TextArea>
+					<core:Title text="">
+					</core:Title>
+				</f:content>
+			</f:SimpleForm>
+
+			<Toolbar design="Transparent" height="1%"></Toolbar>
+
+			<f:SimpleForm id="Justification" labelSpanL="4"
+				labelSpanM="5" labelSpanS="6" columnsL="2" columnsM="2" emptySpanL="1"
+				emptySpanM="1" maxContainerCols="2" layout="ResponsiveGridLayout">
+				<f:content>
+					<Label text="Justification" required="true">
+						<layoutData>
+							<l:GridData span="L3 M3 S12" />
+						</layoutData>
+					</Label>
+					<TextArea id="justifctn" rows="4" enabled="false">
+						<layoutData>
+							<l:GridData span="L9 M9 S12" />
+						</layoutData>
+					</TextArea>
+				</f:content>
+			</f:SimpleForm>
+
+			<HBox id="RequestForm">
+				<l:Grid class="sapUiSmallMarginTop layoutMargin sapUiMediumMarginEnd"
+					hSpacing="0.5" defaultSpan="L4 M4 S10">
+					<l:content>
+						<Label text="Access Type" design="Bold"
+							class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+							<layoutData>
+								<l:GridData span="L2 M3 S12" />
+							</layoutData>
+						</Label>
+
+						<RadioButton id="unEscorted" selected="true" text="Unescorted"
+							enabled="{requestData>/enableField}" select="checkType">
+							<layoutData>
+								<l:GridData span="L2 M3 S12" />
+							</layoutData>
+						</RadioButton>
+						<RadioButton id="escorted" text="Escorted"
+							enabled="{requestData>/enableField}" select="checkType">
+							<layoutData>
+								<l:GridData span="L3 M6 S12" />
+							</layoutData>
+						</RadioButton>
+
+						<Label text="Request Date" design="Bold" required="true"
+							class="sapUiSmallMarginTop ">
+							<layoutData>
+								<l:GridData span="L2 M3 S12" />
+							</layoutData>
+						</Label>
+
+						<DatePicker id="requestDate" value="{dataRequestData>/reqDate}"
+							valueFormat="yyyy-MM-dd" displayFormat="MM/dd/yyyy" change="validateDate"
+							enabled="false">
+							<layoutData>
+								<l:GridData span="L3 M4 S12" />
+							</layoutData>
+						</DatePicker>
+
+						<Toolbar design="Transparent" height="1%">
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</Toolbar>
+
+						<VBox>
+							<Label text="Data Center Team template" design="Bold"
+								class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</Label>
+
+							<VBox class="borderCheck sapUiSmallMarginBegin">
+								<CheckBox text="IT-Data Center team" selected="{dataRequestData>/itDataCenter}"
+									enabled="{requestData>/enableField}">
+
+								</CheckBox>
+								<layoutData>
+									<l:GridData span="L6 M5 S12" />
+								</layoutData>
+							</VBox>
+							<layoutData>
+								<l:GridData span="L6 M6 S12" />
+							</layoutData>
+						</VBox>
+
+
+						<VBox>
+							<Label text="Exchange Building Template" design="Bold"
+								class="sapUiSmallMarginTop ">
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</Label>
+
+							<VBox class="borderCheck">
+								<CheckBox text="IT-Exchange Building" selected="{dataRequestData>/itExchangeBuild}"
+									enabled="{requestData>/enableField}">
+								</CheckBox>
+								<layoutData>
+									<l:GridData span="L6 M5 S12" />
+								</layoutData>
+							</VBox>
+							<layoutData>
+								<l:GridData span="L6 M6 S12" />
+							</layoutData>
+						</VBox>
+
+						<VBox>
+							<Label text="Building-14 templates" design="Bold"
+								class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</Label>
+							<HBox class="borderCheck sapUiSmallMarginBegin">
+								<VBox>
+									<CheckBox text="IT-High Density" selected="{dataRequestData>/itBuldingHigh}"
+										enabled="{requestData>/enableField}"></CheckBox>
+									<CheckBox text="IT-Low Density" selected="{dataRequestData>/itBuldingLow}"
+										enabled="{requestData>/enableField}"></CheckBox>
+									<layoutData>
+										<l:GridData span="L2 M2 S12" />
+									</layoutData>
+								</VBox>
+								<VBox>
+									<CheckBox text="IT-Medium Density" selected="{dataRequestData>/itBuldingMedium}"
+										enabled="{requestData>/enableField}"></CheckBox>
+									<CheckBox text="IT Test Room" selected="{dataRequestData>/itBuildingTest}"
+										enabled="{requestData>/enableField}"></CheckBox>
+									<layoutData>
+										<l:GridData span="L4 M4 S12" />
+									</layoutData>
+								</VBox>
+							</HBox>
+							<layoutData>
+								<l:GridData span="L6 M7 S12" />
+							</layoutData>
+						</VBox>
+
+						<VBox>
+							<Label text="Maintenance templates" design="Bold"
+								class="sapUiSmallMarginTop ">
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</Label>
+
+							<VBox class="borderCheck">
+								<CheckBox text="IT-IN-Camps Maintenance (BDC,SCC)"
+									selected="{dataRequestData>/itInCmps}" enabled="{requestData>/enableField}"></CheckBox>
+								<CheckBox text="IT-OUT-Camps Maintenance (EXB,SHQ)"
+									selected="{dataRequestData>/itOutCmps}" enabled="{requestData>/enableField}"></CheckBox>
+							</VBox>
+							<layoutData>
+								<l:GridData span="L6 M5 S12" />
+							</layoutData>
+						</VBox>
+
+						<VBox>
+							<Label text="Building 1 templates" design="Bold"
+								class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</Label>
+							<HBox class="borderCheck sapUiSmallMarginBegin">
+								<VBox>
+									<CheckBox text="IT-High Density"
+										selected="{dataRequestData>/itBuildingTempHighDesity}"
+										enabled="{requestData>/enableField}"></CheckBox>
+									<CheckBox text="IT-Low Density"
+										selected="{dataRequestData>/itBuildingTempLowDensity}"
+										enabled="{requestData>/enableField}"></CheckBox>
+									<CheckBox text="IT-Stock Room"
+										selected="{dataRequestData>/itBuildingTempItStock}" enabled="{requestData>/enableField}"></CheckBox>
+
+									<layoutData>
+										<l:GridData span="L2 M2 S12" />
+									</layoutData>
+								</VBox>
+								<VBox>
+									<CheckBox text="IT-Medium Density"
+										selected="{dataRequestData>/itBuildingTempMedium}" enabled="{requestData>/enableField}"></CheckBox>
+									<HBox>
+										<CheckBox text="IT-MTER-1"
+											selected="{dataRequestData>/itBuildingTempItMeter}" enabled="{requestData>/enableField}"></CheckBox>
+										<CheckBox text="IT-MTER-2"
+											selected="{dataRequestData>/itBuidingTempItMeter2}" enabled="{requestData>/enableField}"></CheckBox>
+									</HBox>
+									<CheckBox text="IT-Security Room" selected="{dataRequestData>/itSecurityRoom}"
+										enabled="{requestData>/enableField}"></CheckBox>
+									<layoutData>
+										<l:GridData span="L4 M4 S12" />
+									</layoutData>
+								</VBox>
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</HBox>
+							<layoutData>
+								<l:GridData span="L6 M7 S12" />
+							</layoutData>
+						</VBox>
+
+						<VBox>
+							<Label text="Other templates" design="Bold" class="sapUiSmallMarginTop ">
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</Label>
+							<VBox class="borderCheck">
+								<CheckBox text="IT-Front and Back Stairs-BDC" selected="{dataRequestData>/otherTempItFront}"
+									enabled="{requestData>/enableField}"></CheckBox>
+								<CheckBox text="IT-Spine Access-BDC" selected="{dataRequestData>/otherTempItSpain}"
+									enabled="{requestData>/enableField}"></CheckBox>
+								<CheckBox text="IT-Spine Access-SCC" selected="{dataRequestData>/otherTempItSpainscc}"
+									enabled="{requestData>/enableField}"></CheckBox>
+								<layoutData>
+									<l:GridData span="L6 M6 S12" />
+								</layoutData>
+							</VBox>
+							<layoutData>
+								<l:GridData span="L6 M5 S12" />
+							</layoutData>
+						</VBox>
+
+						<HBox id="fileLink">
+							<Label text="ID Proof" required="true" class="sapUiSmallMarginEnd"></Label>
+							<Link id="fileUrl" text="Click to download"></Link>
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</HBox>
+
+						<HBox id="requesterFileupload" visible="false">
+							<Text text="Please upload copy of your KAUST ID both sides"
+								class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop">
+								<layoutData>
+									<l:GridData span="L3 M3 S4" />
+								</layoutData>
+							</Text>
+							<HBox>
+								<u:FileUploader id="docFileUpload" placeholder="Choose file to upload"
+									maximumFileSize="5" uploadOnChange="false" change="handleUploadChange"
+									typeMissmatch="handleFileUploadOnError" fileSizeExceed="handleFileUploadOnError"
+									filenameLengthExceed="handleFileUploadOnError" enabled="{requestData>/enableField}">
+								</u:FileUploader>
+								<layoutData>
+									<l:GridData span="L3 M3 S4" />
+								</layoutData>
+							</HBox>
+							<Button type="Emphasized" id="uploadBtn" icon="sap-icon://upload"
+								visible="false" text="Upload" enabled="{requestData>/enableField}"
+								press="handleFileUploadLocal" />
+							<Label id="fileuploadlbl" text="File successfully attached"
+								visible="false" class="sapUiSmallMarginTop"></Label>
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</HBox>
+						<HBox id="fileDisplay">
+							<Link id="fileLinkDisp" text="{ofileModel>/fileName}" press="getFile"
+								visible="false" class=" sapUiMediumMarginBegin sapUiMediumMarginEnd"></Link>
+							<core:Icon id="fileLinkIcon" src="sap-icon://sys-cancel"
+								class="size2" color="#47679e" press="removeUploadedFile"
+								visible="false">
+							</core:Icon>
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</HBox>
+
+						<!-- <HBox> <CheckBox text="In submitting the request, I acknowledge 
+							and agree to"></CheckBox> <Link text="Data Center Agreement" class=" sapUiSmallMarginBegin 
+							sapUiSmallMarginTop"></Link> <layoutData> <l:GridData span="L12 M12 S12" 
+							/> </layoutData> </HBox> <HBox> <CheckBox text="In checking this box, I am 
+							requesting access on behalf of service provider and I agree to"> </CheckBox> 
+							<Link text="Access to the Service Provider Agreement" class="sapUiSmallMarginBegin 
+							sapUiSmallMarginTop"> </Link> <layoutData> <l:GridData span="L12 M12 S12" 
+							/> </layoutData> </HBox> -->
+
+						<HBox id="Aggreement1">
+							<CheckBox id="firstAgg"
+								text="In submitting the request, I acknowledge and agree to"></CheckBox>
+							<Link text="Data Center Agreement" class=" sapUiSmallMarginBegin sapUiSmallMarginTop"></Link>
+							<layoutData>
+								<l:GridData span="L12 M12 S12" />
+							</layoutData>
+						</HBox>
+
+
+						<CheckBox id="AggreeCheck"
+							text="In checking this box, I am requesting access on behalf of service provider and I agree to"
+							visible="false">
+							<layoutData>
+								<l:GridData span="L5 M12 S12" />
+							</layoutData>
+						</CheckBox>
+
+						<Link id="AggreeLink" text="Access to the Service Provider Agreement"
+							class="sapUiSmallMarginBegin sapUiSmallMarginTop" visible="false">
+							<layoutData>
+								<l:GridData span="L4 M12 S12" />
+							</layoutData>
+						</Link>
+
+
+
+
+					</l:content>
+				</l:Grid>
+			</HBox>
+			<IconTabBar id="idTabBar">
+				<items>
+					<IconTabFilter icon="sap-icon://lightbulb" key="Tab1"
+						tooltip="Data Center Access">
+						<f:SimpleForm labelSpanL="4" labelSpanM="4"
+							labelSpanS="1" columnsL="1" columnsM="5" emptySpanL="0"
+							emptySpanM="0" maxContainerCols="1" layout="ResponsiveGridLayout">
+
+							<Label text="Data Center Access" class="kitsMachineLblClass"
+								design="Bold">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"></l:GridData>
+								</layoutData>
+							</Label>
+							<Text
+								text="Data Center is a facility used to house KAUST critical business, research computer systems and associated components, such as telecommunications and systems. Our data center includes redundant or backup power supplies, redundant data communications connections, environmental control like cooling, fine suppression and various security devices.">
+								<layoutData>
+									<l:GridData span="L4"></l:GridData>
+								</layoutData>
+							</Text>
+
+
+							<!-- <f:toolbar> <Toolbar> <Title text="Data Center Access" level="H5" 
+								titleStyle="H5"/> </Toolbar> </f:toolbar> -->
+							<f:content>
+								<!-- <Text text="Data Center is a facility used to house KAust critical 
+									business, research computer systems and associated components, such as telecommunications 
+									and systems. Our data center includes redundant or backup power supplies, 
+									redundant data communications connections, environmental control like cooling, 
+									fine suppression and various security devices." /> -->
+								<VBox>
+									<Label text="Quick Facts" design="Bold" />
+									<Text text="Eligibility : Faculty, Staff, Researchers" />
+									<Text text="Rates : Free of Charge" />
+									<HBox>
+										<Text text="Training : Click" />
+										<Label text="" width="3px" />
+										<Link text="here" target="_blank" href="https://google.com"></Link>
+										<Label text="" width="3px" />
+										<Text text=" for training video" />
+									</HBox>
+								</VBox>
+								<VBox>
+									<Label text="Support" design="Bold" />
+									<Text text="For assistance please log ticket with " />
+									<Link text="the self-service.portal" target="_blank"
+										href="https://servicedesk.kaust.edu.sa/irj/portal" />
+									<Text text="or Contact IT Service Desk on" />
+									<Text text="(+966)(12)808-0900 option 1" />
+									<Text text="or email" />
+									<Link text="ithelpdesk@kaust.edu.sa" press="openEmail" />
+								</VBox>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+
+					<IconTabFilter icon="sap-icon://hint" key="Tab2"
+						tooltip="Requester Information">
+						<l:Grid defaultSpan="L12">
+							<Toolbar id="TB1">
+								<Title text="Requester Information" level="H5" titleStyle="H5" />
+								<ToolbarSpacer />
+								<CheckBox id="idOnBehalf" text="On Behalf" select="onBehalf" />
+								<Button id="selPerson" icon="sap-icon://cause" type="Emphasized"
+									text="Select Person" press="onSelectPersonPress" visible="false" />
+							</Toolbar>
+						</l:Grid>
+						<f:SimpleForm id="userInfoTab" layout="ResponsiveGridLayout"
+							labelSpanL="4" labelSpanM="4" labelSpanS="12" columnsL="3"
+							columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="3">
+							<f:content>
+								<core:Title text=""></core:Title>
+								<Label text="First Name">
+									<layoutData>
+										<l:GridData span="L3"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="fName" text="{/d/results/0/FirstName}">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="Last Name">
+									<layoutData>
+										<l:GridData span="L3" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="lName" text="{/d/results/0/LastName}">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="KAUST ID">
+									<layoutData>
+										<l:GridData span="L3" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="kaustId" text="{/d/results/0/KaustID}">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="Nationality">
+									<layoutData>
+										<l:GridData span="L3" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="nationality" text="{/d/results/0/Nationality}">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Text>
+								<core:Title text=""></core:Title>
+								<Label text="Email">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="email" text="{/d/results/0/Email}">
+									<layoutData>
+										<l:GridData span="L8"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="Position">
+									<layoutData>
+										<l:GridData span="L4" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="pos" text="{/d/results/0/Position}">
+									<layoutData>
+										<l:GridData span="L6"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="Department">
+									<layoutData>
+										<l:GridData span="L4" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="dept" text="{/d/results/0/Deptname}">
+									<layoutData>
+										<l:GridData span="L6"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="Vendor Company">
+									<layoutData>
+										<l:GridData span="L4" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="vendorName" text="{/d/results/0/VendorDescription}">
+									<layoutData>
+										<l:GridData span="L6"></l:GridData>
+									</layoutData>
+								</Text>
+								<core:Title text=""></core:Title>
+								<Label text="Billed Cost Center">
+									<layoutData>
+										<l:GridData span="L5"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="costCenter" text="{/d/results/0/Costcenter}">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="Office Telephone">
+									<layoutData>
+										<l:GridData span="L5" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="officeId" text="{/d/results/0/Office}">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="Mobile Phone">
+									<layoutData>
+										<l:GridData span="L5" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="mobileId" text="{/d/results/0/Mobile}">
+									<layoutData>
+										<l:GridData span="L4"></l:GridData>
+									</layoutData>
+								</Text>
+								<Label text="KAUST ID Expiry Date">
+									<layoutData>
+										<l:GridData span="L5" linebreakL="true"></l:GridData>
+									</layoutData>
+								</Label>
+								<Text id="KexpDate"
+									text="{path: '/d/results/0/KaustIdExpiry', formatter : 'kaust.ui.kits.approvers.util.formatter.fnDateFormatter'}">
+								</Text>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+
+					<IconTabFilter key="Tab3" id="onBehalfUserTab" icon="sap-icon://employee"
+						tooltip="On Behalf User Information" visible="false">
+						<l:Grid defaultSpan="L12">
+							<Toolbar>
+								<Title text="On Behalf User Information" level="H5"
+									titleStyle="H5" />
+							</Toolbar>
+						</l:Grid>
+						<f:SimpleForm layout="ResponsiveGridLayout"
+							labelSpanL="4" labelSpanM="3" labelSpanS="6" columnsL="3"
+							columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2">
+							<!-- <f:toolbar> <Toolbar > <Title text="On Behalf User Information" 
+								level="H5" titleStyle="H5"/> </Toolbar> </f:toolbar> -->
+							<f:content>
+								<core:Title text="">
+								</core:Title>
+								<Label text="Firt name" />
+								<Text text="{oUserSerchModel>/d/FirstName}" />
+								<Label text="Last Name" />
+								<Text text="{oUserSerchModel>/d/KaustID}" />
+								<Label text="Position" />
+								<Text text="{oUserSerchModel>/d/Position}" />
+
+								<core:Title text="">
+								</core:Title>
+								<Label text="Middle Name" />
+								<Text text="{oUserSerchModel>/d/MiddleName}" />
+								<Label text="Email" />
+								<Text text="{oUserSerchModel>/d/Email}" />
+								<Label text="Department" />
+								<Text text="{oUserSerchModel>/d/Deptname}" />
+								<core:Title text="">
+								</core:Title>
+								<Label text="Last Name" />
+								<Text text="{oUserSerchModel>/d/LastName}" />
+								<Label text="User Id" />
+								<Text text="{oUserSerchModel>/d/UserId}" />
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+
+					<IconTabFilter key="Tab4" id="justificationtab" icon="sap-icon://request"
+						tooltip="Justification" visible="false">
+						<l:Grid defaultSpan="L12">
+							<Toolbar>
+								<Title text="Justification" level="H5" titleStyle="H5" />
+							</Toolbar>
+						</l:Grid>
+						<f:SimpleForm id="JustificationTabFrm" labelSpanL="4"
+							labelSpanM="5" labelSpanS="6" columnsL="2" columnsM="2"
+							emptySpanL="1" emptySpanM="1" maxContainerCols="2"
+							layout="ResponsiveGridLayout">
+							<f:content>
+								<Label text="Justification">
+									<layoutData>
+										<l:GridData span="L3 M3 S12" />
+									</layoutData>
+								</Label>
+								<TextArea id="justifctnTab" rows="4" enabled="false">
+									<layoutData>
+										<l:GridData span="L9 M9 S12" />
+									</layoutData>
+								</TextArea>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button id="submitBtn" type="Accept" text="Submit" press="onHandleAction"></Button>
+					<!-- <Button id="cancelBtn" type="Reject" text="Cancel" press="OnCancelRequest"></Button> -->
+					<Button id="approveButton" icon="sap-icon://accept" type="Accept"
+						text="Approve" press="onHandleAction"></Button>
+					<Button id="rejectButton" icon="sap-icon://cancel" type="Reject"
+						text="Reject" press="onHandleAction"></Button>
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

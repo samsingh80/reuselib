@@ -1,0 +1,301 @@
+<mvc:View
+xmlns:core="sap.ui.core"
+ xmlns:mvc="sap.ui.core.mvc" 
+ xmlns:form="sap.ui.layout.form" 
+ xmlns="sap.m"
+controllerName="com.kaust.zui5approvers.controller.GovtVistVisaExten"
+ xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml"
+>
+<html:style>.leftCss{text-align: left !important;}
+		.sapUiRespGridMedia-Std-Phone.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanS12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Tablet.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanM12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-Desktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanL12)>.sapMLabel,
+		.sapUiRespGridMedia-Std-LargeDesktop.sapUiFormResGridCont>.sapUiFormElementLbl:not(.sapUiRespGridSpanXL12)>.sapMLabel { text-align:
+		start!important; float: none; position: relative; } .sapMITBContent { background-color: #dcedf0; }</html:style>
+	<Page title="Goverment Visit Visa Extension">
+		<content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Final Exit Visa">
+						<VBox id="FEVDetails1">
+							<Text text="Requestor Information" width="400px" class="clSPSTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Request ID:" design="Bold" width="275px"/>
+									<Text id="gvv_requestid" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Name:" design="Bold" width="275px"/>
+									<Text text="{Details>/FirstName} {Details>/MiddleName} {Details>/LastName}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Kaust Id:" design="Bold" width="275px"/>
+									<Text text="{Details>/KaustID}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Nationality:" design="Bold" width="275px"/>
+									<Text text="{Details>/Nationality}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Gender:" design="Bold" width="275px"/>
+									<Text text="{Details>/Gender}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Mobile:" design="Bold" width="275px"/>
+									<Text text="{Details>/Mobile}" width="275px"/>
+								</VBox>
+							</HBox>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Iqama No:" design="Bold" width="275px"/>
+									<Text text="{Details>/Iqama}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Position:" design="Bold" width="275px"/>
+									<Text text="{Details>/Position}" width="275px"/>
+								</VBox>
+								<VBox class="destilPartHeaderSSTStyle">
+									<Label text="Department:" design="Bold" width="275px"/>
+									<Text text="{Details>/Deptname}" width="275px"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox >
+							<Text text="Applicant Information " visible="true" width="400px" class="clCSTTransfer titlrStyle"/>
+						</VBox>
+						<FlexBox class="destilPartHeaderKeyStyle">
+							<VBox>
+								<List id="idListDep" items="{FEVNEWJson>/results}" class="sapUiSmallMarginBeginEnd listVboxPad sapUiSmallMarginTop cls-Padd">
+									<CustomListItem class="listVboxPad">
+										<HBox height="2rem" class="destilPartHeaderKeyStyle">
+											<items>
+												<VBox class="leftCss">
+													<items>
+														<Label text="Kaust ID" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Label text="First Name" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Label text="Middle Name" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Label text="Last Name" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Label text="Gender" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+											</items>
+										</HBox>
+										<HBox height="2rem" class="destilPartHeaderKeyStyle">
+											<items>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>KaustId}" width="200px"></Text>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>FirstName}" width="200px"></Text>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>MiddleName}" width="200px"></Text>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>LastName}" width="200px"></Text>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>Gender}" width="200px"></Text>
+													</items>
+												</VBox>
+											</items>
+										</HBox>
+										<HBox height="2rem" class="destilPartHeaderKeyStyle">
+											
+										</HBox>
+										<HBox height="2rem" class="destilPartHeaderKeyStyle">
+											<items>
+												<VBox class="leftCss">
+													<items>
+														<Label text="Nationality" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Label text="Cost Center" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Label text="Passport Number" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="false">
+													<items>
+														<Label text="Passport issue date" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<Label text="Passport Expiry Date" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<Label text="Passport Issue Place" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+											</items>
+										</HBox>
+										<HBox height="4rem" class="destilPartHeaderKeyStyle">
+											<items>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>Nationality}" width="200px"></Text>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>CostCenter}" width="200px"></Text>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<Text text="{FEVNEWJson>Passport}" width="200px"></Text>
+													</items>
+												</VBox>
+												<VBox class="leftCss">
+													<items>
+														<!--<Text text="{FEVNEWJson>PpExpiryDate}" width="200px"></Text>-->
+														<Text text="{path:'FEVNEWJson>PpExpiryDate', formatter:'kaust.ui.kits.approvers.util.formatter.date2'}" width="200px"/>
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<Text text="{FEVNEWJson>PlaceOfIssue}" width="200px"></Text>
+													</items>
+												</VBox>
+											</items>
+										</HBox>
+										<HBox height="2rem" class="destilPartHeaderKeyStyle">
+											<items>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<Label text="Visa Expiry Date" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<Label text="Date of Entrance" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<Label text="Border Number" width="200px" class="boldCSS"></Label>
+													</items>
+												</VBox>
+											</items>
+										</HBox>
+										<HBox height="4rem" class="destilPartHeaderKeyStyle" visible="true">
+											<items>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<!--<Text text="{FEVNEWJson>PpExpiryDate}"  width="200px"></Text>-->
+														<Text text="{path:'FEVNEWJson>VisaExpiryDate', formatter:'kaust.ui.kits.approvers.util.formatter.date2'}" width="200px"/>
+														<!--<Text text="{ path: 'FEVNEWJson>PpExpiryDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy } }"/>-->
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<!--<Text text="{FEVNEWJson>PpExpiryDate}"  width="200px"></Text>-->
+														<Text text="{path:'FEVNEWJson>DateOfEntrance', formatter:'kaust.ui.kits.approvers.util.formatter.date2'}" width="200px"/>
+														<!--<Text text="{ path: 'FEVNEWJson>PpExpiryDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd/MM/yyyy } }"/>-->
+													</items>
+												</VBox>
+												<VBox class="leftCss" visible="true">
+													<items>
+														<Text text="{FEVNEWJson>BorderNo}" width="200px"></Text>
+													</items>
+												</VBox>
+											</items>
+										</HBox>
+									</CustomListItem>
+								</List>
+							</VBox>
+						</FlexBox>
+						<VBox></VBox>
+						<VBox id="GVVEXTAttachments" visible="true">
+							<Text text="Attachments" width="400px" class="clCSTTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<HBox class="destilPartHeaderKeyStyle">
+									<VBox  class="destilPartHeaderFEVStyle">
+										<Link id="GVPassport" text="Passport" emphasized="true" target="_blank" href="#" width="100px"/>
+									</VBox>
+									<VBox>
+										<Link id="GVSaudiB" text="Saudi visa along with border number " emphasized="true" target="_blank" href="#" width="275px"/>
+									</VBox>
+								</HBox>
+							</HBox>
+						</VBox>
+						<VBox id="FEVSelect">
+							<Text text="Select Action" width="400px" class="clDPSPTransfer titlrStyle"/>
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderFEVStyle">
+									<RadioButtonGroup id="fev_select" columns="3" width="600px" selectedIndex="-1">
+										<buttons>
+											<RadioButton id="fev_selapp" select="onFEVCANCELSelect" groupName="FEVSelect" text="Approve" selected="false"/>
+										</buttons>
+										<buttons>
+											<RadioButton id="fev_selmod" select="onFEVCANCELSelect" groupName="FEVSelect" text="Modify" selected="false"/>
+										</buttons>
+										<buttons>
+											<RadioButton id="fev_selrej" select="onFEVCANCELSelect" groupName="FEVSelect" text="Reject" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox id="FEVReject">
+							<HBox class="destilPartHeaderKeyStyle">
+								<VBox class="destilPartHeaderFEVStyle1">
+									<TextArea id="commentMngr" placeholder="Add note (mandatory when rejecting)" width="500px" liveChange="changeComment"></TextArea>
+								</VBox>
+							</HBox>
+						</VBox>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabCommentsFEV" showIcon="false" sender="{= ${GAComments>t_name}?${GAComments>t_name}:''}" text="{GAComments>Comments}"
+								info="" timestamp="{ path: 'GAComments>TimeStamp', formatter: 'kaust.ui.kits.approvers.util.formatter.commentDate'}"/>
+						</List>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="fev_action" text="Submit" icon="sap-icon://sys-enter" type="Emphasized" press="onFEVCancelAction"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

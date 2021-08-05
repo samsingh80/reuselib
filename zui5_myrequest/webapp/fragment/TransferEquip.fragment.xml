@@ -1,0 +1,111 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<form:SimpleForm id="externForm" minWidth="1024">
+				<form:title>
+					<core:Title text="IT Equipment"></core:Title>
+				</form:title>
+				<Label id="labLocOther" text="Selected Item" design="Bold">
+				</Label>
+				<Text id="inputItem">
+				</Text>
+				<Label id="labEquipNo" text="Equipment Tag#" design="Bold">
+				</Label>
+				<Text id="equipNo">
+				</Text>
+			</form:SimpleForm>
+			
+			<form:SimpleForm id="transferToForm" minWidth="1024" maxContainerCols="3" editable="false" layout="ResponsiveGridLayout" labelSpanL="6" labelSpanM="6" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3">
+				<form:title>
+					<core:Title text="Transfer To"></core:Title>
+				</form:title>
+				<form:content>
+					<core:Title text=" " />
+					<Label text="First Name" />
+					<Text text="{/tfirst_name}" />
+					<Label text="Last Name" />
+					<Text text="{/tlast_name}" />
+					<Label text="KAUST Id" />
+					<Text text="{/tkaust_id}" />
+
+					<core:Title text=" " />
+					<Label text="E-mail" />
+					<Text text="{/temail}" />
+					<Label text="Job Title" />
+					<Text text="{/tposition_text}" />
+					<Label text="Department" />
+					<Text text="{/tdepartment_name}" />
+
+					<core:Title text=" " />
+					<Label text="Billed Cost Center" />
+					<Text id="transBilledCostCenter" text="{/tcostcenter}" />
+					<Label text="Office Telephone" />
+					<Text text="{/toffice_no}" />
+					<Label text="Mobile Telephone" />
+					<Text text="{/tmobile_no}" />
+				</form:content>
+			</form:SimpleForm>
+			
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint">
+						<form:SimpleForm id="userInfoForm" minWidth="1024">
+							<core:Title text="Requester Information" />
+							<Label text="First Name" />
+							<Text text="{/d/FirstName}" />
+							<Label text="Last Name" />
+							<Text text="{/d/LastName}" />
+							<Label text="KAUST Id" />
+							<Text text="{/d/KaustID}" />
+							<Label text="E-mail" />
+							<Text text="{/d/EMailAddress}" />
+							<Label text="Job Title" />
+							<Text text="{/d/PositionShortText}" />
+							<Label text="Department" />
+							<Text text="{/d/DepartmentName}" />
+							<Label text="Cost Center" />
+							<Text text="{/d/CostCenter}" />
+							<Label text="Office Telephone" />
+							<Text text="{/d/OfficeNo}" />
+							<Label text="Mobile Telephone" />
+							<Text text="{/d/MobileNo}" />
+						</form:SimpleForm>
+					</IconTabFilter>
+			<IconTabFilter icon="sap-icon://comment">
+						<List headerText="Comments" growing="true" growingThreshold="4" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="itComment" sender="" text="{GAComments>justification}"  />
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>statusdesc'}" />
+                                    <Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertDate'}" />
+									<Text text="{path:'historyModel>timestamp', formatter:'.formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

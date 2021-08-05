@@ -1,0 +1,127 @@
+<!-- Start: Information Correction - Sri Lakshmi -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0" id="idInfoCrt" visible="false">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://family-care">
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar>
+									<Title id="idInfo" text="Information Correction" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Table id="idHeadertoIC" items="{oICJson>/results}">
+									<columns>
+										<Column hAlign="Left" width="7rem">
+											<Text text="KAUST ID"/>
+										</Column>
+										<Column width="11rem">
+											<Text text="Name"/>
+										</Column>
+										<Column hAlign="Left" width="7rem">
+											<Text text="Gender"/>
+										</Column>
+										<Column hAlign="Left" width="7rem">
+											<Text text="Relation"/>
+										</Column>
+										<Column hAlign="Left" width="7rem">
+											<Text text="Documents"/>
+										</Column>
+										<Column hAlign="Left">
+											<Text text="New Values"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{oICJson>KaustId}"/>
+												<Text text="{oICJson>Fname} {oICJson>Mname} {oICJson>Lname}"/>
+												<Text text="{oICJson>Gender}"/>
+												<Text text="{oICJson>Relationship}"/>
+												<Text text="{oICJson>Doctype}"/>
+												<FormattedText htmlText="{oICJson>data}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<Toolbar>
+									<Title id="idCollection" text="Collection" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idCollectionType">
+									<buttons>
+										<RadioButton groupName="collection" text="Drop off myself" editable="false"></RadioButton>
+										<RadioButton groupName="collection" text="UPS pick up" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+								<Toolbar>
+									<Title id="idDelivery" text="Delivery" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idDeliveryType">
+									<buttons>
+										<RadioButton groupName="delivery" text="Self pickup" editable="false"></RadioButton>
+										<RadioButton groupName="delivery" text="UPS delivery" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="idUpsForm" editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar id="idDeliveryTool">
+									<Title id="idPref" text="Preference" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Kaust Id"></Label>
+								<Text text="{preferenceModel>/KaustID}"></Text>
+								<Label text="Name"></Label>
+								<Text text="{preferenceModel>/FirstName} {preferenceModel>/LastName}"></Text>
+								<Label text="Building No."></Label>
+								<Text text="{preferenceModel>/BuildingNo}"></Text>
+								<Label text="Building Name"></Label>
+								<Text text="{preferenceModel>/BuildingName}"></Text>
+								<Label text="Level"></Label>
+								<Text text="{preferenceModel>/levelb}"></Text>
+								<Label text="Mobile"></Label>
+								<Text text="{preferenceModel>/Mobile}"></Text>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List id="commentHistory" headerText="" noDataText="No Comments Log" growing="true" growingThreshold="4" growingScrollToLoad="false"
+							items="{commentData>/CommentsInfo}">
+							<FeedListItem sender="{commentData>t_name}" text="{commentData>Comments}" showIcon="false"
+								timestamp="{ path: 'commentData>TimeStamp', formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate1' }"/>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{histData>/historyInfo}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Date"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Time"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{histData>Fname}"/>
+										<Text text="{path:'histData>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}"/>
+										<Text text="{path:'histData>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}"/>
+										<Text text="{path:'histData>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>
+<!-- End: Information Correction - Sri Lakshmi -->

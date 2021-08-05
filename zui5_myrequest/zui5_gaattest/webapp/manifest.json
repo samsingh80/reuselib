@@ -1,0 +1,194 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.kaust.zui5gaattest",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "crossNavigation": {
+            "inbounds": {
+                "com-kaust-zui5gaattest-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "gaattest",
+                    "action": "display",
+                    "title": "GA Document Attestation",
+                    "subTitle": "",
+                    "icon": ""
+                }
+            }
+        },
+        "dataSources": {
+            "GA": {
+                "uri": "v2/gaservice",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "S4HANA": {
+                "uri": "/ZCUUTLO0006_USER_DEP_DETAILS_SRV",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.kaust.zui5gaattest.view.app",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.kaust.zui5gaattest.i18n.i18n"
+                }
+            },
+            "oGAModel": {
+                "dataSource": "GA",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+            "oHANAModel": {
+                "dataSource": "S4HANA",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.kaust.zui5gaattest.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "Routeapp",
+                    "pattern": "Routeapp",
+                    "target": [
+                        "Targetapp"
+                    ]
+                },
+                {
+                    "name": "MOFA",
+                    "pattern": "/MOFA",
+                    "target": [
+                        "MOFA"
+                    ]
+                },
+                {
+                    "name": "FRCON",
+                    "pattern": "/FRCON",
+                    "target": [
+                        "FRCON"
+                    ]
+                },
+                {
+                    "name": "COC",
+                    "pattern": "/COC",
+                    "target": [
+                        "COC"
+                    ]
+                }
+            ],
+            "targets": {
+                "Targetapp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "app",
+                    "viewName": "app"
+                },
+                "MOFA": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MOFA",
+                    "viewName": "MOFA"
+                },
+                "FRCON": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FRCON",
+                    "viewName": "FRCON"
+                }
+                ,
+                "COC": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "COC",
+                    "viewName": "COC"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "com-kaust-zui5gaattest"
+    }
+}

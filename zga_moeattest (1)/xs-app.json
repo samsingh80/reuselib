@@ -1,0 +1,51 @@
+{
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+        {
+            "source": "^/bpmworkflowruntime/(.*)$",
+            "target": "/$1",
+            "service": "com.sap.bpm.workflow",
+            "endpoint": "workflow_rest_url",
+            "authenticationType": "xsuaa"
+        },
+        {
+            "source": "^/CAPM_Common/(.*)$",
+            "destination": "CAPM_Common",
+            "authenticationType": "xsuaa",
+            "target": "$1"
+        },
+        {
+            "authenticationType": "xsuaa",
+            "csrfProtection": false,
+            "source": "^/CAPM/(.*)$",
+            "destination": "CAPM",
+            "target": "$1"
+        },
+        {
+            "authenticationType": "basic",
+            "csrfProtection": false,
+            "source": "^/S4HANA/(.*)$",
+            "destination": "S4HANA",
+            "target": "$1"
+        },
+        {
+            "source": "^/resources/(.*)$",
+            "target": "/resources/$1",
+            "authenticationType": "none",
+            "destination": "ui5"
+        },
+        {
+            "source": "^/test-resources/(.*)$",
+            "target": "/test-resources/$1",
+            "authenticationType": "none",
+            "destination": "ui5"
+        },
+        {
+            "source": "^(.*)$",
+            "target": "$1",
+            "service": "html5-apps-repo-rt",
+            "authenticationType": "xsuaa"
+        }
+    ]
+}

@@ -1,0 +1,236 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
+<l:Grid
+		class="sapUiSmallMarginTop layoutMargin sapUiMediumMarginEnd"
+		hSpacing="0.5"
+		defaultSpan="L4 M4 S10">
+		<l:content>
+		    
+	<VBox>		
+		<f:SimpleForm id="Justification" labelSpanL="4" labelSpanM="5" labelSpanS="6"
+					columnsL="2" columnsM="2" emptySpanL="1" emptySpanM="1"
+					maxContainerCols="2" layout="ResponsiveGridLayout" visible="{dataRequestData>/justfVisibility}">
+					<f:content>
+						<Label text="Justification" required="true">
+				
+				</Label>
+				<TextArea value="{dataRequestData>/justification}" rows="4" enabled="false">
+				
+				</TextArea>
+				
+					</f:content>
+					
+				</f:SimpleForm>
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData>
+				</VBox>
+				<Label text="Access Type" design = "Bold" class="sapUiSmallMarginTop " visible="{dataRequestData>/otherVisibility}">
+				<layoutData>
+					<l:GridData span="L2 M3 S12" />
+				</layoutData>
+				</Label>
+
+				<RadioButton id="dataCenter_unEscorted" selected="true" text="Unescorted" enabled = "false" visible="{dataRequestData>/otherVisibility}">
+				<layoutData>
+					<l:GridData span="L2 M3 S12" />
+				</layoutData>
+				</RadioButton>
+				<RadioButton id="dataCenter_escorted" text="Escorted" enabled = "false" visible="{dataRequestData>/otherVisibility}">
+				<layoutData>
+					<l:GridData span="L3 M6 S12" />
+				</layoutData>
+					</RadioButton>
+					
+					<Label text="Request Date" design = "Bold" class="sapUiSmallMarginTop" required="true" visible="{dataRequestData>/otherVisibility}">
+				<layoutData>
+					<l:GridData span="L2 M3 S12" />
+				</layoutData>
+				</Label>
+				
+					<DatePicker value="{dataRequestData>/reqDate}" enabled="false" visible="{dataRequestData>/otherVisibility}" valueFormat="yyyy-MM-dd" displayFormat="MM/dd/yyyy">
+				<layoutData>
+					<l:GridData span="L3 M4 S12" />
+				</layoutData>
+				</DatePicker>
+			
+<Toolbar  design="Transparent" height="1%" visible="{dataRequestData>/otherVisibility}">
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData></Toolbar>
+						
+				<VBox visible="{dataRequestData>/otherVisibility}">
+			 	<Label text="Data Center Team template" visible="{dataRequestData>/otherVisibility}" design = "Bold" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</Label>
+				
+				<VBox class="borderCheck sapUiSmallMarginBegin" >
+				<CheckBox text="IT-Data Center team" selected = "{dataRequestData>/itDataCenter}" enabled = "false">
+				
+				</CheckBox>
+				<layoutData>
+					<l:GridData span="L6 M5 S12" />
+				</layoutData>
+				</VBox>
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</VBox>
+				
+				
+				<VBox visible="{dataRequestData>/otherVisibility}">
+				<Label text="Exchange Building Template" design = "Bold" class="sapUiSmallMarginTop ">
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</Label>
+				
+				<VBox class="borderCheck">
+				<CheckBox text="IT-Exchange Building" selected = "{dataRequestData>/itExchangeBuild}" enabled = "false">
+				</CheckBox>
+				<layoutData>
+					<l:GridData span="L6 M5 S12" />
+				</layoutData>
+				</VBox>
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</VBox>
+				
+				
+				<VBox visible="{dataRequestData>/otherVisibility}">
+			 	<Label text="Building-14 templates" design = "Bold" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</Label>
+				<HBox class="borderCheck sapUiSmallMarginBegin">
+				<VBox >
+				<CheckBox text="IT-High Density" selected = "{dataRequestData>/itBuldingHigh}" enabled = "false"></CheckBox>
+				<CheckBox text="IT-Low Density" selected = "{dataRequestData>/itBuldingLow}" enabled = "false"></CheckBox>
+				<layoutData>
+					<l:GridData span="L2 M2 S12" />
+				</layoutData>
+				</VBox>
+				<VBox >
+				<CheckBox text="IT-Medium Density" selected = "{dataRequestData>/itBuldingMedium}" enabled = "false"></CheckBox>
+				<CheckBox text="IT Test Room" selected = "{dataRequestData>/itBuildingTest}" enabled = "false"></CheckBox>
+				<layoutData>
+					<l:GridData span="L4 M4 S12" />
+				</layoutData>
+				</VBox>
+				</HBox>
+				<layoutData>
+					<l:GridData span="L6 M7 S12" />
+				</layoutData>
+				</VBox>
+						
+			<VBox visible="{dataRequestData>/otherVisibility}">
+				<Label text="Maintenance templates" design = "Bold" class="sapUiSmallMarginTop ">
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</Label>
+				
+				<VBox class="borderCheck">
+				<CheckBox text="IT-IN-Camps Maintenance (BDC,SCC)" selected = "{dataRequestData>/itInCmps}" enabled = "false"></CheckBox>
+				<CheckBox text="IT-OUT-Camps Maintenance (EXB,SHQ)" selected = "{dataRequestData>/itOutCmps}" enabled = "false"></CheckBox>
+				</VBox>
+				<layoutData>
+					<l:GridData span="L6 M5 S12" />
+				</layoutData>
+				</VBox>
+				
+				
+				<VBox visible="{dataRequestData>/otherVisibility}">
+				<Label text="Building 1 templates" design = "Bold" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</Label>
+				<HBox class="borderCheck sapUiSmallMarginBegin">
+				<VBox>
+				<CheckBox text="IT-High Density" selected ="{dataRequestData>/itBuildingTempHighDesity}" enabled = "false"></CheckBox>
+				<CheckBox text="IT-Low Density" selected = "{dataRequestData>/itBuildingTempLowDensity}" enabled = "false"></CheckBox>
+				<CheckBox text="IT-Stock Room" selected = "{dataRequestData>/itBuildingTempItStock}" enabled = "false"></CheckBox>
+				
+				<layoutData>
+					<l:GridData span="L2 M2 S12" />
+				</layoutData>
+				</VBox>
+				<VBox >
+				<CheckBox text="IT-Medium Density" selected ="{dataRequestData>/itBuildingTempMedium}" enabled = "false"></CheckBox>
+				 <HBox> 
+				<CheckBox text="IT-MTER-1" selected = "{dataRequestData>/itBuildingTempItMeter}" enabled = "false"></CheckBox>
+				<CheckBox text="IT-MTER-2" selected = "{dataRequestData>/itBuidingTempItMeter2}" enabled = "false" ></CheckBox>
+				 </HBox>
+				 <CheckBox text="IT-Security Room" selected = "{dataRequestData>/itSecurityRoom}" enabled = "false"></CheckBox> 
+				<layoutData>
+					<l:GridData span="L4 M4 S12" />
+				</layoutData>
+				</VBox>
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</HBox>
+				<layoutData>
+					<l:GridData span="L6 M7 S12" />
+				</layoutData>
+				</VBox>
+				
+				<VBox visible="{dataRequestData>/otherVisibility}"> 
+				<Label text="Other templates" design = "Bold" class="sapUiSmallMarginTop ">
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</Label>
+				<VBox class="borderCheck">
+				<CheckBox text="IT-Front and Back Stairs-BDC" selected = "{dataRequestData>/otherTempItFront}" enabled = "false"></CheckBox>
+				<CheckBox text="IT-Spine Access-BDC" selected = "{dataRequestData>/otherTempItSpain}" enabled = "false"></CheckBox>
+				<CheckBox text="IT-Spine Access-SCC" selected = "{dataRequestData>/otherTempItSpainscc}" enabled = "false"></CheckBox>
+				<layoutData>
+					<l:GridData span="L6 M6 S12" />
+				</layoutData>
+				</VBox>
+				<layoutData>
+					<l:GridData span="L6 M5 S12" />
+				</layoutData>
+				</VBox>
+			<HBox visible="{dataRequestData>/otherVisibility}">
+				<Label text="ID Proof"  class="sapUiSmallMarginEnd"  required="true"></Label>
+				<Link id="fileUrl" text="Click to download" ></Link>
+				</HBox>
+				
+			
+				
+				<!-- <HBox>
+				<CheckBox text="In submitting the request, I acknowledge and agree to"></CheckBox>
+				<Link text="Data Center Agreement" class=" sapUiSmallMarginBegin sapUiSmallMarginTop"></Link>
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData>
+				</HBox>
+				
+				<HBox>
+				<CheckBox text="In checking this box, I am requesting access on behalf of service provider and I agree to">
+				</CheckBox>
+				
+				<Link text="Access to the Service Provider Agreement" class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+				
+				</Link>
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData>
+				</HBox> 
+				
+				 -->
+				
+								
+		</l:content>
+		</l:Grid>
+		
+
+</core:FragmentDefinition>

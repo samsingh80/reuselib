@@ -1,0 +1,167 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid id="AttestationGRID" defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" tooltip="Attestation Information">
+						<form:SimpleForm id="COCDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Chamber of Commerce Attestation" emphasized="true" />
+								<Label text="KAUST Issued Letter" />
+								<Text id="idckaustissued"/>
+								<Label text="Number of Attestations" />
+								<Text id="idcnoofattestation"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="FCONDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Foreign Consulate Attestation" emphasized="true" />
+								<Label text="Letter attested by MOFA" />
+								<Text id="idfattestedmofa"/>
+								<Label text="Consulate Name" />
+								<Text id="idfforeignconsulates"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="MOFADetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title id="idmmofatitle" text="MOFA Attestation" emphasized="true" />
+								<Label text="Letter issued in Saudi Arabia" />
+								<Text id="idmissuedksa"/>
+								<Label text="Letter attested by Saudi Embassy" />
+								<Text id="idmattestedksa"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="GenAttDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="formHiddenTitle">
+							<form:content>
+								<core:Title text="" emphasized="true"/>
+								<Label text="Selected Requestors" />
+								<Text id="idSelectedReq"/>
+								<Label text="Amount Received" />
+								<Text id="idAmtRecdInp"/>
+								<Label text="Expeditor" />
+								<Text id="idExpeditor"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="MOFAFCDetails" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Foreign Consulate Details" emphasized="true"/>
+								<Label text="Foreign consulate attestation" />
+			        			<Text id="idmforcon"/>
+								<Label text="Consulate Name" />
+			        			<Text id="idmforeignconsulates"/>
+							</form:content>
+						</form:SimpleForm>							
+						<form:SimpleForm id="MOFAAttachments" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Attachments" emphasized="true"/>
+								<Label text="MOFA Request" />
+								<Link id="idmofaatt" emphasized="true"	href="#"/>
+								<Label text="SADAD Receipt" />
+			        			<Link id="idsadadatt" emphasized="true"	href="#"/>
+							</form:content>
+						</form:SimpleForm>		
+						<form:SimpleForm id="AttestPrefHead" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Collection" emphasized="true"/>
+			                    <RadioButtonGroup id="idmofaCollection" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+			                      <buttons>
+			                        <RadioButton text="Self Drop off" />
+			                        <RadioButton text="UPS Pickup" />
+			                      </buttons>
+			                    </RadioButtonGroup>
+								<core:Title text="Delivery" emphasized="true"/>
+			                    <RadioButtonGroup id="idmofaDelivery" selectedIndex="0" columns="2" select="onRadioBtnSelect" enabled="false">
+			                      <buttons>
+			                        <RadioButton text="Self Pick Up" />
+			                        <RadioButton text="UPS Delivery" />
+			                      </buttons>
+			                    </RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>		
+						<form:SimpleForm id="AttestPrefBody" minWidth="1024" visible="true"
+											maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+											title="" labelSpanL="7" labelSpanM="4" emptySpanL="0"
+											emptySpanM="0" columnsL="2" columnsM="2" class="editableForm">
+							<form:content>
+								<core:Title text="Preference Details" emphasized="true"/>
+								<Label text="Name" />
+			                    <Input id="idmpmname" type="Text" editable="false"/>
+								<Label text="KAUST ID" />
+			                    <Input id="idmpmkaustid" type="Text" editable="false"/>
+								<Label text="Telephone Number" />
+			                    <Input id="idmpmmobile" type="Text" editable="false"/>
+								<Label text="Building Name / Number" />
+			                    <Input id="idmpmbldno" type="Text" editable="false"/>
+								<Label text="Level" />
+			                    <Input id="idmpmlevel" type="Text" editable="false"/>
+								<Label text="Room No / Cubicle" />
+			                    <Input id="idmpmbldname" type="Text" editable="false"/>
+			                    <Label text="Tracking Number" />
+			                    <Input type="Text" id="idmofaTrackingNum" editable="false"/>
+							</form:content>
+						</form:SimpleForm>							
+					</IconTabFilter>
+
+					 <IconTabFilter icon="sap-icon://comment" tooltip="Comments">
+						<List headerText="Comments" growing="true" growingThreshold="5" growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabComments" showIcon="false" sender="{GAComments>t_name}" text="{GAComments>Comments}" info="" timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate'
+						  }" />
+						</List>
+					</IconTabFilter>
+					 
+					<IconTabFilter icon="sap-icon://customer-history" tooltip="Status">
+						<Table id="TblHistory" items="{historyModel>/}" >
+						<columns>
+							<Column width="12em">
+								<Text text="User Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Date" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Time" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{historyModel>Fname}" />
+									<Text text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+									<Text text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						</Table> 
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

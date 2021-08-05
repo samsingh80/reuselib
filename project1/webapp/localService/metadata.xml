@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="CatalogService"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="BookPrice" EntityType="CatalogService.BookPrice"/>
+                <EntitySet Name="Books" EntityType="CatalogService.Books"/>
+                <EntitySet Name="Foo" EntityType="CatalogService.Foo"/>
+                <FunctionImport Name="submitOrder" ReturnType="CatalogService.return_CatalogService_submitOrder" m:HttpMethod="POST">
+                    <Parameter Name="book" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="amount" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+            </EntityContainer>
+            <EntityType Name="BookPrice">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="price" Type="Edm.Int32"/>
+                <Property Name="curr" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="Books">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="title" Type="Edm.String"/>
+                <Property Name="stock" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="Foo">
+                <Property Name="ID" Type="Edm.Int32"/>
+                <Property Name="title" Type="Edm.String"/>
+                <Property Name="price" Type="Edm.Int32"/>
+            </EntityType>
+            <ComplexType Name="return_CatalogService_submitOrder">
+                <Property Name="stock" Type="Edm.Int32"/>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

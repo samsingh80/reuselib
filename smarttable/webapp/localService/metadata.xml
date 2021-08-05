@@ -1,0 +1,2536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="Kitservice" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="ReqHeader" EntityType="Kitservice.ReqHeader"/>
+                <EntitySet Name="Log" EntityType="Kitservice.Log"/>
+                <EntitySet Name="PortReqTypeDesc" EntityType="Kitservice.PortReqTypeDesc"/>
+                <EntitySet Name="Status" EntityType="Kitservice.Status"/>
+                <EntitySet Name="solmanreq" EntityType="Kitservice.solmanreq"/>
+                <EntitySet Name="AccessRequest" EntityType="Kitservice.AccessRequest"/>
+                <EntitySet Name="Gemail" EntityType="Kitservice.Gemail"/>
+                <EntitySet Name="SecurityIncidentRequest" EntityType="Kitservice.SecurityIncidentRequest"/>
+                <EntitySet Name="PortActivationRequest" EntityType="Kitservice.PortActivationRequest"/>
+                <EntitySet Name="Email" EntityType="Kitservice.Email"/>
+                <EntitySet Name="AdminRightsReq" EntityType="Kitservice.AdminRightsReq"/>
+                <EntitySet Name="VPNRequest" EntityType="Kitservice.VPNRequest"/>
+                <EntitySet Name="Transferequipments" EntityType="Kitservice.Transferequipments"/>
+                <EntitySet Name="Vulnerabilityscan" EntityType="Kitservice.Vulnerabilityscan"/>
+                <EntitySet Name="TERRequest" EntityType="Kitservice.TERRequest"/>
+                <EntitySet Name="AllRequests" EntityType="Kitservice.AllRequests"/>
+                <EntitySet Name="Infra_DetailSet" EntityType="Kitservice.Infra_DetailSet"/>
+                <EntitySet Name="Vsm" EntityType="Kitservice.Vsm"/>
+                <EntitySet Name="Replenish" EntityType="Kitservice.Replenish"/>
+                <EntitySet Name="Loanequip" EntityType="Kitservice.Loanequip"/>
+                <EntitySet Name="OrderItem" EntityType="Kitservice.OrderItem"/>
+                <EntitySet Name="ItBldgSet" EntityType="Kitservice.ItBldgSet"/>
+                <EntitySet Name="VPNReqType" EntityType="Kitservice.VPNReqType"/>
+                <EntitySet Name="PortReportSet" EntityType="Kitservice.PortReportSet"/>
+                <EntitySet Name="AdminReportSet" EntityType="Kitservice.AdminReportSet"/>
+                <EntitySet Name="TerReportSet" EntityType="Kitservice.TerReportSet"/>
+                <EntitySet Name="ReportsCollection" EntityType="Kitservice.ReportsCollection"/>
+                <EntitySet Name="ReportsrestrictCollection" EntityType="Kitservice.ReportsrestrictCollection"/>
+                <EntitySet Name="RoomCollection" EntityType="Kitservice.RoomCollection"/>
+                <EntitySet Name="AVTimeSlots" EntityType="Kitservice.AVTimeSlots"/>
+                <EntitySet Name="AVBookingLock" EntityType="Kitservice.AVBookingLock"/>
+                <EntitySet Name="DCWPManpower" EntityType="Kitservice.DCWPManpower"/>
+                <EntitySet Name="GAHeader" EntityType="Kitservice.GAHeader"/>
+                <EntitySet Name="DistEmailMembers" EntityType="Kitservice.DistEmailMembers"/>
+                <EntitySet Name="GenericEmailDelegate" EntityType="Kitservice.GenericEmailDelegate"/>
+                <EntitySet Name="TransferEquItem" EntityType="Kitservice.TransferEquItem"/>
+                <EntitySet Name="TERMembers" EntityType="Kitservice.TERMembers"/>
+                <EntitySet Name="TERPOW" EntityType="Kitservice.TERPOW"/>
+                <EntitySet Name="TERSOW" EntityType="Kitservice.TERSOW"/>
+                <EntitySet Name="Currencies" EntityType="Kitservice.Currencies"/>
+                <EntitySet Name="KFSOrderItem" EntityType="Kitservice.KFSOrderItem"/>
+                <EntitySet Name="BirthCertificate" EntityType="Kitservice.BirthCertificate"/>
+                <EntitySet Name="InfoCorrection" EntityType="Kitservice.InfoCorrection"/>
+                <EntitySet Name="ZakatLetter" EntityType="Kitservice.ZakatLetter"/>
+                <EntitySet Name="Iqama" EntityType="Kitservice.Iqama"/>
+                <EntitySet Name="VisitVisa" EntityType="Kitservice.VisitVisa"/>
+                <EntitySet Name="SponsorTransferChild" EntityType="Kitservice.SponsorTransferChild"/>
+                <EntitySet Name="DHSponsorTransfer" EntityType="Kitservice.DHSponsorTransfer"/>
+                <EntitySet Name="SaudiID" EntityType="Kitservice.SaudiID"/>
+                <EntitySet Name="DrivingLicense" EntityType="Kitservice.DrivingLicense"/>
+                <EntitySet Name="MOEAttest" EntityType="Kitservice.MOEAttest"/>
+                <EntitySet Name="JobtitleChange" EntityType="Kitservice.JobtitleChange"/>
+                <EntitySet Name="Currencies_texts" EntityType="Kitservice.Currencies_texts"/>
+                <FunctionImport Name="AVCancelRequest" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="request_id" Type="Edm.String" MaxLength="90" Mode="In" Nullable="true"/>
+                    <Parameter Name="option" Type="Edm.String" MaxLength="1" Mode="In" Nullable="true"/>
+                    <Parameter Name="status" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="stage" Type="Edm.String" MaxLength="50" Mode="In" Nullable="true"/>
+                    <Parameter Name="list" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <AssociationSet Name="ReqHeader_DCWPDetail" Association="Kitservice.ReqHeader_DCWPDetail">
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                    <End Role="solmanreq" EntitySet="solmanreq"/>
+                </AssociationSet>
+                <AssociationSet Name="ReqHeader_DCWPManpower" Association="Kitservice.ReqHeader_DCWPManpower">
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                    <End Role="DCWPManpower" EntitySet="DCWPManpower"/>
+                </AssociationSet>
+                <AssociationSet Name="ReqHeader_log" Association="Kitservice.ReqHeader_log">
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="ReqHeader_GAHeader" Association="Kitservice.ReqHeader_GAHeader">
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="AccessRequest_header" Association="Kitservice.AccessRequest_header">
+                    <End Role="AccessRequest" EntitySet="AccessRequest"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="AccessRequest_log" Association="Kitservice.AccessRequest_log">
+                    <End Role="AccessRequest" EntitySet="AccessRequest"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="Gemail_item" Association="Kitservice.Gemail_item">
+                    <End Role="Gemail" EntitySet="Gemail"/>
+                    <End Role="DistEmailMembers" EntitySet="DistEmailMembers"/>
+                </AssociationSet>
+                <AssociationSet Name="Gemail_header" Association="Kitservice.Gemail_header">
+                    <End Role="Gemail" EntitySet="Gemail"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="Gemail_log" Association="Kitservice.Gemail_log">
+                    <End Role="Gemail" EntitySet="Gemail"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="SecurityIncidentRequest_header" Association="Kitservice.SecurityIncidentRequest_header">
+                    <End Role="SecurityIncidentRequest" EntitySet="SecurityIncidentRequest"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="SecurityIncidentRequest_log" Association="Kitservice.SecurityIncidentRequest_log">
+                    <End Role="SecurityIncidentRequest" EntitySet="SecurityIncidentRequest"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="PortActivationRequest_reqtypedesc" Association="Kitservice.PortActivationRequest_reqtypedesc">
+                    <End Role="PortActivationRequest" EntitySet="PortActivationRequest"/>
+                    <End Role="PortReqTypeDesc" EntitySet="PortReqTypeDesc"/>
+                </AssociationSet>
+                <AssociationSet Name="PortActivationRequest_header" Association="Kitservice.PortActivationRequest_header">
+                    <End Role="PortActivationRequest" EntitySet="PortActivationRequest"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="PortActivationRequest_log" Association="Kitservice.PortActivationRequest_log">
+                    <End Role="PortActivationRequest" EntitySet="PortActivationRequest"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="Email_item" Association="Kitservice.Email_item">
+                    <End Role="Email" EntitySet="Email"/>
+                    <End Role="GenericEmailDelegate" EntitySet="GenericEmailDelegate"/>
+                </AssociationSet>
+                <AssociationSet Name="Email_header" Association="Kitservice.Email_header">
+                    <End Role="Email" EntitySet="Email"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="Email_log" Association="Kitservice.Email_log">
+                    <End Role="Email" EntitySet="Email"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="AdminRightsReq_header" Association="Kitservice.AdminRightsReq_header">
+                    <End Role="AdminRightsReq" EntitySet="AdminRightsReq"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="AdminRightsReq_log" Association="Kitservice.AdminRightsReq_log">
+                    <End Role="AdminRightsReq" EntitySet="AdminRightsReq"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="VPNRequest_header" Association="Kitservice.VPNRequest_header">
+                    <End Role="VPNRequest" EntitySet="VPNRequest"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="VPNRequest_log" Association="Kitservice.VPNRequest_log">
+                    <End Role="VPNRequest" EntitySet="VPNRequest"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="VPNRequest_reqtypetext" Association="Kitservice.VPNRequest_reqtypetext">
+                    <End Role="VPNRequest" EntitySet="VPNRequest"/>
+                    <End Role="VPNReqType" EntitySet="VPNReqType"/>
+                </AssociationSet>
+                <AssociationSet Name="Transferequipments_items" Association="Kitservice.Transferequipments_items">
+                    <End Role="Transferequipments" EntitySet="Transferequipments"/>
+                    <End Role="TransferEquItem" EntitySet="TransferEquItem"/>
+                </AssociationSet>
+                <AssociationSet Name="Transferequipments_header" Association="Kitservice.Transferequipments_header">
+                    <End Role="Transferequipments" EntitySet="Transferequipments"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="Transferequipments_log" Association="Kitservice.Transferequipments_log">
+                    <End Role="Transferequipments" EntitySet="Transferequipments"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="Vulnerabilityscan_header" Association="Kitservice.Vulnerabilityscan_header">
+                    <End Role="Vulnerabilityscan" EntitySet="Vulnerabilityscan"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="Vulnerabilityscan_log" Association="Kitservice.Vulnerabilityscan_log">
+                    <End Role="Vulnerabilityscan" EntitySet="Vulnerabilityscan"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="TERRequest_members" Association="Kitservice.TERRequest_members">
+                    <End Role="TERRequest" EntitySet="TERRequest"/>
+                    <End Role="TERMembers" EntitySet="TERMembers"/>
+                </AssociationSet>
+                <AssociationSet Name="TERRequest_pow" Association="Kitservice.TERRequest_pow">
+                    <End Role="TERRequest" EntitySet="TERRequest"/>
+                    <End Role="TERPOW" EntitySet="TERPOW"/>
+                </AssociationSet>
+                <AssociationSet Name="TERRequest_sow" Association="Kitservice.TERRequest_sow">
+                    <End Role="TERRequest" EntitySet="TERRequest"/>
+                    <End Role="TERSOW" EntitySet="TERSOW"/>
+                </AssociationSet>
+                <AssociationSet Name="TERRequest_header" Association="Kitservice.TERRequest_header">
+                    <End Role="TERRequest" EntitySet="TERRequest"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="TERRequest_log" Association="Kitservice.TERRequest_log">
+                    <End Role="TERRequest" EntitySet="TERRequest"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="Vsm_header" Association="Kitservice.Vsm_header">
+                    <End Role="Vsm" EntitySet="Vsm"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="Vsm_log" Association="Kitservice.Vsm_log">
+                    <End Role="Vsm" EntitySet="Vsm"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="Vsm_timeslots" Association="Kitservice.Vsm_timeslots">
+                    <End Role="Vsm" EntitySet="Vsm"/>
+                    <End Role="AVTimeSlots" EntitySet="AVTimeSlots"/>
+                </AssociationSet>
+                <AssociationSet Name="Replenish_header" Association="Kitservice.Replenish_header">
+                    <End Role="Replenish" EntitySet="Replenish"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="Replenish_log" Association="Kitservice.Replenish_log">
+                    <End Role="Replenish" EntitySet="Replenish"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="Loanequip_header" Association="Kitservice.Loanequip_header">
+                    <End Role="Loanequip" EntitySet="Loanequip"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="Loanequip_log" Association="Kitservice.Loanequip_log">
+                    <End Role="Loanequip" EntitySet="Loanequip"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="OrderItem_waers" Association="Kitservice.OrderItem_waers">
+                    <End Role="OrderItem" EntitySet="OrderItem"/>
+                    <End Role="Currencies" EntitySet="Currencies"/>
+                </AssociationSet>
+                <AssociationSet Name="OrderItem_items" Association="Kitservice.OrderItem_items">
+                    <End Role="OrderItem" EntitySet="OrderItem"/>
+                    <End Role="KFSOrderItem" EntitySet="KFSOrderItem"/>
+                </AssociationSet>
+                <AssociationSet Name="OrderItem_header" Association="Kitservice.OrderItem_header">
+                    <End Role="OrderItem" EntitySet="OrderItem"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="OrderItem_log" Association="Kitservice.OrderItem_log">
+                    <End Role="OrderItem" EntitySet="OrderItem"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="ReportsCollection_waers" Association="Kitservice.ReportsCollection_waers">
+                    <End Role="ReportsCollection" EntitySet="ReportsCollection"/>
+                    <End Role="Currencies" EntitySet="Currencies"/>
+                </AssociationSet>
+                <AssociationSet Name="ReportsrestrictCollection_waers" Association="Kitservice.ReportsrestrictCollection_waers">
+                    <End Role="ReportsrestrictCollection" EntitySet="ReportsrestrictCollection"/>
+                    <End Role="Currencies" EntitySet="Currencies"/>
+                </AssociationSet>
+                <AssociationSet Name="RoomCollection_header" Association="Kitservice.RoomCollection_header">
+                    <End Role="RoomCollection" EntitySet="RoomCollection"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="RoomCollection_log" Association="Kitservice.RoomCollection_log">
+                    <End Role="RoomCollection" EntitySet="RoomCollection"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_header" Association="Kitservice.GAHeader_header">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="ReqHeader" EntitySet="ReqHeader"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_log" Association="Kitservice.GAHeader_log">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="Log" EntitySet="Log"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_BirthCertificate" Association="Kitservice.GAHeader_BirthCertificate">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="BirthCertificate" EntitySet="BirthCertificate"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_InfoCorrection" Association="Kitservice.GAHeader_InfoCorrection">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="InfoCorrection" EntitySet="InfoCorrection"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_ZakatLetter" Association="Kitservice.GAHeader_ZakatLetter">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="ZakatLetter" EntitySet="ZakatLetter"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_Iqama" Association="Kitservice.GAHeader_Iqama">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="Iqama" EntitySet="Iqama"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_VisitVisa" Association="Kitservice.GAHeader_VisitVisa">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="VisitVisa" EntitySet="VisitVisa"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_SponsorTransferChild" Association="Kitservice.GAHeader_SponsorTransferChild">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="SponsorTransferChild" EntitySet="SponsorTransferChild"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_DHSponsorTransfer" Association="Kitservice.GAHeader_DHSponsorTransfer">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="DHSponsorTransfer" EntitySet="DHSponsorTransfer"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_SaudiID" Association="Kitservice.GAHeader_SaudiID">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="SaudiID" EntitySet="SaudiID"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_DrivingLicense" Association="Kitservice.GAHeader_DrivingLicense">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="DrivingLicense" EntitySet="DrivingLicense"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_MOEAttest" Association="Kitservice.GAHeader_MOEAttest">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="MOEAttest" EntitySet="MOEAttest"/>
+                </AssociationSet>
+                <AssociationSet Name="GAHeader_JobtitleChange" Association="Kitservice.GAHeader_JobtitleChange">
+                    <End Role="GAHeader" EntitySet="GAHeader"/>
+                    <End Role="JobtitleChange" EntitySet="JobtitleChange"/>
+                </AssociationSet>
+                <AssociationSet Name="Currencies_texts_1" Association="Kitservice.Currencies_texts_1">
+                    <End Role="Currencies" EntitySet="Currencies"/>
+                    <End Role="Currencies_texts" EntitySet="Currencies_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="Currencies_localized" Association="Kitservice.Currencies_localized">
+                    <End Role="Currencies" EntitySet="Currencies"/>
+                    <End Role="Currencies_texts" EntitySet="Currencies_texts"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="ReqHeader">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="userid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="sub_service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="status" Type="Edm.Int32"/>
+                <Property Name="process_id" Type="Edm.String" MaxLength="30"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="stage" Type="Edm.String" MaxLength="50"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="expeditor" Type="Edm.String" MaxLength="12"/>
+                <Property Name="on_behalf" Type="Edm.String" MaxLength="1"/>
+                <Property Name="role" Type="Edm.String" MaxLength="30"/>
+                <Property Name="requestor_kaustid" Type="Edm.String" MaxLength="15"/>
+                <Property Name="onbehalfuserid" Type="Edm.String" MaxLength="15"/>
+                <Property Name="request_type" Type="Edm.String" MaxLength="20"/>
+                <Property Name="activity_type" Type="Edm.String" MaxLength="20"/>
+                <Property Name="flow" Type="Edm.String" MaxLength="20"/>
+                <Property Name="previous_step_process" Type="Edm.String" MaxLength="20"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="DCWPDetail" Relationship="Kitservice.ReqHeader_DCWPDetail" FromRole="ReqHeader" ToRole="solmanreq"/>
+                <NavigationProperty Name="DCWPManpower" Relationship="Kitservice.ReqHeader_DCWPManpower" FromRole="ReqHeader" ToRole="DCWPManpower"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.ReqHeader_log" FromRole="ReqHeader" ToRole="Log"/>
+                <NavigationProperty Name="GAHeader" Relationship="Kitservice.ReqHeader_GAHeader" FromRole="ReqHeader" ToRole="GAHeader"/>
+            </EntityType>
+            <EntityType Name="Log">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="sequence_number"/>
+                    <PropertyRef Name="timestamp"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="timestamp" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+                <Property Name="status" Type="Edm.Int32"/>
+                <Property Name="userid" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="PortReqTypeDesc">
+                <Key>
+                    <PropertyRef Name="requesttype"/>
+                </Key>
+                <Property Name="requesttype" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="reqtypedesc" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Status">
+                <Key>
+                    <PropertyRef Name="status"/>
+                </Key>
+                <Property Name="status" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="desc" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="solmanreq">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="sequence_number"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="r_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="r_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="start_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="start_time" Type="Edm.Time"/>
+                <Property Name="end_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="end_time" Type="Edm.Time"/>
+                <Property Name="bldglevel" Type="Edm.String" MaxLength="1"/>
+                <Property Name="bldgname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="rooms" Type="Edm.String" MaxLength="80"/>
+                <Property Name="cold_wrk" Type="Edm.String" MaxLength="1"/>
+                <Property Name="hot_work" Type="Edm.String" MaxLength="1"/>
+                <Property Name="hse_wrk_permit" Type="Edm.String" MaxLength="20"/>
+                <Property Name="dis_fire_supp" Type="Edm.String" MaxLength="1"/>
+                <Property Name="prop_f_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="prop_l_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="prop_kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="prop_userid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="prop_mobile" Type="Edm.String" MaxLength="241"/>
+                <Property Name="prop_dep" Type="Edm.String" MaxLength="80"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="job_desc" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="req_company" Type="Edm.String" MaxLength="80"/>
+                <Property Name="req_email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="req_kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="created_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="created_by" Type="Edm.String" MaxLength="12"/>
+                <Property Name="deleted" Type="Edm.String" MaxLength="1"/>
+                <Property Name="status_text" Type="Edm.String" MaxLength="30"/>
+                <Property Name="dc_approver" Type="Edm.String" MaxLength="80"/>
+                <Property Name="comments" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="AccessRequest">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <Property Name="location" Type="Edm.String"/>
+                <Property Name="data2enc" Type="Edm.String"/>
+                <Property Name="data2oth" Type="Edm.String" MaxLength="1"/>
+                <Property Name="datasize" Type="Edm.String"/>
+                <Property Name="locationin" Type="Edm.String"/>
+                <Property Name="isagree" Type="Edm.String" MaxLength="1"/>
+                <Property Name="efirst_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="emiddle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="elast_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="eemail" Type="Edm.String" MaxLength="241"/>
+                <Property Name="destsys" Type="Edm.String"/>
+                <Property Name="vpnexpdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="sr_number" Type="Edm.String" MaxLength="18"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.AccessRequest_header" FromRole="AccessRequest" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.AccessRequest_log" FromRole="AccessRequest" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="Gemail">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="grpdisplayname" Type="Edm.String" MaxLength="90"/>
+                <Property Name="grpemail" Type="Edm.String" MaxLength="241"/>
+                <Property Name="owneremail" Type="Edm.String" MaxLength="90"/>
+                <Property Name="coowneremail" Type="Edm.String" MaxLength="90"/>
+                <Property Name="mcomments" Type="Edm.String"/>
+                <Property Name="accountdesc" Type="Edm.String"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="item" Relationship="Kitservice.Gemail_item" FromRole="Gemail" ToRole="DistEmailMembers"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.Gemail_header" FromRole="Gemail" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.Gemail_log" FromRole="Gemail" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="SecurityIncidentRequest">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <Property Name="location" Type="Edm.String"/>
+                <Property Name="incident_type" Type="Edm.String"/>
+                <Property Name="suspected_source" Type="Edm.String"/>
+                <Property Name="scan_priority" Type="Edm.String" MaxLength="10"/>
+                <Property Name="sr_number" Type="Edm.String" MaxLength="18"/>
+                <Property Name="ip_address" Type="Edm.String"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.SecurityIncidentRequest_header" FromRole="SecurityIncidentRequest" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.SecurityIncidentRequest_log" FromRole="SecurityIncidentRequest" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="PortActivationRequest">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="requesttype" Type="Edm.Int32"/>
+                <NavigationProperty Name="reqtypedesc" Relationship="Kitservice.PortActivationRequest_reqtypedesc" FromRole="PortActivationRequest" ToRole="PortReqTypeDesc"/>
+                <Property Name="port_tag_number" Type="Edm.String"/>
+                <Property Name="service_type" Type="Edm.String"/>
+                <Property Name="crmsrno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="l_building" Type="Edm.String" MaxLength="40"/>
+                <Property Name="l_level" Type="Edm.String" MaxLength="30"/>
+                <Property Name="l_room" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ip_address" Type="Edm.String" MaxLength="20"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.PortActivationRequest_header" FromRole="PortActivationRequest" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.PortActivationRequest_log" FromRole="PortActivationRequest" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="Email">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="requesttype" Type="Edm.String"/>
+                <Property Name="remail" Type="Edm.String" MaxLength="241"/>
+                <Property Name="displayname" Type="Edm.String"/>
+                <Property Name="owneremail" Type="Edm.String" MaxLength="90"/>
+                <Property Name="accountdesc" Type="Edm.String"/>
+                <Property Name="ruserid" Type="Edm.String" MaxLength="90"/>
+                <Property Name="mcomments" Type="Edm.String"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="item" Relationship="Kitservice.Email_item" FromRole="Email" ToRole="GenericEmailDelegate"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.Email_header" FromRole="Email" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.Email_log" FromRole="Email" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="AdminRightsReq">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="custodian" Type="Edm.String" MaxLength="1"/>
+                <Property Name="justification" Type="Edm.String"/>
+                <Property Name="tagnumber" Type="Edm.String" MaxLength="80"/>
+                <Property Name="operatingsys" Type="Edm.String" MaxLength="15"/>
+                <Property Name="expirydate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="custodian_usrid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="linux_ip" Type="Edm.String" MaxLength="20"/>
+                <Property Name="crmsrno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="userid_ext" Type="Edm.String" MaxLength="20"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.AdminRightsReq_header" FromRole="AdminRightsReq" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.AdminRightsReq_log" FromRole="AdminRightsReq" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="VPNRequest">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="100"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="requesttype" Type="Edm.Int32"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="40"/>
+                <Property Name="efirst_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="emiddle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="elast_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="eemail" Type="Edm.String" MaxLength="241"/>
+                <Property Name="eipaddress" Type="Edm.String"/>
+                <Property Name="vpnexpirydate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="vpn_access" Type="Edm.String" MaxLength="1"/>
+                <Property Name="attachment" Type="Edm.String"/>
+                <Property Name="justification" Type="Edm.String"/>
+                <Property Name="adid" Type="Edm.String" MaxLength="30"/>
+                <Property Name="vpnrenewaldate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="infosecmanager" Type="Edm.String" MaxLength="120"/>
+                <Property Name="secmanagercomments" Type="Edm.String"/>
+                <Property Name="msgteam" Type="Edm.String" MaxLength="120"/>
+                <Property Name="msgteamcomments" Type="Edm.String"/>
+                <Property Name="suggested_userid" Type="Edm.String" MaxLength="20"/>
+                <Property Name="provisioned_userid" Type="Edm.String" MaxLength="20"/>
+                <Property Name="idm_action" Type="Edm.String" MaxLength="1"/>
+                <Property Name="idm_change_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="issuguseridchng" Type="Edm.String" MaxLength="1"/>
+                <Property Name="crmsrno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="dob_pass" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.VPNRequest_header" FromRole="VPNRequest" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.VPNRequest_log" FromRole="VPNRequest" ToRole="Log"/>
+                <NavigationProperty Name="reqtypetext" Relationship="Kitservice.VPNRequest_reqtypetext" FromRole="VPNRequest" ToRole="VPNReqType"/>
+            </EntityType>
+            <EntityType Name="Transferequipments">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <Property Name="justification" Type="Edm.String"/>
+                <Property Name="disclaimer" Type="Edm.String" MaxLength="1"/>
+                <Property Name="employeenotes" Type="Edm.String"/>
+                <Property Name="tfirst_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="tlast_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="temail" Type="Edm.String" MaxLength="241"/>
+                <Property Name="tmobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="toffice_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="tdepartment_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="tposition_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="tcostcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="tkaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="equip_billed" Type="Edm.String" MaxLength="1"/>
+                <Property Name="mcomments" Type="Edm.String"/>
+                <Property Name="rec_man_notes" Type="Edm.String"/>
+                <Property Name="rec_user_id" Type="Edm.String" MaxLength="12"/>
+                <Property Name="total_equip" Type="Edm.Int32"/>
+                <Property Name="it_support" Type="Edm.String" MaxLength="1"/>
+                <Property Name="it_support_txt" Type="Edm.String" MaxLength="80"/>
+                <Property Name="dmanagerid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="rec_managerid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="send_man" Type="Edm.String" MaxLength="1"/>
+                <Property Name="rec_man" Type="Edm.String" MaxLength="1"/>
+                <Property Name="borrower_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="borrower_name" Type="Edm.String" MaxLength="80"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="items" Relationship="Kitservice.Transferequipments_items" FromRole="Transferequipments" ToRole="TransferEquItem"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.Transferequipments_header" FromRole="Transferequipments" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.Transferequipments_log" FromRole="Transferequipments" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="Vulnerabilityscan">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <Property Name="location" Type="Edm.String"/>
+                <Property Name="scan_type" Type="Edm.String"/>
+                <Property Name="scan_start" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="scan_end" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="scan_time" Type="Edm.Time"/>
+                <Property Name="operating_system" Type="Edm.String"/>
+                <Property Name="ip_address" Type="Edm.String"/>
+                <Property Name="sr_number" Type="Edm.String" MaxLength="18"/>
+                <Property Name="scan_priority" Type="Edm.String" MaxLength="10"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.Vulnerabilityscan_header" FromRole="Vulnerabilityscan" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.Vulnerabilityscan_log" FromRole="Vulnerabilityscan" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="TERRequest">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="workpermit" Type="Edm.String" MaxLength="30"/>
+                <Property Name="startdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="starttime" Type="Edm.Time"/>
+                <Property Name="enddate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="endtime" Type="Edm.Time"/>
+                <Property Name="l_building" Type="Edm.String" MaxLength="40"/>
+                <Property Name="l_level" Type="Edm.String"/>
+                <Property Name="l_room" Type="Edm.String"/>
+                <Property Name="powerinterrupt" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ac_interruption" Type="Edm.String" MaxLength="1"/>
+                <Property Name="isreqtaccreq" Type="Edm.String" MaxLength="1"/>
+                <Property Name="isotherteamaccreq" Type="Edm.String" MaxLength="1"/>
+                <Property Name="itncteamapprover" Type="Edm.String" MaxLength="120"/>
+                <Property Name="itncteamcomments" Type="Edm.String"/>
+                <Property Name="vendor_presence" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ven_ext_activity" Type="Edm.String" MaxLength="1"/>
+                <Property Name="tool_missing_ven" Type="Edm.String" MaxLength="1"/>
+                <Property Name="feedback_comment" Type="Edm.String"/>
+                <Property Name="itncagentcomment" Type="Edm.String"/>
+                <Property Name="itncagentapprover" Type="Edm.String" MaxLength="120"/>
+                <Property Name="netagent_approver" Type="Edm.String" MaxLength="120"/>
+                <Property Name="netagent_uid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="netagent_kid" Type="Edm.String" MaxLength="15"/>
+                <Property Name="crmsrno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="members" Relationship="Kitservice.TERRequest_members" FromRole="TERRequest" ToRole="TERMembers"/>
+                <NavigationProperty Name="pow" Relationship="Kitservice.TERRequest_pow" FromRole="TERRequest" ToRole="TERPOW"/>
+                <NavigationProperty Name="sow" Relationship="Kitservice.TERRequest_sow" FromRole="TERRequest" ToRole="TERSOW"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.TERRequest_header" FromRole="TERRequest" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.TERRequest_log" FromRole="TERRequest" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="AllRequests">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="userid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="sub_service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="status" Type="Edm.Int32"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="stage" Type="Edm.String" MaxLength="50"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="on_behalf" Type="Edm.String" MaxLength="1"/>
+                <Property Name="requestor_kaustid" Type="Edm.String" MaxLength="15"/>
+                <Property Name="expeditor" Type="Edm.String" MaxLength="12"/>
+                <Property Name="timestamp" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="sequence_number" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="Infra_DetailSet">
+                <Key>
+                    <PropertyRef Name="sequence_number"/>
+                </Key>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="k_level" Type="Edm.String" MaxLength="3"/>
+                <Property Name="k_room" Type="Edm.String" MaxLength="30"/>
+                <Property Name="k_building" Type="Edm.String" MaxLength="90"/>
+                <Property Name="bpc_equip" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ec_equip" Type="Edm.String" MaxLength="40"/>
+                <Property Name="pc_equip" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="Vsm">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="itm_sequence"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="itm_sequence" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="ishost" Type="Edm.String" MaxLength="1"/>
+                <Property Name="eventname" Type="Edm.String"/>
+                <Property Name="eventlocation" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ldate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="starttime" Type="Edm.String"/>
+                <Property Name="endtime" Type="Edm.String"/>
+                <Property Name="adevent" Type="Edm.String" MaxLength="1"/>
+                <Property Name="rdevent" Type="Edm.String" MaxLength="1"/>
+                <Property Name="attendees" Type="Edm.String"/>
+                <Property Name="wboard" Type="Edm.String" MaxLength="1"/>
+                <Property Name="flipchart" Type="Edm.String" MaxLength="1"/>
+                <Property Name="others" Type="Edm.String"/>
+                <Property Name="avsupport" Type="Edm.String" MaxLength="1"/>
+                <Property Name="laptop" Type="Edm.String" MaxLength="1"/>
+                <Property Name="clicker" Type="Edm.String" MaxLength="1"/>
+                <Property Name="adapter" Type="Edm.String" MaxLength="1"/>
+                <Property Name="mphone" Type="Edm.String" MaxLength="1"/>
+                <Property Name="speakers" Type="Edm.String" MaxLength="1"/>
+                <Property Name="projector" Type="Edm.String" MaxLength="1"/>
+                <Property Name="monitor" Type="Edm.String" MaxLength="1"/>
+                <Property Name="videowebconf" Type="Edm.String" MaxLength="1"/>
+                <Property Name="protocol" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ipaddress" Type="Edm.String"/>
+                <Property Name="contact" Type="Edm.String"/>
+                <Property Name="cemail" Type="Edm.String"/>
+                <Property Name="webex" Type="Edm.String" MaxLength="1"/>
+                <Property Name="externalmail" Type="Edm.String"/>
+                <Property Name="confrecord" Type="Edm.String" MaxLength="1"/>
+                <Property Name="lpublic" Type="Edm.String" MaxLength="1"/>
+                <Property Name="lprivate" Type="Edm.String" MaxLength="1"/>
+                <Property Name="title" Type="Edm.String" MaxLength="20"/>
+                <Property Name="presenter" Type="Edm.String" MaxLength="20"/>
+                <Property Name="department" Type="Edm.String" MaxLength="20"/>
+                <Property Name="agree" Type="Edm.String" MaxLength="1"/>
+                <Property Name="daily" Type="Edm.String" MaxLength="1"/>
+                <Property Name="monthly" Type="Edm.String" MaxLength="1"/>
+                <Property Name="weekly" Type="Edm.String" MaxLength="1"/>
+                <Property Name="sunday" Type="Edm.String" MaxLength="1"/>
+                <Property Name="monday" Type="Edm.String" MaxLength="1"/>
+                <Property Name="tuesday" Type="Edm.String" MaxLength="1"/>
+                <Property Name="wednesday" Type="Edm.String" MaxLength="1"/>
+                <Property Name="thursday" Type="Edm.String" MaxLength="1"/>
+                <Property Name="friday" Type="Edm.String" MaxLength="1"/>
+                <Property Name="saturday" Type="Edm.String" MaxLength="1"/>
+                <Property Name="rstartdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="renddate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <Property Name="roomno" Type="Edm.String"/>
+                <Property Name="country" Type="Edm.String"/>
+                <Property Name="bldglevel" Type="Edm.String" MaxLength="255"/>
+                <Property Name="bldgname" Type="Edm.String" MaxLength="255"/>
+                <Property Name="layout" Type="Edm.String" MaxLength="255"/>
+                <Property Name="foodservices" Type="Edm.String" MaxLength="1"/>
+                <Property Name="recording" Type="Edm.String" MaxLength="1"/>
+                <Property Name="presentation" Type="Edm.String" MaxLength="1"/>
+                <Property Name="mcomments" Type="Edm.String"/>
+                <Property Name="crmsrno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="hostuserid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="confroom" Type="Edm.String" MaxLength="20"/>
+                <Property Name="service_quality" Type="Edm.String" MaxLength="1"/>
+                <Property Name="feedback_comments" Type="Edm.String"/>
+                <Property Name="hostusername" Type="Edm.String" MaxLength="120"/>
+                <Property Name="av_standby_support" Type="Edm.String" MaxLength="1"/>
+                <Property Name="code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="av_agent_amount" Type="Edm.String" MaxLength="3"/>
+                <Property Name="aemail" Type="Edm.String"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.Vsm_header" FromRole="Vsm" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.Vsm_log" FromRole="Vsm" ToRole="Log"/>
+                <NavigationProperty Name="timeslots" Relationship="Kitservice.Vsm_timeslots" FromRole="Vsm" ToRole="AVTimeSlots"/>
+            </EntityType>
+            <EntityType Name="Replenish">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="replenisheqip" Type="Edm.String"/>
+                <Property Name="replenisheqname" Type="Edm.String" MaxLength="70"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <Property Name="justification" Type="Edm.String"/>
+                <Property Name="disclaimer" Type="Edm.String" MaxLength="1"/>
+                <Property Name="employeenotes" Type="Edm.String"/>
+                <Property Name="custodianusrid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="neweqpno" Type="Edm.String" MaxLength="40"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.Replenish_header" FromRole="Replenish" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.Replenish_log" FromRole="Replenish" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="Loanequip">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="mobile_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="office_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="rept_manager" Type="Edm.String" MaxLength="40"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="position_text" Type="Edm.String" MaxLength="25"/>
+                <Property Name="on_behalf" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery" Type="Edm.String"/>
+                <Property Name="inci_report" Type="Edm.String"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="eventname" Type="Edm.String"/>
+                <Property Name="eventlocation" Type="Edm.String"/>
+                <Property Name="eventtype" Type="Edm.String"/>
+                <Property Name="startdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="starttime" Type="Edm.Time"/>
+                <Property Name="enddate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="endtime" Type="Edm.Time"/>
+                <Property Name="justification" Type="Edm.String"/>
+                <Property Name="pasystem" Type="Edm.String" MaxLength="1"/>
+                <Property Name="projector" Type="Edm.String" MaxLength="1"/>
+                <Property Name="speaker" Type="Edm.String" MaxLength="1"/>
+                <Property Name="screen" Type="Edm.String" MaxLength="1"/>
+                <Property Name="clicker" Type="Edm.String" MaxLength="1"/>
+                <Property Name="appledviconnector" Type="Edm.String" MaxLength="1"/>
+                <Property Name="hdmidviconnector" Type="Edm.String" MaxLength="1"/>
+                <Property Name="visualizer" Type="Edm.String" MaxLength="1"/>
+                <Property Name="vgaconnector" Type="Edm.String" MaxLength="1"/>
+                <Property Name="reason" Type="Edm.String"/>
+                <Property Name="imacworkstation" Type="Edm.String" MaxLength="1"/>
+                <Property Name="quantity" Type="Edm.Int32"/>
+                <Property Name="printer" Type="Edm.String" MaxLength="1"/>
+                <Property Name="quantity1" Type="Edm.Int32"/>
+                <Property Name="lmacbookair" Type="Edm.String" MaxLength="1"/>
+                <Property Name="quantity2" Type="Edm.Int32"/>
+                <Property Name="scanner" Type="Edm.String" MaxLength="1"/>
+                <Property Name="quantity3" Type="Edm.Int32"/>
+                <Property Name="applemonitor" Type="Edm.String" MaxLength="1"/>
+                <Property Name="quantity4" Type="Edm.Int32"/>
+                <Property Name="others" Type="Edm.String"/>
+                <Property Name="quantity5" Type="Edm.Int32"/>
+                <Property Name="lmacair" Type="Edm.String" MaxLength="1"/>
+                <Property Name="quantity6" Type="Edm.Int32"/>
+                <Property Name="disclaimer" Type="Edm.String" MaxLength="1"/>
+                <Property Name="mcomments" Type="Edm.String"/>
+                <Property Name="avteamcomments" Type="Edm.String"/>
+                <Property Name="euteamcomments" Type="Edm.String"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.Loanequip_header" FromRole="Loanequip" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.Loanequip_log" FromRole="Loanequip" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="OrderItem">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="dshqy" Type="Edm.Int32"/>
+                <NavigationProperty Name="waers" Relationship="Kitservice.OrderItem_waers" FromRole="OrderItem" ToRole="Currencies"/>
+                <Property Name="waers_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="dispc" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="menu_type" Type="Edm.String" MaxLength="1"/>
+                <Property Name="menue_price" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="imgurl" Type="Edm.String" MaxLength="300"/>
+                <Property Name="requester_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="delivery_location" Type="Edm.String" MaxLength="100"/>
+                <Property Name="delivery_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="delivery_time" Type="Edm.Time"/>
+                <Property Name="no_days" Type="Edm.Int32"/>
+                <Property Name="status" Type="Edm.String" MaxLength="10"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="service_provider_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="initiator" Type="Edm.String" MaxLength="15"/>
+                <Property Name="mycarts" Type="Edm.String" MaxLength="1"/>
+                <Property Name="actualprice" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="billingdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="fcomments" Type="Edm.String" MaxLength="980"/>
+                <Property Name="dishcategory" Type="Edm.String" MaxLength="300"/>
+                <Property Name="wbselement" Type="Edm.String" MaxLength="24"/>
+                <Property Name="is_plated" Type="Edm.String" MaxLength="1"/>
+                <Property Name="on_behalf_ld" Type="Edm.String"/>
+                <Property Name="event_name" Type="Edm.String"/>
+                <Property Name="change_timestamp" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="request_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="c_comment" Type="Edm.String"/>
+                <Property Name="order_by" Type="Edm.String" MaxLength="30"/>
+                <Property Name="sort_by" Type="Edm.String" MaxLength="4"/>
+                <Property Name="kfscomments" Type="Edm.String"/>
+                <Property Name="contestedbill" Type="Edm.String" MaxLength="1"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="items" Relationship="Kitservice.OrderItem_items" FromRole="OrderItem" ToRole="KFSOrderItem"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.OrderItem_header" FromRole="OrderItem" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.OrderItem_log" FromRole="OrderItem" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="ItBldgSet">
+                <Key>
+                    <PropertyRef Name="bldgcode"/>
+                </Key>
+                <Property Name="bldgcode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="bldgname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="bldglevel" Type="Edm.String" MaxLength="1"/>
+                <Property Name="room_desc" Type="Edm.String" MaxLength="80"/>
+            </EntityType>
+            <EntityType Name="VPNReqType">
+                <Key>
+                    <PropertyRef Name="requesttype"/>
+                </Key>
+                <Property Name="requesttype" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="text" Type="Edm.String" MaxLength="30"/>
+            </EntityType>
+            <EntityType Name="PortReportSet">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="applicant_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="department_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="sub_service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="port_tag_number" Type="Edm.String"/>
+                <Property Name="service_type" Type="Edm.String"/>
+                <Property Name="l_building" Type="Edm.String" MaxLength="40"/>
+                <Property Name="l_level" Type="Edm.String" MaxLength="30"/>
+                <Property Name="l_room" Type="Edm.String" MaxLength="30"/>
+                <Property Name="ip_address" Type="Edm.String" MaxLength="20"/>
+                <Property Name="crmsrno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="reqtypedesc" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="AdminReportSet">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="applicant_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="custodian_usrid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="justification" Type="Edm.String"/>
+                <Property Name="tagnumber" Type="Edm.String" MaxLength="80"/>
+                <Property Name="operatingsys" Type="Edm.String" MaxLength="15"/>
+                <Property Name="expirydate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="linux_ip" Type="Edm.String" MaxLength="20"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="status" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="TerReportSet">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="applicant_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="itncteamapprover" Type="Edm.String" MaxLength="120"/>
+                <Property Name="l_building" Type="Edm.String" MaxLength="40"/>
+                <Property Name="l_room" Type="Edm.String"/>
+                <Property Name="powerinterrupt" Type="Edm.String" MaxLength="1"/>
+                <Property Name="workpermit" Type="Edm.String" MaxLength="30"/>
+                <Property Name="startdateandtime" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="starttime" Type="Edm.Time"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="ReportsCollection">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="linno" Type="Edm.Int32"/>
+                <Property Name="codno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="dishs" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="dshqy" Type="Edm.Int32"/>
+                <NavigationProperty Name="waers" Relationship="Kitservice.ReportsCollection_waers" FromRole="ReportsCollection" ToRole="Currencies"/>
+                <Property Name="waers_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="dispc" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="menu_type" Type="Edm.String" MaxLength="1"/>
+                <Property Name="menue_price" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="imgurl" Type="Edm.String" MaxLength="300"/>
+                <Property Name="requester_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="delivery_location" Type="Edm.String" MaxLength="100"/>
+                <Property Name="delivery_timestamp" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="delivery_time" Type="Edm.Time"/>
+                <Property Name="no_days" Type="Edm.Int32"/>
+                <Property Name="status" Type="Edm.String" MaxLength="10"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="service_provider_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="initiator" Type="Edm.String" MaxLength="15"/>
+                <Property Name="service_provider" Type="Edm.String" MaxLength="20"/>
+                <Property Name="mycarts" Type="Edm.String" MaxLength="1"/>
+                <Property Name="actualprice" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="billingdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="fcomments" Type="Edm.String" MaxLength="980"/>
+                <Property Name="dishcategory" Type="Edm.String" MaxLength="300"/>
+                <Property Name="wbselement" Type="Edm.String" MaxLength="24"/>
+                <Property Name="contestedbill" Type="Edm.String" MaxLength="1"/>
+                <Property Name="userid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="sub_service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="stage" Type="Edm.String" MaxLength="50"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="requester" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="on_behalf" Type="Edm.String" MaxLength="1"/>
+                <Property Name="is_plated" Type="Edm.String" MaxLength="1"/>
+                <Property Name="on_behalf_ld" Type="Edm.String"/>
+                <Property Name="event_name" Type="Edm.String"/>
+                <Property Name="single_price" Type="Edm.String"/>
+                <Property Name="change_timestamp" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="request_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="c_comment" Type="Edm.String"/>
+                <Property Name="subheading" Type="Edm.String" MaxLength="300"/>
+            </EntityType>
+            <EntityType Name="ReportsrestrictCollection">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="linno" Type="Edm.Int32"/>
+                <Property Name="codno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="dishs" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="dshqy" Type="Edm.Int32"/>
+                <NavigationProperty Name="waers" Relationship="Kitservice.ReportsrestrictCollection_waers" FromRole="ReportsrestrictCollection" ToRole="Currencies"/>
+                <Property Name="waers_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="dispc" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="menu_type" Type="Edm.String" MaxLength="1"/>
+                <Property Name="menue_price" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="imgurl" Type="Edm.String" MaxLength="300"/>
+                <Property Name="requester_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="delivery_location" Type="Edm.String" MaxLength="100"/>
+                <Property Name="delivery_timestamp" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="delivery_time" Type="Edm.Time"/>
+                <Property Name="no_days" Type="Edm.Int32"/>
+                <Property Name="status" Type="Edm.String" MaxLength="10"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="service_provider_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="initiator" Type="Edm.String" MaxLength="15"/>
+                <Property Name="service_provider" Type="Edm.String" MaxLength="20"/>
+                <Property Name="mycarts" Type="Edm.String" MaxLength="1"/>
+                <Property Name="actualprice" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="billingdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="fcomments" Type="Edm.String" MaxLength="980"/>
+                <Property Name="dishcategory" Type="Edm.String" MaxLength="300"/>
+                <Property Name="wbselement" Type="Edm.String" MaxLength="24"/>
+                <Property Name="contestedbill" Type="Edm.String" MaxLength="1"/>
+                <Property Name="userid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="sub_service_code" Type="Edm.String" MaxLength="4"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="stage" Type="Edm.String" MaxLength="50"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="requester" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="on_behalf" Type="Edm.String" MaxLength="1"/>
+                <Property Name="is_plated" Type="Edm.String" MaxLength="1"/>
+                <Property Name="on_behalf_ld" Type="Edm.String"/>
+                <Property Name="event_name" Type="Edm.String"/>
+                <Property Name="single_price" Type="Edm.String"/>
+                <Property Name="change_timestamp" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="request_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="c_comment" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="RoomCollection">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="code" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="bldgname" Type="Edm.String" MaxLength="30"/>
+                <Property Name="bldglevel" Type="Edm.String" MaxLength="1"/>
+                <Property Name="bldgappr" Type="Edm.String" MaxLength="4"/>
+                <Property Name="confroom" Type="Edm.String" MaxLength="20"/>
+                <Property Name="layout" Type="Edm.String" MaxLength="10"/>
+                <Property Name="attendance" Type="Edm.Int32"/>
+                <Property Name="foodservices" Type="Edm.String" MaxLength="1"/>
+                <Property Name="recording" Type="Edm.String" MaxLength="1"/>
+                <Property Name="presentation" Type="Edm.String" MaxLength="1"/>
+                <Property Name="clicker" Type="Edm.String" MaxLength="1"/>
+                <Property Name="email_id" Type="Edm.String" MaxLength="241"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.RoomCollection_header" FromRole="RoomCollection" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.RoomCollection_log" FromRole="RoomCollection" ToRole="Log"/>
+            </EntityType>
+            <EntityType Name="AVTimeSlots">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="starttimestamp"/>
+                    <PropertyRef Name="endtimestamp"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="starttimestamp" Type="Edm.DateTimeOffset" Nullable="false"/>
+                <Property Name="endtimestamp" Type="Edm.DateTimeOffset" Nullable="false"/>
+                <Property Name="deleted" Type="Edm.String" MaxLength="1"/>
+                <Property Name="rec_request" Type="Edm.String" MaxLength="1"/>
+                <Property Name="request_no" Type="Edm.String" MaxLength="30"/>
+            </EntityType>
+            <EntityType Name="AVBookingLock">
+                <Key>
+                    <PropertyRef Name="code"/>
+                    <PropertyRef Name="startdate"/>
+                </Key>
+                <Property Name="code" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="startdate" Type="Edm.DateTime" Nullable="false" sap:display-format="Date"/>
+                <Property Name="lockby" Type="Edm.String" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="DCWPManpower">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="itm_sequence"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="itm_sequence" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="appl_name" Type="Edm.String" MaxLength="80"/>
+                <Property Name="contrct_emp" Type="Edm.String" MaxLength="80"/>
+                <Property Name="job_title" Type="Edm.String" MaxLength="25"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="dc_access_req" Type="Edm.String" MaxLength="20"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="50"/>
+                <Property Name="id_type" Type="Edm.String" MaxLength="2"/>
+                <Property Name="id_number" Type="Edm.String" MaxLength="30"/>
+                <Property Name="deleted" Type="Edm.String" MaxLength="1"/>
+                <Property Name="created_by" Type="Edm.String" MaxLength="12"/>
+                <Property Name="created_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="url" Type="Edm.String" MaxLength="1024"/>
+                <Property Name="docid" Type="Edm.String" MaxLength="32"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="GAHeader">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <Property Name="amount" Type="Edm.Decimal" sap:variable-scale="true"/>
+                <Property Name="currency" Type="Edm.String" MaxLength="3"/>
+                <Property Name="iqama_duration" Type="Edm.Int32"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="wbs" Type="Edm.String" MaxLength="24"/>
+                <Property Name="cendda" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="new_expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="fincomments" Type="Edm.String"/>
+                <Property Name="gacomments" Type="Edm.String"/>
+                <Property Name="category_type" Type="Edm.String" MaxLength="10"/>
+                <Property Name="hijri_exp_date" Type="Edm.String" MaxLength="10"/>
+                <Property Name="fast_track" Type="Edm.String" MaxLength="1"/>
+                <Property Name="tracking_id" Type="Edm.String" MaxLength="40"/>
+                <Property Name="type" Type="Edm.String" MaxLength="8"/>
+                <Property Name="duration" Type="Edm.String" MaxLength="3"/>
+                <Property Name="purpose" Type="Edm.String" MaxLength="8"/>
+                <Property Name="dmanagerid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="fine" Type="Edm.Decimal" Precision="23"/>
+                <Property Name="stud_visitor" Type="Edm.String" MaxLength="1"/>
+                <Property Name="degree_type" Type="Edm.String" MaxLength="4"/>
+                <Property Name="dependant_only" Type="Edm.String" MaxLength="1"/>
+                <Property Name="reqcomment" Type="Edm.String"/>
+                <Property Name="department_request" Type="Edm.String" MaxLength="1"/>
+                <Property Name="rescheduled" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ga_url" Type="Edm.String"/>
+                <Property Name="isdepwithoutkaustid" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ga_file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="service" Type="Edm.Int32"/>
+                <Property Name="service_type" Type="Edm.Int32"/>
+                <Property Name="pickup_type" Type="Edm.Int32"/>
+                <Property Name="apply_for" Type="Edm.Int32"/>
+                <Property Name="id_number" Type="Edm.String" MaxLength="10"/>
+                <Property Name="location" Type="Edm.Int32"/>
+                <Property Name="date_of_birth" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="rep_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="name" Type="Edm.String" MaxLength="25"/>
+                <Property Name="visitors" Type="Edm.Int32"/>
+                <Property Name="visa_number" Type="Edm.String" MaxLength="15"/>
+                <Property Name="ksadegree" Type="Edm.String" MaxLength="1"/>
+                <Property Name="attesteddegree" Type="Edm.String" MaxLength="1"/>
+                <Property Name="translateddegree" Type="Edm.String" MaxLength="1"/>
+                <Property Name="mofadegree" Type="Edm.String" MaxLength="1"/>
+                <Property Name="kids" Type="Edm.String" MaxLength="1"/>
+                <Property Name="process_type" Type="Edm.String" MaxLength="1"/>
+                <Property Name="moi_request_no" Type="Edm.String" MaxLength="30"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <NavigationProperty Name="header" Relationship="Kitservice.GAHeader_header" FromRole="GAHeader" ToRole="ReqHeader"/>
+                <NavigationProperty Name="log" Relationship="Kitservice.GAHeader_log" FromRole="GAHeader" ToRole="Log"/>
+                <NavigationProperty Name="BirthCertificate" Relationship="Kitservice.GAHeader_BirthCertificate" FromRole="GAHeader" ToRole="BirthCertificate"/>
+                <NavigationProperty Name="InfoCorrection" Relationship="Kitservice.GAHeader_InfoCorrection" FromRole="GAHeader" ToRole="InfoCorrection"/>
+                <NavigationProperty Name="ZakatLetter" Relationship="Kitservice.GAHeader_ZakatLetter" FromRole="GAHeader" ToRole="ZakatLetter"/>
+                <NavigationProperty Name="Iqama" Relationship="Kitservice.GAHeader_Iqama" FromRole="GAHeader" ToRole="Iqama"/>
+                <NavigationProperty Name="VisitVisa" Relationship="Kitservice.GAHeader_VisitVisa" FromRole="GAHeader" ToRole="VisitVisa"/>
+                <NavigationProperty Name="SponsorTransferChild" Relationship="Kitservice.GAHeader_SponsorTransferChild" FromRole="GAHeader" ToRole="SponsorTransferChild"/>
+                <NavigationProperty Name="DHSponsorTransfer" Relationship="Kitservice.GAHeader_DHSponsorTransfer" FromRole="GAHeader" ToRole="DHSponsorTransfer"/>
+                <NavigationProperty Name="SaudiID" Relationship="Kitservice.GAHeader_SaudiID" FromRole="GAHeader" ToRole="SaudiID"/>
+                <NavigationProperty Name="DrivingLicense" Relationship="Kitservice.GAHeader_DrivingLicense" FromRole="GAHeader" ToRole="DrivingLicense"/>
+                <NavigationProperty Name="MOEAttest" Relationship="Kitservice.GAHeader_MOEAttest" FromRole="GAHeader" ToRole="MOEAttest"/>
+                <NavigationProperty Name="JobtitleChange" Relationship="Kitservice.GAHeader_JobtitleChange" FromRole="GAHeader" ToRole="JobtitleChange"/>
+            </EntityType>
+            <EntityType Name="DistEmailMembers">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="itm_sequence"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="itm_sequence" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="grpmember" Type="Edm.String" MaxLength="241"/>
+                <Property Name="authsender" Type="Edm.String" MaxLength="241"/>
+            </EntityType>
+            <EntityType Name="GenericEmailDelegate">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="itm_sequence"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="itm_sequence" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="delegates" Type="Edm.String" MaxLength="241"/>
+            </EntityType>
+            <EntityType Name="TransferEquItem">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="itm_sequence"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="itm_sequence" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="replenisheqip" Type="Edm.String"/>
+                <Property Name="equip_billed" Type="Edm.String" MaxLength="1"/>
+                <Property Name="equip_cat" Type="Edm.String" MaxLength="40"/>
+                <Property Name="equip_num" Type="Edm.String" MaxLength="18"/>
+            </EntityType>
+            <EntityType Name="TERMembers">
+                <Key>
+                    <PropertyRef Name="sequence_number"/>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="kaustid" Type="Edm.String" MaxLength="15"/>
+                <Property Name="vms_control_num" Type="Edm.String" MaxLength="20"/>
+                <Property Name="name" Type="Edm.String" MaxLength="60"/>
+            </EntityType>
+            <EntityType Name="TERPOW">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="sequence_number"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="circuittype" Type="Edm.String" MaxLength="30"/>
+                <Property Name="equipmentnumbner" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="TERSOW">
+                <Key>
+                    <PropertyRef Name="sow"/>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="sow" Type="Edm.String" MaxLength="40" Nullable="false"/>
+                <Property Name="request_id" Type="Edm.String" MaxLength="90" Nullable="false"/>
+                <Property Name="sow_comments" Type="Edm.String"/>
+                <Property Name="power_backup" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="Currencies">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="symbol" Type="Edm.String" MaxLength="5"/>
+                <NavigationProperty Name="texts" Relationship="Kitservice.Currencies_texts_1" FromRole="Currencies" ToRole="Currencies_texts"/>
+                <NavigationProperty Name="localized" Relationship="Kitservice.Currencies_localized" FromRole="Currencies" ToRole="Currencies_texts"/>
+            </EntityType>
+            <EntityType Name="KFSOrderItem">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="linno"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="linno" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="codno" Type="Edm.String" MaxLength="20"/>
+                <Property Name="dishs" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="comments" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="service_provider" Type="Edm.String" MaxLength="20"/>
+                <Property Name="mcomments" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="mycarts" Type="Edm.String" MaxLength="1"/>
+                <Property Name="actualprice" Type="Edm.Decimal" Scale="2" Precision="11"/>
+                <Property Name="single_price" Type="Edm.String"/>
+                <Property Name="subheading" Type="Edm.String" MaxLength="300"/>
+            </EntityType>
+            <EntityType Name="BirthCertificate">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="sequence_number"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="birthdate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="requested_for" Type="Edm.String"/>
+                <Property Name="justification" Type="Edm.String"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="passport_lost" Type="Edm.String" MaxLength="1"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="age" Type="Edm.Int32"/>
+                <Property Name="process" Type="Edm.String" MaxLength="10"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="nation_id" Type="Edm.String" MaxLength="3"/>
+                <Property Name="isdepnew" Type="Edm.String" MaxLength="1"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="a_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="a_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="a_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="birth_place" Type="Edm.String" MaxLength="40"/>
+                <Property Name="birth_country" Type="Edm.String" MaxLength="3"/>
+                <Property Name="in_campus" Type="Edm.String" MaxLength="1"/>
+                <Property Name="sponsor_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="InfoCorrection">
+                <Key>
+                    <PropertyRef Name="kaustid"/>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="kaustid" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="request_comment" Type="Edm.String"/>
+                <Property Name="requested_for" Type="Edm.String"/>
+                <Property Name="wrong_info" Type="Edm.String"/>
+                <Property Name="other" Type="Edm.String"/>
+                <Property Name="document_type" Type="Edm.Int32"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="passport_lost" Type="Edm.String" MaxLength="1"/>
+                <Property Name="age" Type="Edm.Int32"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_arabic_name" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_english_name" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_dob" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_nationality" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_religion" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_babyname" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_pob" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ck_maritalstatus" Type="Edm.String" MaxLength="1"/>
+                <Property Name="select_iqama" Type="Edm.String" MaxLength="1"/>
+                <Property Name="select_drvlic" Type="Edm.String" MaxLength="1"/>
+                <Property Name="select_bc" Type="Edm.String" MaxLength="1"/>
+                <Property Name="arabic_name" Type="Edm.String" MaxLength="80"/>
+                <Property Name="english_name" Type="Edm.String" MaxLength="80"/>
+                <Property Name="dob" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="3"/>
+                <Property Name="religion" Type="Edm.String" MaxLength="2"/>
+                <Property Name="babyname" Type="Edm.String" MaxLength="80"/>
+                <Property Name="pob" Type="Edm.String" MaxLength="80"/>
+                <Property Name="maritalstatus" Type="Edm.String" MaxLength="80"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="ZakatLetter">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="kaust_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="requested_for" Type="Edm.String"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="passport_lost" Type="Edm.String" MaxLength="1"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="age" Type="Edm.Int32"/>
+                <Property Name="tax_year1" Type="Edm.String" MaxLength="4"/>
+                <Property Name="tax_year_to" Type="Edm.String" MaxLength="4"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="Iqama">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="kaust_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="iqama_edate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="iqma_renew" Type="Edm.String" MaxLength="5"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="age" Type="Edm.Int32"/>
+                <Property Name="indvamount" Type="Edm.Decimal" Precision="23"/>
+                <Property Name="hijri_exp_date" Type="Edm.String" MaxLength="10"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="ar_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_mid_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="iqama_job_title" Type="Edm.String" MaxLength="50"/>
+                <Property Name="border_no" Type="Edm.String" MaxLength="15"/>
+                <Property Name="requestor_kaustid" Type="Edm.String" MaxLength="15"/>
+                <Property Name="new_expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="passport_lost" Type="Edm.String" MaxLength="1"/>
+                <Property Name="new_passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="pp_expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="place_of_issue" Type="Edm.String" MaxLength="40"/>
+                <Property Name="country_of_issue" Type="Edm.String" MaxLength="3"/>
+                <Property Name="date_of_issue" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="visa_expired" Type="Edm.String" MaxLength="1"/>
+                <Property Name="dmanagerid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="medical_test_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="religion" Type="Edm.String" MaxLength="30"/>
+                <Property Name="date_of_birth" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="place_of_birth" Type="Edm.String" MaxLength="30"/>
+                <Property Name="requestor_type_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="inside_kingdom_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="request_type_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ga_center_report_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="iqama_lost_place_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="visa_number" Type="Edm.String" MaxLength="30"/>
+                <Property Name="visa_expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="date_of_entrance" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="sponsorship_check_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="visitor_check_flag" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cost_center" Type="Edm.String" MaxLength="30"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="VisitVisa">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="sequence_number"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="3"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="age" Type="Edm.Int32"/>
+                <Property Name="date_of_birth" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="religion" Type="Edm.Int32"/>
+                <Property Name="request_status" Type="Edm.Int32"/>
+                <Property Name="place_of_birth" Type="Edm.String" MaxLength="40"/>
+                <Property Name="pass_issue_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="pass_expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="place_of_issue" Type="Edm.String" MaxLength="40"/>
+                <Property Name="arrival_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="country_of_origin" Type="Edm.String" MaxLength="40"/>
+                <Property Name="mofadegree" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ksamarriage" Type="Edm.String" MaxLength="1"/>
+                <Property Name="attestmarriage" Type="Edm.String" MaxLength="1"/>
+                <Property Name="translatmarriage" Type="Edm.String" MaxLength="1"/>
+                <Property Name="mofamarriage" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ksabirth" Type="Edm.String" MaxLength="1"/>
+                <Property Name="attestbirth" Type="Edm.String" MaxLength="1"/>
+                <Property Name="translatebirth" Type="Edm.String" MaxLength="1"/>
+                <Property Name="mofabirth" Type="Edm.String" MaxLength="1"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="SponsorTransferChild">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="sequence_number"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="sequence_number" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="mar_certificate" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cert_attested" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cert_translated" Type="Edm.String" MaxLength="1"/>
+                <Property Name="birth_certificate" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cert_mofa" Type="Edm.String" MaxLength="1"/>
+                <Property Name="job_title" Type="Edm.String"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="wbs" Type="Edm.String" MaxLength="24"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="sponsor_type" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ar_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="sponsor_name" Type="Edm.String" MaxLength="25"/>
+                <Property Name="sponsor_number" Type="Edm.String" MaxLength="15"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="15"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="transfercount" Type="Edm.Int32"/>
+                <Property Name="spon_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="spon_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="spon_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="spon_nationality" Type="Edm.String" MaxLength="15"/>
+                <Property Name="spon_kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="spon_iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="spon_ar_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="spon_ar_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="spon_ar_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="dob" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="religion" Type="Edm.String" MaxLength="40"/>
+                <Property Name="religion_ar" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nationality_ar" Type="Edm.String" MaxLength="50"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="DHSponsorTransfer">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="iqama_no"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="nation_id" Type="Edm.String" MaxLength="3"/>
+                <Property Name="old_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="old_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="old_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="old_sponsor_id" Type="Edm.String" MaxLength="15"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="isdepnew" Type="Edm.String" MaxLength="1"/>
+                <Property Name="old_nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="old_gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="old_saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="old_iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="a_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="a_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="a_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="old_a_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="old_a_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="old_a_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="date_of_birth" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="religion" Type="Edm.Int32"/>
+                <Property Name="job_title" Type="Edm.String" MaxLength="70"/>
+                <Property Name="company_number" Type="Edm.String" MaxLength="20"/>
+                <Property Name="a_job_title" Type="Edm.String" MaxLength="70"/>
+                <Property Name="religion_ar" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nationality_ar" Type="Edm.String" MaxLength="50"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="SaudiID">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="kaust_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="iqama_edate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="iqma_renew" Type="Edm.String" MaxLength="5"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="age" Type="Edm.Int32"/>
+                <Property Name="indvamount" Type="Edm.Decimal" Precision="23"/>
+                <Property Name="hijri_exp_date" Type="Edm.String" MaxLength="10"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="ar_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_mid_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="iqama_job_title" Type="Edm.String" MaxLength="50"/>
+                <Property Name="border_no" Type="Edm.String" MaxLength="15"/>
+                <Property Name="requestor_kaustid" Type="Edm.String" MaxLength="15"/>
+                <Property Name="new_expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="passport_lost" Type="Edm.String" MaxLength="1"/>
+                <Property Name="new_passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="pp_expiry_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="place_of_issue" Type="Edm.String" MaxLength="40"/>
+                <Property Name="country_of_issue" Type="Edm.String" MaxLength="3"/>
+                <Property Name="date_of_issue" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="visa_expired" Type="Edm.String" MaxLength="1"/>
+                <Property Name="dmanagerid" Type="Edm.String" MaxLength="12"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="date_of_birth" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="DrivingLicense">
+                <Key>
+                    <PropertyRef Name="kaust_id"/>
+                    <PropertyRef Name="request_id"/>
+                </Key>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="saudi_id_no" Type="Edm.String" MaxLength="10"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="passport" Type="Edm.String" MaxLength="20"/>
+                <Property Name="relationship" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="requested_for" Type="Edm.String"/>
+                <Property Name="license_langu" Type="Edm.String" MaxLength="12"/>
+                <Property Name="license_num" Type="Edm.String" MaxLength="40"/>
+                <Property Name="automobile_type" Type="Edm.Int32"/>
+                <Property Name="license_iss_country" Type="Edm.String" MaxLength="3"/>
+                <Property Name="license_iss_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="license_exp_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="birth_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="blood_type" Type="Edm.Int32"/>
+                <Property Name="appointment_date" Type="Edm.DateTime" sap:display-format="Date"/>
+                <Property Name="file_name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="passport_lost" Type="Edm.String" MaxLength="1"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="age" Type="Edm.Int32"/>
+                <Property Name="process" Type="Edm.String" MaxLength="10"/>
+                <Property Name="moi_absher" Type="Edm.String" MaxLength="1"/>
+                <Property Name="card_expired" Type="Edm.String" MaxLength="1"/>
+                <Property Name="fees_paid" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="finger_letter" Type="Edm.String" MaxLength="1"/>
+                <Property Name="morror_pass" Type="Edm.String" MaxLength="1"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="MOEAttest">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="kaust_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="wbs" Type="Edm.String" MaxLength="24"/>
+                <Property Name="costcenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="sponsor_type" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ar_first_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_last_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ar_middle_name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="sponsor_name" Type="Edm.String" MaxLength="25"/>
+                <Property Name="sponsor_number" Type="Edm.String" MaxLength="15"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="15"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="transfercount" Type="Edm.Int32"/>
+                <Property Name="service_type" Type="Edm.Int32"/>
+                <Property Name="degree_type" Type="Edm.String" MaxLength="4"/>
+                <Property Name="degree" Type="Edm.String" MaxLength="45"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="JobtitleChange">
+                <Key>
+                    <PropertyRef Name="request_id"/>
+                    <PropertyRef Name="kaust_id"/>
+                </Key>
+                <Property Name="request_id" Type="Edm.String" MaxLength="30" Nullable="false"/>
+                <Property Name="kaust_id" Type="Edm.String" MaxLength="15" Nullable="false"/>
+                <Property Name="deg_certificate" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cert_attested" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cert_translated" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cert_mofa" Type="Edm.String" MaxLength="1"/>
+                <Property Name="job_title" Type="Edm.String"/>
+                <Property Name="iqama_no" Type="Edm.String" MaxLength="20"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="40"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="10"/>
+                <Property Name="collection_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="delivery_mtd" Type="Edm.String" MaxLength="1"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+            </EntityType>
+            <EntityType Name="Currencies_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+            </EntityType>
+            <Association Name="ReqHeader_DCWPDetail">
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="solmanreq" Type="Kitservice.solmanreq" Multiplicity="*"/>
+            </Association>
+            <Association Name="ReqHeader_DCWPManpower">
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="DCWPManpower" Type="Kitservice.DCWPManpower" Multiplicity="*"/>
+            </Association>
+            <Association Name="ReqHeader_log">
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="ReqHeader_GAHeader">
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="GAHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AccessRequest_header">
+                <End Role="AccessRequest" Type="Kitservice.AccessRequest" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="AccessRequest">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AccessRequest_log">
+                <End Role="AccessRequest" Type="Kitservice.AccessRequest" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="Gemail_item">
+                <End Role="Gemail" Type="Kitservice.Gemail" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="DistEmailMembers" Type="Kitservice.DistEmailMembers" Multiplicity="*"/>
+            </Association>
+            <Association Name="Gemail_header">
+                <End Role="Gemail" Type="Kitservice.Gemail" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="Gemail">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Gemail_log">
+                <End Role="Gemail" Type="Kitservice.Gemail" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="SecurityIncidentRequest_header">
+                <End Role="SecurityIncidentRequest" Type="Kitservice.SecurityIncidentRequest" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="SecurityIncidentRequest">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SecurityIncidentRequest_log">
+                <End Role="SecurityIncidentRequest" Type="Kitservice.SecurityIncidentRequest" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="PortActivationRequest_reqtypedesc">
+                <End Role="PortActivationRequest" Type="Kitservice.PortActivationRequest" Multiplicity="*"/>
+                <End Role="PortReqTypeDesc" Type="Kitservice.PortReqTypeDesc" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="PortReqTypeDesc">
+                        <PropertyRef Name="requesttype"/>
+                    </Principal>
+                    <Dependent Role="PortActivationRequest">
+                        <PropertyRef Name="requesttype"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="PortActivationRequest_header">
+                <End Role="PortActivationRequest" Type="Kitservice.PortActivationRequest" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="PortActivationRequest">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="PortActivationRequest_log">
+                <End Role="PortActivationRequest" Type="Kitservice.PortActivationRequest" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="Email_item">
+                <End Role="Email" Type="Kitservice.Email" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="GenericEmailDelegate" Type="Kitservice.GenericEmailDelegate" Multiplicity="*"/>
+            </Association>
+            <Association Name="Email_header">
+                <End Role="Email" Type="Kitservice.Email" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="Email">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Email_log">
+                <End Role="Email" Type="Kitservice.Email" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="AdminRightsReq_header">
+                <End Role="AdminRightsReq" Type="Kitservice.AdminRightsReq" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="AdminRightsReq">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AdminRightsReq_log">
+                <End Role="AdminRightsReq" Type="Kitservice.AdminRightsReq" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="VPNRequest_header">
+                <End Role="VPNRequest" Type="Kitservice.VPNRequest" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="VPNRequest">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="VPNRequest_log">
+                <End Role="VPNRequest" Type="Kitservice.VPNRequest" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="VPNRequest_reqtypetext">
+                <End Role="VPNRequest" Type="Kitservice.VPNRequest" Multiplicity="*"/>
+                <End Role="VPNReqType" Type="Kitservice.VPNReqType" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="VPNReqType">
+                        <PropertyRef Name="requesttype"/>
+                    </Principal>
+                    <Dependent Role="VPNRequest">
+                        <PropertyRef Name="requesttype"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Transferequipments_items">
+                <End Role="Transferequipments" Type="Kitservice.Transferequipments" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="TransferEquItem" Type="Kitservice.TransferEquItem" Multiplicity="*"/>
+            </Association>
+            <Association Name="Transferequipments_header">
+                <End Role="Transferequipments" Type="Kitservice.Transferequipments" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="Transferequipments">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Transferequipments_log">
+                <End Role="Transferequipments" Type="Kitservice.Transferequipments" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="Vulnerabilityscan_header">
+                <End Role="Vulnerabilityscan" Type="Kitservice.Vulnerabilityscan" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="Vulnerabilityscan">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Vulnerabilityscan_log">
+                <End Role="Vulnerabilityscan" Type="Kitservice.Vulnerabilityscan" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="TERRequest_members">
+                <End Role="TERRequest" Type="Kitservice.TERRequest" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="TERMembers" Type="Kitservice.TERMembers" Multiplicity="*"/>
+            </Association>
+            <Association Name="TERRequest_pow">
+                <End Role="TERRequest" Type="Kitservice.TERRequest" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="TERPOW" Type="Kitservice.TERPOW" Multiplicity="*"/>
+            </Association>
+            <Association Name="TERRequest_sow">
+                <End Role="TERRequest" Type="Kitservice.TERRequest" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="TERSOW" Type="Kitservice.TERSOW" Multiplicity="*"/>
+            </Association>
+            <Association Name="TERRequest_header">
+                <End Role="TERRequest" Type="Kitservice.TERRequest" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="TERRequest">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TERRequest_log">
+                <End Role="TERRequest" Type="Kitservice.TERRequest" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="Vsm_header">
+                <End Role="Vsm" Type="Kitservice.Vsm" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="Vsm">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Vsm_log">
+                <End Role="Vsm" Type="Kitservice.Vsm" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="Vsm_timeslots">
+                <End Role="Vsm" Type="Kitservice.Vsm" Multiplicity="*"/>
+                <End Role="AVTimeSlots" Type="Kitservice.AVTimeSlots" Multiplicity="*"/>
+            </Association>
+            <Association Name="Replenish_header">
+                <End Role="Replenish" Type="Kitservice.Replenish" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="Replenish">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Replenish_log">
+                <End Role="Replenish" Type="Kitservice.Replenish" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="Loanequip_header">
+                <End Role="Loanequip" Type="Kitservice.Loanequip" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="Loanequip">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Loanequip_log">
+                <End Role="Loanequip" Type="Kitservice.Loanequip" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="OrderItem_waers">
+                <End Role="OrderItem" Type="Kitservice.OrderItem" Multiplicity="*"/>
+                <End Role="Currencies" Type="Kitservice.Currencies" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Currencies">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="OrderItem">
+                        <PropertyRef Name="waers_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="OrderItem_items">
+                <End Role="OrderItem" Type="Kitservice.OrderItem" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="KFSOrderItem" Type="Kitservice.KFSOrderItem" Multiplicity="*"/>
+            </Association>
+            <Association Name="OrderItem_header">
+                <End Role="OrderItem" Type="Kitservice.OrderItem" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="OrderItem">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="OrderItem_log">
+                <End Role="OrderItem" Type="Kitservice.OrderItem" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="ReportsCollection_waers">
+                <End Role="ReportsCollection" Type="Kitservice.ReportsCollection" Multiplicity="*"/>
+                <End Role="Currencies" Type="Kitservice.Currencies" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Currencies">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="ReportsCollection">
+                        <PropertyRef Name="waers_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ReportsrestrictCollection_waers">
+                <End Role="ReportsrestrictCollection" Type="Kitservice.ReportsrestrictCollection" Multiplicity="*"/>
+                <End Role="Currencies" Type="Kitservice.Currencies" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Currencies">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="ReportsrestrictCollection">
+                        <PropertyRef Name="waers_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RoomCollection_header">
+                <End Role="RoomCollection" Type="Kitservice.RoomCollection" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="RoomCollection">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RoomCollection_log">
+                <End Role="RoomCollection" Type="Kitservice.RoomCollection" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_header">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="*"/>
+                <End Role="ReqHeader" Type="Kitservice.ReqHeader" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ReqHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Principal>
+                    <Dependent Role="GAHeader">
+                        <PropertyRef Name="request_id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GAHeader_log">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="*"/>
+                <End Role="Log" Type="Kitservice.Log" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_BirthCertificate">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="BirthCertificate" Type="Kitservice.BirthCertificate" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_InfoCorrection">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="InfoCorrection" Type="Kitservice.InfoCorrection" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_ZakatLetter">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="ZakatLetter" Type="Kitservice.ZakatLetter" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_Iqama">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="Iqama" Type="Kitservice.Iqama" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_VisitVisa">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="VisitVisa" Type="Kitservice.VisitVisa" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_SponsorTransferChild">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="SponsorTransferChild" Type="Kitservice.SponsorTransferChild" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_DHSponsorTransfer">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="DHSponsorTransfer" Type="Kitservice.DHSponsorTransfer" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_SaudiID">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="SaudiID" Type="Kitservice.SaudiID" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_DrivingLicense">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="DrivingLicense" Type="Kitservice.DrivingLicense" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_MOEAttest">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="MOEAttest" Type="Kitservice.MOEAttest" Multiplicity="*"/>
+            </Association>
+            <Association Name="GAHeader_JobtitleChange">
+                <End Role="GAHeader" Type="Kitservice.GAHeader" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="JobtitleChange" Type="Kitservice.JobtitleChange" Multiplicity="*"/>
+            </Association>
+            <Association Name="Currencies_texts_1">
+                <End Role="Currencies" Type="Kitservice.Currencies" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="Currencies_texts" Type="Kitservice.Currencies_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="Currencies_localized">
+                <End Role="Currencies" Type="Kitservice.Currencies" Multiplicity="*"/>
+                <End Role="Currencies_texts" Type="Kitservice.Currencies_texts" Multiplicity="0..1"/>
+            </Association>
+            <Annotations Target="Kitservice.ReqHeader/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="User ID"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+            </Annotations>
+            <Annotations Target="Kitservice.OrderItem/waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Currency"/>
+                <Annotation Term="Core.Description" String="Currency code as specified by ISO 4217"/>
+            </Annotations>
+            <Annotations Target="Kitservice.OrderItem/waers_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Currency"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="waers_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description" String="Currency code as specified by ISO 4217"/>
+            </Annotations>
+            <Annotations Target="Kitservice.PortReportSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Cat.TypeName"/>
+                        <PropertyValue Property="TypeNamePlural" String="Cat.TypeNamePlural"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="request_id"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="request_id"/>
+                            <PropertyValue Property="Label" String="Request ID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="applicant_name"/>
+                            <PropertyValue Property="Label" String="Requester"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="reqtypedesc"/>
+                            <PropertyValue Property="Label" String="Request Type"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="service_type"/>
+                            <PropertyValue Property="Label" String="Service Type"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="port_tag_number"/>
+                            <PropertyValue Property="Label" String="Port/Tag Number"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="l_building"/>
+                            <PropertyValue Property="Label" String="Building"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="l_level"/>
+                            <PropertyValue Property="Label" String="Level"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="department_name"/>
+                            <PropertyValue Property="Label" String="Workstation/Office Number"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ip_address"/>
+                            <PropertyValue Property="Label" String="IP Address"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="createdAt"/>
+                            <PropertyValue Property="Label" String="Creation Date"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="crmsrno"/>
+                            <PropertyValue Property="Label" String="Ticket No."/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>createdAt</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Kitservice.AdminReportSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Cat.TypeName"/>
+                        <PropertyValue Property="TypeNamePlural" String="Cat.TypeNamePlural"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="request_id"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="request_id"/>
+                            <PropertyValue Property="Label" String="Request ID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="applicant_name"/>
+                            <PropertyValue Property="Label" String="Requester"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="custodian_usrid"/>
+                            <PropertyValue Property="Label" String="Custodian"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="justification"/>
+                            <PropertyValue Property="Label" String="Justification"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="tagnumber"/>
+                            <PropertyValue Property="Label" String="Tag Number"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="operatingsys"/>
+                            <PropertyValue Property="Label" String="Operating System"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="expirydate"/>
+                            <PropertyValue Property="Label" String="Expiry Date"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="linux_ip"/>
+                            <PropertyValue Property="Label" String="IP Address"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="createdAt"/>
+                            <PropertyValue Property="Label" String="Creation Date"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="status"/>
+                            <PropertyValue Property="Label" String="Status"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>createdAt</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Kitservice.ReportsCollection/waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Currency"/>
+                <Annotation Term="Core.Description" String="Currency code as specified by ISO 4217"/>
+            </Annotations>
+            <Annotations Target="Kitservice.ReportsCollection/waers_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Currency"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="waers_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description" String="Currency code as specified by ISO 4217"/>
+            </Annotations>
+            <Annotations Target="Kitservice.ReportsrestrictCollection/waers" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Currency"/>
+                <Annotation Term="Core.Description" String="Currency code as specified by ISO 4217"/>
+            </Annotations>
+            <Annotations Target="Kitservice.ReportsrestrictCollection/waers_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Currency"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="waers_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description" String="Currency code as specified by ISO 4217"/>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="name"/>
+                <Annotation Term="Common.Label" String="Currency Code"/>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies/symbol" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Currency Symbol"/>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="Kitservice.Currencies_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="name"/>
+                <Annotation Term="Common.Label" String="Currency Code"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

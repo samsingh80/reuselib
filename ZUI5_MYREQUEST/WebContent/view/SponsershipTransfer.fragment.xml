@@ -1,0 +1,379 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0" id="idsponTransferInfo" visible="false">
+		<l:content>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter icon="sap-icon://family-care">
+						<Toolbar>
+							<Title text="Sponsorship Transfer Information" level="H5" titleStyle="H5"/>
+						</Toolbar>
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0"
+							title="Current Sponsor">
+							<form:content>
+								<!--<Toolbar>-->
+								<!--	<Title id="idInfo1" text="Sponsership Transfer Information" level="H5" titleStyle="H5"/>-->
+								<!--</Toolbar>-->
+								<Table id="idHeadertoTI" items="{oTIJson>/}">
+									<columns>
+										<Column width="3em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Kaust ID"/>
+										</Column>
+										<Column width="5em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="First Name"/>
+										</Column>
+										<Column width="2em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Middle Name"/>
+										</Column>
+										<Column width="3em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Last Name"/>
+										</Column>
+										<Column width="4em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Gender"/>
+										</Column>
+										<Column width="5em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="{= ${oTIJson>Old_Nationality}==='SA' ? 'Saudi ID' : 'Iqama No.'}"/>
+										</Column>
+										<Column width="3em" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+											<Text text="Nationality"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{oTIJson>Old_Sponsor_Id}"/>
+												<Text text="{oTIJson>Old_Fname}"/>
+												<Text text="{oTIJson>Old_Mname}"/>
+												<Text text="{oTIJson>Old_Lname}"/>
+												<Text text="{oTIJson>Old_Gender}"/>
+												<Text text="{= ${oTIJson>Old_Nationality}==='SA' ? ${oTIJson>Old_saudiIdNum} : ${oTIJson>Old_IqamaNo}}"/>
+												<Text text="{oTIJson>Old_Nationality}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<!--<Toolbar>-->
+								<!--	<Title text="Attachments" level="H5" titleStyle="H5"/>-->
+								<!--</Toolbar>-->
+								<!--<FormattedText id="idUrl"/>-->
+								<!--<Toolbar>-->
+								<!--	<Title id="idCollection" text="Collection" level="H5" titleStyle="H5"/>-->
+								<!--</Toolbar>-->
+								<!--<RadioButtonGroup columns="2" id="idCollectionType">-->
+								<!--	<buttons>-->
+								<!--		<RadioButton groupName="collection" text="Drop off myself" editable="false"></RadioButton>-->
+								<!--		<RadioButton groupName="collection" text="UPS pick up" editable="false"></RadioButton>-->
+								<!--	</buttons>-->
+								<!--</RadioButtonGroup>-->
+								<!--<Toolbar>-->
+								<!--	<Title id="idDelivery" text="Delivery" level="H5" titleStyle="H5"/>-->
+								<!--</Toolbar>-->
+								<!--<RadioButtonGroup columns="2" id="idDeliveryType">-->
+								<!--	<buttons>-->
+								<!--		<RadioButton groupName="delivery" text="Self pickup" editable="false"></RadioButton>-->
+								<!--		<RadioButton groupName="delivery" text="UPS delivery" editable="false"></RadioButton>-->
+								<!--	</buttons>-->
+								<!--</RadioButtonGroup>-->
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Table items="{oTIJson>/}">
+									<columns>
+										<Column width="25%" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+											<Text text="Arabic First Name" textAlign="Center"/>
+										</Column>
+										<Column width="25%" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+											<Text text="Arabic Middle Name" textAlign="Center"/>
+										</Column>
+										<Column width="25%" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+											<Text text="Arabic Last Name" textAlign="Center"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Input value="{oTIJson>OAFname}" enabled="false"/>
+												<Input value="{oTIJson>OAMname}" enabled="false"/>
+												<Input value="{oTIJson>OALname}" enabled="false"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</form:content>
+						</form:SimpleForm>
+						<!--	<form:SimpleForm editable="false" layout="ResponsiveGridLayout" -->
+						<!--		>-->
+						<!--		<form:content>-->
+						<!--	<l:VerticalLayout-->
+						<!--width="100%"-->
+						<!--class="gridWrapper">-->
+						<!--		<l:content>-->
+						<!--			<l:Grid defaultSpan="L12 M12 S12" width="auto" >-->
+						<!--		<l:content>-->
+						<!--			<HBox>-->
+						<!--				<VBox>-->
+						<!--					<Label text="Arabic First Name" ></Input>-->
+						<!--					<Text id="asfname" text="First Name"></Input>-->
+						<!--				</VBox>-->
+						<!--				<VBox class="pleft">-->
+						<!--					<Label text="Arabic Middle Name" ></Input>-->
+						<!--					<Text id="asmname" text="Middle Name" ></Input>-->
+						<!--				</VBox>-->
+						<!--				<VBox class="pleft">-->
+						<!--					<Label text="Arabic Last Name" ></Input>-->
+						<!--					<Text id="aslname" text="Last Name"></Input>-->
+						<!--				</VBox>-->
+						<!--			</HBox>-->
+						<!--		</l:content>-->
+						<!--	</l:Grid>-->
+						<!--		</l:content>-->
+						<!--	</l:VerticalLayout>-->
+						<!--			<l:Grid defaultSpan="L12 M12 S12" width="auto" ></l:Grid>-->
+						<!--	<l:content>-->
+						<!--		<HBox>-->
+						<!--			<VBox>-->
+						<!--				<Label text="Arabic First Name" ></Input>-->
+						<!--				<Text id="asfname" text="{oTIJson>OAFname}"></Input>-->
+						<!--			</VBox>-->
+						<!--			<VBox class="pleft">-->
+						<!--				<Label text="Arabic Middle Name" ></Input>-->
+						<!--				<Text id="asmname" text="{oTIJson>OAMname}" ></Input>-->
+						<!--			</VBox>-->
+						<!--			<VBox class="pleft">-->
+						<!--				<Label text="Arabic Last Name" ></Input>-->
+						<!--				<Text id="aslname" text="{oTIJson>OALname}"></Input>-->
+						<!--			</VBox>-->
+						<!--		</HBox>-->
+						<!--	</l:content>-->
+						<!--</l:Grid>-->
+						<!--		</form:content>-->
+						<!--	</form:SimpleForm>-->
+						<!--	<content>-->
+						<!--	<l:Grid defaultSpan="L12 M12 S12" width="auto"  >-->
+						<!--	<l:content>-->
+						<!--		<HBox>-->
+						<!--			<VBox>-->
+						<!--				<Label text="Arabic First Name" ></Input>-->
+						<!--				<Text id="asfname" text="{oTIJson>OAFname}"></Input>-->
+						<!--			</VBox>-->
+						<!--			<VBox class="pleft">-->
+						<!--				<Label text="Arabic Middle Name" ></Input>-->
+						<!--				<Text id="asmname" text="{oTIJson>OAMname}" ></Input>-->
+						<!--			</VBox>-->
+						<!--			<VBox class="pleft">-->
+						<!--				<Label text="Arabic Last Name" ></Input>-->
+						<!--				<Text id="aslname" text="{oTIJson>OALname}"></Input>-->
+						<!--			</VBox>-->
+						<!--		</HBox>-->
+						<!--	</l:content>-->
+						<!--</l:Grid>-->
+						<!--</content>-->
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0"
+							title="Domestic Helper">
+							<form:content>
+								<!--<Toolbar>-->
+								<!--	<Title text="Domestic Helper Information" level="H5" titleStyle="H5"/>-->
+								<!--</Toolbar>-->
+								<Table id="idHeadertoT2" items="{oTIJson>/}">
+									<columns>
+										<Column></Column>
+										<Column></Column>
+										<Column></Column>
+										<Column></Column>
+										<Column></Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<VBox>
+													<Label text="Kaust ID" design="Bold"/>
+													<Text text="{oTIJson>KaustId}" class="paddingTop"/>
+													<Label text="Nationality" design="Bold"/>
+													<Text text="{oTIJson>Nationality}"/>
+												</VBox>
+												<VBox>
+													<Label text="First Name" design="Bold"/>
+													<Text text="{oTIJson>Fname}" class="paddingTop"/>
+													<Label text="Date of Birth" design="Bold"/>
+													<Text text="{oTIJson>birthd}"/>
+												</VBox>
+												<VBox>
+													<Label text="Father's Name" design="Bold"/>
+													<Text text="{oTIJson>Mname}" class="paddingTop"/>
+													<Label text="Job Title" design="Bold"/>
+													<Text text="{oTIJson>Jobtitle}"/>
+												</VBox>
+												<VBox>
+													<Label text="Last Name" design="Bold"/>
+													<Text text="{oTIJson>Lname}" class="paddingTop"/>
+													<Label text="Iqama No." design="Bold"/>
+													<Text text="{oTIJson>IqamaNo}"/>
+												</VBox>
+												<VBox>
+													<Label text="Gender" design="Bold"/>
+													<Text text="{oTIJson>Gender}" class="paddingTop"/>
+													<Label text="Religion" design="Bold"/>
+													<Text id="dh_religion" class="paddingTop"/>
+												</VBox>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<!--<Toolbar>-->
+								<!--	<Title text="Attachments" level="H5" titleStyle="H5"/>-->
+								<!--</Toolbar>-->
+								<!--<core:Title text="Current Sponsor" emphasized="true"/>-->
+								<!--<Label text="Iqama" id="idCSiq"></Label>-->
+								<!--<Link id="idcurrsp"></Link>-->
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Table items="{oTIJson>/}">
+									<columns>
+										<Column width="25%" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+											<Text text="Arabic First Name"/>
+										</Column>
+										<Column width="25%" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+											<Text text="Arabic Father's Name"/>
+										</Column>
+										<Column width="25%" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+											<Text text="Arabic Last Name"/>
+										</Column>
+										<Column width="25%" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+											<Text text="Arabic Job Title"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Input value="{oTIJson>AFname}" enabled="false"/>
+												<Input value="{oTIJson>AMname}" enabled="false"/>
+												<Input value="{oTIJson>ALname}" enabled="false"/>
+												<Input value="{oTIJson>ALname}" enabled="false"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</form:content>
+						</form:SimpleForm>
+						<Toolbar>
+							<Title text="Attachments" level="H5"/>
+						</Toolbar>
+						<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+							<l:content>
+								<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="3" labelSpanS="12">
+									<core:Title text="Current Sponsor"/>
+									<Label id="idCurrentLabel"></Label>
+									<Link id="idCurrentLink" target="_blank"></Link>
+									<core:Title text="Domestic Helper"/>
+									<Label id="idDomesticLabel"></Label>
+									<Link id="idDomesticLink"></Link>
+									<Label text="Passport"></Label>
+									<Link id="idDomPp" target="_blank"></Link>
+									<Label text="Saudi Visa"></Label>
+									<Link id="idDomSv" target="_blank"></Link>
+								</form:SimpleForm>
+							</l:content>
+						</l:Grid>
+						<!--<FormattedText htmlText="&lt;br&gt;&lt;br&gt;&lt;br&gt;"/>-->
+						<!--<Title text="Attachments" level="H5"/>-->
+						<!--<FormattedText htmlText="&lt;br&gt;"/>-->
+						<!--<l:VerticalLayout width="100%">-->
+						<!--	<Title text="Current Sponsor" level="H1"/>-->
+						<!--	<l:Grid defaultSpan="L3 M3 S3" width="auto" id="Sponsortransfer">-->
+						<!--		<Label id="idCurrentLabel" ></Label>-->
+						<!--		<Link id="idCurrentLink" target="_blank"></Link>-->
+						<!--	</l:Grid>-->
+						<!--</l:VerticalLayout>-->
+						<!--<l:VerticalLayout width="100%">-->
+						<!--	<Title text="Domestic Help" level="H1"/>-->
+						<!--	<l:Grid defaultSpan="L3 M3 S3" width="auto" vSpacing="0">-->
+						<!--		<Label id="idDomesticLabel" ></Label>-->
+						<!--		<Link id="idDomesticLink" target="_blank"></Link>-->
+						<!--	</l:Grid>-->
+						<!--</l:VerticalLayout>-->
+						<!--<FormattedText htmlText="&lt;br&gt;&lt;br&gt;&lt;br&gt;"/>-->
+						<form:SimpleForm id="idRadioGroup" editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3"
+							emptySpanM="0">
+							<form:content>
+								<Toolbar>
+									<Title id="idCollection" text="Collection" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idCollectionType">
+									<buttons>
+										<RadioButton groupName="collection" text="Drop off myself" editable="false"></RadioButton>
+										<RadioButton groupName="collection" text="UPS pick up" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+								<Toolbar>
+									<Title id="idDelivery" text="Delivery" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<RadioButtonGroup columns="2" id="idDeliveryType">
+									<buttons>
+										<RadioButton groupName="delivery" text="Self pickup" editable="false"></RadioButton>
+										<RadioButton groupName="delivery" text="UPS delivery" editable="false"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="idUpsForm" editable="false" layout="ResponsiveGridLayout" labelSpanL="5" emptySpanL="0" labelSpanM="3" emptySpanM="0">
+							<form:content>
+								<Toolbar id="idDeliveryTool">
+									<Title id="idPref" text="Preference" level="H5" titleStyle="H5"/>
+								</Toolbar>
+								<Label text="Kaust Id"></Label>
+								<Text text="{preferenceModel>/KaustID}"></Text>
+								<Label text="Name"></Label>
+								<Text text="{preferenceModel>/FirstName} {preferenceModel>/LastName}"></Text>
+								<Label text="Building No."></Label>
+								<Text text="{preferenceModel>/BuildingNo}"></Text>
+								<Label text="Building Name"></Label>
+								<Text text="{preferenceModel>/BuildingName}"></Text>
+								<Label text="Level"></Label>
+								<Text text="{preferenceModel>/levelb}"></Text>
+								<Label text="Mobile"></Label>
+								<Text text="{preferenceModel>/Mobile}"></Text>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://comment">
+						<List id="commentHistory1" headerText="" noDataText="No Comments Log" growing="true" growingThreshold="4" growingScrollToLoad="false"
+							items="{commentDataSH>/CommentsInfo}">
+							<FeedListItem sender="{commentDataSH>t_name}" text="{commentDataSH>Comments}" showIcon="false"
+								timestamp="{ path: 'commentDataSH>TimeStamp', formatter: 'kaust.ui.kits.myRequest.util.Formatter.commentDate1' }"/>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory1" items="{histDataSH>/historyInfo}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Date"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+									<Text text="Time"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{histDataSH>Fname}"/>
+										<Text text="{path:'histDataSH>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}"/>
+										<Text text="{path:'histDataSH>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}"/>
+										<Text text="{path:'histDataSH>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

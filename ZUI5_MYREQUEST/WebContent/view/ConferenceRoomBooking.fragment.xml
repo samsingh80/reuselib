@@ -1,0 +1,495 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<l:Grid defaultSpan="L12 M12 S12" width="auto" vSpacing="0">
+		<l:content>
+			<form:SimpleForm id="externForm" minWidth="1024">
+				<form:title>
+					<core:Title text="Event Information"></core:Title>
+				</form:title>
+				<Label id="labLocOther" text="Location" design="Standard">
+				</Label>
+				<Text text="{/EventLocation}" id="inputLocOther">
+				</Text>
+				<Label text="Meeting Subject" for="inputName" design="Standard">
+				</Label>
+				<Text id="inputSubject" change="validateEmpty" text="{/Eventname}">
+				</Text>
+				<Label id="labelAttend" text="Number of Attendees" for="attend"
+					design="Standard" visible="true">
+				</Label>
+				<Text visible="true" id="attend" width="50%" text="{/Attendees}"
+					change="validateEmpty">
+				</Text>
+				<Label text="Date" for="inputDate" design="Standard">
+				</Label>
+				<Text id="inputDate">
+				</Text>
+				<Label text="Host Name" for="hostName" design="Standard"
+					visible="false" id="idHostLbl">
+				</Label>
+				<Text id="hostName" visible="false">
+				</Text>
+				
+				<!-- <DateTimeInput editable="false" id="inputDate" type="Date" displayFormat="MM/dd/yyyy" 
+					valueFormat="MM/dd/yyyy" /> -->
+				<CheckBox id="dayEvent" enabled="false" text="All day event"
+					select="changeEventTime" />
+				<Label id="timeLabel" text="Start Time" for="inputStartTime"
+					design="Standard">
+				</Label>
+				<Text id="inputStartTime"
+					text="{path: '/Starttime', formatter: 'kaust.ui.kits.myRequest.util.Formatter.getTimeFormat'}">
+				</Text>
+				<Label id="endTimeLabel" text="End Time" for="inputEndTime"
+					design="Standard">
+				</Label>
+				<Text id="inputEndTime"
+					text="{path: '/Endtime', formatter: 'kaust.ui.kits.myRequest.util.Formatter.getTimeFormat'}">
+				</Text>
+				<CheckBox visible="false" enabled="false" id="reccurBox"
+					selected="true" text="Recurring event" />
+				<Label id="pattLbl" text="Reccurence Pattern" visible="false"></Label>
+				<Text id="reccPattern" visible="false" text=""></Text>
+				<Label id="weeklyRecurLbl" visible="false" text="Reccur On"></Label>
+				<Text id="weeklyReccur" visible="false" text=""></Text>
+				<Label id="reccRangeLbl" text="Range of reccurence" visible="false"></Label>
+				<Text id="reccRange" text="" visible="false"></Text>
+				<Label id="canceledDatesLbl" text="Canceled Dates" visible="false"></Label>
+				<Text id="canceledDate" text="" visible="false"></Text>
+				 <!-- <Label id="canceledDatesLbl" text="Canceled Dates" visible="false"></Label>
+				<Text id="canceledDate" text="" visible="false"></Text>	  -->				
+			</form:SimpleForm>
+			<form:SimpleForm>
+			<VBox>
+			
+			<HBox>
+				<Label text="AV Standby Support?" class="sapUiSmallMarginTop"></Label>
+				<RadioButtonGroup id="AvStandby" width="100%"
+					class="" columns="2" 
+					select="" enabled="false">
+					<RadioButton text="Yes" groupName="AvService"></RadioButton>
+					<RadioButton text="No" groupName="AvService"></RadioButton>
+				</RadioButtonGroup>
+				</HBox>
+				<Text id="charges" class="AvStand" visible="false"/>
+				</VBox>
+			</form:SimpleForm>
+			<Toolbar id="roomInfoToolbar" visible="false" design="Transparent"
+				height="3rem">
+				<Text text="Selected Room Info" class="sapMH4FontSize" />
+				<ToolbarSpacer />
+			</Toolbar>
+			<form:SimpleForm id="roomInfoROmode" visible="false"
+				labelSpanL="6" labelSpanM="6" labelSpanS="4" columnsL="2" columnsM="2"
+				emptySpanL="0" emptySpanM="0" maxContainerCols="2" editable="true"
+				layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Building"></Label>
+					<Text id="bldgNameInfo" text="{/Bldgname}"></Text>
+					<Label text="Level"></Label>
+					<Text id="bldgLevelInfo" text="{/Bldglevel}"></Text>
+					<Label text="Room#"></Label>
+					<Text id="roomNoInfo" text="{/roomno}"></Text>
+					<Label text="Seating Layout"></Label>
+					<Text id="seatInfo" text="{/Layout}"></Text>
+					<!-- <core:Title text=""></core:Title> -->
+					<!-- <CheckBox -->
+					<!-- id="foodServ" -->
+					<!-- editable="false" -->
+					<!-- text="Food Services"> -->
+					<!-- </CheckBox> -->
+					<core:Title text=""></core:Title>
+					<!-- INCTURE 01-30-2018: Removing Recording Facility - KAUST Support Task (Made the check box in-visible -->
+					<CheckBox id="record" enabled="false" text="Recording facility" visible="false">
+						<layoutData>
+							<l:GridData span="L12 M12 S12"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					<CheckBox id="pressFac" enabled="false" text="Presentation facility">
+						<layoutData>
+							<l:GridData span="L12 M12 S12"></l:GridData>
+						</layoutData>
+					</CheckBox>
+					<CheckBox id="foodServ" enabled="false" text="Food Service Facility">
+						<layoutData>
+							<l:GridData span="L12 M12 S12"></l:GridData>
+						</layoutData>
+					</CheckBox>
+				</form:content>
+			</form:SimpleForm>
+			<IconTabBar expanded="{device>/isNoPhone}">
+				<items>
+					<IconTabFilter editable="false" iconColor="Default"
+						icon="sap-icon://hint">
+						<content>
+							<form:SimpleForm id="userInfoForm" minWidth="1024"
+								maxContainerCols="3" editable="false" layout="ResponsiveGridLayout"
+								labelSpanL="6" labelSpanM="6" emptySpanL="0" emptySpanM="0"
+								columnsL="3" columnsM="3">
+								<form:title>
+									<core:Title text="Requestor Information"></core:Title>
+								</form:title>
+								<form:content>
+									<core:Title text=" " />
+									<Label text="First Name" />
+									<Text text="{/d/FirstName}" />
+									<Label text="Last Name" />
+									<Text text="{/d/LastName}" />
+									<Label text="KAUST Id" />
+									<Text text="{/d/KaustID}" />
+									<core:Title text=" " />
+									<Label text="E-mail" />
+									<Text text="{/d/Email}" />
+									<Label text="Job Title" />
+									<Text text="{/d/Position}" />
+									<Label text="Department" />
+									<Text text="{/d/Deptname}" />
+									<core:Title text=" " />
+									<Label text="Billed Cost Center"></Label>
+									<Text text="{/d/Costcenter}"></Text>
+									<Label text="Office Telephone" />
+									<Text text="{/d/Office}" />
+									<Label text="Mobile Telephone" />
+									<Text text="{/d/Mobile}" />
+								</form:content>
+							</form:SimpleForm>
+
+							<form:SimpleForm id="HostInfoForm" layout="ResponsiveGridLayout"
+								labelSpanL="4" labelSpanM="3" labelSpanS="5" columnsL="3"
+								columnsM="3" emptySpanL="0" emptySpanM="0" maxContainerCols="2"
+								visible="false">
+								<form:title>
+									<core:Title text="Host Information">
+									</core:Title>
+								</form:title>
+								<form:content>
+									<core:Title text="">
+									</core:Title>
+									<Label text="First Name">
+									</Label>
+									<Text text="{/firstName}">
+									</Text>
+									<Label text="KAUST ID">
+									</Label>
+									<Text text="{/kaustId}">
+									</Text>
+									<core:Title text="">
+									</core:Title>
+									<Label text="Middle Name">
+									</Label>
+									<Text text="{/middleName}">
+									</Text>
+									<Label text="E-mail">
+									</Label>
+									<Text text="{/email}">
+									</Text>
+									<core:Title text="">
+									</core:Title>
+									<Label text="Last Name">
+									</Label>
+									<Text text="{/lastName}">
+									</Text>
+									<Label text="UserId">
+									</Label>
+									<Text text="{/UserId}">
+									</Text>
+
+								</form:content>
+							</form:SimpleForm>
+
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://basket" tooltip="Additional Requirements">
+						<form:SimpleForm id="note" labelSpanL="4"
+							labelSpanM="4" labelSpanS="4" columnsL="3" columnsM="3"
+							emptySpanL="4" emptySpanM="4" maxContainerCols="2" layout="ResponsiveLayout">
+							<form:title>
+								<core:Title text="Additional Requirements">
+								</core:Title>
+							</form:title>
+							<form:content>
+								<CheckBox id="wBoard" enabled="false" text="White Board" />
+								<CheckBox id="chart" enabled="false" text="Flip Chart" />
+								<CheckBox id="others" enabled="false" text="Others"
+									select="changeItems" />
+								<Text visible="false" id="otherItems"></Text>
+							</form:content>
+						</form:SimpleForm>
+						<VBox>
+							<CheckBox id="avSupport" text="AV Support Only" enabled="false"
+								select="changeRequirements" />
+							<CheckBox id="webVideo" enabled="false"
+								text="Video and Web Conferencing" select="changeRequirements" />
+							<CheckBox id="webex" enabled="false" text="Webex Conference"
+								select="changeRequirements" />
+							<CheckBox id="confRec" enabled="false"
+								text="Conference Recording and Mediasite" select="changeRequirements" />
+						</VBox>
+						<form:SimpleForm labelSpanL="3" labelSpanM="2" visible="false"
+							labelSpanS="2" columnsL="2" columnsM="2" emptySpanL="0"
+							emptySpanM="0" maxContainerCols="2" layout="ResponsiveGridLayout">
+							<form:title>
+								<core:Title text="Note">
+								</core:Title>
+							</form:title>
+							<form:content>
+								<TextArea id="comment" editable="false" width="100%">
+								</TextArea>
+								<core:Title text="">
+								</core:Title>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter id="avFilter" visible="false"
+						icon="sap-icon://projector" tooltip="AV Support">
+						<form:SimpleForm id="avSupportForm" labelSpanL="4"
+							labelSpanM="4" labelSpanS="4" columnsL="1" columnsM="1"
+							emptySpanL="4" emptySpanM="4" maxContainerCols="1"
+							layout="ResponsiveGridLayout">
+							<form:title>
+								<core:Title text="AV Support">
+								</core:Title>
+							</form:title>
+							<form:content>
+								<CheckBox id="laptop" enabled="false" text="Laptop" />
+								<CheckBox id="clicker" enabled="false" text="Clicker" />
+								<CheckBox id="adapter" enabled="false" text="Adapter" />
+								<CheckBox id="mic" enabled="false" text="Microphone" />
+								<core:Title text=""></core:Title>
+								<CheckBox id="speakers" enabled="false" text="Speakers" />
+								<CheckBox id="projector" enabled="false" text="Projector" />
+								<CheckBox id="monitor" enabled="false" text="Monitor" />
+								<Text text="" />
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://video" id="webVideoFilter"
+						visible="false" tooltip="Video and Web Conferencing">
+						<Toolbar id="toolbarVideoConf" design="Transparent"
+							height="3rem">
+							<Text text="Video and Web Conferencing" class="sapMH4FontSize" />
+						</Toolbar>
+						<Table id="videoWebTab" items="{/WebConf}">
+							<columns>
+								<Column hAlign="Left">
+									<Text text="Protocol" />
+								</Column>
+								<Column hAlign="Left">
+									<Text text="IP Address/URL" />
+								</Column>
+								<Column hAlign="Left">
+									<Text text="Technical Assistant Contract" />
+								</Column>
+								<Column hAlign="Left">
+									<Text text="E-mail" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier text="{protocol}" />
+										<Text text="{ipAddress}" />
+										<Text text="{techAssist}" />
+										<Text text="{emailConf}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<form:SimpleForm id="avSupportFormforvideo" labelSpanL="4"
+							labelSpanM="4" labelSpanS="4" columnsL="1" columnsM="1"
+							emptySpanL="4" emptySpanM="4" maxContainerCols="1"
+							layout="ResponsiveGridLayout">
+							<form:title>
+								<core:Title text="AV Support">
+								</core:Title>
+							</form:title>
+							<form:content>
+								<CheckBox id="laptop1" enabled="false" text="Laptop" />
+								<CheckBox id="clicker1" enabled="false" text="Clicker" />
+								<CheckBox id="adapter1" enabled="false" text="Adapter" />
+								<CheckBox id="mic1" enabled="false" text="Microphone" />
+								<core:Title text=""></core:Title>
+								<CheckBox id="speakers1" enabled="false" text="Speakers" />
+								<CheckBox id="projector1" enabled="false" text="Projector" />
+								<CheckBox id="monitor1" enabled="false" text="Monitor" />
+								<Text text="" />
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://web-cam" id="webexFilter"
+						visible="false" tooltip="Webex Conference">
+						<Toolbar id="toolbarWebex" design="Transparent" height="3rem">
+							<Text text="Webex Conference" class="sapMH4FontSize" />
+						</Toolbar>
+						<Table id="webExTab" items="{/webExPart}">
+							<columns>
+								<Column hAlign="Left">
+									<Text text="Ex. Participants E-mail" />
+								</Column>
+								<Column hAlign="Left">
+									<Text text="Country" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier text="{exUserEmail}" />
+										<Text text="{country}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<form:SimpleForm id="avSupportFormwebex" labelSpanL="4"
+							labelSpanM="4" labelSpanS="4" columnsL="1" columnsM="1"
+							emptySpanL="4" emptySpanM="4" maxContainerCols="1"
+							layout="ResponsiveGridLayout">
+							<form:title>
+								<core:Title text="AV Support">
+								</core:Title>
+							</form:title>
+							<form:content>
+								<CheckBox id="laptop2" enabled="false" text="Laptop" />
+								<CheckBox id="clicker2" enabled="false" text="Clicker" />
+								<CheckBox id="adapter2" enabled="false" text="Adapter" />
+								<CheckBox id="mic2" enabled="false" text="Microphone" />
+								<core:Title text=""></core:Title>
+								<CheckBox id="speakers2" enabled="false" text="Speakers" />
+								<CheckBox id="projector2" enabled="false" text="Projector" />
+								<CheckBox id="monitor2" enabled="false" text="Monitor" />
+								<Text text="" />
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter id="confRecFilter" visible="false"
+						icon="sap-icon://record" tooltip="Conference recording and Mediasite">
+						<form:SimpleForm id="confRecForm"
+							maxContainerCols="3" labelSpanL="3" labelSpanM="3" labelSpanS="3"
+							columnsL="3" columnsM="3" emptySpanL="0" emptySpanM="0" editable="true"
+							layout="ResponsiveLayout">
+							<form:title>
+								<core:Title text="Conference recording and Mediasite">
+								</core:Title>
+							</form:title>
+							<form:content>
+								<core:Title text=""></core:Title>
+								<Label text="Visibility of recording" design="Standard"></Label>
+								<RadioButtonGroup id="grRec" enabled="false"
+									columns="3" selectedIndex="0">
+									<buttons>
+										<RadioButton text="Public" groupName="grRec" />
+										<RadioButton text="Private" groupName="grRec" />
+									</buttons>
+								</RadioButtonGroup>
+								<Label text="Lecturer/Presenter" for="lecturer" design="Standard"></Label>
+								<Input id="lecturer" editable="false" value="{/Presenter}"></Input>
+								<core:Title text=""></core:Title>
+								<Label text="Recording Title" for="recTitle" design="Standard"></Label>
+								<Input id="recTitle" editable="false" change="validateEmpty"
+									value="{/Title}"></Input>
+								<Label text="Department" for="deptNameLec" design="Standard"></Label>
+								<Input id="deptNameLec" editable="false" value="{/Department}"></Input>
+								<core:Title text=""></core:Title>
+							</form:content>
+						</form:SimpleForm>
+						<form:SimpleForm id="avSupportFormconf" labelSpanL="4"
+							labelSpanM="4" labelSpanS="4" columnsL="1" columnsM="1"
+							emptySpanL="4" emptySpanM="4" maxContainerCols="1"
+							layout="ResponsiveGridLayout">
+							<form:title>
+								<core:Title text="AV Support">
+								</core:Title>
+							</form:title>
+							<form:content>
+								<CheckBox id="laptop3" enabled="false" text="Laptop" />
+								<CheckBox id="clicker3" enabled="false" text="Clicker" />
+								<CheckBox id="adapter3" enabled="false" text="Adapter" />
+								<CheckBox id="mic3" enabled="false" text="Microphone" />
+								<core:Title text=""></core:Title>
+								<CheckBox id="speakers3" enabled="false" text="Speakers" />
+								<CheckBox id="projector3" enabled="false" text="Projector" />
+								<CheckBox id="monitor3" enabled="false" text="Monitor" />
+								<Text text="" />
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://customer-history">
+						<Table id="TblHistory" items="{historyModel>/}">
+							<columns>
+								<Column width="12em">
+									<Text text="User Name" />
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status" />
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true"
+									hAlign="Left">
+									<Text text="Date" />
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true"
+									hAlign="Left">
+									<Text text="Time" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{historyModel>Fname}" />
+										<Text
+											text="{path:'historyModel>Statustext', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertStatusText'}" />
+										<Text
+											text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertDate'}" />
+										<Text
+											text="{path:'historyModel>Timestamp', formatter:'kaust.ui.kits.myRequest.util.Formatter.convertTime'}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+					<!-- EDITED BY INCTURE: COMMENT HISTORY LOG -->
+					<IconTabFilter icon="sap-icon://comment">
+						<List headerText="Comments" growing="true" growingThreshold="5"
+							growingScrollToLoad="false" items="{GAComments>/}">
+							<FeedListItem id="tabComments" showIcon="false"
+								visible="{path: 'GAComments>Comments', formatter: 'kaust.ui.kits.myRequest.util.Formatter.fnNoComments'}"
+								sender="{GAComments>tRole}" text="{GAComments>Comments}" info=""
+								timestamp="{
+								path: 'GAComments>TimeStamp',
+								formatter: 'kaust.ui.kits.myRequest.util.Formatter.date'
+						  }" />
+						</List>
+					</IconTabFilter>
+					<!-- EDITED BY INCTURE: Feedback by Requester -->
+					<IconTabFilter icon="sap-icon://employee-pane" id="feedbackTab"
+						visible="false">
+						<form:SimpleForm labelSpanL="2" labelSpanM="2"
+							labelSpanS="6" columnsL="1" columnsM="1" emptySpanL="1"
+							emptySpanM="1" maxContainerCols="2" layout="ResponsiveGridLayout">
+							<form:content>
+								<Label text="AV Service Quality Rating">
+									<layoutData>
+										<l:GridData span="L12 M12 S12"></l:GridData>
+									</layoutData>
+								</Label>
+								<RadioButtonGroup enabled="false" columns="4"
+									id="idSrvQualRB">
+									<buttons>
+										<RadioButton text="Excellent"></RadioButton>
+										<RadioButton text="Good"></RadioButton>
+										<RadioButton text="Average"></RadioButton>
+										<RadioButton text="Poor"></RadioButton>
+									</buttons>
+								</RadioButtonGroup>
+								<Label text="Feedback">
+									<layoutData>
+										<l:GridData span="L12 M12 S12"></l:GridData>
+									</layoutData>
+								</Label>
+								<TextArea width="100%" id="idFeedback" editable="false"></TextArea>
+							</form:content>
+						</form:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>
